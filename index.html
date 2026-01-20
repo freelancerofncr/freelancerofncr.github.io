@@ -3,152 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Digital QR Menu for Restaurants | Freelancer of NCR</title>
-
   <link rel="icon" href="assets/images/favicon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- ================= HEADER ================= -->
-<header>
-  <div class="nav">
-    <a href="index.html">
-      <img src="assets/images/logo.png" alt="Freelancer of NCR" style="height:42px">
-    </a>
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Freelancer of NCR">
+      </a>
 
-    <div class="menu-toggle">
-      <img src="assets/icons/black-icons/three-horizontal-lines.svg" class="icon-black">
-    </div>
+      <div class="menu-toggle">
+        <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="Menu" class="icon-black">
+      </div>
 
-    <ul>
-      <li><a href="#">Home</a></li>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        
+        <li class="dropdown">
+          <a href="#services" class="nav-link">Services</a>
+          <div class="dropdown-menu">
+            <a href="#digital-menu" class="dropdown-link">Digital QR Menu</a>
+            <a href="#google-business" class="dropdown-link">Google Business Profile</a>
+            <a href="#wordpress" class="dropdown-link">WordPress Website</a>
+          </div>
+        </li>
 
-      <li class="dropdown">
-        <a href="#">Services</a>
-        <div class="dropdown-menu">
-          <a href="#">Digital QR Menu</a>
-          <a href="#">Google Business Profile</a>
-          <a href="#">WordPress Website</a>
-        </div>
-      </li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
 
-      <li><a href="#contact">Contact</a></li>
-
-      <li>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn-whatsapp">
-          WhatsApp Now
-        </a>
-      </li>
-    </ul>
+        <li>
+          <a href="https://wa.me/918979639473" target="_blank" class="btn-whatsapp">
+            <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
+            <span>WhatsApp Now</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="hero-bg"></div>
+<!-- ================= HERO SECTION ================= -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Transform Your Restaurant with<br>
+        <span class="highlight">Professional Digital QR Menu</span>
+      </h1>
 
-  <div class="hero-content">
-    <h1>
-      Digital QR Menu<br>
-      <span>That Makes Your Restaurant Look Premium</span>
-    </h1>
+      <p class="hero-subtitle">
+        Beautifully designed QR menu pages featuring instant call buttons, 
+        WhatsApp ordering, Google Maps location, secure payment links, 
+        and organized veg/non-veg sections — all accessible with a simple scan.
+      </p>
 
-    <p>
-      We design attractive QR menu pages with call, WhatsApp,
-      location, payment & QR — everything in one smart menu.
-    </p>
+      <div class="hero-buttons">
+        <a href="#digital-menu" class="btn-primary">
+          Get Your Digital Menu
+          <img src="assets/icons/black-icons/long-arrow-right.svg" alt="Arrow" class="icon-black">
+        </a>
+        <a href="https://wa.me/918979639473" target="_blank" class="btn-secondary">
+          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
+          Chat on WhatsApp
+        </a>
+      </div>
 
-    <div class="hero-btns">
-      <a href="#" class="btn-primary">Get Digital QR Menu</a>
-      <a href="https://wa.me/918979639473" target="_blank" class="btn-whatsapp">
-        WhatsApp Now
-      </a>
-    </div>
-
-    <!-- SOCIAL PROOF -->
-    <div class="social-proof">
-      <img src="assets/icons/color-icons/instagram.svg" class="icon-color">
-      <img src="assets/icons/color-icons/facebook.svg" class="icon-color">
-      <img src="assets/icons/color-icons/google-color.svg" class="icon-color">
-      <span>Trusted by local businesses</span>
+      <div class="social-proof">
+        <div class="social-icons">
+          <img src="assets/icons/color-icons/instagram.svg" alt="Instagram" class="icon-color">
+          <img src="assets/icons/color-icons/facebook.svg" alt="Facebook" class="icon-color">
+          <img src="assets/icons/color-icons/google-color.svg" alt="Google" class="icon-color">
+        </div>
+        <p class="social-text">Trusted by 100+ local businesses in NCR</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= FEATURES ================= -->
-<section class="features">
-  <h2>What You Get in Digital QR Menu</h2>
-
-  <div class="feature-grid">
-
-    <div class="feature-card">
-      <img src="assets/icons/black-icons/food-menu.svg" class="icon-black">
-      <h3>Attractive Digital Menu</h3>
+<!-- ================= FEATURES SECTION ================= -->
+<section class="features" id="digital-menu">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Everything Your Restaurant Needs in One Digital Menu</h2>
+      <p class="section-subtitle">No apps to download. No complicated setup. Just scan and serve.</p>
     </div>
 
-    <div class="feature-card">
-      <img src="assets/icons/black-icons/veg.svg" class="icon-black">
-      <h3>Veg & Non-Veg Separate</h3>
-    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/black-icons/food-menu.svg" alt="Digital Menu" class="icon-black">
+        </div>
+        <h3 class="feature-title">Beautiful Menu Design</h3>
+        <p class="feature-description">Eye-catching layouts that showcase your dishes professionally</p>
+      </div>
 
-    <div class="feature-card">
-      <img src="assets/icons/black-icons/call.svg" class="icon-black">
-      <h3>Call & WhatsApp Button</h3>
-    </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/black-icons/veg.svg" alt="Veg" class="icon-black">
+        </div>
+        <h3 class="feature-title">Veg & Non-Veg Categories</h3>
+        <p class="feature-description">Clearly separated sections for easy navigation</p>
+      </div>
 
-    <div class="feature-card">
-      <img src="assets/icons/black-icons/globe.svg" class="icon-black">
-      <h3>Google Maps Location</h3>
-    </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/black-icons/call.svg" alt="Call" class="icon-black">
+        </div>
+        <h3 class="feature-title">One-Tap Call Button</h3>
+        <p class="feature-description">Customers can reach you instantly with a single tap</p>
+      </div>
 
-    <div class="feature-card">
-      <img src="assets/icons/black-icons/qr.svg" class="icon-black">
-      <h3>QR Code Ready</h3>
-    </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
+        </div>
+        <h3 class="feature-title">WhatsApp Integration</h3>
+        <p class="feature-description">Direct ordering and customer support via WhatsApp</p>
+      </div>
 
-    <div class="feature-card">
-      <img src="assets/icons/black-icons/rupee-coin-solid.svg" class="icon-black">
-      <h3>Payment Option</h3>
-    </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/color-icons/google-map.svg" alt="Location" class="icon-color">
+        </div>
+        <h3 class="feature-title">Google Maps Location</h3>
+        <p class="feature-description">Help customers find you with integrated directions</p>
+      </div>
 
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/black-icons/qr.svg" alt="QR Code" class="icon-black">
+        </div>
+        <h3 class="feature-title">Ready-to-Print QR Code</h3>
+        <p class="feature-description">High-quality QR codes for tables, standees, and posters</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/black-icons/rupee-coin-solid.svg" alt="Payment" class="icon-black">
+        </div>
+        <h3 class="feature-title">Payment Links</h3>
+        <p class="feature-description">Integrated UPI payment options for seamless transactions</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/icons/black-icons/mobile.svg" alt="Mobile" class="icon-black">
+        </div>
+        <h3 class="feature-title">Mobile Optimized</h3>
+        <p class="feature-description">Perfect viewing experience on all devices</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ================= CTA ================= -->
+<!-- ================= TRUST SECTION ================= -->
+<section class="trust">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose Freelancer of NCR</h2>
+      <p class="section-subtitle">We're committed to delivering excellence for local businesses</p>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">
+          <img src="assets/icons/black-icons/star.svg" alt="Quality" class="icon-black">
+        </div>
+        <h3 class="trust-title">Premium Quality Work</h3>
+        <p class="trust-description">Professional designs that make your restaurant stand out</p>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon">
+          <img src="assets/icons/black-icons/rupee-coin-solid.svg" alt="Price" class="icon-black">
+        </div>
+        <h3 class="trust-title">Best Prices in NCR</h3>
+        <p class="trust-description">Affordable solutions without compromising on quality</p>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon">
+          <img src="assets/icons/black-icons/shield-checkmark.svg" alt="Transparent" class="icon-black">
+        </div>
+        <h3 class="trust-title">100% Transparent Pricing</h3>
+        <p class="trust-description">No hidden charges, clear pricing from the start</p>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon">
+          <img src="assets/icons/black-icons/clock.svg" alt="Fast" class="icon-black">
+        </div>
+        <h3 class="trust-title">Quick Delivery</h3>
+        <p class="trust-description">Get your digital menu ready within 24-48 hours</p>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon">
+          <img src="assets/icons/black-icons/male-services-support.svg" alt="Support" class="icon-black">
+        </div>
+        <h3 class="trust-title">WhatsApp Support</h3>
+        <p class="trust-description">Always available to help you with any questions</p>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon">
+          <img src="assets/icons/black-icons/shop.svg" alt="Local" class="icon-black">
+        </div>
+        <h3 class="trust-title">Local Business Focus</h3>
+        <p class="trust-description">We understand NCR market and your specific needs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA SECTION ================= -->
 <section class="cta">
-  <h2>Want a Digital QR Menu That Actually Looks Professional?</h2>
-  <p>No apps • No confusion • Just scan & view</p>
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Elevate Your Restaurant Experience?</h2>
+      <p class="cta-subtitle">Join hundreds of restaurants in NCR using our professional digital QR menus</p>
+      
+      <div class="cta-buttons">
+        <a href="https://wa.me/918979639473" target="_blank" class="btn-primary-large">
+          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
+          Get Started on WhatsApp
+        </a>
+      </div>
 
-  <a href="https://wa.me/918979639473" target="_blank" class="btn-primary">
-    Get Started on WhatsApp
-  </a>
+      <div class="cta-features">
+        <div class="cta-feature">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
+          <span>No setup fees</span>
+        </div>
+        <div class="cta-feature">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
+          <span>Free revisions</span>
+        </div>
+        <div class="cta-feature">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
+          <span>24-48 hour delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer id="contact">
-  <div class="footer-grid">
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <img src="assets/images/logo.png" alt="Freelancer of NCR" class="footer-logo">
+        <p class="footer-tagline">Your Local Partner for Online Business Growth</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" class="social-link">
+            <img src="assets/icons/color-icons/instagram.svg" alt="Instagram" class="icon-color">
+          </a>
+          <a href="#" target="_blank" class="social-link">
+            <img src="assets/icons/color-icons/facebook.svg" alt="Facebook" class="icon-color">
+          </a>
+          <a href="#" target="_blank" class="social-link">
+            <img src="assets/icons/color-icons/google-color.svg" alt="Google" class="icon-color">
+          </a>
+        </div>
+      </div>
 
-    <div>
-      <img src="assets/images/logo.png" style="height:42px">
-      <p>Your Local Partner for Online Business Growth</p>
+      <div class="footer-links">
+        <h3 class="footer-heading">Quick Links</h3>
+        <a href="#home" class="footer-link">Home</a>
+        <a href="#services" class="footer-link">Services</a>
+        <a href="#digital-menu" class="footer-link">Digital QR Menu</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+
+      <div class="footer-links">
+        <h3 class="footer-heading">Services</h3>
+        <a href="#" class="footer-link">Digital QR Menu</a>
+        <a href="#" class="footer-link">Google Business Profile</a>
+        <a href="#" class="footer-link">WordPress Website</a>
+        <a href="#" class="footer-link">Social Media Marketing</a>
+      </div>
+
+      <div class="footer-contact">
+        <h3 class="footer-heading">Get in Touch</h3>
+        <a href="tel:918979639473" class="footer-contact-item">
+          <img src="assets/icons/black-icons/call.svg" alt="Call" class="icon-black">
+          <span>+91 8979639473</span>
+        </a>
+        <a href="https://wa.me/918979639473" target="_blank" class="footer-contact-item">
+          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
+          <span>Chat on WhatsApp</span>
+        </a>
+        <div class="footer-contact-item">
+          <img src="assets/icons/black-icons/globe.svg" alt="Location" class="icon-black">
+          <span>Gurugram, NCR</span>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h3>Quick Links</h3>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms & Conditions</a>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Freelancer of NCR. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <span class="separator">•</span>
+        <a href="#" class="footer-legal-link">Terms & Conditions</a>
+      </div>
     </div>
-
-    <div>
-      <h3>Connect</h3>
-      <a href="https://wa.me/918979639473" target="_blank">WhatsApp</a>
-      <p>📞 8979639473</p>
-    </div>
-
   </div>
 </footer>
 
