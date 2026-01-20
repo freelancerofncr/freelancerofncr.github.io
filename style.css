@@ -859,3 +859,59 @@ section {
     align-items: center;
   }
 }
+
+
+
+
+/* ================= ADDITIONAL STYLES FOR NEW ELEMENTS ================= */
+
+/* Hero Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--bg-light);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-badge .icon-black {
+  width: 16px;
+  height: 16px;
+}
+
+/* Typing Text */
+.typing-text {
+  display: inline-block;
+  min-width: 300px;
+  border-right: 3px solid var(--primary);
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Price Tag */
+.hero-price-tag {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  display: inline-block;
+  margin: var(--space-lg) 0;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  color: var(--bg-white);
+  margin-bottom: var(--space-sm);
+}
