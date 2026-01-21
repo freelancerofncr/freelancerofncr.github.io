@@ -140,3 +140,12 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+@media (max-width: 767px) {
+  .header-cta {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
