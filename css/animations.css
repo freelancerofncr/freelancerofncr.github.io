@@ -31,3 +31,21 @@
     transform: translateY(-2px);
   }
 }
+
+/* ===== SUBTLE BACKGROUND MOTION ===== */
+.hero-section {
+  background: linear-gradient(
+    120deg,
+    var(--bg-main),
+    var(--bg-section),
+    var(--bg-main)
+  );
+  background-size: 200% 200%;
+  animation: heroBgMove 8s ease infinite;
+}
+
+@keyframes heroBgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
