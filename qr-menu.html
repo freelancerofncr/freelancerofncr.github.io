@@ -661,3 +661,221 @@ a{text-decoration:none;color:inherit}
   </div>
 </section>
 
+
+<!-- ================= FINAL PRICING PUSH ================= -->
+<section class="final-offer">
+  <style>
+    .final-offer{
+      padding:110px 0 90px;
+      position:relative;
+      text-align:center;
+    }
+
+    .final-offer h2{
+      font-size:36px;
+      margin-bottom:14px;
+    }
+
+    .final-offer p.sub{
+      max-width:760px;
+      margin:0 auto 40px;
+      color:#cfd4db;
+      font-size:16px;
+    }
+
+    .final-price-box{
+      max-width:460px;
+      margin:0 auto;
+      background:rgba(255,255,255,.08);
+      border-radius:26px;
+      padding:34px 26px;
+      position:relative;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 30px 60px rgba(0,0,0,.35);
+    }
+
+    .final-price-box::before{
+      content:"";
+      position:absolute;
+      inset:-3px;
+      border-radius:inherit;
+      background:linear-gradient(90deg,#25d366,#00f2fe,#25d366);
+      background-size:300% 300%;
+      animation:borderMove 5s linear infinite;
+      z-index:-1;
+      opacity:.7;
+    }
+
+    .final-old{
+      font-size:18px;
+      color:#ff9f9f;
+      text-decoration:line-through;
+      margin-bottom:6px;
+    }
+
+    .final-new{
+      font-size:46px;
+      font-weight:800;
+      color:#25d366;
+      margin-bottom:6px;
+    }
+
+    .final-note{
+      font-size:14px;
+      color:#a7ffcf;
+      margin-bottom:18px;
+    }
+
+    .final-features{
+      list-style:none;
+      margin:26px 0;
+      padding:0;
+    }
+
+    .final-features li{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-size:14px;
+      color:#e4e7ec;
+      margin-bottom:10px;
+    }
+
+    .final-features img{
+      width:18px;
+      opacity:.9;
+    }
+
+    .final-cta a{
+      display:inline-block;
+      margin-top:24px;
+      background:linear-gradient(90deg,#25d366,#00f2fe);
+      color:#000;
+      padding:16px 36px;
+      border-radius:18px;
+      font-size:17px;
+      font-weight:700;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .final-cta a::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle,rgba(255,255,255,.6),transparent 60%);
+      opacity:0;
+      animation:pulse 2.4s infinite;
+    }
+
+    /* ================= PAYMENT TRUST ================= */
+    .payment-trust{
+      margin-top:90px;
+    }
+
+    .payment-trust h3{
+      font-size:24px;
+      margin-bottom:18px;
+    }
+
+    .payment-logos{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .payment-logos img{
+      height:34px;
+      filter:brightness(1.05);
+    }
+
+    /* ================= FOOTER ================= */
+    .qr-footer{
+      margin-top:110px;
+      padding-top:40px;
+      border-top:1px solid rgba(255,255,255,.12);
+      text-align:center;
+      font-size:13px;
+      color:#9aa0a6;
+    }
+
+    @media(max-width:768px){
+      .final-offer h2{font-size:30px}
+      .final-new{font-size:40px}
+    }
+  </style>
+
+  <div class="container">
+
+    <h2>Get Your Digital QR Menu Today</h2>
+
+    <p class="sub">
+      Stop using paper menus and upgrade to a modern,
+      hygienic and professional Digital QR Menu for your restaurant.
+    </p>
+
+    <div class="final-price-box">
+      <div class="final-old">Market Price: ₹2500</div>
+      <div class="final-new">₹499</div>
+      <div class="final-note">
+        One Time Payment • Lifetime Free • No Monthly Charges
+      </div>
+
+      <ul class="final-features">
+        <li>
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+          Digital QR Menu Website
+        </li>
+        <li>
+          <img src="assets/icons/black-icons/call.svg" alt="">
+          Call & WhatsApp Buttons
+        </li>
+        <li>
+          <img src="assets/icons/black-icons/google-map.svg" alt="">
+          Google Maps Location
+        </li>
+        <li>
+          <img src="assets/icons/black-icons/qr.svg" alt="">
+          QR Code Image & PDF
+        </li>
+        <li>
+          <img src="assets/icons/black-icons/infinity.svg" alt="">
+          Lifetime Free Usage
+        </li>
+      </ul>
+
+      <div class="final-cta">
+        <a href="https://wa.me/918979639473?text=Hi%2C%20I%20want%20to%20order%20Digital%20QR%20Menu%20for%20my%20restaurant."
+           target="_blank">
+          Order Digital QR Menu on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- PAYMENT TRUST -->
+    <div class="payment-trust">
+      <h3>Secure Payments Accepted</h3>
+      <div class="payment-logos">
+        <img src="assets/icons/color-icons/upi.svg" alt="UPI">
+        <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay">
+        <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe">
+        <img src="assets/icons/color-icons/paytm.svg" alt="Paytm">
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="qr-footer">
+      <p>
+        © Freelancer of NCR • MSME / Udyam Registered Digital Agency
+      </p>
+      <p>
+        Digital QR Menu | Google Business Profile | Business Websites
+      </p>
+    </div>
+
+  </div>
+</section>
+
