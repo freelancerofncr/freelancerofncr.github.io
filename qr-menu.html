@@ -7,33 +7,52 @@
 <link rel="icon" href="assets/images/favicon.png">
 
 <style>
+/* ============ RESET ============ */
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-  color:#111;
-  line-height:1.7;
+  color:#fff;
+  line-height:1.6;
+  overflow-x:hidden;
+
+  /* DARKER PREMIUM GRADIENT */
   background:
-    radial-gradient(circle at 20% 20%, rgba(37,211,102,.18), transparent 45%),
-    radial-gradient(circle at 80% 30%, rgba(0,242,254,.18), transparent 45%),
-    #ffffff;
-  animation:bgMove 16s ease-in-out infinite;
+    radial-gradient(circle at 20% 30%, rgba(37,211,102,.35), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(79,172,254,.35), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(0,242,254,.25), transparent 50%),
+    #0c0f14;
 }
-@keyframes bgMove{
-  0%{background-position:20% 20%,80% 30%}
-  50%{background-position:30% 25%,70% 35%}
-  100%{background-position:20% 20%,80% 30%}
+
+/* Floating shapes */
+.bg-shape{
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:.45;
+  animation:float 14s ease-in-out infinite;
 }
+.shape1{background:#25d366;top:10%;left:-80px}
+.shape2{background:#00f2fe;bottom:10%;right:-80px;animation-delay:3s}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-40px)}
+  100%{transform:translateY(0)}
+}
+
 a{text-decoration:none;color:inherit}
 .container{max-width:1100px;margin:auto;padding:0 16px}
 
-/* ================= HEADER (MOBILE FIRST) ================= */
+/* ============ HEADER ============ */
 .header{
   position:sticky;
   top:0;
-  z-index:999;
-  background:rgba(255,255,255,.95);
+  z-index:99;
+  background:rgba(12,15,20,.8);
   backdrop-filter:blur(8px);
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 .header-inner{
   height:64px;
@@ -42,76 +61,97 @@ a{text-decoration:none;color:inherit}
   align-items:center;
 }
 .header img{height:34px}
-.header a.back{
+.header a{
   font-size:14px;
-  opacity:.7;
+  opacity:.85;
 }
 
-/* ================= HERO ================= */
+/* ============ HERO ============ */
 .hero{
-  padding:90px 0 70px;
+  position:relative;
+  padding:100px 0 80px;
   text-align:center;
 }
 .hero h1{
-  font-size:38px;
-  margin-bottom:16px;
+  font-size:40px;
+  margin-bottom:18px;
 }
 .hero h1 span{color:#25d366}
 .hero p{
   max-width:760px;
-  margin:0 auto 14px;
-  color:#555;
+  margin:0 auto 16px;
   font-size:16px;
+  color:#d0d4db;
 }
 
-/* Price box */
+/* ============ PRICE ANIMATION ============ */
 .price-box{
-  margin:30px auto;
-  background:#fff;
+  margin:34px auto;
+  background:rgba(255,255,255,.08);
   border-radius:22px;
-  padding:26px;
+  padding:28px 22px;
   max-width:420px;
   position:relative;
-  box-shadow:0 18px 40px rgba(0,0,0,.08);
-}
-.price-box::before{
-  content:"";
-  position:absolute;
-  inset:-3px;
-  border-radius:inherit;
-  background:linear-gradient(90deg,#25d366,#00f2fe,#25d366);
-  background-size:300% 300%;
-  animation:borderMove 4s linear infinite;
-  z-index:-1;
-}
-@keyframes borderMove{
-  0%{background-position:0% 50%}
-  100%{background-position:300% 50%}
-}
-.old-price{
-  text-decoration:line-through;
-  color:#999;
-  font-size:15px;
-}
-.new-price{
-  font-size:34px;
-  font-weight:700;
-  margin:6px 0;
-}
-.offer{
-  font-size:14px;
-  color:#25d366;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
 }
 
-/* CTA */
+.old-price{
+  font-size:18px;
+  color:#ff9f9f;
+  opacity:0;
+  transform:translateX(-40px);
+  animation:oldPriceIn 1s ease forwards;
+}
+@keyframes oldPriceIn{
+  to{opacity:1;transform:translateX(0)}
+}
+.cut{
+  position:relative;
+}
+.cut::after{
+  content:"";
+  position:absolute;
+  left:0;top:50%;
+  width:0;height:2px;
+  background:#ff4d4d;
+  animation:cutLine 1s ease forwards;
+  animation-delay:.6s;
+}
+@keyframes cutLine{
+  to{width:100%}
+}
+
+.new-price{
+  font-size:42px;
+  font-weight:800;
+  margin:10px 0;
+  color:#25d366;
+  opacity:0;
+  transform:scale(.7);
+  animation:newPricePop .8s ease forwards;
+  animation-delay:1.3s;
+}
+@keyframes newPricePop{
+  to{opacity:1;transform:scale(1)}
+}
+
+.offer{
+  font-size:14px;
+  color:#a7ffcf;
+  margin-top:4px;
+}
+
+/* ============ CTA BUTTON ============ */
 .cta a{
   display:inline-block;
-  margin-top:18px;
-  background:#25d366;
-  color:#fff;
-  padding:14px 30px;
-  border-radius:14px;
+  margin-top:22px;
+  background:linear-gradient(90deg,#25d366,#00f2fe);
+  color:#000;
+  padding:15px 34px;
+  border-radius:16px;
   font-size:16px;
+  font-weight:600;
   position:relative;
   overflow:hidden;
 }
@@ -119,9 +159,9 @@ a{text-decoration:none;color:inherit}
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle,rgba(255,255,255,.4),transparent 60%);
+  background:radial-gradient(circle,rgba(255,255,255,.6),transparent 60%);
   opacity:0;
-  animation:pulse 2.6s infinite;
+  animation:pulse 2.4s infinite;
 }
 @keyframes pulse{
   0%{opacity:0}
@@ -129,36 +169,43 @@ a{text-decoration:none;color:inherit}
   100%{opacity:0}
 }
 
+/* ============ MOBILE ============ */
 @media(max-width:768px){
   .hero h1{font-size:30px}
+  .new-price{font-size:36px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- floating background shapes -->
+<div class="bg-shape shape1"></div>
+<div class="bg-shape shape2"></div>
+
 <header class="header">
   <div class="container header-inner">
     <img src="assets/images/logo.png" alt="Freelancer of NCR">
     <div></div>
-    <a href="index.html" class="back">← Main Website</a>
+    <a href="index.html">← Main Website</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
+
     <h1>
       Stop Using Dirty Paper Menus<br>
       <span>Switch to Digital QR Menu</span>
     </h1>
 
     <p>
-      Customers today prefer scanning QR instead of touching paper menus.
-      Digital QR Menu is now a must-have for restaurants & cafes.
+      Customers prefer scanning QR instead of touching paper menus.
+      Digital QR Menu is now essential for restaurants & cafes.
     </p>
 
     <div class="price-box">
-      <div class="old-price">Actual Price: ₹2500</div>
+      <div class="old-price cut">Actual Market Price: ₹2500</div>
       <div class="new-price">₹499</div>
       <div class="offer">One Time Payment • Lifetime Free</div>
     </div>
@@ -169,6 +216,7 @@ a{text-decoration:none;color:inherit}
         Get My Digital QR Menu on WhatsApp
       </a>
     </div>
+
   </div>
 </section>
 
