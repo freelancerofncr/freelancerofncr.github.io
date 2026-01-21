@@ -435,3 +435,229 @@ a{text-decoration:none;color:inherit}
 
   </div>
 </section>
+
+<!-- ================= LIVE DEMO PREVIEW ================= -->
+<section class="live-demo">
+  <style>
+    .live-demo{
+      padding:100px 0;
+      position:relative;
+    }
+    .live-demo h2{
+      text-align:center;
+      font-size:34px;
+      margin-bottom:14px;
+    }
+    .live-demo p.sub{
+      text-align:center;
+      color:#cfd4db;
+      max-width:760px;
+      margin:0 auto 50px;
+      font-size:16px;
+    }
+
+    /* Preview container */
+    .preview-box{
+      max-width:360px;
+      margin:0 auto;
+      border-radius:26px;
+      overflow:hidden;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 30px 60px rgba(0,0,0,.35);
+      position:relative;
+    }
+
+    .preview-box::before{
+      content:"";
+      position:absolute;
+      inset:-3px;
+      border-radius:inherit;
+      background:linear-gradient(90deg,#25d366,#00f2fe,#25d366);
+      background-size:300% 300%;
+      animation:borderMove 6s linear infinite;
+      z-index:-1;
+      opacity:.6;
+    }
+
+    /* Auto scroll image */
+    .preview-screen{
+      height:520px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .preview-screen img{
+      width:100%;
+      animation:scrollPreview 18s ease-in-out infinite;
+    }
+
+    @keyframes scrollPreview{
+      0%{transform:translateY(0)}
+      45%{transform:translateY(-60%)}
+      55%{transform:translateY(-60%)}
+      100%{transform:translateY(0)}
+    }
+
+    .demo-btn{
+      text-align:center;
+      margin-top:26px;
+    }
+
+    .demo-btn a{
+      display:inline-block;
+      padding:14px 30px;
+      border-radius:14px;
+      background:linear-gradient(90deg,#25d366,#00f2fe);
+      color:#000;
+      font-weight:600;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .demo-btn a::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle,rgba(255,255,255,.5),transparent 60%);
+      opacity:0;
+      animation:pulse 2.6s infinite;
+    }
+
+    /* ================= GOOGLE REVIEWS ================= */
+    .reviews{
+      margin-top:120px;
+    }
+
+    .reviews-header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:24px;
+    }
+
+    .reviews-header img{
+      width:26px;
+    }
+
+    .reviews-header h3{
+      font-size:26px;
+    }
+
+    .review-cards{
+      display:flex;
+      gap:22px;
+      overflow-x:auto;
+      padding-bottom:10px;
+    }
+
+    .review-card{
+      min-width:260px;
+      background:rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:22px;
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .stars{
+      color:#f5b301;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .review-card p{
+      font-size:14px;
+      color:#cfd4db;
+      margin-bottom:10px;
+      line-height:1.6;
+    }
+
+    .review-author{
+      font-size:13px;
+      color:#9aa0a6;
+    }
+
+    @media(max-width:768px){
+      .live-demo h2{font-size:28px}
+    }
+  </style>
+
+  <div class="container">
+    <h2>See How Your Digital QR Menu Looks</h2>
+
+    <p class="sub">
+      This is how your menu will appear on customer’s mobile phone
+      after scanning the QR code.
+    </p>
+
+    <div class="preview-box">
+      <div class="preview-screen">
+        <!-- REPLACE THIS IMAGE LATER WITH LONG SCREENSHOT -->
+        <img src="assets/images/qr-menu-demo-long.jpg" alt="QR Menu Demo">
+      </div>
+    </div>
+
+    <div class="demo-btn">
+      <a href="#" target="_blank">
+        View Live Demo
+      </a>
+    </div>
+
+    <!-- GOOGLE REVIEWS -->
+    <div class="reviews">
+      <div class="reviews-header">
+        <img src="assets/icons/color-icons/google-color.svg" alt="Google">
+        <h3>Customer Reviews</h3>
+      </div>
+
+      <div class="review-cards">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Very good QR menu service. Our customers find it easy to scan
+            and view menu. No paper menu tension now.
+          </p>
+          <div class="review-author">
+            Restaurant Owner – Delhi
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Best digital QR menu at this price. One time payment
+            is very helpful for small restaurants.
+          </p>
+          <div class="review-author">
+            Cafe Owner – Gurugram
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Setup was fast and support is good. Menu looks professional
+            on mobile.
+          </p>
+          <div class="review-author">
+            Food Outlet – Noida
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Hygienic solution and affordable price. Customers like
+            scanning QR menu.
+          </p>
+          <div class="review-author">
+            Restaurant – Faridabad
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
