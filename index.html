@@ -473,3 +473,176 @@ document.addEventListener("DOMContentLoaded",function(){
   </div>
 </section>
 
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="testimonials-section">
+  <style>
+    .testimonials-section{padding:90px 0}
+    .testimonials-wrap{
+      display:flex;
+      gap:22px;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      padding-bottom:10px;
+    }
+    .testimonial-card{
+      min-width:280px;
+      background:#fff;
+      border-radius:22px;
+      padding:26px;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.06),
+        0 2px 8px rgba(0,0,0,.04);
+    }
+    .stars{color:#f5b301;margin-bottom:8px;font-size:14px}
+    .testimonial-card p{font-size:14px;color:#555;margin-bottom:10px}
+    .author{font-size:13px;color:#777}
+  </style>
+
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:14px;">What Our Customers Say</h2>
+    <p style="text-align:center;color:#666;margin-bottom:36px;">
+      Real feedback from businesses using our services
+    </p>
+
+    <div class="testimonials-wrap">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>QR menu service was quick and simple. Customers love scanning instead of paper menus.</p>
+        <div class="author">Restaurant Owner – Delhi</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>Affordable and professional. Google profile optimization brought more calls.</p>
+        <div class="author">Local Business – Noida</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>Best QR menu at this price. One-time payment is very helpful.</p>
+        <div class="author">Cafe Owner – Gurugram</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>Website delivered on time with a clean look. Support is responsive.</p>
+        <div class="author">Startup Founder – India</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>Regular updates and review replies improved local visibility.</p>
+        <div class="author">Service Business – Faridabad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" class="pricing-section">
+  <style>
+    .pricing-section{padding:90px 0}
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:28px;
+    }
+    .pricing-card{
+      position:relative;
+      background:#fff;
+      border-radius:22px;
+      padding:34px 26px;
+      text-align:center;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.06),
+        0 2px 8px rgba(0,0,0,.04);
+    }
+    /* animated border */
+    .pricing-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:inherit;
+      background:linear-gradient(90deg,#25d366,#4facfe,#00f2fe,#25d366);
+      background-size:300% 300%;
+      animation:borderMove 4s linear infinite;
+      z-index:-1;
+    }
+    .price{
+      font-size:34px;
+      font-weight:700;
+      margin:12px 0;
+    }
+    .note{font-size:13px;color:#666;margin-bottom:12px}
+    .features{list-style:none;margin:18px 0}
+    .features li{
+      display:flex;align-items:center;gap:10px;
+      font-size:14px;color:#555;margin-bottom:8px;
+      justify-content:center;
+    }
+    .features img{width:18px;opacity:.7}
+    .price-cta a{
+      display:inline-block;
+      margin-top:16px;
+      background:#25d366;color:#fff;
+      padding:12px 22px;border-radius:10px;
+      position:relative;overflow:hidden;
+    }
+    .price-cta a::after{
+      content:"";
+      position:absolute;inset:0;
+      background:radial-gradient(circle,rgba(255,255,255,.35),transparent 60%);
+      opacity:0;animation:pulse 2.8s infinite;
+    }
+  </style>
+
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:14px;">Pricing</h2>
+    <p style="text-align:center;color:#666;margin-bottom:36px;">
+      Simple & transparent pricing
+    </p>
+
+    <div class="pricing-grid">
+      <!-- QR MENU -->
+      <article class="pricing-card">
+        <h3>Digital QR Menu</h3>
+        <div class="price">₹499</div>
+        <div class="note">One time • Lifetime free</div>
+        <ul class="features">
+          <li><img src="assets/icons/black-icons/check-mark-box.svg" alt="">Digital menu page</li>
+          <li><img src="assets/icons/black-icons/call.svg" alt="">Call & WhatsApp</li>
+          <li><img src="assets/icons/black-icons/globe.svg" alt="">Google Maps</li>
+          <li><img src="assets/icons/black-icons/qr.svg" alt="">Payment QR</li>
+        </ul>
+        <div class="price-cta">
+          <a href="https://wa.me/918979639473" target="_blank">Get on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- GMB -->
+      <article class="pricing-card">
+        <h3>Google Business Profile</h3>
+        <div class="price">₹999 / Month</div>
+        <ul class="features">
+          <li><img src="assets/icons/black-icons/star.svg" alt="">Review replies</li>
+          <li><img src="assets/icons/black-icons/search.svg" alt="">Optimization</li>
+          <li><img src="assets/icons/black-icons/mobile.svg" alt="">Photos & posts</li>
+        </ul>
+        <div class="price-cta">
+          <a href="https://wa.me/918979639473" target="_blank">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- WEBSITE -->
+      <article class="pricing-card">
+        <h3>WordPress Website</h3>
+        <div class="price">₹8999</div>
+        <ul class="features">
+          <li><img src="assets/icons/black-icons/check-mark-box.svg" alt="">Up to 5 pages</li>
+          <li><img src="assets/icons/black-icons/globe.svg" alt="">Domain & hosting</li>
+          <li><img src="assets/icons/black-icons/shield-checkmark.svg" alt="">SSL & security</li>
+        </ul>
+        <div class="price-cta">
+          <a href="https://wa.me/918979639473" target="_blank">Book on WhatsApp</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
