@@ -1,6 +1,27 @@
 /* =====================================================
    GLOBAL RESET & BASE
 ===================================================== */
+
+body {
+  background: linear-gradient(
+    120deg,
+    #f5f7fa,
+    #ffffff,
+    #f5f7fa
+  );
+  background-size: 300% 300%;
+  animation: bodyBgMove 18s ease infinite;
+}
+
+@keyframes bodyBgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
 *{
   margin:0;
   padding:0;
@@ -398,3 +419,115 @@ p{
   .trust-grid{grid-template-columns:2fr 2fr}
   .main-nav{display:none}
 }
+
+/* ===== MOBILE MENU OPEN FIX ===== */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid #eee;
+    padding: 20px 0;
+  }
+
+  .main-nav.open {
+    display: block;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+
+/* ===== ROTATING GRADIENT BORDER ===== */
+.service-highlight {
+  position: relative;
+  border-radius: 22px;
+  z-index: 1;
+  background: #fff;
+}
+
+.service-highlight::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #25d366,
+    #4facfe,
+    #00f2fe,
+    #25d366
+  );
+  background-size: 300% 300%;
+  animation: rotateBorder 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotateBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+
+/* ===== LIVE BUTTON EFFECT ===== */
+.header-cta a,
+.hero-buttons a,
+.contact-actions a {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-cta a::after,
+.hero-buttons a::after,
+.contact-actions a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.35),
+    transparent 60%
+  );
+  opacity: 0;
+  animation: buttonPulse 2.8s infinite;
+}
+
+@keyframes buttonPulse {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.header-cta a:hover,
+.hero-buttons a:hover,
+.contact-actions a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+
+.footer-payments {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.footer-payments img {
+  height: 28px;
+}
+
