@@ -1,573 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Freelancer of NCR – Digital Solutions for Indian Businesses</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Freelancer of NCR is an MSME registered digital agency providing Digital QR Menu, Google Business Profile management and WordPress websites across India.">
+  <meta charset="UTF-8">
+  <title>Freelancer of NCR – Digital Solutions for Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" href="assets/images/favicon.png">
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/favicon.png">
 
-<style>
-/* ===============================
-   GLOBAL RESET & BASE
-================================ */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background:#ffffff;
-  color:#111;
-  line-height:1.6;
-}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:0 16px;
-}
-section{padding:90px 0}
-h1,h2,h3{font-weight:600}
-h2{text-align:center;margin-bottom:50px}
-
-/* ===============================
-   HEADER / NAVBAR
-================================ */
-header{
-  position:sticky;
-  top:0;
-  background:#fff;
-  border-bottom:1px solid #eee;
-  z-index:999;
-}
-.header-wrap{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:68px;
-}
-.logo img{height:38px}
-
-nav{
-  display:flex;
-  gap:22px;
-}
-nav a{
-  font-size:14px;
-  position:relative;
-}
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0%;
-  height:2px;
-  background:#25d366;
-  transition:.3s;
-}
-nav a:hover::after{width:100%}
-
-.btn{
-  padding:10px 18px;
-  border-radius:8px;
-  font-size:14px;
-  display:inline-block;
-}
-.btn-whatsapp{
-  background:#25d366;
-  color:#fff;
-}
-.btn-dark{
-  background:#111;
-  color:#fff;
-}
-
-/* ===============================
-   HERO SECTION
-================================ */
-.hero{
-  min-height:92vh;
-  display:flex;
-  align-items:center;
-  background:
-    linear-gradient(120deg,#f4f7fb,#ffffff,#f4f7fb);
-  background-size:200% 200%;
-  animation:bgmove 10s ease infinite;
-}
-@keyframes bgmove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-.hero-inner{
-  text-align:center;
-}
-.hero h1{
-  font-size:40px;
-  margin-bottom:18px;
-}
-.hero h1 span{
-  color:#25d366;
-}
-.hero p{
-  max-width:760px;
-  margin:0 auto 28px;
-  color:#555;
-  font-size:16px;
-}
-
-/* ===============================
-   TRUST STRIP
-================================ */
-.trust{
-  background:#f7f7f7;
-  padding:40px 0;
-}
-.trust-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:24px;
-  text-align:center;
-}
-.trust-box{
-  background:#fff;
-  padding:22px;
-  border-radius:14px;
-  border:1px solid #eee;
-}
-.trust-box strong{
-  font-size:28px;
-  display:block;
-}
-
-/* ===============================
-   SERVICES
-================================ */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:28px;
-}
-.service-card{
-  border:1px solid #e5e5e5;
-  padding:32px 24px;
-  border-radius:18px;
-  background:#fff;
-  text-align:center;
-  transition:.3s;
-}
-.service-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
-}
-.service-card img{
-  width:54px;
-  margin:0 auto 18px;
-}
-.service-card h3{
-  margin-bottom:10px;
-}
-.service-card p{
-  font-size:14px;
-  color:#555;
-}
-.price{
-  margin:16px 0;
-  font-weight:700;
-}
-
-/* QR MENU HIGHLIGHT */
-.highlight{
-  border:2px solid #25d366;
-  position:relative;
-}
-.highlight::after{
-  content:"";
-  position:absolute;
-  inset:-6px;
-  border-radius:inherit;
-  border:2px solid #25d366;
-  opacity:.5;
-  animation:pulse 2.5s infinite;
-}
-@keyframes pulse{
-  0%{opacity:.3}
-  50%{opacity:1}
-  100%{opacity:.3}
-}
-</style>
+  <!-- CSS WILL BE ADDED LATER -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- ================= HEADER ================= -->
-<header>
-  <div class="container header-wrap">
+<!-- =====================================
+     HEADER / NAVIGATION
+===================================== -->
+<header class="site-header">
+  <div class="container header-inner">
+
     <div class="logo">
-      <img src="assets/images/logo.png" alt="Freelancer of NCR">
+      <img src="assets/images/logo.png" alt="Freelancer of NCR Logo">
     </div>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
 
-    <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
-      WhatsApp
-    </a>
+    <div class="header-cta">
+      <a href="https://wa.me/918979639473" target="_blank">
+        WhatsApp
+      </a>
+    </div>
+
+    <button class="menu-toggle">
+      <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="Menu">
+    </button>
+
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero" id="home">
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+<section id="home" class="hero-section">
   <div class="container hero-inner">
+
     <h1>
       Making Businesses Digital<br>
-      <span id="typing"></span>
+      <span class="typing-text">
+        <!-- typing text will appear here via JS -->
+      </span>
     </h1>
+
     <p>
-      Freelancer of NCR is an MSME registered digital agency helping Indian
-      businesses go online with simple, affordable and practical solutions.
+      Freelancer of NCR is an MSME / Udyam registered digital agency
+      helping Indian businesses go online with simple, affordable
+      and practical digital solutions.
     </p>
-    <a href="https://wa.me/918979639473" target="_blank" class="btn btn-dark">
-      Get Started on WhatsApp
-    </a>
+
+    <p>
+      We focus on solutions that actually work for restaurants,
+      cafes, shops and local businesses across India.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="https://wa.me/918979639473" target="_blank">
+        Get Started on WhatsApp
+      </a>
+    </div>
+
   </div>
 </section>
 
-<!-- ================= TRUST ================= -->
-<div class="trust">
+<!-- =====================================
+     TRUST / STATS SECTION
+===================================== -->
+<section class="trust-section">
   <div class="container trust-grid">
-    <div class="trust-box">
-      <strong>MSME</strong>
-      Udyam Registered
-    </div>
-    <div class="trust-box">
-      <strong><span class="count" data-count="150">0</span>+</strong>
-      Businesses Served
-    </div>
-    <div class="trust-box">
-      <strong><span class="count" data-count="24">0</span>+</strong>
-      Hour Delivery
-    </div>
-    <div class="trust-box">
-      <strong>All India</strong>
-      Service Available
-    </div>
-  </div>
-</div>
 
-<!-- ================= SERVICES ================= -->
-<section id="services">
+    <div class="trust-item">
+      <strong>MSME</strong>
+      <p>Udyam Registered Business</p>
+    </div>
+
+    <div class="trust-item">
+      <strong>
+        <span class="count" data-count="150">0</span>+
+      </strong>
+      <p>Businesses Served</p>
+    </div>
+
+    <div class="trust-item">
+      <strong>
+        <span class="count" data-count="24">0</span>+
+      </strong>
+      <p>Hour Delivery</p>
+    </div>
+
+    <div class="trust-item">
+      <strong>All India</strong>
+      <p>Service Available</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================================
+     SERVICES SECTION
+===================================== -->
+<section id="services" class="services-section">
   <div class="container">
+
     <h2>Our Services</h2>
 
     <div class="services-grid">
 
-      <!-- QR MENU -->
-      <div class="service-card highlight">
-        <img src="assets/icons/black-icons/qr.svg">
+      <!-- DIGITAL QR MENU -->
+      <article class="service-card service-highlight">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/qr.svg" alt="QR Menu">
+        </div>
+
         <h3>Digital QR Menu</h3>
+
         <p>
-          We convert your old menu into a digital QR menu website.
-          Customers can scan QR and instantly see your menu, call you,
-          WhatsApp you, open Google Maps location and even pay online.
+          We convert your old paper menu into a digital QR menu page.
+          Customers can scan the QR code and instantly see your menu
+          on their mobile phone.
         </p>
-        <div class="price">₹499 – One Time (Lifetime Free)</div>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
+
+        <p>
+          The QR menu page can include your restaurant name, address,
+          call button, WhatsApp button, Google Maps location, social
+          media links and payment QR options.
+        </p>
+
+        <p>
+          This helps maintain hygiene, reduces printing cost and gives
+          a modern experience to your customers.
+        </p>
+
+        <p class="service-price">
+          ₹499 – One Time Payment (Lifetime Free)
+        </p>
+
+        <a href="https://wa.me/918979639473" target="_blank">
           WhatsApp for QR Menu
         </a>
-      </div>
+      </article>
 
-      <!-- GMB -->
-      <div class="service-card">
-        <img src="assets/icons/black-icons/search.svg">
+      <!-- GOOGLE BUSINESS PROFILE -->
+      <article class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/search.svg" alt="Google Business Profile">
+        </div>
+
         <h3>Google Business Profile Management</h3>
-        <p>
-          We manage your Google Business Profile with review replies,
-          photos, posts, optimization and local SEO to improve calls
-          and store visits.
-        </p>
-        <div class="price">₹999 / Month</div>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
-          WhatsApp for GMB
-        </a>
-      </div>
 
-      <!-- WEBSITE -->
-      <div class="service-card">
-        <img src="assets/icons/black-icons/globe.svg">
-        <h3>WordPress Business Website</h3>
         <p>
-          Professional WordPress business website with free domain,
-          hosting, SSL, premium theme and plugins – ready to use.
+          We manage your Google Business Profile to help you get more
+          calls, messages and local customers from Google search
+          and Google Maps.
         </p>
-        <div class="price">₹8999</div>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
+
+        <p>
+          Our service includes review replies, photo uploads,
+          post updates, profile optimization and local SEO support.
+        </p>
+
+        <p class="service-price">
+          ₹999 / Month
+        </p>
+
+        <a href="https://wa.me/918979639473" target="_blank">
+          WhatsApp for Google Business Profile
+        </a>
+      </article>
+
+      <!-- WORDPRESS WEBSITE -->
+      <article class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/globe.svg" alt="Website">
+        </div>
+
+        <h3>WordPress Business Website</h3>
+
+        <p>
+          We create professional WordPress business websites that are
+          mobile friendly, fast and easy to manage.
+        </p>
+
+        <p>
+          The package includes up to 5 pages, free domain, hosting,
+          SSL certificate, premium theme and plugins.
+        </p>
+
+        <p class="service-price">
+          ₹8999
+        </p>
+
+        <a href="https://wa.me/918979639473" target="_blank">
           WhatsApp for Website
         </a>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
-<!-- PART 2 CONTINUES -->
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
+<!-- PART 1 ENDS HERE -->
+
+   <!-- =====================================
+     TESTIMONIALS SECTION
+===================================== -->
+<section id="testimonials" class="testimonials-section">
   <div class="container">
+
     <h2>What Our Customers Say</h2>
 
-    <div class="testimonial-wrapper" id="testimonialTrack">
+    <p class="section-intro">
+      Real feedback from restaurants, cafes and businesses
+      who are using our digital services.
+    </p>
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          Very good QR menu service. Simple process and fast delivery.
-          Our customers are happy using QR instead of paper menu.
-        </p>
-        <span>Restaurant Owner – Delhi</span>
-      </div>
+    <div class="testimonials-wrapper">
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          Affordable and professional work. Google Business Profile
-          visibility improved within few weeks.
+      <!-- Testimonial 1 -->
+      <article class="testimonial-card">
+        <div class="testimonial-stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          Very good QR menu service. The process was simple and fast.
+          Our customers find it easy to scan QR and view menu.
+          No tension of dirty paper menus now.
         </p>
-        <span>Local Business – Noida</span>
-      </div>
+        <p class="testimonial-author">
+          Restaurant Owner – Delhi
+        </p>
+      </article>
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          Best QR menu solution at this price. One time payment and
-          lifetime free support is a big advantage.
+      <!-- Testimonial 2 -->
+      <article class="testimonial-card">
+        <div class="testimonial-stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          Affordable service and professional work.
+          Google Business Profile optimization helped us
+          get more calls from nearby customers.
         </p>
-        <span>Cafe Owner – Gurugram</span>
-      </div>
+        <p class="testimonial-author">
+          Local Business – Noida
+        </p>
+      </article>
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          Website delivered on time with premium look. Support is good
-          and communication is clear.
+      <!-- Testimonial 3 -->
+      <article class="testimonial-card">
+        <div class="testimonial-stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          Best QR menu solution at this price.
+          One time payment and lifetime free usage
+          is very helpful for small restaurants.
         </p>
-        <span>Startup Founder – India</span>
-      </div>
+        <p class="testimonial-author">
+          Cafe Owner – Gurugram
+        </p>
+      </article>
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          Google profile reviews reply and optimization helped us
-          increase calls. Worth the monthly price.
+      <!-- Testimonial 4 -->
+      <article class="testimonial-card">
+        <div class="testimonial-stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          Website delivered on time with clean and professional look.
+          Support is good and communication is clear.
         </p>
-        <span>Service Business – Faridabad</span>
-      </div>
+        <p class="testimonial-author">
+          Startup Founder – India
+        </p>
+      </article>
+
+      <!-- Testimonial 5 -->
+      <article class="testimonial-card">
+        <div class="testimonial-stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          Google profile reviews reply and regular updates
+          improved our local visibility.
+          Worth the monthly cost.
+        </p>
+        <p class="testimonial-author">
+          Service Business – Faridabad
+        </p>
+      </article>
 
     </div>
+
   </div>
 </section>
 
-<style>
-/* ===============================
-   TESTIMONIALS STYLE
-================================ */
-.testimonials{
-  background:#fafafa;
-}
-.testimonial-wrapper{
-  display:flex;
-  gap:22px;
-  overflow-x:auto;
-  padding-bottom:10px;
-  scroll-behavior:smooth;
-}
-.testimonial-card{
-  min-width:280px;
-  background:#fff;
-  padding:22px;
-  border-radius:16px;
-  border:1px solid #eee;
-}
-.testimonial-card p{
-  font-size:14px;
-  color:#444;
-  margin-bottom:12px;
-}
-.testimonial-card span{
-  font-size:13px;
-  color:#777;
-}
-.stars{
-  color:#f5b301;
-  margin-bottom:8px;
-}
-</style>
-
-<!-- ================= PRICING ================= -->
-<section id="pricing">
+<!-- =====================================
+     PRICING SECTION
+===================================== -->
+<section id="pricing" class="pricing-section">
   <div class="container">
+
     <h2>Pricing</h2>
 
-    <div class="services-grid">
+    <p class="section-intro">
+      Simple and transparent pricing with no hidden charges.
+    </p>
 
-      <div class="service-card highlight">
+    <div class="pricing-grid">
+
+      <!-- QR MENU PRICING -->
+      <article class="pricing-card pricing-highlight">
         <h3>Digital QR Menu</h3>
-        <p>
-          One time setup of your restaurant digital QR menu page.
-          No monthly charge. Lifetime free access.
-        </p>
-        <div class="price">₹499</div>
-        <p><strong>One Time • Lifetime Free</strong></p>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
-          Get QR Menu
-        </a>
-      </div>
 
-      <div class="service-card">
+        <p class="pricing-description">
+          Complete digital QR menu page for your restaurant
+          with all important details.
+        </p>
+
+        <p class="pricing-amount">
+          ₹499
+        </p>
+
+        <p class="pricing-note">
+          One Time Payment<br>
+          Lifetime Free • No Monthly Charges
+        </p>
+
+        <ul class="pricing-features">
+          <li>Digital Menu Page</li>
+          <li>Call & WhatsApp Button</li>
+          <li>Google Maps Location</li>
+          <li>Payment QR Support</li>
+          <li>PDF & Image QR Code</li>
+        </ul>
+
+        <a href="https://wa.me/918979639473" target="_blank">
+          Get QR Menu on WhatsApp
+        </a>
+      </article>
+
+      <!-- GMB PRICING -->
+      <article class="pricing-card">
         <h3>Google Business Profile Management</h3>
-        <p>
-          Monthly management including review replies, photo uploads,
-          posts, optimization and local SEO support.
-        </p>
-        <div class="price">₹999 / Month</div>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
-          Contact on WhatsApp
-        </a>
-      </div>
 
-      <div class="service-card">
-        <h3>WordPress Business Website</h3>
-        <p>
-          Professional WordPress website with free domain, hosting, SSL,
-          premium theme and plugins.
+        <p class="pricing-description">
+          Monthly management of your Google Business Profile
+          to improve local visibility.
         </p>
-        <div class="price">₹8999</div>
-        <a href="https://wa.me/918979639473" target="_blank" class="btn btn-whatsapp">
-          Contact on WhatsApp
+
+        <p class="pricing-amount">
+          ₹999 / Month
+        </p>
+
+        <ul class="pricing-features">
+          <li>Review Replies</li>
+          <li>Photo Uploads</li>
+          <li>Post Updates</li>
+          <li>Profile Optimization</li>
+          <li>Local SEO Support</li>
+        </ul>
+
+        <a href="https://wa.me/918979639473" target="_blank">
+          WhatsApp for GMB Service
         </a>
-      </div>
+      </article>
+
+      <!-- WEBSITE PRICING -->
+      <article class="pricing-card">
+        <h3>WordPress Business Website</h3>
+
+        <p class="pricing-description">
+          Professional business website built on WordPress.
+        </p>
+
+        <p class="pricing-amount">
+          ₹8999
+        </p>
+
+        <ul class="pricing-features">
+          <li>Up to 5 Pages</li>
+          <li>Free Domain & Hosting</li>
+          <li>SSL Certificate</li>
+          <li>Premium Theme</li>
+          <li>Mobile Friendly Design</li>
+        </ul>
+
+        <a href="https://wa.me/918979639473" target="_blank">
+          WhatsApp for Website
+        </a>
+      </article>
 
     </div>
+
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about">
+<!-- =====================================
+     ABOUT SECTION
+===================================== -->
+<section id="about" class="about-section">
   <div class="container">
+
     <h2>About Freelancer of NCR</h2>
-    <p style="max-width:820px;margin:auto;text-align:center;color:#555">
+
+    <p>
       Freelancer of NCR is a Delhi NCR based MSME / Udyam registered
-      digital agency. We started with a simple idea – every small
-      business should be able to go digital without spending too much
-      money.
-      <br><br>
-      We provide practical digital solutions like Digital QR Menu,
-      Google Business Profile management and WordPress business websites
-      that actually help businesses get more customers.
+      digital agency. The name comes from our base location,
+      but our services are available all across India.
     </p>
+
+    <p>
+      We started with a simple goal – to help small and medium
+      businesses go digital without spending too much money.
+      Many businesses want to go online but get confused by
+      high prices and complicated solutions.
+    </p>
+
+    <p>
+      Our focus is on simple, useful and result-oriented digital
+      services like Digital QR Menu, Google Business Profile
+      management and WordPress business websites.
+    </p>
+
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="contact">
+<!-- =====================================
+     CONTACT SECTION
+===================================== -->
+<section id="contact" class="contact-section">
   <div class="container">
+
     <h2>Contact Us</h2>
 
-    <p style="text-align:center;margin-bottom:20px;color:#555">
-      Call or WhatsApp us to get started with the right digital solution
-      for your business.
+    <p class="contact-intro">
+      Call or WhatsApp us to get started with the right
+      digital solution for your business.
     </p>
 
-    <div style="text-align:center">
-      <a href="https://wa.me/918979639473" target="_blank" class="btn btn-dark">
+    <div class="contact-actions">
+      <a href="https://wa.me/918979639473" target="_blank">
         Chat on WhatsApp
       </a>
     </div>
 
-    <p style="text-align:center;margin-top:20px;font-size:14px;color:#666">
-      Phone / WhatsApp: 8979639473<br>
-      Service Area: All India
-    </p>
+    <div class="contact-details">
+      <p>
+        Phone / WhatsApp: <strong>8979639473</strong>
+      </p>
+      <p>
+        Service Area: <strong>All India</strong>
+      </p>
+    </div>
+
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer style="background:#111;color:#fff;padding:26px 0">
-  <div class="container" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
-    <div style="font-size:14px">
-      Affordable digital solutions for Indian businesses.<br>
-      Digital QR Menu • Google Business Profile • Websites
+<!-- =====================================
+     FOOTER
+===================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-about">
+      <p>
+        Freelancer of NCR provides affordable digital solutions
+        for Indian businesses.
+      </p>
+      <p>
+        Digital QR Menu • Google Business Profile • Business Websites
+      </p>
     </div>
 
-    <div style="display:flex;gap:10px;align-items:center">
-      <img src="assets/icons/color-icons/upi.svg" height="28">
-      <img src="assets/icons/color-icons/google-pay.svg" height="28">
-      <img src="assets/icons/color-icons/phonepe.svg" height="28">
-      <img src="assets/icons/color-icons/paytm.svg" height="28">
+    <div class="footer-payments">
+      <img src="assets/icons/color-icons/upi.svg" alt="UPI">
+      <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay">
+      <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe">
+      <img src="assets/icons/color-icons/paytm.svg" alt="Paytm">
     </div>
+
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      © Freelancer of NCR. All rights reserved.
+    </p>
   </div>
 </footer>
 
-<!-- ================= JAVASCRIPT ================= -->
-<script>
-/* ===== Typing Effect ===== */
-const texts=[
-  "Digital QR Menu for Restaurants",
-  "Google Business Profile Management",
-  "Affordable Business Websites"
-];
-let ti=0,ci=0,del=false;
-const typingEl=document.getElementById("typing");
-
-function typeLoop(){
-  if(!typingEl) return;
-  typingEl.textContent=texts[ti].slice(0,ci);
-  if(!del){
-    ci++;
-    if(ci>texts[ti].length){del=true;setTimeout(()=>{},800);}
-  }else{
-    ci--;
-    if(ci===0){del=false;ti=(ti+1)%texts.length;}
-  }
-  setTimeout(typeLoop,del?60:90);
-}
-typeLoop();
-
-/* ===== Counter Animation ===== */
-document.querySelectorAll(".count").forEach(el=>{
-  let target=+el.dataset.count;
-  let count=0;
-  let step=Math.ceil(target/40);
-  let interval=setInterval(()=>{
-    count+=step;
-    if(count>=target){
-      el.textContent=target;
-      clearInterval(interval);
-    }else{
-      el.textContent=count;
-    }
-  },30);
-});
-
-/* ===== Testimonial Auto Scroll ===== */
-const track=document.getElementById("testimonialTrack");
-let scrollPos=0;
-setInterval(()=>{
-  if(track){
-    scrollPos+=1;
-    track.scrollLeft=scrollPos;
-    if(scrollPos>=track.scrollWidth-track.clientWidth){
-      scrollPos=0;
-    }
-  }
-},40);
-</script>
+<!-- =====================================
+     JAVASCRIPT FILE (WILL BE ADDED LATER)
+===================================== -->
+<script src="script.js"></script>
 
 </body>
 </html>
