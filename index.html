@@ -1,483 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freelancer of NCR - Your Local Partner for Online Business Growth</title>
-  <meta name="description" content="Professional digital solutions for restaurants and businesses across India. Digital QR Menu, Google Business Profile, WordPress Websites & More.">
-  <link rel="icon" href="assets/images/favicon.png">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Freelancer of NCR – Digital Solutions for Businesses</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+
+    <!-- CSS (will be added in next steps) -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
 </head>
+
 <body>
 
 <!-- ================= HEADER ================= -->
-<header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a href="index.html" class="logo">
-        <img src="assets/images/logo.png" alt="Freelancer of NCR">
-      </a>
+<header id="site-header">
+    <div class="header-container">
 
-      <div class="menu-toggle">
-        <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="Menu" class="icon-black">
-      </div>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Freelancer of NCR Logo" />
+        </div>
 
-      <ul class="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#why-us" class="nav-link">Why Us</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li>
-          <a href="digital-qr-menu.html" class="btn-primary btn-glow">
-            <span>Get Digital QR Menu</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header WhatsApp CTA -->
+        <div class="header-cta">
+            <a href="#" class="btn-whatsapp">WhatsApp</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" aria-label="Open Menu">
+            <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="Menu" />
+        </button>
+
+    </div>
 </header>
 
-<!-- ================= HERO SECTION ================= -->
-<section class="hero hero-brand" id="home">
-  <div class="hero-particles"></div>
-  <div class="container">
-    <div class="hero-content hero-center">
-      
-      <div class="hero-badge animate-fade-in">
-        <img src="assets/icons/black-icons/star.svg" alt="Premium" class="icon-black">
-        <span>Trusted by 100+ Businesses Across India</span>
-      </div>
+<!-- ================= MAIN CONTENT ================= -->
+<main>
 
-      <h1 class="hero-title animate-slide-up">
-        Your Local Partner for<br>
-        <span class="gradient-text">Online Business Growth</span>
-      </h1>
+    <!-- ===== HOME / HERO ===== -->
+    <section id="home" class="section hero-section">
+        <div class="hero-content">
 
-      <p class="hero-subtitle animate-slide-up delay-1">
-        We help restaurants, cafes, and local businesses grow online with professional 
-        digital solutions. From Digital QR Menus to WordPress websites — We've got you covered.
-      </p>
+            <h1 class="hero-heading">
+                <!-- Typing effect text will be injected here -->
+                <span class="typing-text"></span>
+            </h1>
 
-      <div class="hero-buttons animate-slide-up delay-2">
-        <a href="#services" class="btn-primary btn-large btn-animated">
-          <span>Explore Our Services</span>
-          <img src="assets/icons/black-icons/long-arrow-right.svg" alt="Arrow" class="icon-black">
-        </a>
-        <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20to%20know%20about%20your%20services" target="_blank" class="btn-secondary btn-large">
-          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
-          <span>Chat on WhatsApp</span>
-        </a>
-      </div>
+            <p class="hero-description">
+                <!-- Short explanation text -->
+            </p>
 
-      <div class="social-proof animate-fade-in delay-3">
-        <div class="social-icons">
-          <a href="https://instagram.com/freelancerofncr" target="_blank" class="social-icon">
-            <img src="assets/icons/color-icons/instagram.svg" alt="Instagram" class="icon-color">
-          </a>
-          <a href="https://facebook.com/freelancerofncr" target="_blank" class="social-icon">
-            <img src="assets/icons/color-icons/facebook.svg" alt="Facebook" class="icon-color">
-          </a>
-          <a href="https://share.google/E55WXTUgj1bHzQKCA" target="_blank" class="social-icon">
-            <img src="assets/icons/color-icons/google-color.svg" alt="Google" class="icon-color">
-          </a>
+            <div class="hero-cta">
+                <a href="#" class="btn-primary">Get Started on WhatsApp</a>
+            </div>
+
         </div>
-        <p class="social-text">Follow us @freelancerofncr</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ================= STATS BAR ================= -->
-<section class="stats-bar">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item animate-count">
-        <img src="assets/icons/black-icons/star.svg" alt="Clients" class="icon-black">
-        <div class="stat-content">
-          <div class="stat-number" data-count="100">0</div>
-          <div class="stat-label">Happy Clients</div>
-        </div>
-      </div>
-      <div class="stat-item animate-count">
-        <img src="assets/icons/black-icons/shop.svg" alt="Restaurants" class="icon-black">
-        <div class="stat-content">
-          <div class="stat-number" data-count="50">0</div>
-          <div class="stat-label">Restaurants Served</div>
-        </div>
-      </div>
-      <div class="stat-item animate-count">
-        <img src="assets/icons/black-icons/clock.svg" alt="Delivery" class="icon-black">
-        <div class="stat-content">
-          <div class="stat-number">24-48h</div>
-          <div class="stat-label">Fast Delivery</div>
-        </div>
-      </div>
-      <div class="stat-item animate-count">
-        <img src="assets/icons/black-icons/globe.svg" alt="India" class="icon-black">
-        <div class="stat-content">
-          <div class="stat-number">All India</div>
-          <div class="stat-label">Service Available</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- ===== TRUST BADGES / STATS ===== -->
+    <section id="trust" class="section trust-section">
+        <div class="trust-grid">
 
-<!-- ================= ABOUT US SECTION ================= -->
-<section class="about-section" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-content">
-        <span class="section-badge">About Freelancer of NCR</span>
-        <h2 class="section-title">We Help Local Businesses Thrive Online</h2>
-        <p class="about-text">
-          Freelancer of NCR is your trusted partner for digital transformation. We specialize in creating 
-          affordable, professional digital solutions that help restaurants, cafes, and local businesses 
-          establish a strong online presence.
+            <div class="trust-item">
+                <span class="trust-number" data-count="150">0</span>
+                <p>Customers Served</p>
+            </div>
+
+            <div class="trust-item">
+                <span class="trust-text">MSME Registered</span>
+            </div>
+
+            <div class="trust-item">
+                <span class="trust-number" data-count="24">0</span>
+                <p>Hour Delivery</p>
+            </div>
+
+            <div class="trust-item">
+                <span class="trust-text">All India Service</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="section services-section">
+
+        <h2 class="section-heading">Our Services</h2>
+
+        <div class="services-grid">
+
+            <!-- Digital QR Menu (HIGHLIGHT SERVICE) -->
+            <article class="service-card service-highlight">
+                <div class="service-icon">
+                    <img src="assets/icons/black-icons/qr.svg" alt="QR Menu" />
+                </div>
+                <h3>Digital QR Menu</h3>
+                <p>
+                    <!-- QR menu description -->
+                </p>
+                <p class="service-price">₹499 – One Time (Lifetime Free)</p>
+                <a href="#" class="btn-whatsapp">WhatsApp for QR Menu</a>
+            </article>
+
+            <!-- Google Business Profile -->
+            <article class="service-card">
+                <div class="service-icon">
+                    <img src="assets/icons/black-icons/search.svg" alt="Google Business Profile" />
+                </div>
+                <h3>Google Business Profile Management</h3>
+                <p>
+                    <!-- GMB description -->
+                </p>
+                <p class="service-price">₹999 / Month</p>
+                <a href="#" class="btn-whatsapp">WhatsApp for GMB</a>
+            </article>
+
+            <!-- WordPress Website -->
+            <article class="service-card">
+                <div class="service-icon">
+                    <img src="assets/icons/black-icons/globe.svg" alt="WordPress Website" />
+                </div>
+                <h3>WordPress Business Website</h3>
+                <p>
+                    <!-- Website description -->
+                </p>
+                <p class="service-price">₹8999</p>
+                <a href="#" class="btn-whatsapp">WhatsApp for Website</a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="section testimonials-section">
+
+        <h2 class="section-heading">What Our Customers Say</h2>
+
+        <div class="testimonials-slider">
+
+            <!-- Testimonial Card -->
+            <article class="testimonial-card">
+                <div class="stars">
+                    <!-- star icons -->
+                </div>
+                <p class="review-text"></p>
+                <p class="review-author"></p>
+            </article>
+
+            <!-- Duplicate cards will be added via JS -->
+
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="section pricing-section">
+
+        <h2 class="section-heading">Pricing</h2>
+
+        <div class="pricing-grid">
+
+            <article class="pricing-card pricing-highlight">
+                <h3>Digital QR Menu</h3>
+                <p class="price">₹499</p>
+                <p>One Time • Lifetime Free</p>
+                <a href="#" class="btn-primary">Get QR Menu</a>
+            </article>
+
+            <article class="pricing-card">
+                <h3>Google Business Profile</h3>
+                <p class="price">₹999 / Month</p>
+                <a href="#" class="btn-whatsapp">Contact on WhatsApp</a>
+            </article>
+
+            <article class="pricing-card">
+                <h3>WordPress Website</h3>
+                <p class="price">₹8999</p>
+                <a href="#" class="btn-whatsapp">Contact on WhatsApp</a>
+            </article>
+
+        </div>
+
+        <!-- QR Menu Dedicated Page Button -->
+        <div class="pricing-extra-cta">
+            <a href="#" class="btn-secondary">Digital QR Menu</a>
+        </div>
+
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section about-section">
+
+        <h2 class="section-heading">About Freelancer of NCR</h2>
+
+        <p>
+            <!-- About content -->
         </p>
-        <p class="about-text">
-          With a focus on quality, transparency, and customer satisfaction, we've helped over 100 businesses 
-          across India grow their reach, improve customer experience, and increase revenue through smart 
-          digital tools.
-        </p>
-        
-        <div class="about-features">
-          <div class="about-feature">
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Professional Quality Work</span>
-          </div>
-          <div class="about-feature">
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Affordable Pricing</span>
-          </div>
-          <div class="about-feature">
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>24/7 WhatsApp Support</span>
-          </div>
-          <div class="about-feature">
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>All India Service</span>
-          </div>
+
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section contact-section">
+
+        <h2 class="section-heading">Contact Us</h2>
+
+        <div class="contact-details">
+            <p>Phone: <span class="phone-number"></span></p>
+            <p>WhatsApp: <span class="whatsapp-number"></span></p>
+            <p>Service Area: All India</p>
         </div>
 
-        <a href="#contact" class="btn-primary">
-          Get in Touch
-          <img src="assets/icons/black-icons/long-arrow-right.svg" alt="Arrow" class="icon-black">
-        </a>
-      </div>
-
-      <div class="about-image">
-        <div class="floating-card card-1">
-          <img src="assets/icons/black-icons/star.svg" alt="Quality" class="icon-black">
-          <span>Premium Quality</span>
+        <div class="contact-cta">
+            <a href="#" class="btn-primary">Chat on WhatsApp</a>
         </div>
-        <div class="floating-card card-2">
-          <img src="assets/icons/black-icons/shield-checkmark.svg" alt="Trust" class="icon-black">
-          <span>100% Transparent</span>
+
+    </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+            <img src="assets/images/logo.png" alt="Freelancer of NCR Logo" />
+            <p>
+                <!-- Short footer description -->
+            </p>
         </div>
-        <div class="floating-card card-3">
-          <img src="assets/icons/black-icons/chart-arrow-up.svg" alt="Growth" class="icon-black">
-          <span>Proven Results</span>
+
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ================= SERVICES SECTION ================= -->
-<section class="services-section" id="services">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Our Services</span>
-      <h2 class="section-title">Complete Digital Solutions for Your Business</h2>
-      <p class="section-subtitle">From Digital Menus to Full Websites — We Build What Your Business Needs</p>
-    </div>
-
-    <div class="services-showcase">
-      
-      <!-- Service 1: Digital QR Menu -->
-      <div class="service-showcase-card featured">
-        <div class="service-badge">Most Popular</div>
-        <div class="service-icon-large">
-          <img src="assets/icons/black-icons/qr.svg" alt="Digital QR Menu" class="icon-black">
-        </div>
-        <h3 class="service-showcase-title">Digital QR Menu for Restaurants</h3>
-        <p class="service-showcase-price">
-          <span class="price-currency">₹</span>
-          <span class="price-amount">499</span>
-          <span class="price-label">One Time Fee</span>
-        </p>
-        <p class="service-showcase-description">
-          Transform your paper menu into a beautiful digital QR menu with call, WhatsApp, 
-          location buttons & payment QR integration. Lifetime valid!
-        </p>
-        <ul class="service-showcase-features">
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Professional Menu Design</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Veg/Non-Veg Sections</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Call & WhatsApp Buttons</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Location & Payment QR</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Printable QR Code</span>
-          </li>
-        </ul>
-        <a href="digital-qr-menu.html" class="btn-primary btn-block btn-animated">
-          Get Digital QR Menu
-          <img src="assets/icons/black-icons/long-arrow-right.svg" alt="Arrow" class="icon-black">
-        </a>
-      </div>
-
-      <!-- Service 2: Google Business -->
-      <div class="service-showcase-card">
-        <div class="service-icon-large">
-          <img src="assets/icons/color-icons/google-color.svg" alt="Google Business" class="icon-color">
-        </div>
-        <h3 class="service-showcase-title">Google Business Profile Management</h3>
-        <p class="service-showcase-description">
-          Get more customers through Google Maps and Search. We optimize and manage your 
-          Google Business Profile to increase visibility.
-        </p>
-        <ul class="service-showcase-features">
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Profile Setup & Optimization</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Regular Posts & Updates</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Review Management</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Local SEO Boost</span>
-          </li>
-        </ul>
-        <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20Google%20Business%20Profile%20Management" target="_blank" class="btn-secondary btn-block">
-          Get Quote on WhatsApp
-        </a>
-      </div>
-
-      <!-- Service 3: WordPress Website -->
-      <div class="service-showcase-card">
-        <div class="service-icon-large">
-          <img src="assets/icons/black-icons/globe.svg" alt="WordPress" class="icon-black">
-        </div>
-        <h3 class="service-showcase-title">WordPress Business Website</h3>
-        <p class="service-showcase-description">
-          Professional, fast-loading WordPress websites for your business with custom 
-          design, mobile responsiveness, and SEO optimization.
-        </p>
-        <ul class="service-showcase-features">
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Custom Design & Development</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Mobile Responsive</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>SEO Optimized</span>
-          </li>
-          <li>
-            <img src="assets/icons/black-icons/check-mark-box.svg" alt="Check" class="icon-black">
-            <span>Fast Loading Speed</span>
-          </li>
-        </ul>
-        <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20WordPress%20Website%20for%20my%20business" target="_blank" class="btn-secondary btn-block">
-          Get Quote on WhatsApp
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= WHY CHOOSE US ================= -->
-<section class="why-us-section" id="why-us">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Why Choose Us</span>
-      <h2 class="section-title">What Makes Us Different</h2>
-      <p class="section-subtitle">We're not just a service provider — We're your growth partner</p>
-    </div>
-
-    <div class="why-us-grid">
-      <div class="why-card">
-        <div class="why-icon">
-          <img src="assets/icons/black-icons/star.svg" alt="Quality" class="icon-black">
-        </div>
-        <h3 class="why-title">Premium Quality</h3>
-        <p class="why-description">Professional designs that make your business stand out and attract more customers</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-icon">
-          <img src="assets/icons/black-icons/rupee-coin-solid.svg" alt="Price" class="icon-black">
-        </div>
-        <h3 class="why-title">Affordable Pricing</h3>
-        <p class="why-description">Best prices in India without compromising quality. Starting at just ₹499</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-icon">
-          <img src="assets/icons/black-icons/shield-checkmark.svg" alt="Transparent" class="icon-black">
-        </div>
-        <h3 class="why-title">100% Transparent</h3>
-        <p class="why-description">No hidden charges. Clear pricing from the start. What you see is what you pay</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-icon">
-          <img src="assets/icons/black-icons/clock.svg" alt="Fast" class="icon-black">
-        </div>
-        <h3 class="why-title">Quick Delivery</h3>
-        <p class="why-description">24-48 hour turnaround time for most services. Your time matters to us</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-icon">
-          <img src="assets/icons/color-icons/whatsapp.svg" alt="Support" class="icon-color">
-        </div>
-        <h3 class="why-title">WhatsApp Support</h3>
-        <p class="why-description">Always available to help you. Direct support via WhatsApp for quick assistance</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-icon">
-          <img src="assets/icons/black-icons/globe.svg" alt="All India" class="icon-black">
-        </div>
-        <h3 class="why-title">All India Service</h3>
-        <p class="why-description">We serve businesses across all states of India. Location is no barrier</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CTA SECTION ================= -->
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-box-large">
-      <h2 class="cta-title-large">Ready to Grow Your Business Online?</h2>
-      <p class="cta-subtitle-large">Let's discuss how we can help you succeed. Get in touch today!</p>
-      
-      <div class="cta-buttons-large">
-        <a href="digital-qr-menu.html" class="btn-primary btn-xl btn-animated">
-          <span>Get Digital QR Menu - ₹499</span>
-        </a>
-        <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20to%20discuss%20my%20business%20requirements" target="_blank" class="btn-whatsapp btn-xl">
-          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
-          <span>Chat on WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOTER / CONTACT ================= -->
-<footer class="footer" id="contact">
-  <div class="container">
-    <div class="footer-grid">
-      
-      <!-- About Column -->
-      <div class="footer-about">
-        <img src="assets/images/logo.png" alt="Freelancer of NCR" class="footer-logo">
-        <p class="footer-tagline">Your Local Partner for Online Business Growth</p>
-        <p class="footer-description">Helping restaurants and businesses succeed online with affordable digital solutions.</p>
         <div class="footer-social">
-          <a href="https://instagram.com/freelancerofncr" target="_blank" class="social-link" title="Instagram">
-            <img src="assets/icons/color-icons/instagram.svg" alt="Instagram" class="icon-color">
-          </a>
-          <a href="https://facebook.com/freelancerofncr" target="_blank" class="social-link" title="Facebook">
-            <img src="assets/icons/color-icons/facebook.svg" alt="Facebook" class="icon-color">
-          </a>
-          <a href="https://share.google/E55WXTUgj1bHzQKCA" target="_blank" class="social-link" title="Google">
-            <img src="assets/icons/color-icons/google-color.svg" alt="Google" class="icon-color">
-          </a>
+            <a href="#"><img src="assets/icons/color-icons/instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="assets/icons/color-icons/facebook.svg" alt="Facebook" /></a>
         </div>
-      </div>
 
-      <!-- Quick Links -->
-      <div class="footer-links">
-        <h3 class="footer-heading">Quick Links</h3>
-        <a href="#home" class="footer-link">Home</a>
-        <a href="#about" class="footer-link">About Us</a>
-        <a href="#services" class="footer-link">Our Services</a>
-        <a href="#why-us" class="footer-link">Why Choose Us</a>
-        <a href="#contact" class="footer-link">Contact</a>
-      </div>
-
-      <!-- Services -->
-      <div class="footer-links">
-        <h3 class="footer-heading">Our Services</h3>
-        <a href="digital-qr-menu.html" class="footer-link">Digital QR Menu</a>
-        <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20Google%20Business%20Profile" target="_blank" class="footer-link">Google Business Profile</a>
-        <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20WordPress%20Website" target="_blank" class="footer-link">WordPress Website</a>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-contact">
-        <h3 class="footer-heading">Contact Us</h3>
-        <a href="tel:918979639473" class="footer-contact-item">
-          <img src="assets/icons/black-icons/call.svg" alt="Call" class="icon-black">
-          <span>+91 8979639473</span>
-        </a>
-        <a href="https://wa.me/918979639473" target="_blank" class="footer-contact-item">
-          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
-          <span>Chat on WhatsApp</span>
-        </a>
-        <div class="footer-contact-item">
-          <img src="assets/icons/black-icons/globe.svg" alt="Location" class="icon-black">
-          <span>All India Service</span>
-        </div>
-        
-        <div class="payment-methods">
-          <p class="payment-label">We Accept</p>
-          <div class="payment-icons">
-            <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe" class="icon-color" title="PhonePe">
-            <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay" class="icon-color" title="Google Pay">
-            <img src="assets/icons/color-icons/paytm.svg" alt="Paytm" class="icon-color" title="Paytm">
-            <img src="assets/icons/color-icons/upi.svg" alt="UPI" class="icon-color" title="UPI">
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Footer Bottom -->
+    <div class="footer-payments">
+        <img src="assets/icons/color-icons/upi.svg" alt="UPI" />
+        <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay" />
+        <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe" />
+        <img src="assets/icons/color-icons/paytm.svg" alt="Paytm" />
+    </div>
+
     <div class="footer-bottom">
-      <p class="footer-copyright">© 2025 Freelancer of NCR. All rights reserved.</p>
-      <div class="footer-legal">
-        <a href="privacy-policy.html" class="footer-legal-link">Privacy Policy</a>
-        <span class="separator">•</span>
-        <a href="terms-conditions.html" class="footer-legal-link">Terms & Conditions</a>
-      </div>
+        <p>© Freelancer of NCR. All rights reserved.</p>
     </div>
-  </div>
+
 </footer>
 
-<!-- ================= WHATSAPP FLOATING BUTTON ================= -->
-<a href="https://wa.me/918979639473?text=Hi,%20I%20want%20to%20know%20about%20your%20services" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-  <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp" class="icon-color">
-</a>
-
-<script src="script.js"></script>
+<!-- JS (added later) -->
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
 
 </body>
 </html>
