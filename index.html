@@ -17,6 +17,11 @@
       padding:0;
       box-sizing:border-box;
     }
+@media(max-width:768px){
+  .main-nav.open{
+    display:block;
+  }
+}
 
     body{
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -144,6 +149,18 @@
       width:26px;
     }
 
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.querySelector(".main-nav");
+
+  menuToggle.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+  });
+</script>
+
+
+    
     /* ===============================
        HERO SECTION
     =============================== */
@@ -299,3 +316,4 @@
 
   </div>
 </section>
+
