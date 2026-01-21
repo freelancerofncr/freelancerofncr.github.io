@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital QR Menu – Freelancer of NCR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/images/favicon.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  color:#111;
+  line-height:1.7;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(37,211,102,.18), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(0,242,254,.18), transparent 45%),
+    #ffffff;
+  animation:bgMove 16s ease-in-out infinite;
+}
+@keyframes bgMove{
+  0%{background-position:20% 20%,80% 30%}
+  50%{background-position:30% 25%,70% 35%}
+  100%{background-position:20% 20%,80% 30%}
+}
+a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:auto;padding:0 16px}
+
+/* ================= HEADER (MOBILE FIRST) ================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid #eee;
+}
+.header-inner{
+  height:64px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+}
+.header img{height:34px}
+.header a.back{
+  font-size:14px;
+  opacity:.7;
+}
+
+/* ================= HERO ================= */
+.hero{
+  padding:90px 0 70px;
+  text-align:center;
+}
+.hero h1{
+  font-size:38px;
+  margin-bottom:16px;
+}
+.hero h1 span{color:#25d366}
+.hero p{
+  max-width:760px;
+  margin:0 auto 14px;
+  color:#555;
+  font-size:16px;
+}
+
+/* Price box */
+.price-box{
+  margin:30px auto;
+  background:#fff;
+  border-radius:22px;
+  padding:26px;
+  max-width:420px;
+  position:relative;
+  box-shadow:0 18px 40px rgba(0,0,0,.08);
+}
+.price-box::before{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#25d366,#00f2fe,#25d366);
+  background-size:300% 300%;
+  animation:borderMove 4s linear infinite;
+  z-index:-1;
+}
+@keyframes borderMove{
+  0%{background-position:0% 50%}
+  100%{background-position:300% 50%}
+}
+.old-price{
+  text-decoration:line-through;
+  color:#999;
+  font-size:15px;
+}
+.new-price{
+  font-size:34px;
+  font-weight:700;
+  margin:6px 0;
+}
+.offer{
+  font-size:14px;
+  color:#25d366;
+}
+
+/* CTA */
+.cta a{
+  display:inline-block;
+  margin-top:18px;
+  background:#25d366;
+  color:#fff;
+  padding:14px 30px;
+  border-radius:14px;
+  font-size:16px;
+  position:relative;
+  overflow:hidden;
+}
+.cta a::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle,rgba(255,255,255,.4),transparent 60%);
+  opacity:0;
+  animation:pulse 2.6s infinite;
+}
+@keyframes pulse{
+  0%{opacity:0}
+  50%{opacity:1}
+  100%{opacity:0}
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <img src="assets/images/logo.png" alt="Freelancer of NCR">
+    <div></div>
+    <a href="index.html" class="back">← Main Website</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>
+      Stop Using Dirty Paper Menus<br>
+      <span>Switch to Digital QR Menu</span>
+    </h1>
+
+    <p>
+      Customers today prefer scanning QR instead of touching paper menus.
+      Digital QR Menu is now a must-have for restaurants & cafes.
+    </p>
+
+    <div class="price-box">
+      <div class="old-price">Actual Price: ₹2500</div>
+      <div class="new-price">₹499</div>
+      <div class="offer">One Time Payment • Lifetime Free</div>
+    </div>
+
+    <div class="cta">
+      <a href="https://wa.me/918979639473?text=Hi%2C%20I%20want%20to%20order%20Digital%20QR%20Menu%20for%20my%20restaurant."
+         target="_blank">
+        Get My Digital QR Menu on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
