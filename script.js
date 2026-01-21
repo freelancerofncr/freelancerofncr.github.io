@@ -1,8 +1,8 @@
---- script.js ---
+/*--- script.js ---
 ```javascript
-/* =====================================================
+ =====================================================
    HERO TYPING EFFECT
-===================================================== */
+===================================================== 
 const typingTexts = [
   "Digital QR Menu for Restaurants",
   "Google Business Profile Management",
@@ -36,7 +36,7 @@ typingLoop();
 
 /* =====================================================
    TRUST COUNTER ANIMATION
-===================================================== */
+===================================================== 
 const counters = document.querySelectorAll(".count");
 const runCounter = (counter) => {
   const target = +counter.dataset.count;
@@ -67,7 +67,7 @@ counters.forEach((counter) => counterObserver.observe(counter));
 
 /* =====================================================
    TESTIMONIAL AUTO SCROLL (GOOGLE STYLE FEEL)
-===================================================== */
+===================================================== 
 const testimonialTrack = document.querySelector(".testimonials-wrapper");
 let scrollPosition = 0;
 if (testimonialTrack) {
@@ -85,7 +85,7 @@ if (testimonialTrack) {
 
 /* =====================================================
    MOBILE MENU TOGGLE
-===================================================== */
+===================================================== 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
 if (menuToggle && mainNav) {
@@ -96,7 +96,7 @@ if (menuToggle && mainNav) {
 
 /* =====================================================
    OPTIONAL: CLOSE MENU ON LINK CLICK (MOBILE)
-===================================================== */
+===================================================== 
 const navLinks = document.querySelectorAll(".main-nav a");
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
@@ -108,7 +108,7 @@ navLinks.forEach((link) => {
 
 /* =====================================================
    SMOOTH SCROLL FOR NAVIGATION LINKS
-===================================================== */
+===================================================== 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -124,7 +124,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* =====================================================
    ADD SCROLL REVEAL ANIMATION TO CARDS
-===================================================== */
+===================================================== 
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
@@ -146,3 +146,4 @@ document.querySelectorAll('.service-card, .pricing-card, .trust-item').forEach(e
   fadeInObserver.observe(el);
 });
 ```
+*/
