@@ -3,236 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurant Menu</title>
+<title>Restaurant QR Menu</title>
 
 <link rel="icon" href="/assets/images/favicon.png">
 
 <style>
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 }
-body {
-  background: #fafafa;
-  color: #222;
-  line-height: 1.4;
+
+body{
+  background:linear-gradient(180deg,#f7f8fa,#eef1f5);
+  color:#222;
 }
 
 /* ===== HEADER ===== */
-.header {
-  text-align: center;
-  padding: 16px;
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
+.header{
+  background:#ffffff;
+  text-align:center;
+  padding:18px 14px;
+  border-bottom:1px solid #e5e5e5;
 }
-#restaurantLogoWrapper {
-  margin-bottom: 10px;
+#restaurantLogo{
+  width:96px;
+  height:96px;
+  object-fit:contain;
+  border-radius:14px;
+  margin-bottom:8px;
 }
-#restaurantLogo {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  border-radius: 12px;
+#restaurantName{
+  font-size:22px;
+  font-weight:700;
 }
-#restaurantName {
-  font-size: 22px;
-  font-weight: bold;
-}
-#categoryLine {
-  font-size: 14px;
-  color: #666;
-  margin-top: 4px;
+#categoryLine{
+  font-size:14px;
+  color:#666;
+  margin-top:4px;
 }
 
 /* ===== ACTION BUTTONS ===== */
-.quick-actions {
-  display: flex;
-  gap: 12px;
-  padding: 14px;
+.quick-actions{
+  display:flex;
+  gap:12px;
+  padding:14px;
 }
-.action-btn {
-  flex: 1;
-  text-align: center;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
+.action-btn{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:600;
+  text-decoration:none;
+  color:#fff;
 }
-.call {
-  background: #28a745;
-  animation: pulse 1.6s infinite;
+.action-btn img{
+  width:20px;
+  height:20px;
 }
-.whatsapp {
-  background: #25d366;
-  animation: pulse 1.6s infinite;
+.call{
+  background:#1e7e34;
+  animation:pulse 1.6s infinite;
+}
+.whatsapp{
+  background:#25d366;
+  animation:pulse 1.6s infinite;
 }
 
-/* Soft attention animation */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.04); }
-  100% { transform: scale(1); }
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
 }
 
 /* ===== INFO ===== */
-.info-box {
-  padding: 14px;
-  background: #fff;
-  margin-top: 8px;
+.card{
+  background:#ffffff;
+  margin:8px 12px;
+  padding:14px;
+  border-radius:14px;
 }
-#mapBtn {
-  display: inline-block;
-  margin-top: 6px;
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
+#mapBtn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:6px;
+  text-decoration:none;
+  font-weight:600;
+  color:#1a73e8;
 }
+#mapBtn img{width:18px}
 
 /* ===== TIMING ===== */
-.timing-section {
-  background: #fff;
-  margin-top: 8px;
-  padding: 14px;
+.timing-section h2{
+  font-size:18px;
+  margin-bottom:6px;
 }
-.timing-section h2 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-#timingBox div {
-  font-size: 14px;
-  margin-bottom: 4px;
+#timingBox div{
+  font-size:14px;
+  margin-bottom:4px;
 }
 
-/* ===== TRUST ===== */
-.trust-section {
-  background: #fff;
-  margin-top: 8px;
-  padding: 14px;
+/* ===== BADGES ===== */
+#badgeContainer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:6px;
 }
-#badgeContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-.badge {
-  background: #e8f5e9;
-  color: #2e7d32;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 6px;
-}
-#aboutText {
-  font-size: 14px;
-  color: #555;
+.badge{
+  background:#e8f5e9;
+  color:#2e7d32;
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:6px;
 }
 
 /* ===== MENU ===== */
-.menu-wrapper {
-  margin-top: 8px;
-  background: #fff;
-  padding: 14px;
+.menu-wrapper h2{
+  font-size:20px;
+  margin-bottom:10px;
 }
-.menu-wrapper h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+.menu-category{
+  margin-bottom:16px;
 }
-.menu-category {
-  margin-bottom: 18px;
+.menu-category h2{
+  font-size:17px;
+  margin-bottom:6px;
+  border-bottom:1px solid #eee;
 }
-.menu-category h2 {
-  font-size: 18px;
-  margin-bottom: 6px;
-  border-bottom: 1px solid #eee;
+.menu-item{
+  padding:8px 0;
+  border-bottom:1px dashed #eee;
 }
-.menu-item {
-  padding: 8px 0;
-  border-bottom: 1px dashed #eee;
+.item-header{
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
-.item-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.food-icon{
+  width:14px;
 }
-.food-icon {
-  width: 14px;
-  height: 14px;
+.menu-item h3{
+  font-size:15px;
 }
-.menu-item h3 {
-  font-size: 15px;
-  font-weight: bold;
+.price-line{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-left:20px;
 }
-.price-box {
-  margin-left: 20px;
-  margin-top: 4px;
-}
-.price-line {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-}
-.item-desc {
-  font-size: 12px;
-  color: #666;
-  margin-left: 20px;
+.item-desc{
+  font-size:12px;
+  color:#666;
+  margin-left:20px;
 }
 
 /* ===== PAYMENT ===== */
-.payment-section {
-  background: #fff;
-  margin-top: 8px;
-  padding: 14px;
-  text-align: center;
+.payment-section{
+  text-align:center;
 }
-#paymentQR {
-  width: 180px;
-  height: 180px;
-  object-fit: contain;
-  margin: 10px auto;
+#paymentQR{
+  width:180px;
+  height:180px;
+  object-fit:contain;
+  margin:10px auto;
 }
-.payment-badges span {
-  display: inline-block;
-  background: #f1f1f1;
-  margin: 4px;
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: 6px;
+.payment-badges{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
+.payment-badges span{
+  background:#f1f1f1;
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.payment-badges img{width:16px}
 
 /* ===== SOCIAL ===== */
-.social-section {
-  background: #fff;
-  margin-top: 8px;
-  padding: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.social-section{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
 }
-.social-section a {
-  font-size: 14px;
-  color: #007bff;
-  text-decoration: none;
+.social-section a{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+  font-size:14px;
+  color:#333;
 }
-
-/* ===== SERVICE INFO ===== */
-.service-info {
-  background: #fff;
-  margin-top: 8px;
-  padding: 14px;
-  font-size: 14px;
-}
+.social-section img{width:18px}
 
 /* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  padding: 14px;
-  font-size: 12px;
-  color: #777;
+.footer{
+  text-align:center;
+  padding:16px;
+  font-size:13px;
+  color:#555;
+}
+.footer a{
+  color:#1a73e8;
+  text-decoration:none;
+  font-weight:600;
 }
 </style>
 </head>
@@ -240,68 +226,71 @@ body {
 <body>
 
 <header class="header">
-  <div id="restaurantLogoWrapper">
-    <img id="restaurantLogo" alt="Restaurant Logo">
-  </div>
+  <img id="restaurantLogo" alt="Restaurant Logo">
   <h1 id="restaurantName"></h1>
   <p id="categoryLine"></p>
 </header>
 
 <section class="quick-actions">
-  <a id="callPrimary" class="action-btn call">📞 Call to Order</a>
-  <a id="whatsappBtn" class="action-btn whatsapp">💬 WhatsApp Order</a>
+  <a id="callPrimary" class="action-btn call">
+    <img src="/assets/icons/black-icons/call.svg"> Call Order
+  </a>
+  <a id="whatsappBtn" class="action-btn whatsapp">
+    <img src="/assets/icons/color-icons/whatsapp.svg"> WhatsApp
+  </a>
 </section>
 
-<section class="info-box">
+<section class="card">
   <p id="fullAddress"></p>
-  <a id="mapBtn" target="_blank">📍 Get Directions</a>
+  <a id="mapBtn" target="_blank">
+    <img src="/assets/icons/color-icons/google-map.svg"> Get Directions
+  </a>
 </section>
 
-<section class="timing-section">
+<section class="card timing-section">
   <h2>⏰ Opening Hours</h2>
   <div id="timingBox"></div>
 </section>
 
-<section class="trust-section">
+<section class="card">
   <div id="badgeContainer"></div>
-  <div id="qualityIcons">
-    <span>✔ Hygienic</span>
-    <span>✔ Quality Food</span>
-  </div>
   <p id="aboutText"></p>
 </section>
 
-<main class="menu-wrapper">
+<main class="card menu-wrapper">
   <h2>📋 Menu</h2>
   <div id="menuContainer"></div>
 </main>
 
-<section id="paymentSection" class="payment-section">
+<section id="paymentSection" class="card payment-section">
   <h2>💳 Pay Here</h2>
-  <img id="paymentQR" alt="Payment QR">
+  <img id="paymentQR">
   <div class="payment-badges">
-    <span id="upiBadge">UPI Accepted</span>
-    <span id="onlinePayBadge">Online Payment</span>
-    <span id="cashBadge">Cash Accepted</span>
+    <span id="upiBadge">
+      <img src="/assets/icons/color-icons/upi.svg"> UPI
+    </span>
+    <span id="onlinePayBadge">
+      <img src="/assets/icons/color-icons/google-pay.svg"> Online
+    </span>
+    <span id="cashBadge">
+      💵 Cash
+    </span>
   </div>
 </section>
 
-<section id="socialSection" class="social-section">
-  <a id="instaIcon" target="_blank">Instagram</a>
-  <a id="fbIcon" target="_blank">Facebook</a>
-  <a id="googleIcon" target="_blank">Google</a>
-  <a id="zomatoIcon" target="_blank">Zomato</a>
-  <a id="swiggyIcon" target="_blank">Swiggy</a>
-  <a id="websiteIcon" target="_blank">Website</a>
-</section>
-
-<section class="service-info">
-  <p id="deliveryInfo">🚚 Delivery Available</p>
-  <p id="dineInInfo">🍽️ Dine-In Available</p>
+<section id="socialSection" class="card social-section">
+  <a id="instaIcon"><img src="/assets/icons/color-icons/instagram.svg">Instagram</a>
+  <a id="fbIcon"><img src="/assets/icons/color-icons/facebook.svg">Facebook</a>
+  <a id="googleIcon"><img src="/assets/icons/color-icons/google-color.svg">Google</a>
+  <a id="zomatoIcon"><img src="/assets/icons/color-icons/zomato.svg">Zomato</a>
+  <a id="swiggyIcon"><img src="/assets/icons/color-icons/swiggy.svg">Swiggy</a>
 </section>
 
 <footer class="footer">
-  <p>Powered by Freelancer of NCR</p>
+  Powered by
+  <a href="https://freelancerofncr.github.io/qr-menu.html" target="_blank">
+    Freelancer of NCR
+  </a>
 </footer>
 
 <script src="./js/app.js"></script>
