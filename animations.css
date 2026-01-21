@@ -1,0 +1,33 @@
+/* =======================
+   QR MENU BORDER GLOW (READY)
+======================= */
+.service-highlight::after,
+.pricing-highlight::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  pointer-events: none;
+}
+
+/* =======================
+   HOVER READY STATES
+======================= */
+@media (hover: hover) {
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-primary:hover,
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+  }
+}
