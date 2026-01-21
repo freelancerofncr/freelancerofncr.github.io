@@ -1,6 +1,6 @@
 /* =====================================================
    RESET & BASE
-===================================================== */
+===================================================== 
 *{
   margin:0;
   padding:0;
@@ -13,7 +13,7 @@ body{
   line-height:1.7;
   overflow-x:hidden;
 
-  /* PREMIUM ANIMATED BACKGROUND */
+  /* PREMIUM ANIMATED BACKGROUND 
   background:
     radial-gradient(circle at 20% 30%, rgba(37,211,102,0.15), transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(79,172,254,0.15), transparent 50%),
@@ -76,7 +76,7 @@ p{ font-size:15px; color:#444; }
 
 /* =====================================================
    HEADER / NAV
-===================================================== */
+===================================================== 
 .site-header{
   position:sticky;
   top:0;
@@ -170,7 +170,7 @@ p{ font-size:15px; color:#444; }
   height:300px;
 }
 
-/* HAMBURGER */
+/* HAMBURGER 
 .menu-toggle{
   display:none;
   background:none;
@@ -192,7 +192,7 @@ p{ font-size:15px; color:#444; }
 
 /* =====================================================
    HERO
-===================================================== */
+===================================================== 
 .hero-section{
   min-height:95vh;
   display:flex;
@@ -288,7 +288,7 @@ p{ font-size:15px; color:#444; }
   box-shadow:0 12px 35px rgba(0,0,0,0.25);
 }
 
-/* BUTTON SHIMMER EFFECT */
+/* BUTTON SHIMMER EFFECT 
 .hero-buttons a::before{
   content:"";
   position:absolute;
@@ -306,7 +306,7 @@ p{ font-size:15px; color:#444; }
   100%{transform:translateX(100%) translateY(100%) rotate(45deg)}
 }
 
-/* PULSE ANIMATION */
+/* PULSE ANIMATION 
 .hero-buttons a::after{
   content:"";
   position:absolute;
@@ -325,7 +325,7 @@ p{ font-size:15px; color:#444; }
 
 /* =====================================================
    TRUST SECTION
-===================================================== */
+===================================================== 
 .trust-section{
   background:rgba(255,255,255,0.6);
   backdrop-filter:blur(10px);
@@ -368,7 +368,7 @@ p{ font-size:15px; color:#444; }
 
 /* =====================================================
    SERVICES
-===================================================== */
+===================================================== 
 .services-section{
   background:rgba(255,255,255,0.4);
 }
@@ -477,7 +477,7 @@ p{ font-size:15px; color:#444; }
   box-shadow:0 6px 25px rgba(37,211,102,0.4);
 }
 
-/* 🔥 ANIMATED BORDER FOR HIGHLIGHT CARD */
+/* 🔥 ANIMATED BORDER FOR HIGHLIGHT CARD 
 .service-highlight{
   position:relative;
 }
@@ -508,7 +508,7 @@ p{ font-size:15px; color:#444; }
 
 /* =====================================================
    TESTIMONIALS
-===================================================== */
+===================================================== 
 .testimonials-section{
   background:rgba(248,250,252,0.8);
   overflow:hidden;
@@ -567,7 +567,7 @@ font-size:14px;
 }
 /* =====================================================
 PRICING
-===================================================== */
+===================================================== 
 .pricing-section{
 background:rgba(255,255,255,0.5);
 }
@@ -656,7 +656,7 @@ transition:all 0.3s ease;
 transform:translateY(-2px);
 box-shadow:0 6px 25px rgba(0,0,0,0.3);
 }
-/* ANIMATED BORDER FOR HIGHLIGHT */
+/* ANIMATED BORDER FOR HIGHLIGHT 
 .pricing-highlight{
 position:relative;
 }
@@ -679,7 +679,7 @@ z-index:-1;
 }
 /* =====================================================
 ABOUT
-===================================================== */
+===================================================== 
 .about-section{
 background:rgba(248,250,252,0.6);
 text-align:center;
@@ -693,7 +693,7 @@ color:#555;
 }
 /* =====================================================
 CONTACT
-===================================================== */
+===================================================== 
 .contact-section{
 background:linear-gradient(135deg, rgba(37,211,102,0.05), rgba(79,172,254,0.05));
 text-align:center;
@@ -751,7 +751,7 @@ font-weight:600;
 }
 /* =====================================================
 FOOTER
-===================================================== */
+===================================================== 
 .site-footer{
 background:linear-gradient(135deg, #111 0%, #1a1a1a 100%);
 color:#fff;
@@ -806,7 +806,7 @@ color:#888;
 }
 /* =====================================================
 MOBILE RESPONSIVE
-===================================================== */
+===================================================== 
 @media(max-width:768px){
 h2{font-size:28px; margin-bottom:40px;}
 section{padding:70px 0}
@@ -816,7 +816,7 @@ section{padding:70px 0}
 width:400px;
 height:400px;
 }
-/* SHOW HAMBURGER */
+/* SHOW HAMBURGER 
 .menu-toggle{ display:block; }
 .header-cta{
   order: 3;
@@ -829,7 +829,7 @@ height:400px;
   display: block;
   margin: 10px 20px;
 }
-/* MOBILE NAV */
+/* MOBILE NAV 
 .main-nav{
 display:none;
 position:absolute;
@@ -897,8 +897,9 @@ h2{font-size:24px}
 .hero-inner h1 span{ 
   color:#25d366;
   display:inline-block;
-  min-width: 20px;  /* ADD THIS */
-  padding-right: 5px; /* ADD THIS */
+  min-width: 20px;  /* ADD THIS 
+  padding-right: 5px; /* ADD THIS 
   border-right:3px solid #25d366;
   animation:blink 0.7s infinite;
 }
+*/
