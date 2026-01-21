@@ -227,3 +227,22 @@
 button, a {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* ===== SECTION DEPTH ===== */
+.section {
+  position: relative;
+}
+
+.section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: var(--space-lg);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-default),
+    transparent
+  );
+}
+
