@@ -237,3 +237,239 @@ document.addEventListener("DOMContentLoaded",function(){
 
 </body>
 </html>
+
+
+<!-- ================= TRUST / STATS ================= -->
+<section class="trust-section">
+  <style>
+    .trust-section{
+      padding:70px 0;
+    }
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      text-align:center;
+    }
+    .trust-item{
+      background:#fff;
+      border-radius:18px;
+      padding:26px 18px;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.06),
+        0 2px 8px rgba(0,0,0,.04);
+    }
+    .trust-item strong{
+      display:block;
+      font-size:28px;
+      margin-bottom:6px;
+      color:#111;
+    }
+    .trust-item p{
+      font-size:14px;
+      color:#555;
+    }
+
+    @media(max-width:768px){
+      .trust-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+  </style>
+
+  <div class="container trust-grid">
+    <div class="trust-item">
+      <strong>MSME</strong>
+      <p>Udyam Registered Business</p>
+    </div>
+
+    <div class="trust-item">
+      <strong>150+</strong>
+      <p>Businesses Served</p>
+    </div>
+
+    <div class="trust-item">
+      <strong>24 Hr</strong>
+      <p>Fast Delivery</p>
+    </div>
+
+    <div class="trust-item">
+      <strong>All India</strong>
+      <p>Service Coverage</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="services-section">
+  <style>
+    .services-section{
+      padding:90px 0;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:28px;
+    }
+
+    .service-card{
+      position:relative;
+      background:#fff;
+      border-radius:22px;
+      padding:34px 26px;
+      text-align:center;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.06),
+        0 2px 8px rgba(0,0,0,.04);
+    }
+
+    /* Animated gradient BORDER only */
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:inherit;
+      background:linear-gradient(
+        90deg,
+        #25d366,
+        #4facfe,
+        #00f2fe,
+        #25d366
+      );
+      background-size:300% 300%;
+      animation:borderMove 4s linear infinite;
+      z-index:-1;
+    }
+
+    @keyframes borderMove{
+      0%{background-position:0% 50%}
+      100%{background-position:300% 50%}
+    }
+
+    .service-icon img{
+      width:54px;
+      margin:0 auto 18px;
+    }
+
+    .service-card h3{
+      font-size:20px;
+      margin-bottom:10px;
+    }
+
+    .service-card p{
+      font-size:14px;
+      color:#555;
+      margin-bottom:12px;
+    }
+
+    .service-price{
+      font-weight:700;
+      font-size:16px;
+      margin:14px 0;
+      color:#111;
+    }
+
+    .service-cta{
+      margin-top:18px;
+    }
+
+    .service-cta a{
+      display:inline-block;
+      background:#25d366;
+      color:#fff;
+      padding:12px 22px;
+      border-radius:10px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-cta a::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle,rgba(255,255,255,.35),transparent 60%);
+      opacity:0;
+      animation:pulse 2.8s infinite;
+    }
+  </style>
+
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:50px;">Our Services</h2>
+
+    <div class="services-grid">
+
+      <!-- QR MENU -->
+      <article class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/qr.svg" alt="">
+        </div>
+        <h3>Digital QR Menu</h3>
+        <p>
+          Convert your paper menu into a digital QR menu.
+          Customers scan and view menu instantly on mobile.
+        </p>
+        <p>
+          Includes call button, WhatsApp, Google Maps,
+          social links and payment QR.
+        </p>
+        <div class="service-price">
+          ₹499 – One Time (Lifetime Free)
+        </div>
+        <div class="service-cta">
+          <a href="https://wa.me/918979639473" target="_blank">
+            Order on WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- GOOGLE BUSINESS PROFILE -->
+      <article class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/search.svg" alt="">
+        </div>
+        <h3>Google Business Profile Management</h3>
+        <p>
+          Improve local visibility on Google Search and Maps.
+          Get more calls and nearby customers.
+        </p>
+        <p>
+          Review replies, photo uploads, posts and optimization.
+        </p>
+        <div class="service-price">
+          ₹999 / Month
+        </div>
+        <div class="service-cta">
+          <a href="https://wa.me/918979639473" target="_blank">
+            Book on WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- WORDPRESS WEBSITE -->
+      <article class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/globe.svg" alt="">
+        </div>
+        <h3>WordPress Business Website</h3>
+        <p>
+          Professional business website that is fast,
+          mobile-friendly and easy to manage.
+        </p>
+        <p>
+          Includes domain, hosting, SSL and premium theme.
+        </p>
+        <div class="service-price">
+          ₹8999
+        </div>
+        <div class="service-cta">
+          <a href="https://wa.me/918979639473" target="_blank">
+            Book on WhatsApp
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
