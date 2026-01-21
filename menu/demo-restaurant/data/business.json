@@ -1,20 +1,20 @@
 {
   "identity": {
-    "name": "Demo Restaurant",
-    "categoryLine": "Pure Veg Family Restaurant",
-    "foodType": "veg",
+    "name": "Demo Restaurant & Cafe",
+    "categoryLine": "Family Restaurant • North Indian • Chinese",
+    "foodType": "mixed",
     "hasLogo": true
   },
 
   "contact": {
     "primaryPhone": "+91 9876543210",
-    "secondaryPhone": "+91 9876543210",
+    "secondaryPhone": "+91 9123456780",
     "whatsappNumber": "+91 9876543210",
-    "email": "9876543210"
+    "email": "demorestaurant@gmail.com"
   },
 
   "location": {
-    "fullAddress": "Sector 18, Noida, Uttar Pradesh, India",
+    "fullAddress": "Shop No. 12, Main Market, Sector 18, Noida, Uttar Pradesh, India",
     "googleMapLink": "https://maps.google.com/?q=sector+18+noida"
   },
 
@@ -59,7 +59,7 @@
     "sunday": {
       "isClosed": false,
       "slots": [
-        { "open": "09:00", "close": "23:00" }
+        { "open": "09:00", "close": "22:30" }
       ]
     }
   },
@@ -67,24 +67,35 @@
   "onlinePlatforms": {
     "whatsapp": "https://wa.me/919876543210",
     "instagram": "https://instagram.com/demorestaurant",
-    "facebook": "https://instagram.com/",
+    "facebook": "https://facebook.com/demorestaurant",
     "google": "https://maps.google.com/?q=sector+18+noida",
     "zomato": "https://www.zomato.com/",
     "swiggy": "https://www.swiggy.com/",
-    "website": "https://instagram.com/"
+    "website": "https://demorestaurant.com"
   },
 
   "payment": {
     "hasPaymentQR": true,
     "upiAccepted": true,
     "onlinePaymentAccepted": true,
-    "cashAccepted": true
+    "cashAccepted": true,
+
+    "supportedUpiApps": {
+      "googlePay": true,
+      "phonePe": true,
+      "paytm": true,
+      "bhim": true
+    }
   },
 
   "trustInfo": {
-    "badges": ["Pure Veg", "Hygienic Kitchen", "Fresh Food"],
+    "badges": [
+      "Pure & Hygienic Food",
+      "Family Friendly",
+      "Fresh Ingredients"
+    ],
     "showQualityIcons": true,
-    "about": "We serve fresh and hygienic vegetarian food prepared with quality ingredients for families and daily customers."
+    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food. We focus on quality ingredients, quick service, and customer satisfaction."
   },
 
   "flags": {
