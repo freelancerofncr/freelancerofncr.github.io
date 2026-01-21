@@ -226,41 +226,6 @@ img{display:block;max-width:100%}
   </div>
 </section>
 
-<script>
-/* Mobile menu toggle – SAFE */
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".main-nav");
-
-  if (!toggle || !nav) return;
-
-  // Toggle menu on hamburger click
-  toggle.addEventListener("click", function (e) {
-    e.stopPropagation();
-    nav.classList.toggle("open");
-  });
-
-  // Close menu on menu link click
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-    });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener("click", function (e) {
-    if (
-      nav.classList.contains("open") &&
-      !nav.contains(e.target) &&
-      !toggle.contains(e.target)
-    ) {
-      nav.classList.remove("open");
-    }
-  });
-});
-</script>
 
   
 </body>
@@ -844,6 +809,40 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-nav");
+
+  if (!toggle || !nav) return;
+
+  // hamburger toggle
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    nav.classList.toggle("open");
+  });
+
+  // close on menu link click
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+    });
+  });
+
+  // close on outside click
+  document.addEventListener("click", function (e) {
+    if (
+      nav.classList.contains("open") &&
+      !nav.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      nav.classList.remove("open");
+    }
+  });
+});
+</script>
+
+
 <!-- ================= FINAL JS (SAFE & MINIMAL) ================= -->
 <script>
 /* Smooth scroll for menu links */
@@ -857,5 +856,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
   });
 });
 </script>
+
 
 
