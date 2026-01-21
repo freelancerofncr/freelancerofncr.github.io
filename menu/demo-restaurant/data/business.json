@@ -8,9 +8,9 @@
 
   "contact": {
     "primaryPhone": "+91 9876543210",
-    "secondaryPhone": "",
+    "secondaryPhone": "+91 9876543210",
     "whatsappNumber": "+91 9876543210",
-    "email": ""
+    "email": "9876543210"
   },
 
   "location": {
@@ -67,11 +67,11 @@
   "onlinePlatforms": {
     "whatsapp": "https://wa.me/919876543210",
     "instagram": "https://instagram.com/demorestaurant",
-    "facebook": "",
+    "facebook": "https://instagram.com/",
     "google": "https://maps.google.com/?q=sector+18+noida",
     "zomato": "https://www.zomato.com/",
     "swiggy": "https://www.swiggy.com/",
-    "website": ""
+    "website": "https://instagram.com/"
   },
 
   "payment": {
