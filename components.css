@@ -217,3 +217,13 @@
   font-size: 14px;
   opacity: 0.7;
 }
+
+/* ===== SMOOTH SECTION SEPARATION ===== */
+.section:nth-child(even) {
+  background-color: var(--bg-section);
+}
+
+/* ===== BETTER MOBILE TOUCH ===== */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
