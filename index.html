@@ -5,17 +5,15 @@
   <title>Freelancer of NCR – Digital Solutions for Businesses</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/images/favicon.png">
-
-  <!-- CSS WILL BE ADDED LATER -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- =====================================
-     HEADER / NAVIGATION
-===================================== -->
+<!-- ================= MOBILE NAV OVERLAY ================= -->
+<div class="mobile-nav-overlay"></div>
+
+<!-- ================= HEADER ================= -->
 <header class="site-header">
   <div class="container header-inner">
 
@@ -23,7 +21,7 @@
       <img src="assets/images/logo.png" alt="Freelancer of NCR Logo">
     </div>
 
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Primary Navigation">
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
@@ -35,28 +33,24 @@
 
     <div class="header-cta">
       <a href="https://wa.me/918979639473" target="_blank">
-        WhatsApp
+        <span>WhatsApp</span>
       </a>
     </div>
 
-    <button class="menu-toggle">
-      <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="Menu">
+    <button class="menu-toggle" aria-label="Open Menu">
+      <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="">
     </button>
 
   </div>
 </header>
 
-<!-- =====================================
-     HERO SECTION
-===================================== -->
+<!-- ================= HERO ================= -->
 <section id="home" class="hero-section">
   <div class="container hero-inner">
 
     <h1>
       Making Businesses Digital<br>
-      <span class="typing-text">
-        <!-- typing text will appear here via JS -->
-      </span>
+      <span class="typing-text"></span>
     </h1>
 
     <p>
@@ -72,16 +66,14 @@
 
     <div class="hero-buttons">
       <a href="https://wa.me/918979639473" target="_blank">
-        Get Started on WhatsApp
+        <span>Get Started on WhatsApp</span>
       </a>
     </div>
 
   </div>
 </section>
 
-<!-- =====================================
-     TRUST / STATS SECTION
-===================================== -->
+<!-- ================= TRUST ================= -->
 <section class="trust-section">
   <div class="container trust-grid">
 
@@ -91,16 +83,12 @@
     </div>
 
     <div class="trust-item">
-      <strong>
-        <span class="count" data-count="150">0</span>+
-      </strong>
+      <strong><span class="count" data-count="150">0</span>+</strong>
       <p>Businesses Served</p>
     </div>
 
     <div class="trust-item">
-      <strong>
-        <span class="count" data-count="24">0</span>+
-      </strong>
+      <strong><span class="count" data-count="24">0</span>+</strong>
       <p>Hour Delivery</p>
     </div>
 
@@ -112,9 +100,7 @@
   </div>
 </section>
 
-<!-- =====================================
-     SERVICES SECTION
-===================================== -->
+<!-- ================= SERVICES ================= -->
 <section id="services" class="services-section">
   <div class="container">
 
@@ -122,10 +108,10 @@
 
     <div class="services-grid">
 
-      <!-- DIGITAL QR MENU -->
+      <!-- QR MENU -->
       <article class="service-card service-highlight">
         <div class="service-icon">
-          <img src="assets/icons/black-icons/qr.svg" alt="QR Menu">
+          <img src="assets/icons/black-icons/qr.svg" alt="">
         </div>
 
         <h3>Digital QR Menu</h3>
@@ -152,14 +138,14 @@
         </p>
 
         <a href="https://wa.me/918979639473" target="_blank">
-          WhatsApp for QR Menu
+          <span>WhatsApp for QR Menu</span>
         </a>
       </article>
 
-      <!-- GOOGLE BUSINESS PROFILE -->
+      <!-- GMB -->
       <article class="service-card">
         <div class="service-icon">
-          <img src="assets/icons/black-icons/search.svg" alt="Google Business Profile">
+          <img src="assets/icons/black-icons/search.svg" alt="">
         </div>
 
         <h3>Google Business Profile Management</h3>
@@ -180,14 +166,14 @@
         </p>
 
         <a href="https://wa.me/918979639473" target="_blank">
-          WhatsApp for Google Business Profile
+          <span>WhatsApp for Google Business Profile</span>
         </a>
       </article>
 
-      <!-- WORDPRESS WEBSITE -->
+      <!-- WEBSITE -->
       <article class="service-card">
         <div class="service-icon">
-          <img src="assets/icons/black-icons/globe.svg" alt="Website">
+          <img src="assets/icons/black-icons/globe.svg" alt="">
         </div>
 
         <h3>WordPress Business Website</h3>
@@ -207,7 +193,7 @@
         </p>
 
         <a href="https://wa.me/918979639473" target="_blank">
-          WhatsApp for Website
+          <span>WhatsApp for Website</span>
         </a>
       </article>
 
@@ -215,11 +201,10 @@
   </div>
 </section>
 
+
 <!-- PART 1 ENDS HERE -->
 
-   <!-- =====================================
-     TESTIMONIALS SECTION
-===================================== -->
+  <!-- ================= TESTIMONIALS ================= -->
 <section id="testimonials" class="testimonials-section">
   <div class="container">
 
@@ -232,111 +217,78 @@
 
     <div class="testimonials-wrapper">
 
-      <!-- Testimonial 1 -->
       <article class="testimonial-card">
-        <div class="testimonial-stars">
-          ★★★★★
-        </div>
-        <p class="testimonial-text">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>
           Very good QR menu service. The process was simple and fast.
           Our customers find it easy to scan QR and view menu.
-          No tension of dirty paper menus now.
         </p>
-        <p class="testimonial-author">
-          Restaurant Owner – Delhi
-        </p>
+        <p class="testimonial-author">Restaurant Owner – Delhi</p>
       </article>
 
-      <!-- Testimonial 2 -->
       <article class="testimonial-card">
-        <div class="testimonial-stars">
-          ★★★★★
-        </div>
-        <p class="testimonial-text">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>
           Affordable service and professional work.
           Google Business Profile optimization helped us
-          get more calls from nearby customers.
+          get more calls.
         </p>
-        <p class="testimonial-author">
-          Local Business – Noida
-        </p>
+        <p class="testimonial-author">Local Business – Noida</p>
       </article>
 
-      <!-- Testimonial 3 -->
       <article class="testimonial-card">
-        <div class="testimonial-stars">
-          ★★★★★
-        </div>
-        <p class="testimonial-text">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>
           Best QR menu solution at this price.
           One time payment and lifetime free usage
-          is very helpful for small restaurants.
+          is very helpful.
         </p>
-        <p class="testimonial-author">
-          Cafe Owner – Gurugram
-        </p>
+        <p class="testimonial-author">Cafe Owner – Gurugram</p>
       </article>
 
-      <!-- Testimonial 4 -->
       <article class="testimonial-card">
-        <div class="testimonial-stars">
-          ★★★★★
-        </div>
-        <p class="testimonial-text">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>
           Website delivered on time with clean and professional look.
-          Support is good and communication is clear.
+          Support and communication were good.
         </p>
-        <p class="testimonial-author">
-          Startup Founder – India
-        </p>
+        <p class="testimonial-author">Startup Founder – India</p>
       </article>
 
-      <!-- Testimonial 5 -->
       <article class="testimonial-card">
-        <div class="testimonial-stars">
-          ★★★★★
-        </div>
-        <p class="testimonial-text">
-          Google profile reviews reply and regular updates
+        <div class="testimonial-stars">★★★★★</div>
+        <p>
+          Google profile updates and review replies
           improved our local visibility.
-          Worth the monthly cost.
         </p>
-        <p class="testimonial-author">
-          Service Business – Faridabad
-        </p>
+        <p class="testimonial-author">Service Business – Faridabad</p>
       </article>
 
     </div>
-
   </div>
 </section>
 
-<!-- =====================================
-     PRICING SECTION
-===================================== -->
+<!-- ================= PRICING ================= -->
 <section id="pricing" class="pricing-section">
   <div class="container">
 
     <h2>Pricing</h2>
 
     <p class="section-intro">
-      Simple and transparent pricing with no hidden charges.
+      Simple and transparent pricing. No hidden charges.
     </p>
 
     <div class="pricing-grid">
 
-      <!-- QR MENU PRICING -->
+      <!-- QR MENU -->
       <article class="pricing-card pricing-highlight">
         <h3>Digital QR Menu</h3>
 
         <p class="pricing-description">
-          Complete digital QR menu page for your restaurant
-          with all important details.
+          Complete digital QR menu page for your restaurant.
         </p>
 
-        <p class="pricing-amount">
-          ₹499
-        </p>
+        <p class="pricing-amount">₹499</p>
 
         <p class="pricing-note">
           One Time Payment<br>
@@ -344,45 +296,72 @@
         </p>
 
         <ul class="pricing-features">
-          <li>Digital Menu Page</li>
-          <li>Call & WhatsApp Button</li>
-          <li>Google Maps Location</li>
-          <li>Payment QR Support</li>
-          <li>PDF & Image QR Code</li>
+          <li>
+            <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+            Digital Menu Page
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/call.svg" alt="">
+            Call & WhatsApp Button
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/globe.svg" alt="">
+            Google Maps Location
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/qr.svg" alt="">
+            Payment QR Support
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/download-png.svg" alt="">
+            PDF & Image QR Code
+          </li>
         </ul>
 
         <a href="https://wa.me/918979639473" target="_blank">
-          Get QR Menu on WhatsApp
+          <span>Get QR Menu on WhatsApp</span>
         </a>
       </article>
 
-      <!-- GMB PRICING -->
+      <!-- GMB -->
       <article class="pricing-card">
         <h3>Google Business Profile Management</h3>
 
         <p class="pricing-description">
-          Monthly management of your Google Business Profile
-          to improve local visibility.
+          Monthly management of your Google Business Profile.
         </p>
 
-        <p class="pricing-amount">
-          ₹999 / Month
-        </p>
+        <p class="pricing-amount">₹999 / Month</p>
 
         <ul class="pricing-features">
-          <li>Review Replies</li>
-          <li>Photo Uploads</li>
-          <li>Post Updates</li>
-          <li>Profile Optimization</li>
-          <li>Local SEO Support</li>
+          <li>
+            <img src="assets/icons/black-icons/star.svg" alt="">
+            Review Replies
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/mobile.svg" alt="">
+            Photo Uploads
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/chart-arrow-up.svg" alt="">
+            Post Updates
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/search.svg" alt="">
+            Profile Optimization
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/globe.svg" alt="">
+            Local SEO Support
+          </li>
         </ul>
 
         <a href="https://wa.me/918979639473" target="_blank">
-          WhatsApp for GMB Service
+          <span>WhatsApp for GMB Service</span>
         </a>
       </article>
 
-      <!-- WEBSITE PRICING -->
+      <!-- WEBSITE -->
       <article class="pricing-card">
         <h3>WordPress Business Website</h3>
 
@@ -390,31 +369,41 @@
           Professional business website built on WordPress.
         </p>
 
-        <p class="pricing-amount">
-          ₹8999
-        </p>
+        <p class="pricing-amount">₹8999</p>
 
         <ul class="pricing-features">
-          <li>Up to 5 Pages</li>
-          <li>Free Domain & Hosting</li>
-          <li>SSL Certificate</li>
-          <li>Premium Theme</li>
-          <li>Mobile Friendly Design</li>
+          <li>
+            <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+            Up to 5 Pages
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/globe.svg" alt="">
+            Free Domain & Hosting
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/shield-checkmark.svg" alt="">
+            SSL Certificate
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/star.svg" alt="">
+            Premium Theme
+          </li>
+          <li>
+            <img src="assets/icons/black-icons/mobile.svg" alt="">
+            Mobile Friendly Design
+          </li>
         </ul>
 
         <a href="https://wa.me/918979639473" target="_blank">
-          WhatsApp for Website
+          <span>WhatsApp for Website</span>
         </a>
       </article>
 
     </div>
-
   </div>
 </section>
 
-<!-- =====================================
-     ABOUT SECTION
-===================================== -->
+<!-- ================= ABOUT ================= -->
 <section id="about" class="about-section">
   <div class="container">
 
@@ -429,8 +418,6 @@
     <p>
       We started with a simple goal – to help small and medium
       businesses go digital without spending too much money.
-      Many businesses want to go online but get confused by
-      high prices and complicated solutions.
     </p>
 
     <p>
@@ -442,9 +429,7 @@
   </div>
 </section>
 
-<!-- =====================================
-     CONTACT SECTION
-===================================== -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="contact-section">
   <div class="container">
 
@@ -457,25 +442,19 @@
 
     <div class="contact-actions">
       <a href="https://wa.me/918979639473" target="_blank">
-        Chat on WhatsApp
+        <span>Chat on WhatsApp</span>
       </a>
     </div>
 
     <div class="contact-details">
-      <p>
-        Phone / WhatsApp: <strong>8979639473</strong>
-      </p>
-      <p>
-        Service Area: <strong>All India</strong>
-      </p>
+      <p>Phone / WhatsApp: <strong>8979639473</strong></p>
+      <p>Service Area: <strong>All India</strong></p>
     </div>
 
   </div>
 </section>
 
-<!-- =====================================
-     FOOTER
-===================================== -->
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="container footer-inner">
 
@@ -504,15 +483,11 @@
   </div>
 
   <div class="footer-bottom">
-    <p>
-      © Freelancer of NCR. All rights reserved.
-    </p>
+    <p>© Freelancer of NCR. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- =====================================
-     JAVASCRIPT FILE (WILL BE ADDED LATER)
-===================================== -->
+<!-- ================= JS ================= -->
 <script src="script.js"></script>
 
 </body>
