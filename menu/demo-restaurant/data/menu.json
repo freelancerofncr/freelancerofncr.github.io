@@ -1,0 +1,160 @@
+{
+  "categories": [
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "name": "Paneer Tikka",
+          "type": "veg",
+          "prices": [
+            { "label": "Half", "price": 180 },
+            { "label": "Full", "price": 320 }
+          ]
+        },
+        {
+          "name": "Chicken Lollipop",
+          "type": "non-veg",
+          "prices": [
+            { "label": "6 pcs", "price": 260 },
+            { "label": "12 pcs", "price": 480 }
+          ]
+        },
+        {
+          "name": "Veg Manchurian",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 150 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Main Course",
+      "items": [
+        {
+          "name": "Shahi Paneer",
+          "type": "veg",
+          "prices": [
+            { "label": "Half", "price": 220 },
+            { "label": "Full", "price": 390 }
+          ]
+        },
+        {
+          "name": "Butter Chicken",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Half", "price": 280 },
+            { "label": "Full", "price": 520 }
+          ]
+        },
+        {
+          "name": "Dal Makhani",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 180 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Breads",
+      "items": [
+        {
+          "name": "Tandoori Roti",
+          "type": "veg",
+          "prices": [
+            { "label": "Single", "price": 20 }
+          ]
+        },
+        {
+          "name": "Butter Naan",
+          "type": "veg",
+          "prices": [
+            { "label": "Single", "price": 40 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Rice & Biryani",
+      "items": [
+        {
+          "name": "Veg Fried Rice",
+          "type": "veg",
+          "prices": [
+            { "label": "Half", "price": 140 },
+            { "label": "Full", "price": 240 }
+          ]
+        },
+        {
+          "name": "Chicken Biryani",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Half", "price": 180 },
+            { "label": "Full", "price": 320 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Snacks & Combos",
+      "items": [
+        {
+          "name": "Veg Combo Meal",
+          "type": "veg",
+          "prices": [
+            { "label": "Combo", "price": 199 }
+          ],
+          "description": "Paneer sabzi + dal + rice + roti"
+        },
+        {
+          "name": "Non-Veg Combo Meal",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Combo", "price": 299 }
+          ],
+          "description": "Chicken curry + rice + roti"
+        }
+      ]
+    },
+
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Cold Drink",
+          "type": "veg",
+          "prices": [
+            { "label": "250 ml", "price": 30 },
+            { "label": "500 ml", "price": 50 }
+          ]
+        },
+        {
+          "name": "Fresh Lime Soda",
+          "type": "veg",
+          "prices": [
+            { "label": "Glass", "price": 40 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Sweets",
+      "items": [
+        {
+          "name": "Gulab Jamun",
+          "type": "veg",
+          "prices": [
+            { "label": "2 pcs", "price": 60 },
+            { "label": "1 kg", "price": 420 }
+          ]
+        }
+      ]
+    }
+  ]
+}
