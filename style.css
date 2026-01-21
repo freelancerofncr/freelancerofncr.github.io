@@ -818,7 +818,17 @@ height:400px;
 }
 /* SHOW HAMBURGER */
 .menu-toggle{ display:block; }
-.header-cta{display:none;}
+.header-cta{
+  order: 3;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.header-cta a{
+  display: block;
+  margin: 10px 20px;
+}
 /* MOBILE NAV */
 .main-nav{
 display:none;
@@ -832,7 +842,7 @@ border-top:1px solid rgba(0,0,0,0.08);
 box-shadow:0 10px 30px rgba(0,0,0,0.1);
 z-index:999;
 }
-.main-nav.open{ display:block; }
+.main-nav.open{ display:block !important;}
 .main-nav ul{
 flex-direction:column;
 align-items:center;
@@ -883,4 +893,12 @@ h2{font-size:24px}
 .container{padding:0 16px}
 .trust-item strong{font-size:26px}
 .pricing-amount{font-size:30px}
+}
+.hero-inner h1 span{ 
+  color:#25d366;
+  display:inline-block;
+  min-width: 20px;  /* ADD THIS */
+  padding-right: 5px; /* ADD THIS */
+  border-right:3px solid #25d366;
+  animation:blink 0.7s infinite;
 }
