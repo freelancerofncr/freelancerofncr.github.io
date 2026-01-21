@@ -8,24 +8,24 @@
 <link rel="icon" href="/assets/images/favicon.png">
 
 <style>
+/* ========== BASE ========== */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
 }
-
 body{
-  background:linear-gradient(180deg,#f7f8fa,#eef1f5);
+  background:linear-gradient(180deg,#f4f6fb,#e9edf3);
   color:#222;
 }
 
-/* ===== HEADER ===== */
+/* ========== HEADER ========== */
 .header{
   background:#ffffff;
   text-align:center;
   padding:18px 14px;
-  border-bottom:1px solid #e5e5e5;
+  border-bottom:1px solid #e2e2e2;
 }
 #restaurantLogo{
   width:96px;
@@ -43,12 +43,20 @@ body{
   color:#666;
   margin-top:4px;
 }
+.header .badge{
+  display:inline-block;
+  margin-top:6px;
+}
 
-/* ===== ACTION BUTTONS ===== */
+/* ========== CTA BUTTONS ========== */
 .quick-actions{
-  display:flex;
-  gap:12px;
   padding:14px;
+  display:grid;
+  gap:10px;
+}
+.action-row{
+  display:flex;
+  gap:10px;
 }
 .action-btn{
   flex:1;
@@ -60,13 +68,10 @@ body{
   border-radius:12px;
   font-size:15px;
   font-weight:600;
-  text-decoration:none;
   color:#fff;
+  text-decoration:none;
 }
-.action-btn img{
-  width:20px;
-  height:20px;
-}
+.action-btn img{width:20px}
 .call{
   background:#1e7e34;
   animation:pulse 1.6s infinite;
@@ -75,6 +80,11 @@ body{
   background:#25d366;
   animation:pulse 1.6s infinite;
 }
+.location-btn{
+  background:#ffffff;
+  color:#1a73e8;
+  border:1px solid #d2d6dc;
+}
 
 @keyframes pulse{
   0%{transform:scale(1)}
@@ -82,40 +92,28 @@ body{
   100%{transform:scale(1)}
 }
 
-/* ===== INFO ===== */
+/* ========== CARDS ========== */
 .card{
   background:#ffffff;
-  margin:8px 12px;
+  margin:10px 12px;
   padding:14px;
   border-radius:14px;
 }
-#mapBtn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  margin-top:6px;
-  text-decoration:none;
-  font-weight:600;
-  color:#1a73e8;
-}
-#mapBtn img{width:18px}
 
-/* ===== TIMING ===== */
-.timing-section h2{
-  font-size:18px;
-  margin-bottom:6px;
-}
-#timingBox div{
+/* ========== TIMING ========== */
+.timing-row{
+  display:flex;
+  justify-content:space-between;
   font-size:14px;
   margin-bottom:4px;
 }
 
-/* ===== BADGES ===== */
+/* ========== BADGES ========== */
 #badgeContainer{
   display:flex;
   flex-wrap:wrap;
   gap:6px;
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 .badge{
   background:#e8f5e9;
@@ -125,18 +123,32 @@ body{
   border-radius:6px;
 }
 
-/* ===== MENU ===== */
+/* ========== MENU ========== */
 .menu-wrapper h2{
   font-size:20px;
   margin-bottom:10px;
 }
 .menu-category{
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 .menu-category h2{
-  font-size:17px;
-  margin-bottom:6px;
+  font-size:18px;
   border-bottom:1px solid #eee;
+  margin-bottom:6px;
+}
+.menu-block{
+  margin-top:8px;
+  padding-left:8px;
+}
+.menu-block.veg{
+  border-left:4px solid #2e7d32;
+}
+.menu-block.nonveg{
+  border-left:4px solid #c62828;
+}
+.menu-block h3{
+  font-size:15px;
+  margin-bottom:6px;
 }
 .menu-item{
   padding:8px 0;
@@ -147,12 +159,7 @@ body{
   align-items:center;
   gap:6px;
 }
-.food-icon{
-  width:14px;
-}
-.menu-item h3{
-  font-size:15px;
-}
+.food-icon{width:14px}
 .price-line{
   display:flex;
   justify-content:space-between;
@@ -165,7 +172,7 @@ body{
   margin-left:20px;
 }
 
-/* ===== PAYMENT ===== */
+/* ========== PAYMENT ========== */
 .payment-section{
   text-align:center;
 }
@@ -175,24 +182,41 @@ body{
   object-fit:contain;
   margin:10px auto;
 }
-.payment-badges{
+.payment-apps{
   display:flex;
   justify-content:center;
-  gap:8px;
+  gap:10px;
   flex-wrap:wrap;
 }
-.payment-badges span{
-  background:#f1f1f1;
-  padding:6px 10px;
-  font-size:12px;
-  border-radius:6px;
+.payment-apps span{
   display:flex;
   align-items:center;
   gap:6px;
+  font-size:12px;
+  background:#f1f1f1;
+  padding:6px 10px;
+  border-radius:8px;
 }
-.payment-badges img{width:16px}
+.payment-apps img{width:18px}
 
-/* ===== SOCIAL ===== */
+/* ========== DELIVERY APPS ========== */
+.platform-buttons{
+  display:flex;
+  gap:10px;
+}
+.platform-buttons a{
+  flex:1;
+  text-align:center;
+  padding:12px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+  color:#fff;
+}
+.zomato{background:#e23744}
+.swiggy{background:#fc8019}
+
+/* ========== SOCIAL ========== */
 .social-section{
   display:flex;
   flex-wrap:wrap;
@@ -202,13 +226,13 @@ body{
   display:flex;
   align-items:center;
   gap:6px;
-  text-decoration:none;
   font-size:14px;
   color:#333;
+  text-decoration:none;
 }
 .social-section img{width:18px}
 
-/* ===== FOOTER ===== */
+/* ========== FOOTER ========== */
 .footer{
   text-align:center;
   padding:16px;
@@ -226,29 +250,27 @@ body{
 <body>
 
 <header class="header">
-  <img id="restaurantLogo" alt="Restaurant Logo">
+  <img id="restaurantLogo">
   <h1 id="restaurantName"></h1>
   <p id="categoryLine"></p>
 </header>
 
 <section class="quick-actions">
-  <a id="callPrimary" class="action-btn call">
-    <img src="/assets/icons/black-icons/call.svg"> Call Order
-  </a>
-  <a id="whatsappBtn" class="action-btn whatsapp">
-    <img src="/assets/icons/color-icons/whatsapp.svg"> WhatsApp
-  </a>
-</section>
-
-<section class="card">
-  <p id="fullAddress"></p>
-  <a id="mapBtn" target="_blank">
+  <div class="action-row">
+    <a id="callPrimary" class="action-btn call">
+      <img src="/assets/icons/black-icons/call.svg"> Call
+    </a>
+    <a id="whatsappBtn" class="action-btn whatsapp">
+      <img src="/assets/icons/color-icons/whatsapp.svg"> WhatsApp
+    </a>
+  </div>
+  <a id="mapBtn" class="action-btn location-btn">
     <img src="/assets/icons/color-icons/google-map.svg"> Get Directions
   </a>
 </section>
 
-<section class="card timing-section">
-  <h2>⏰ Opening Hours</h2>
+<section class="card">
+  <h3>⏰ Opening Hours</h3>
   <div id="timingBox"></div>
 </section>
 
@@ -263,18 +285,22 @@ body{
 </main>
 
 <section id="paymentSection" class="card payment-section">
-  <h2>💳 Pay Here</h2>
+  <h3>💳 Pay Here</h3>
   <img id="paymentQR">
-  <div class="payment-badges">
-    <span id="upiBadge">
-      <img src="/assets/icons/color-icons/upi.svg"> UPI
-    </span>
-    <span id="onlinePayBadge">
-      <img src="/assets/icons/color-icons/google-pay.svg"> Online
-    </span>
-    <span id="cashBadge">
-      💵 Cash
-    </span>
+  <div class="payment-apps">
+    <span id="gpayIcon"><img src="/assets/icons/color-icons/google-pay.svg"> GPay</span>
+    <span id="phonepeIcon"><img src="/assets/icons/color-icons/phonepe.svg"> PhonePe</span>
+    <span id="paytmIcon"><img src="/assets/icons/color-icons/paytm.svg"> Paytm</span>
+    <span id="bhimIcon"><img src="/assets/icons/color-icons/bhim-app.svg"> BHIM</span>
+    <span id="cashBadge">💵 Cash</span>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Available On</h3>
+  <div class="platform-buttons">
+    <a id="zomatoBtn" class="zomato">Zomato</a>
+    <a id="swiggyBtn" class="swiggy">Swiggy</a>
   </div>
 </section>
 
@@ -282,8 +308,7 @@ body{
   <a id="instaIcon"><img src="/assets/icons/color-icons/instagram.svg">Instagram</a>
   <a id="fbIcon"><img src="/assets/icons/color-icons/facebook.svg">Facebook</a>
   <a id="googleIcon"><img src="/assets/icons/color-icons/google-color.svg">Google</a>
-  <a id="zomatoIcon"><img src="/assets/icons/color-icons/zomato.svg">Zomato</a>
-  <a id="swiggyIcon"><img src="/assets/icons/color-icons/swiggy.svg">Swiggy</a>
+  <a id="websiteIcon"><img src="/assets/icons/black-icons/globe.svg">Website</a>
 </section>
 
 <footer class="footer">
