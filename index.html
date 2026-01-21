@@ -228,13 +228,41 @@ img{display:block;max-width:100%}
 
 <script>
 /* Mobile menu toggle – SAFE */
-document.addEventListener("DOMContentLoaded",function(){
-  const toggle=document.querySelector(".menu-toggle");
-  const nav=document.querySelector(".main-nav");
-  toggle.addEventListener("click",()=>nav.classList.toggle("open"));
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-nav");
+
+  if (!toggle || !nav) return;
+
+  // Toggle menu on hamburger click
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    nav.classList.toggle("open");
+  });
+
+  // Close menu on menu link click
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (e) {
+    if (
+      nav.classList.contains("open") &&
+      !nav.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      nav.classList.remove("open");
+    }
+  });
 });
 </script>
 
+  
 </body>
 </html>
 
@@ -830,34 +858,4 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
 });
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".main-nav");
-
-  /* 1️⃣ Toggle menu on hamburger */
-  toggle.addEventListener("click", function (e) {
-    e.stopPropagation(); // important
-    nav.classList.toggle("open");
-  });
-
-  /* 2️⃣ Close menu when clicking any menu link */
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-    });
-  });
-
-  /* 3️⃣ Close menu when clicking outside */
-  document.addEventListener("click", function (e) {
-    if (
-      nav.classList.contains("open") &&
-      !nav.contains(e.target) &&
-      !toggle.contains(e.target)
-    ) {
-      nav.classList.remove("open");
-    }
-  });
-});
-</script>
 
