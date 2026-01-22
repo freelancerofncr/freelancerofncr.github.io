@@ -26,21 +26,31 @@ function renderBusiness(data) {
   /* ===== VEG / NON-VEG BADGE ===== */
   const badge = document.createElement("div");
   badge.className =
-    data.identity.foodType === "veg" ? "badge veg-badge" : "badge nonveg-badge";
+    data.identity.foodType === "veg"
+      ? "badge veg-badge"
+      : data.identity.foodType === "non-veg"
+      ? "badge nonveg-badge"
+      : "badge nonveg-badge";
+
   badge.textContent =
     data.identity.foodType === "veg"
-      ? "Pure Veg Restaurant"
-      : "Veg & Non-Veg Restaurant";
+      ? "🟢 Pure Veg Restaurant"
+      : data.identity.foodType === "non-veg"
+      ? "🔴 Non-Veg Restaurant"
+      : "🔴 Veg & Non-Veg Restaurant";
+
   document.querySelector(".header").appendChild(badge);
 
   /* ===== CONTACT ===== */
   setLink("#callPrimary", "tel:" + data.contact.primaryPhone);
   setText("#primaryPhoneText", data.contact.primaryPhone);
-
-  setLink("#whatsappBtn", "https://wa.me/" + cleanNumber(data.contact.whatsappNumber));
-
   setText("#secondaryPhoneText", data.contact.secondaryPhone);
   setText("#emailText", data.contact.email);
+
+  setLink(
+    "#whatsappBtn",
+    "https://wa.me/" + cleanNumber(data.contact.whatsappNumber)
+  );
 
   /* ===== LOCATION ===== */
   setText("#fullAddress", data.location.fullAddress);
@@ -49,16 +59,22 @@ function renderBusiness(data) {
   /* ===== OPENING HOURS ===== */
   renderOpeningHours(data.openingHours);
 
+  /* ===== DELIVERY / DINE IN ===== */
+  setText(
+    "#deliveryInfo",
+    data.flags.deliveryAvailable ? "🚚 Delivery Available" : ""
+  );
+  setText(
+    "#dineInInfo",
+    data.flags.dineInAvailable ? "🍽️ Dine-In Available" : ""
+  );
+
   /* ===== PAYMENT ===== */
   if (data.payment.enabled) {
     setImage("#paymentQR", "./assets/payment.png");
   }
 
-  /* ===== DELIVERY / DINE IN ===== */
-  setText("#deliveryInfo", data.flags.deliveryAvailable ? "🚚 Delivery Available" : "");
-  setText("#dineInInfo", data.flags.dineInAvailable ? "🍽️ Dine-In Available" : "");
-
-  /* ===== PLATFORMS ===== */
+  /* ===== ONLINE PLATFORMS ===== */
   setLink("#zomatoBtn", data.onlinePlatforms.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
 
@@ -73,7 +89,7 @@ function renderBusiness(data) {
 }
 
 /* =========================
-   LOAD MENU
+   LOAD MENU DATA
 ========================= */
 function loadMenu() {
   fetch("./data/menu.json")
@@ -98,12 +114,11 @@ function renderMenu(categories) {
     if (vegItems.length) {
       section.appendChild(buildMenuBlock("Veg Items", vegItems, "veg"));
     }
-
     if (nonVegItems.length) {
       section.appendChild(buildMenuBlock("Non-Veg Items", nonVegItems, "nonveg"));
     }
 
-    /* clean visual divider */
+    // clean divider (no text)
     const divider = document.createElement("div");
     divider.className = "menu-section-divider";
     section.appendChild(divider);
@@ -116,9 +131,7 @@ function buildMenuBlock(title, items, type) {
   const block = document.createElement("div");
   block.className = `menu-block ${type}`;
 
-  block.innerHTML = `
-    <h3 class="${type}-title">${title}</h3>
-  `;
+  block.innerHTML = `<h3 class="${type}-title">${title}</h3>`;
 
   items.forEach(item => {
     const div = document.createElement("div");
@@ -155,21 +168,17 @@ function setText(sel, val) {
   const el = document.querySelector(sel);
   if (el && val !== undefined) el.textContent = val;
 }
-
 function setImage(sel, src) {
   const el = document.querySelector(sel);
   if (el) el.src = src;
 }
-
 function setLink(sel, href) {
   const el = document.querySelector(sel);
   if (el && href) el.href = href;
 }
-
 function cleanNumber(num) {
   return num ? num.replace(/\D/g, "") : "";
 }
-
 function renderBadges(badges) {
   const box = document.querySelector("#badgeContainer");
   box.innerHTML = "";
@@ -181,7 +190,7 @@ function renderBadges(badges) {
   });
 }
 
-/* ===== OPENING HOURS (AM/PM) ===== */
+/* ===== OPENING HOURS ===== */
 function renderOpeningHours(hours) {
   const box = document.querySelector("#timingBox");
   box.innerHTML = "";
@@ -210,7 +219,6 @@ function toAMPM(t) {
   h = h % 12 || 12;
   return `${h}:${m.toString().padStart(2, "0")} ${ap}`;
 }
-
 function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
