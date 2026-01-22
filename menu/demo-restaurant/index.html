@@ -68,7 +68,7 @@ a{text-decoration:none}
   margin-top:4px;
 }
 
-/* Veg / Non-veg badge */
+/* Badge */
 .badge{
   display:inline-block;
   margin-top:8px;
@@ -77,14 +77,8 @@ a{text-decoration:none}
   border-radius:999px;
   font-weight:600;
 }
-.veg-badge{
-  background:#e8f5e9;
-  color:#2e7d32;
-}
-.nonveg-badge{
-  background:#fdecea;
-  color:#c62828;
-}
+.veg-badge{background:#e8f5e9;color:#2e7d32}
+.nonveg-badge{background:#fdecea;color:#c62828}
 
 /* ======================================================
    CTA BUTTONS
@@ -111,21 +105,10 @@ a{text-decoration:none}
 }
 .action-btn img{width:20px}
 
-.call{
-  background:#1e7e34;
-  color:#fff;
-  animation:pulse 1.6s infinite;
-}
-.whatsapp{
-  background:#25d366;
-  color:#fff;
-  animation:pulse 1.6s infinite;
-}
-.location-btn{
-  background:#fff;
-  color:#1a73e8;
-  border:1px solid #d2d6dc;
-}
+.call{background:#1e7e34;color:#fff;animation:pulse 1.6s infinite}
+.whatsapp{background:#25d366;color:#fff;animation:pulse 1.6s infinite}
+.location-btn{background:#fff;color:#1a73e8;border:1px solid #d2d6dc}
+
 @keyframes pulse{
   0%{transform:scale(1)}
   50%{transform:scale(1.05)}
@@ -133,7 +116,7 @@ a{text-decoration:none}
 }
 
 /* ======================================================
-   CARD BASE
+   CARD
 ====================================================== */
 .card{
   background:#fff;
@@ -151,17 +134,7 @@ a{text-decoration:none}
 }
 
 /* ======================================================
-   OPENING HOURS
-====================================================== */
-.timing-row{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-  padding:4px 0;
-}
-
-/* ======================================================
-   TRUST BADGES
+   TRUST
 ====================================================== */
 #badgeContainer{
   display:flex;
@@ -172,6 +145,22 @@ a{text-decoration:none}
 #badgeContainer .badge{
   background:#f1f8e9;
   color:#33691e;
+}
+
+/* ======================================================
+   SERVICE (Delivery / Dine-in)
+====================================================== */
+.service-badges{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+}
+.service-badges div{
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  background:#f1f1f1;
 }
 
 /* ======================================================
@@ -196,24 +185,10 @@ a{text-decoration:none}
   margin-top:10px;
   padding-left:12px;
 }
-.menu-block.veg{
-  border-left:5px solid #2e7d32;
-}
-.menu-block.nonveg{
-  border-left:5px solid #c62828;
-}
-.veg-title{
-  color:#2e7d32;
-  font-size:17px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-.nonveg-title{
-  color:#c62828;
-  font-size:17px;
-  font-weight:700;
-  margin-bottom:6px;
-}
+.menu-block.veg{border-left:5px solid #2e7d32}
+.menu-block.nonveg{border-left:5px solid #c62828}
+.veg-title{color:#2e7d32;font-size:17px;font-weight:700;margin-bottom:6px}
+.nonveg-title{color:#c62828;font-size:17px;font-weight:700;margin-bottom:6px}
 .menu-item{
   padding:10px 0;
   border-bottom:1px dashed #eee;
@@ -235,8 +210,6 @@ a{text-decoration:none}
   color:#666;
   margin-left:20px;
 }
-
-/* Category divider */
 .menu-section-divider{
   height:2px;
   background:linear-gradient(to right,transparent,#bbb,transparent);
@@ -309,19 +282,13 @@ a{text-decoration:none}
 .social-section img{width:18px}
 
 /* ======================================================
-   DELIVERY / DINE-IN
+   OPENING HOURS (LAST)
 ====================================================== */
-.service-badges{
+.timing-row{
   display:flex;
-  gap:12px;
-  justify-content:center;
-}
-.service-badges div{
-  padding:8px 14px;
-  border-radius:999px;
+  justify-content:space-between;
   font-size:14px;
-  font-weight:600;
-  background:#f1f1f1;
+  padding:4px 0;
 }
 
 /* ======================================================
@@ -342,14 +309,14 @@ a{text-decoration:none}
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 <header class="header">
   <img id="restaurantLogo">
   <h1 id="restaurantName"></h1>
   <p id="categoryLine"></p>
 </header>
 
-<!-- ================= CTA ================= -->
+<!-- CTA -->
 <section class="quick-actions">
   <div class="action-row">
     <a id="callPrimary" class="action-btn call">
@@ -364,33 +331,35 @@ a{text-decoration:none}
   </a>
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 <section class="card">
   <div class="contact-line">📞 <span id="primaryPhoneText"></span>, <span id="secondaryPhoneText"></span></div>
   <div class="contact-line">✉️ <span id="emailText"></span></div>
   <div class="contact-line">📍 <span id="fullAddress"></span></div>
 </section>
 
-<!-- ================= OPENING HOURS ================= -->
-<section class="card">
-  <h3>⏰ Opening Hours</h3>
-  <div id="timingBox"></div>
-</section>
-
-<!-- ================= ABOUT / TRUST ================= -->
+<!-- TRUST -->
 <section class="card">
   <div id="badgeContainer"></div>
   <p id="aboutText"></p>
 </section>
 
-<!-- ================= MENU ================= -->
+<!-- DELIVERY / DINE-IN -->
+<section class="card">
+  <div class="service-badges">
+    <div id="deliveryInfo"></div>
+    <div id="dineInInfo"></div>
+  </div>
+</section>
+
+<!-- MENU -->
 <main class="card menu-wrapper">
   <h2>📋 Menu</h2>
   <div id="menuContainer"></div>
 </main>
 
-<!-- ================= PAYMENT ================= -->
-<section id="paymentSection" class="card payment-section">
+<!-- PAYMENT -->
+<section class="card payment-section">
   <h3>💳 Pay Here</h3>
   <img id="paymentQR">
   <div class="payment-apps">
@@ -398,10 +367,11 @@ a{text-decoration:none}
     <span><img src="/assets/icons/color-icons/phonepe.svg"> PhonePe</span>
     <span><img src="/assets/icons/color-icons/paytm.svg"> Paytm</span>
     <span><img src="/assets/icons/color-icons/bhim-app.svg"> BHIM</span>
+    <span>💵 Cash</span>
   </div>
 </section>
 
-<!-- ================= PLATFORMS ================= -->
+<!-- PLATFORMS -->
 <section class="card">
   <h3 style="text-align:center;margin-bottom:10px">We are available on</h3>
   <div class="platform-buttons">
@@ -410,7 +380,7 @@ a{text-decoration:none}
   </div>
 </section>
 
-<!-- ================= SOCIAL ================= -->
+<!-- SOCIAL -->
 <section class="card">
   <h3 style="text-align:center;margin-bottom:10px">Follow us on Social Media</h3>
   <div id="socialSection" class="social-section">
@@ -421,15 +391,12 @@ a{text-decoration:none}
   </div>
 </section>
 
-<!-- ================= SERVICE ================= -->
+<!-- OPENING HOURS (LAST) -->
 <section class="card">
-  <div class="service-badges">
-    <div id="deliveryInfo"></div>
-    <div id="dineInInfo"></div>
-  </div>
+  <h3>⏰ Opening Hours</h3>
+  <div id="timingBox"></div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   Powered by
   <a href="https://freelancerofncr.github.io/qr-menu.html" target="_blank">
