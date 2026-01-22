@@ -3,7 +3,7 @@
     "name": "Demo Restaurant & Cafe",
     "categoryLine": "Family Restaurant • North Indian • Chinese",
     "foodType": "veg",
-    "hasLogo": false
+    "hasLogo": true
   },
 
   "contact": {
@@ -65,7 +65,6 @@
   },
 
   "onlinePlatforms": {
-    "whatsapp": "https://wa.me/919876543210",
     "instagram": "https://instagram.com/demorestaurant",
     "facebook": "https://facebook.com/demorestaurant",
     "google": "https://maps.google.com/?q=sector+18+noida",
@@ -75,17 +74,7 @@
   },
 
   "payment": {
-    "hasPaymentQR": true,
-    "upiAccepted": true,
-    "onlinePaymentAccepted": true,
-    "cashAccepted": true,
-
-    "supportedUpiApps": {
-      "googlePay": true,
-      "phonePe": true,
-      "paytm": true,
-      "bhim": true
-    }
+    "enabled": true
   },
 
   "trustInfo": {
@@ -95,13 +84,11 @@
       "Fresh Ingredients",
       "Mast Khana"
     ],
-    "showQualityIcons": true,
-    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food."
+    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food with a focus on quality, taste, and customer satisfaction."
   },
 
   "flags": {
     "showLogo": true,
-    "showPaymentQR": true,
     "showSocialLinks": true,
     "deliveryAvailable": true,
     "dineInAvailable": true
