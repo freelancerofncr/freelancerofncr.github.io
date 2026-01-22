@@ -482,15 +482,19 @@ a{text-decoration:none;color:inherit}
 
     /* Auto scroll image */
     .preview-screen{
-      height:520px;
-      overflow:hidden;
-      position:relative;
-    }
+  max-height:520px;
+  overflow:hidden;
+  position:relative;
+}
+
 
     .preview-screen img{
-      width:100%;
-      animation:scrollPreview 18s ease-in-out infinite;
-    }
+  width:100%;
+  height:auto;
+  display:block;
+  animation:scrollPreview 18s ease-in-out infinite;
+}
+
 
     @keyframes scrollPreview{
       0%{transform:translateY(0)}
