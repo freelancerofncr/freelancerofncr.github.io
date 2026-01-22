@@ -44,17 +44,36 @@ function renderBusiness(data) {
   /* ===== CONTACT ===== */
   setLink("#callPrimary", "tel:" + data.contact.primaryPhone);
   setText("#primaryPhoneText", data.contact.primaryPhone);
-  setText("#secondaryPhoneText", data.contact.secondaryPhone);
-  setText("#emailText", data.contact.email);
+
+  /* Secondary phone (hide if empty) */
+  const secondaryRow = document.querySelector("#secondaryPhoneText")?.parentElement;
+  if (data.contact.secondaryPhone) {
+    document.querySelector("#secondaryPhoneText").textContent = data.contact.secondaryPhone;
+  } else if (secondaryRow) {
+    secondaryRow.style.display = "none";
+  }
 
   setLink(
     "#whatsappBtn",
     "https://wa.me/" + cleanNumber(data.contact.whatsappNumber)
   );
 
-  /* ===== LOCATION ===== */
-  setText("#fullAddress", data.location.fullAddress);
-  setLink("#mapBtn", data.location.googleMapLink);
+  /* Email (hide if empty) */
+  const emailRow = document.querySelector("#emailText")?.parentElement;
+  if (data.contact.email) {
+    document.querySelector("#emailText").textContent = data.contact.email;
+  } else if (emailRow) {
+    emailRow.style.display = "none";
+  }
+
+  /* ===== LOCATION (hide if empty) ===== */
+  const addressRow = document.querySelector("#fullAddress")?.parentElement;
+  if (data.location && data.location.fullAddress) {
+    document.querySelector("#fullAddress").textContent = data.location.fullAddress;
+    setLink("#mapBtn", data.location.googleMapLink);
+  } else if (addressRow) {
+    addressRow.style.display = "none";
+  }
 
   /* ===== OPENING HOURS ===== */
   renderOpeningHours(data.openingHours);
@@ -74,10 +93,9 @@ function renderBusiness(data) {
     setImage("#paymentQR", "./assets/payment.png");
   }
 
-  /* ===== ONLINE PLATFORMS ===== */
+  /* ===== ONLINE PLATFORMS (NO CHANGE) ===== */
   setLink("#zomatoBtn", data.onlinePlatforms.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
-
   setLink("#instaIcon", data.onlinePlatforms.instagram);
   setLink("#fbIcon", data.onlinePlatforms.facebook);
   setLink("#googleIcon", data.onlinePlatforms.google);
@@ -118,7 +136,6 @@ function renderMenu(categories) {
       section.appendChild(buildMenuBlock("Non-Veg Items", nonVegItems, "nonveg"));
     }
 
-    // clean divider (no text)
     const divider = document.createElement("div");
     divider.className = "menu-section-divider";
     section.appendChild(divider);
