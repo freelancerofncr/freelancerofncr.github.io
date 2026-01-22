@@ -22,7 +22,7 @@
     "monday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "15:00" }
+        { "open": "10:00", "close": "23:00" }
       ]
     },
     "tuesday": {
@@ -46,19 +46,19 @@
     "friday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:30" }
+        { "open": "10:00", "close": "23:00" }
       ]
     },
     "saturday": {
       "isClosed": false,
       "slots": [
-        { "open": "09:00", "close": "23:30" }
+        { "open": "10:00", "close": "23:00" }
       ]
     },
     "sunday": {
       "isClosed": false,
       "slots": [
-        { "open": "09:00", "close": "22:30" }
+        { "open": "10:00", "close": "23:00" }
       ]
     }
   },
@@ -78,12 +78,11 @@
 
   "trustInfo": {
     "badges": [
-      "Pure & Hygienic Food",
+      "Hygienic Food",
       "Family Friendly",
       "Fresh Ingredients",
-      "Mast Khana"
     ],
-    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food with a focus on quality, taste, and customer satisfaction."
+    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food."
   },
 
   "flags": {
