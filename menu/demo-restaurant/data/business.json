@@ -22,8 +22,7 @@
     "monday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "15:00" },
-        {  }
+        { "open": "10:00", "close": "15:00" }
       ]
     },
     "tuesday": {
