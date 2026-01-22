@@ -497,11 +497,12 @@ a{text-decoration:none;color:inherit}
 
 
     @keyframes scrollPreview{
-      0%{transform:translateY(0)}
-      45%{transform:translateY(-60%)}
-      55%{transform:translateY(-60%)}
-      100%{transform:translateY(0)}
-    }
+  0%{transform:translateY(0)}
+  40%{transform:translateY(calc(-100% + 520px))}
+  60%{transform:translateY(calc(-100% + 520px))}
+  100%{transform:translateY(0)}
+}
+
 
     .demo-btn{
       text-align:center;
