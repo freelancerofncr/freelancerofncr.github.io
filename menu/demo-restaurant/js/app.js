@@ -19,50 +19,46 @@ function renderBusiness(data) {
   setText("#restaurantName", data.identity.name);
   setText("#categoryLine", data.identity.categoryLine);
 
-  // Logo
   if (data.identity.hasLogo) {
     setImage("#restaurantLogo", "./assets/logo.png");
   }
 
   /* ===== VEG / NON-VEG BADGE ===== */
   const badge = document.createElement("div");
-  badge.className = "badge";
+  badge.className =
+    data.identity.foodType === "veg" ? "badge veg-badge" : "badge nonveg-badge";
   badge.textContent =
     data.identity.foodType === "veg"
-      ? "🟢 Pure Veg Restaurant"
-      : "🔴 Veg & Non-Veg Restaurant";
+      ? "Pure Veg Restaurant"
+      : "Veg & Non-Veg Restaurant";
   document.querySelector(".header").appendChild(badge);
 
-  /* ===== CONTACT (SHOW ALL IF PRESENT) ===== */
+  /* ===== CONTACT ===== */
   setLink("#callPrimary", "tel:" + data.contact.primaryPhone);
   setText("#primaryPhoneText", data.contact.primaryPhone);
 
-  if (data.contact.secondaryPhone) {
-    setText("#secondaryPhoneText", data.contact.secondaryPhone);
-  }
+  setLink("#whatsappBtn", "https://wa.me/" + cleanNumber(data.contact.whatsappNumber));
 
-  setLink(
-    "#whatsappBtn",
-    "https://wa.me/" + cleanNumber(data.contact.whatsappNumber)
-  );
-
-  if (data.contact.email) {
-    setText("#emailText", data.contact.email);
-  }
+  setText("#secondaryPhoneText", data.contact.secondaryPhone);
+  setText("#emailText", data.contact.email);
 
   /* ===== LOCATION ===== */
   setText("#fullAddress", data.location.fullAddress);
   setLink("#mapBtn", data.location.googleMapLink);
 
-  /* ===== OPENING HOURS (AM/PM + COLUMN LOOK) ===== */
+  /* ===== OPENING HOURS ===== */
   renderOpeningHours(data.openingHours);
 
-  /* ===== PAYMENT (SIMPLE LOGIC) ===== */
+  /* ===== PAYMENT ===== */
   if (data.payment.enabled) {
     setImage("#paymentQR", "./assets/payment.png");
   }
 
-  /* ===== ONLINE PLATFORMS ===== */
+  /* ===== DELIVERY / DINE IN ===== */
+  setText("#deliveryInfo", data.flags.deliveryAvailable ? "🚚 Delivery Available" : "");
+  setText("#dineInInfo", data.flags.dineInAvailable ? "🍽️ Dine-In Available" : "");
+
+  /* ===== PLATFORMS ===== */
   setLink("#zomatoBtn", data.onlinePlatforms.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
 
@@ -71,13 +67,13 @@ function renderBusiness(data) {
   setLink("#googleIcon", data.onlinePlatforms.google);
   setLink("#websiteIcon", data.onlinePlatforms.website);
 
-  /* ===== TRUST INFO ===== */
+  /* ===== TRUST ===== */
   renderBadges(data.trustInfo.badges);
   setText("#aboutText", data.trustInfo.about);
 }
 
 /* =========================
-   LOAD MENU DATA
+   LOAD MENU
 ========================= */
 function loadMenu() {
   fetch("./data/menu.json")
@@ -94,8 +90,7 @@ function renderMenu(categories) {
     const section = document.createElement("section");
     section.className = "menu-category";
 
-    // Category Title (bigger handled by CSS)
-    section.innerHTML = `<h2>${category.name}</h2>`;
+    section.innerHTML = `<h2 class="category-title">${category.name}</h2>`;
 
     const vegItems = category.items.filter(i => i.type === "veg");
     const nonVegItems = category.items.filter(i => i.type === "non-veg");
@@ -108,10 +103,9 @@ function renderMenu(categories) {
       section.appendChild(buildMenuBlock("Non-Veg Items", nonVegItems, "nonveg"));
     }
 
-    // Divider after category
+    /* clean visual divider */
     const divider = document.createElement("div");
-    divider.className = "menu-divider";
-    divider.textContent = `— End of ${category.name} —`;
+    divider.className = "menu-section-divider";
     section.appendChild(divider);
 
     container.appendChild(section);
@@ -122,32 +116,33 @@ function buildMenuBlock(title, items, type) {
   const block = document.createElement("div");
   block.className = `menu-block ${type}`;
 
-  block.innerHTML = `<h3>${title}</h3>`;
+  block.innerHTML = `
+    <h3 class="${type}-title">${title}</h3>
+  `;
 
   items.forEach(item => {
-    const itemDiv = document.createElement("div");
-    itemDiv.className = "menu-item";
+    const div = document.createElement("div");
+    div.className = "menu-item";
 
-    let pricesHTML = "";
+    let prices = "";
     item.prices.forEach(p => {
-      pricesHTML += `
+      prices += `
         <div class="price-line">
           <span>${p.label}</span>
           <span>₹${p.price}</span>
-        </div>
-      `;
+        </div>`;
     });
 
-    itemDiv.innerHTML = `
+    div.innerHTML = `
       <div class="item-header">
         <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
         <strong>${item.name}</strong>
       </div>
-      ${pricesHTML}
+      ${prices}
       ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
     `;
 
-    block.appendChild(itemDiv);
+    block.appendChild(div);
   });
 
   return block;
@@ -156,19 +151,18 @@ function buildMenuBlock(title, items, type) {
 /* =========================
    HELPERS
 ========================= */
-
-function setText(selector, value) {
-  const el = document.querySelector(selector);
-  if (el && value) el.textContent = value;
+function setText(sel, val) {
+  const el = document.querySelector(sel);
+  if (el && val !== undefined) el.textContent = val;
 }
 
-function setImage(selector, src) {
-  const el = document.querySelector(selector);
+function setImage(sel, src) {
+  const el = document.querySelector(sel);
   if (el) el.src = src;
 }
 
-function setLink(selector, href) {
-  const el = document.querySelector(selector);
+function setLink(sel, href) {
+  const el = document.querySelector(sel);
   if (el && href) el.href = href;
 }
 
@@ -180,14 +174,14 @@ function renderBadges(badges) {
   const box = document.querySelector("#badgeContainer");
   box.innerHTML = "";
   badges.forEach(b => {
-    const span = document.createElement("span");
-    span.className = "badge";
-    span.textContent = b;
-    box.appendChild(span);
+    const s = document.createElement("span");
+    s.className = "badge";
+    s.textContent = b;
+    box.appendChild(s);
   });
 }
 
-/* ===== OPENING HOURS (AM/PM + ALIGNMENT) ===== */
+/* ===== OPENING HOURS (AM/PM) ===== */
 function renderOpeningHours(hours) {
   const box = document.querySelector("#timingBox");
   box.innerHTML = "";
@@ -197,34 +191,26 @@ function renderOpeningHours(hours) {
     const row = document.createElement("div");
     row.className = "timing-row";
 
-    const dayCol = document.createElement("span");
-    dayCol.className = "timing-day";
-    dayCol.textContent = capitalize(day);
+    const left = document.createElement("span");
+    left.textContent = capitalize(day);
 
-    const timeCol = document.createElement("span");
-    timeCol.className = "timing-time";
+    const right = document.createElement("span");
+    right.textContent = d.isClosed
+      ? "Closed"
+      : d.slots.map(s => `${toAMPM(s.open)} – ${toAMPM(s.close)}`).join(" | ");
 
-    if (d.isClosed) {
-      timeCol.textContent = "Closed";
-    } else {
-      timeCol.textContent = d.slots
-        .map(s => `${toAMPM(s.open)} – ${toAMPM(s.close)}`)
-        .join(" | ");
-    }
-
-    row.appendChild(dayCol);
-    row.appendChild(timeCol);
+    row.append(left, right);
     box.appendChild(row);
   });
 }
 
-function toAMPM(time) {
-  let [h, m] = time.split(":").map(Number);
-  const ampm = h >= 12 ? "PM" : "AM";
+function toAMPM(t) {
+  let [h, m] = t.split(":").map(Number);
+  const ap = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
-  return `${h}:${m.toString().padStart(2, "0")} ${ampm}`;
+  return `${h}:${m.toString().padStart(2, "0")} ${ap}`;
 }
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+function capitalize(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
