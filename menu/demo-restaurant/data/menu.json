@@ -1,348 +1,280 @@
 {
   "categories": [
     {
-      "name": "Non Veg Starters",
+      "name": "Starters",
       "items": [
         {
-          "name": "Tandoori Chicken",
-          "type": "non-veg",
+          "name": "Paneer Tikka",
+          "type": "veg",
           "prices": [
-            { "label": "Full", "price": 360 },
-            { "label": "Half", "price": 200 }
+            { "label": "Half", "price": 180 },
+            { "label": "Full", "price": 320 }
           ]
         },
         {
-          "name": "Afghani Chicken",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 400 },
-            { "label": "Half", "price": 220 }
-          ]
-        },
-        {
-          "name": "Chicken Tangri",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 250 },
-            { "label": "Half", "price": 130 }
-          ]
-        },
-        {
-          "name": "Afghani Tangri",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 280 },
-            { "label": "Half", "price": 140 }
-          ]
-        },
-        {
-          "name": "Chicken Malai Tikka",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 230 },
-            { "label": "Half", "price": 120 }
-          ]
-        },
-        {
-          "name": "Chicken Hariyali Tikka",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 250 },
-            { "label": "Half", "price": 130 }
-          ]
-        },
-        {
-          "name": "Kalmi Kabab",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 250 },
-            { "label": "Half", "price": 130 }
-          ]
-        },
-        {
-          "name": "Mutton Kabab",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 300 },
-            { "label": "Half", "price": 160 }
-          ]
-        },
-        {
-          "name": "Mutton Seekh Kabab",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 250 },
-            { "label": "Half", "price": 130 }
-          ]
-        },
-        {
-          "name": "Chicken Seekh Kabab",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 230 },
-            { "label": "Half", "price": 120 }
-          ]
-        },
-        {
-          "name": "Fish Tikka",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Plate", "price": 280 }
-          ]
-        },
-        {
-          "name": "Fish Surmai / Sole",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Plate", "price": 330 }
-          ]
-        },
-        {
-          "name": "Fish Pomfret",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Plate", "price": 350 }
-          ]
-        },
-        {
-          "name": "Kali Mirch Tikka",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Plate", "price": 300 }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Non Veg Main Course",
-      "items": [
-        {
-          "name": "Butter Chicken (Boneless)",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 550 },
-            { "label": "Half", "price": 330 },
-            { "label": "Quarter", "price": 220 }
-          ]
-        },
-        {
-          "name": "Butter Chicken",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 500 },
-            { "label": "Half", "price": 300 },
-            { "label": "Quarter", "price": 200 }
-          ]
-        },
-        {
-          "name": "Kadai Chicken",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 500 },
-            { "label": "Half", "price": 300 },
-            { "label": "Quarter", "price": 200 }
-          ]
-        },
-        {
-          "name": "Chicken Lababdar",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 500 },
-            { "label": "Half", "price": 300 },
-            { "label": "Quarter", "price": 200 }
-          ]
-        },
-        {
-          "name": "Chicken Do Pyaza",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 500 },
-            { "label": "Half", "price": 300 },
-            { "label": "Quarter", "price": 200 }
-          ]
-        },
-        {
-          "name": "Chicken Masala",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 550 },
-            { "label": "Half", "price": 330 },
-            { "label": "Quarter", "price": 220 }
-          ]
-        },
-        {
-          "name": "Chicken Tikka Masala (Boneless)",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Full", "price": 330 },
-            { "label": "Half", "price": 200 }
-          ]
-        },
-        {
-          "name": "Mutton Rogan Josh",
-          "type": "non-veg",
-          "prices": [
-            { "label": "Plate", "price": 280 }
-          ]
-        },
-        {
-          "name": "Egg Curry",
-          "type": "non-veg",
+          "name": "Hara Bhara Kabab",
+          "type": "veg",
           "prices": [
             { "label": "Plate", "price": 160 }
           ]
         },
         {
-          "name": "Fish Curry",
+          "name": "Chicken Lollipop",
           "type": "non-veg",
           "prices": [
-            { "label": "Plate", "price": 300 }
+            { "label": "6 pcs", "price": 260 },
+            { "label": "12 pcs", "price": 480 }
+          ]
+        },
+        {
+          "name": "Chicken Tikka",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Half", "price": 280 },
+            { "label": "Full", "price": 520 }
           ]
         }
       ]
     },
+
     {
-      "name": "Pure Veg",
+      "name": "Indian Main Course",
       "items": [
-        {
-          "name": "Dal Makhani",
-          "type": "veg",
-          "prices": [
-            { "label": "Full", "price": 160 }
-          ]
-        },
-        {
-          "name": "Dal Tadka",
-          "type": "veg",
-          "prices": [
-            { "label": "Full", "price": 140 }
-          ]
-        },
         {
           "name": "Shahi Paneer",
           "type": "veg",
           "prices": [
-            { "label": "Full", "price": 199 }
-          ]
-        },
-        {
-          "name": "Kadai Paneer",
-          "type": "veg",
-          "prices": [
-            { "label": "Full", "price": 199 }
+            { "label": "Half", "price": 220 },
+            { "label": "Full", "price": 390 }
           ]
         },
         {
           "name": "Paneer Butter Masala",
           "type": "veg",
           "prices": [
-            { "label": "Full", "price": 199 }
+            { "label": "Half", "price": 230 },
+            { "label": "Full", "price": 410 }
           ]
         },
         {
-          "name": "Malai Kofta",
+          "name": "Dal Makhani",
           "type": "veg",
           "prices": [
-            { "label": "Full", "price": 199 }
+            { "label": "Plate", "price": 190 }
           ]
         },
         {
-          "name": "Jeera Aloo",
-          "type": "veg",
+          "name": "Butter Chicken",
+          "type": "non-veg",
           "prices": [
-            { "label": "Full", "price": 140 }
+            { "label": "Half", "price": 290 },
+            { "label": "Full", "price": 540 }
+          ]
+        },
+        {
+          "name": "Chicken Curry",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Half", "price": 270 },
+            { "label": "Full", "price": 500 }
           ]
         }
       ]
     },
+
+    {
+      "name": "Chinese",
+      "items": [
+        {
+          "name": "Veg Hakka Noodles",
+          "type": "veg",
+          "prices": [
+            { "label": "Half", "price": 140 },
+            { "label": "Full", "price": 240 }
+          ]
+        },
+        {
+          "name": "Veg Manchurian",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 170 }
+          ]
+        },
+        {
+          "name": "Chicken Fried Rice",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Half", "price": 170 },
+            { "label": "Full", "price": 290 }
+          ]
+        },
+        {
+          "name": "Chilli Chicken",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Plate", "price": 260 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Fast Food",
+      "items": [
+        {
+          "name": "Veg Burger",
+          "type": "veg",
+          "prices": [
+            { "label": "Single", "price": 90 }
+          ]
+        },
+        {
+          "name": "Cheese Pizza",
+          "type": "veg",
+          "prices": [
+            { "label": "7 inch", "price": 180 },
+            { "label": "10 inch", "price": 320 }
+          ]
+        },
+        {
+          "name": "Chicken Burger",
+          "type": "non-veg",
+          "prices": [
+            { "label": "Single", "price": 140 }
+          ]
+        },
+        {
+          "name": "Chicken Pizza",
+          "type": "non-veg",
+          "prices": [
+            { "label": "7 inch", "price": 260 },
+            { "label": "10 inch", "price": 420 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "French Fries",
+          "type": "veg",
+          "prices": [
+            { "label": "Regular", "price": 80 },
+            { "label": "Large", "price": 140 }
+          ]
+        },
+        {
+          "name": "Samosa",
+          "type": "veg",
+          "prices": [
+            { "label": "Per Piece", "price": 20 }
+          ]
+        },
+        {
+          "name": "Chicken Nuggets",
+          "type": "non-veg",
+          "prices": [
+            { "label": "6 pcs", "price": 180 }
+          ]
+        }
+      ]
+    },
+
     {
       "name": "Breads",
       "items": [
         {
-          "name": "Tandoori Roti / Butter Roti",
+          "name": "Tandoori Roti",
           "type": "veg",
           "prices": [
-            { "label": "Piece", "price": 15 }
+            { "label": "Single", "price": 20 }
           ]
         },
         {
           "name": "Butter Naan",
           "type": "veg",
           "prices": [
-            { "label": "Piece", "price": 40 }
-          ]
-        },
-        {
-          "name": "Plain Naan",
-          "type": "veg",
-          "prices": [
-            { "label": "Piece", "price": 30 }
-          ]
-        },
-        {
-          "name": "Garlic Naan",
-          "type": "veg",
-          "prices": [
-            { "label": "Piece", "price": 50 }
-          ]
-        },
-        {
-          "name": "Roomali Roti",
-          "type": "veg",
-          "prices": [
-            { "label": "Piece", "price": 10 }
+            { "label": "Single", "price": 40 }
           ]
         }
       ]
     },
+
     {
-      "name": "Rice",
+      "name": "Rice & Biryani",
       "items": [
         {
-          "name": "Jeera Rice",
+          "name": "Plain Rice",
           "type": "veg",
           "prices": [
-            { "label": "Full", "price": 120 }
+            { "label": "Plate", "price": 120 }
           ]
         },
         {
           "name": "Veg Biryani",
           "type": "veg",
           "prices": [
-            { "label": "Full", "price": 160 }
+            { "label": "Half", "price": 160 },
+            { "label": "Full", "price": 280 }
           ]
         },
         {
           "name": "Chicken Biryani",
           "type": "non-veg",
           "prices": [
-            { "label": "Full", "price": 200 }
+            { "label": "Half", "price": 190 },
+            { "label": "Full", "price": 340 }
           ]
         }
       ]
     },
+
     {
-      "name": "Raita",
+      "name": "Beverages",
       "items": [
         {
-          "name": "Boondi Raita",
+          "name": "Cold Drink",
           "type": "veg",
           "prices": [
-            { "label": "Half", "price": 100 }
+            { "label": "250 ml", "price": 30 },
+            { "label": "500 ml", "price": 50 }
           ]
         },
         {
-          "name": "Cucumber Raita",
+          "name": "Fresh Lime Soda",
           "type": "veg",
           "prices": [
-            { "label": "Half", "price": 100 }
+            { "label": "Glass", "price": 50 }
           ]
         },
         {
-          "name": "Mix Veg Raita",
+          "name": "Masala Tea",
           "type": "veg",
           "prices": [
-            { "label": "Half", "price": 100 }
+            { "label": "Cup", "price": 25 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Gulab Jamun",
+          "type": "veg",
+          "prices": [
+            { "label": "2 pcs", "price": 60 }
+          ]
+        },
+        {
+          "name": "Ice Cream",
+          "type": "veg",
+          "prices": [
+            { "label": "Single Scoop", "price": 50 },
+            { "label": "Double Scoop", "price": 90 }
           ]
         }
       ]
