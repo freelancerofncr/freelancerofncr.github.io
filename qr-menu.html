@@ -442,7 +442,6 @@ a{text-decoration:none;color:inherit}
     .live-demo{
       padding:100px 0;
       position:relative;
-      overflow:visible; /* ✅ allow full page height */
     }
     .live-demo h2{
       text-align:center;
@@ -462,7 +461,7 @@ a{text-decoration:none;color:inherit}
       max-width:360px;
       margin:0 auto;
       border-radius:26px;
-      overflow:visible; /* ✅ IMPORTANT: was blocking screenshot */
+      overflow:hidden;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
       box-shadow:0 30px 60px rgba(0,0,0,.35);
@@ -483,17 +482,19 @@ a{text-decoration:none;color:inherit}
 
     /* Auto scroll image */
     .preview-screen{
-      max-height:none;     /* ✅ allow full height */
-      overflow:visible;    /* ✅ allow full scroll */
-      position:relative;
-    }
+  max-height:520px;
+  overflow:hidden;
+  position:relative;
+}
+
 
     .preview-screen img{
-      width:100%;
-      height:auto;
-      display:block;
-      animation:scrollPreview 18s ease-in-out infinite;
-    }
+  width:100%;
+  height:auto;
+  display:block;
+  animation:scrollPreview 18s ease-in-out infinite;
+}
+
 
     @keyframes scrollPreview{
       0%{transform:translateY(0)}
@@ -596,6 +597,7 @@ a{text-decoration:none;color:inherit}
 
     <div class="preview-box">
       <div class="preview-screen">
+        <!-- REPLACE THIS IMAGE LATER WITH LONG SCREENSHOT -->
         <img src="assets/images/longss.jpg" alt="QR Menu Demo">
       </div>
     </div>
@@ -605,8 +607,6 @@ a{text-decoration:none;color:inherit}
         View Live Demo
       </a>
     </div>
-  </div>
-</section>
 
     <!-- GOOGLE REVIEWS -->
     <div class="reviews">
@@ -882,4 +882,3 @@ a{text-decoration:none;color:inherit}
 
   </div>
 </section>
-
