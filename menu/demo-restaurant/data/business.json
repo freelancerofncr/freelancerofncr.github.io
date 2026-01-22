@@ -2,8 +2,8 @@
   "identity": {
     "name": "Demo Restaurant & Cafe",
     "categoryLine": "Family Restaurant • North Indian • Chinese",
-    "foodType": "mixed",
-    "hasLogo": true
+    "foodType": "veg",
+    "hasLogo": false
   },
 
   "contact": {
@@ -92,10 +92,11 @@
     "badges": [
       "Pure & Hygienic Food",
       "Family Friendly",
-      "Fresh Ingredients"
+      "Fresh Ingredients",
+      "Mast Khana"
     ],
     "showQualityIcons": true,
-    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food. We focus on quality ingredients, quick service, and customer satisfaction."
+    "about": "Demo Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared North Indian and Chinese food."
   },
 
   "flags": {
