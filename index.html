@@ -750,6 +750,7 @@ img{display:block;max-width:100%}
       color:#fff;
       padding:40px 0 20px;
     }
+
     .footer-inner{
       display:flex;
       flex-wrap:wrap;
@@ -757,22 +758,44 @@ img{display:block;max-width:100%}
       justify-content:space-between;
       align-items:center;
     }
+
     .footer-about p{
       font-size:14px;
       opacity:.85;
       margin-bottom:6px;
     }
+
+    .footer-links{
+      font-size:14px;
+    }
+    .footer-links a{
+      color:#fff;
+      opacity:.85;
+      text-decoration:none;
+      margin:0 6px;
+    }
+    .footer-links a:hover{
+      opacity:1;
+      text-decoration:underline;
+    }
+
     .footer-payments{
       display:flex;
       gap:14px;
       align-items:center;
+      flex-wrap:wrap;
+      justify-content:center;
     }
     .footer-payments img{
       height:28px;
+      background:#fff;
+      padding:4px 6px;
+      border-radius:6px;
     }
+
     .footer-bottom{
       text-align:center;
-      margin-top:20px;
+      margin-top:24px;
       font-size:13px;
       opacity:.6;
     }
@@ -785,35 +808,41 @@ img{display:block;max-width:100%}
     }
   </style>
 
- <div class="container footer-inner">
-  <div class="footer-about">
-    <p>
-      Freelancer of NCR provides affordable digital solutions
-      for Indian businesses.
-    </p>
-    <p>
-      Digital QR Menu • Google Business Profile • Business Websites
-    </p>
-  </div>
+  <div class="container footer-inner">
 
-  <div class="footer-links">
-    <a href="terms-and-conditions.html">Terms & Conditions</a>
-    <span> | </span>
-    <a href="privacy-policy.html">Privacy Policy</a>
-  </div>
-</div>
+    <!-- ABOUT -->
+    <div class="footer-about">
+      <p>
+        Freelancer of NCR provides affordable digital solutions
+        for Indian businesses.
+      </p>
+      <p>
+        Digital QR Menu • Google Business Profile • Business Websites
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-links">
+      <a href="terms-and-conditions.html">Terms & Conditions</a>
+      <span>|</span>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+    <!-- PAYMENTS -->
     <div class="footer-payments">
       <img src="assets/icons/color-icons/upi.svg" alt="UPI">
       <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay">
       <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe">
       <img src="assets/icons/color-icons/paytm.svg" alt="Paytm">
     </div>
+
   </div>
 
   <div class="footer-bottom">
     © Freelancer of NCR. All rights reserved.
   </div>
 </footer>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -862,6 +891,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
   });
 });
 </script>
+
 
 
 
