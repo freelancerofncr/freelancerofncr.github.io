@@ -2,7 +2,7 @@
   "identity": {
     "name": "Demo Restaurant & Cafe",
     "categoryLine": "Family Restaurant • North Indian • Chinese",
-    "foodType": "veg",
+    "foodType": "mixed",
     "hasLogo": true
   },
 
@@ -23,7 +23,7 @@
       "isClosed": false,
       "slots": [
         { "open": "10:00", "close": "15:00" },
-        { "open": "18:00", "close": "23:00" }
+        {  }
       ]
     },
     "tuesday": {
