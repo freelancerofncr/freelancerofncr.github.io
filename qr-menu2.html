@@ -276,5 +276,217 @@ p{
     </div>
   </div>
 </section>
+
+<!-- ================= WHY QR MENU ================= -->
+<section class="why-qr">
+  <style>
+    .why-qr{
+      padding:100px 0;
+    }
+
+    .why-qr h2{
+      text-align:center;
+      margin-bottom:14px;
+    }
+
+    .why-qr .sub{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 60px;
+      color:var(--text-muted);
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:28px;
+    }
+
+    .why-card{
+      background:var(--bg-card);
+      border-radius:var(--radius-lg);
+      padding:32px 26px;
+      border:1px solid var(--border-soft);
+      position:relative;
+      transition:.35s ease;
+    }
+
+    .why-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:linear-gradient(135deg,rgba(31,191,117,.25),transparent 60%);
+      opacity:0;
+      transition:.35s ease;
+    }
+
+    .why-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .why-card:hover::before{
+      opacity:1;
+    }
+
+    .why-card h3{
+      font-size:18px;
+      margin-bottom:10px;
+    }
+
+    .why-card p{
+      font-size:14px;
+      color:var(--text-muted);
+    }
+
+    /* ================= HOW IT WORKS ================= */
+    .how-it-works{
+      margin-top:120px;
+    }
+
+    .how-it-works h2{
+      text-align:center;
+      margin-bottom:14px;
+    }
+
+    .steps{
+      max-width:900px;
+      margin:50px auto 0;
+      display:grid;
+      gap:22px;
+    }
+
+    .step{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      background:var(--bg-card);
+      border-radius:var(--radius-md);
+      padding:22px;
+      border:1px solid var(--border-soft);
+    }
+
+    .step-number{
+      min-width:46px;
+      height:46px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+    }
+
+    .step h4{
+      font-size:16px;
+      margin-bottom:6px;
+    }
+
+    .step p{
+      font-size:14px;
+      color:var(--text-muted);
+    }
+  </style>
+
+  <div class="container">
+    <h2>Why Digital QR Menu Is Now Necessary</h2>
+
+    <p class="sub">
+      Paper menus are outdated, unhygienic and costly.
+      Digital QR Menu is no longer an option — it is a necessity
+      for restaurants, cafes and food businesses.
+    </p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Hygiene & Safety</h3>
+        <p>
+          Paper menus get dirty and touched by many customers.
+          QR menu removes this problem completely.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <h3>No Reprinting Cost</h3>
+        <p>
+          Change prices or items anytime without printing menus again.
+          One time setup, lifetime use.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <h3>Mobile Friendly</h3>
+        <p>
+          Customers scan and view menu instantly on their phone.
+          No app needed.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <h3>Professional Image</h3>
+        <p>
+          Digital menu gives your restaurant a modern,
+          professional and trusted look.
+        </p>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="how-it-works">
+      <h2>How Digital QR Menu Works</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h4>Send Your Old Menu</h4>
+            <p>
+              Share your menu photo, PDF or text on WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h4>We Create Digital QR Menu</h4>
+            <p>
+              We convert your menu into a clean, mobile-friendly
+              digital QR menu page.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h4>You Get QR Code</h4>
+            <p>
+              QR code is shared in image & PDF format
+              for easy printing.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h4>Customers Scan & View Menu</h4>
+            <p>
+              Customers scan QR and instantly see your menu
+              on their mobile phone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+   
+   
 </body>
 </html>
