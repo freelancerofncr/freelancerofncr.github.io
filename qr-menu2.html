@@ -266,7 +266,7 @@ p{
     </div>
 
     <div class="hero-cta">
-      <a href="https://rzp.io/XXXX" target="_self" class="btn-primary">
+      <a href="https://rzp.io/rzp/K7l7D8je" target="_self" class="btn-primary">
         Order Digital QR Menu
       </a>
 
@@ -486,7 +486,348 @@ p{
   </div>
 </section>
 
-   
+   <!-- ================= LIVE DEMO + REVIEWS ================= -->
+<section class="live-demo">
+  <style>
+    .live-demo{
+      padding:110px 0;
+    }
+
+    .live-demo h2{
+      text-align:center;
+      margin-bottom:14px;
+    }
+
+    .live-demo .sub{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 60px;
+      color:var(--text-muted);
+    }
+
+    /* PHONE PREVIEW */
+    .phone-wrap{
+      max-width:360px;
+      margin:0 auto;
+      background:#000;
+      border-radius:34px;
+      padding:14px;
+      box-shadow:0 40px 80px rgba(0,0,0,.6);
+      position:relative;
+    }
+
+    .phone-notch{
+      width:120px;
+      height:18px;
+      background:#000;
+      border-radius:0 0 14px 14px;
+      position:absolute;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:5;
+    }
+
+    .screen{
+      border-radius:26px;
+      overflow:hidden;
+      max-height:520px;
+    }
+
+    .screen img{
+      width:100%;
+      display:block;
+      animation:demoScroll 18s ease-in-out infinite;
+    }
+
+    @keyframes demoScroll{
+      0%{transform:translateY(0)}
+      40%{transform:translateY(calc(-100% + 520px))}
+      60%{transform:translateY(calc(-100% + 520px))}
+      100%{transform:translateY(0)}
+    }
+
+    .demo-btn{
+      text-align:center;
+      margin-top:30px;
+    }
+
+    /* REVIEWS */
+    .reviews{
+      margin-top:140px;
+    }
+
+    .reviews-header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-bottom:30px;
+    }
+
+    .reviews-header img{
+      width:26px;
+    }
+
+    .review-row{
+      display:flex;
+      gap:22px;
+      overflow-x:auto;
+      padding-bottom:10px;
+    }
+
+    .review-card{
+      min-width:260px;
+      background:var(--bg-card);
+      border-radius:var(--radius-md);
+      padding:22px;
+      border:1px solid var(--border-soft);
+    }
+
+    .stars{
+      color:#f5b301;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .review-card p{
+      font-size:14px;
+      color:var(--text-muted);
+      margin-bottom:10px;
+    }
+
+    .review-author{
+      font-size:13px;
+      color:#9aa0a6;
+    }
+  </style>
+
+  <div class="container">
+    <h2>See How Your Digital QR Menu Looks</h2>
+    <p class="sub">
+      This is how your menu will appear on customer’s mobile phone
+      after scanning the QR code.
+    </p>
+
+    <div class="phone-wrap">
+      <div class="phone-notch"></div>
+      <div class="screen">
+        <!-- replace image with your long screenshot -->
+        <img src="assets/images/longss.jpg" alt="QR Menu Demo">
+      </div>
+    </div>
+
+    <div class="demo-btn">
+      <a href="https://freelancerofncr.github.io/menu/brijwasi-restaurant/"
+         target="_blank" class="btn-primary">
+        View Live Demo
+      </a>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews">
+      <div class="reviews-header">
+        <img src="assets/icons/color-icons/google-color.svg" alt="Google">
+        <h3>Customer Reviews</h3>
+      </div>
+
+      <div class="review-row">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Very good QR menu service. Our customers find it easy to scan
+            and view menu.
+          </p>
+          <div class="review-author">Restaurant Owner – Delhi</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Best digital QR menu at this price. One time payment
+            is very helpful.
+          </p>
+          <div class="review-author">Cafe Owner – Gurugram</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Setup was fast and support is good. Menu looks professional.
+          </p>
+          <div class="review-author">Food Outlet – Noida</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Hygienic solution and affordable price. Customers like
+            scanning QR menu.
+          </p>
+          <div class="review-author">Restaurant – Faridabad</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+   <!-- ================= FINAL OFFER ================= -->
+<section class="final-offer">
+  <style>
+    .final-offer{
+      padding:120px 0 90px;
+      text-align:center;
+    }
+
+    .final-offer h2{
+      margin-bottom:14px;
+    }
+
+    .final-offer .sub{
+      max-width:760px;
+      margin:0 auto 46px;
+      color:var(--text-muted);
+    }
+
+    .final-box{
+      max-width:480px;
+      margin:0 auto;
+      background:var(--bg-card);
+      border-radius:var(--radius-lg);
+      padding:38px 28px;
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow-soft);
+      position:relative;
+    }
+
+    .final-box::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:inherit;
+      background:linear-gradient(120deg,transparent,rgba(31,191,117,.35),transparent);
+    }
+
+    .final-old{
+      font-size:16px;
+      color:#ff9f9f;
+      text-decoration:line-through;
+      margin-bottom:6px;
+    }
+
+    .final-price{
+      font-size:52px;
+      font-weight:900;
+      color:var(--primary);
+      margin-bottom:8px;
+    }
+
+    .final-note{
+      font-size:14px;
+      color:#a7ffcf;
+      margin-bottom:22px;
+    }
+
+    .final-features{
+      list-style:none;
+      margin:28px 0;
+      padding:0;
+    }
+
+    .final-features li{
+      font-size:14px;
+      color:#e4e7ec;
+      margin-bottom:10px;
+    }
+
+    .pay-note{
+      font-size:13px;
+      color:var(--text-muted);
+      margin-top:14px;
+    }
+
+    /* PAYMENT TRUST */
+    .payment-trust{
+      margin-top:90px;
+    }
+
+    .payment-trust h3{
+      font-size:24px;
+      margin-bottom:18px;
+    }
+
+    .payment-logos{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .payment-logos img{
+      height:34px;
+    }
+
+    /* FOOTER */
+    .qr-footer{
+      margin-top:120px;
+      padding-top:36px;
+      border-top:1px solid var(--border-soft);
+      font-size:13px;
+      color:#9aa0a6;
+    }
+  </style>
+
+  <div class="container">
+    <h2>Get Your Digital QR Menu Today</h2>
+
+    <p class="sub">
+      Stop using paper menus and upgrade to a modern,
+      hygienic and professional Digital QR Menu for your restaurant.
+    </p>
+
+    <div class="final-box">
+      <div class="final-old">Market Price: ₹2500</div>
+      <div class="final-price">₹499</div>
+      <div class="final-note">
+        One Time Payment • Lifetime Free • No Monthly Charges
+      </div>
+
+      <ul class="final-features">
+        <li>✔ Digital QR Menu Website</li>
+        <li>✔ Call & WhatsApp Buttons</li>
+        <li>✔ Google Maps Location</li>
+        <li>✔ QR Code Image & PDF</li>
+        <li>✔ Lifetime Free Usage</li>
+      </ul>
+
+      <a href="https://rzp.io/rzp/K7l7D8je" target="_self" class="btn-primary">
+        Pay ₹499 & Order Now
+      </a>
+
+      <div class="pay-note">
+        After payment, please send payment screenshot on WhatsApp for faster activation.
+      </div>
+    </div>
+
+    <!-- PAYMENT TRUST -->
+    <div class="payment-trust">
+      <h3>Secure Payments Accepted</h3>
+      <div class="payment-logos">
+        <img src="assets/icons/color-icons/upi.svg" alt="UPI">
+        <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay">
+        <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe">
+        <img src="assets/icons/color-icons/paytm.svg" alt="Paytm">
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="qr-footer">
+      <p>© Freelancer of NCR • MSME / Udyam Registered Digital Agency</p>
+      <p>Digital QR Menu | Google Business Profile | Business Websites</p>
+    </div>
+  </div>
+</section>
    
 </body>
 </html>
