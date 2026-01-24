@@ -1,64 +1,64 @@
 {
   "identity": {
-    "name": "Brijwasi Restaurant",
+    "name": "Shri Ram Foods",
     "categoryLine": "Indian • Fast Food • Chinese",
     "foodType": "veg",
     "hasLogo": true
   },
 
   "contact": {
-    "primaryPhone": "+91 9876543210",
-    "secondaryPhone": "+91 9123456780",
-    "whatsappNumber": "+91 9876543210",
+    "primaryPhone": "+91 9650125767",
+    "secondaryPhone": "+91 8287284633",
+    "whatsappNumber": "+91 9650125767",
     "email": ""
   },
 
   "location": {
-    "fullAddress": "Main Market, Sector 62, Noida, Uttar Pradesh, India",
-    "googleMapLink": "https://maps.google.com/?q=sector+62+noida"
+    "fullAddress": "Hazipur, Sector 104, Noida, Uttar Pradesh, 201304",
+    "googleMapLink": "https://maps.app.goo.gl/BowH4PVrft3vGv5f6"
   },
 
   "openingHours": {
     "monday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     },
     "tuesday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     },
     "wednesday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     },
     "thursday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     },
     "friday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     },
     "saturday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     },
     "sunday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "08:00", "close": "23:00" }
       ]
     }
   },
@@ -66,10 +66,10 @@
   "onlinePlatforms": {
     "instagram": "https://instagram.com/",
     "facebook": "https://facebook.com/",
-    "google": "https://maps.google.com/",
-    "zomato": "https://www.zomato.com/",
-    "swiggy": "https://www.swiggy.com/",
-    "website": "https://demorestaurant.com"
+    "google": "https://maps.app.goo.gl/BowH4PVrft3vGv5f6",
+    "zomato": "https://www.zomato.com/ncr/shriram-foods-hajipur-noida/order",
+    "swiggy": "https://www.swiggy.com/city/noida-1/shri-ram-foods-sector-104-sector-50-rest448761",
+    "website": "https://freelancerofncr.github.io/menu/shriramfoods/"
   },
 
   "payment": {
@@ -82,7 +82,7 @@
       "Family Friendly",
       "Freshly Made"
     ],
-    "about": "Brijwasi Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared Indian and Chinese food."
+    "about": "Shri Ram Foods is a family-friendly dining place serving hygienic and freshly prepared Indian and Chinese food."
   },
 
   "flags": {
