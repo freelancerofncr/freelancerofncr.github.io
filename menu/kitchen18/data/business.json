@@ -1,21 +1,21 @@
 {
   "identity": {
-    "name": "Brijwasi Restaurant",
+    "name": "Kitchen 18",
     "categoryLine": "Indian • Fast Food • Chinese",
     "foodType": "veg",
     "hasLogo": true
   },
 
   "contact": {
-    "primaryPhone": "+91 9876543210",
-    "secondaryPhone": "+91 9123456780",
-    "whatsappNumber": "+91 9876543210",
+    "primaryPhone": "+91 9780807780",
+    "secondaryPhone": "+91 9780808980",
+    "whatsappNumber": "+91 9780807780",
     "email": ""
   },
 
   "location": {
-    "fullAddress": "Main Market, Sector 62, Noida, Uttar Pradesh, India",
-    "googleMapLink": "https://maps.google.com/?q=sector+62+noida"
+    "fullAddress": "P479, Maqbool Road, Amritsar, Punjab",
+    "googleMapLink": "https://maps.app.goo.gl/izNwidxEpGAZabPu5"
   },
 
   "openingHours": {
@@ -64,12 +64,12 @@
   },
 
   "onlinePlatforms": {
-    "instagram": "https://instagram.com/",
-    "facebook": "https://facebook.com/",
-    "google": "https://maps.google.com/",
-    "zomato": "https://www.zomato.com/",
-    "swiggy": "https://www.swiggy.com/",
-    "website": "https://demorestaurant.com"
+    "instagram": "https://www.instagram.com/kitchen1_8",
+    "facebook": "https://www.facebook.com/profile.php?id=61576989607230",
+    "google": "https://maps.app.goo.gl/izNwidxEpGAZabPu5",
+    "zomato": "https://www.zomato.com/amritsar/kitchen-18-ranjit-avenue/",
+    "swiggy": "https://www.swiggy.com/city/amritsar/kitchen-18-sadar-civil-lines-rest1254544",
+    "website": "https://freelancerofncr.github.io/menu/kitchen18/"
   },
 
   "payment": {
@@ -82,7 +82,7 @@
       "Family Friendly",
       "Freshly Made"
     ],
-    "about": "Brijwasi Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared Indian and Chinese food."
+    "about": "Kitchen18 Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared Indian and Chinese food."
   },
 
   "flags": {
