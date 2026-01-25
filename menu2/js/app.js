@@ -164,13 +164,27 @@ function buildMenuBlock(title, items, type) {
     });
 
     div.innerHTML = `
-      <div class="item-header">
-        <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
-        <strong>${item.name}</strong>
-      </div>
-      ${prices}
-      ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
-    `;
+  <div class="item-header">
+    <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
+    <strong>${item.name}</strong>
+  </div>
+
+  ${prices}
+
+  <div class="cart-actions">
+    <button class="qty-btn" onclick="addToCart('${item.name}', '${item.prices[0].label}', ${item.prices[0].price})">
+      <img src="/assets/icons/black-icons/plus.svg">
+    </button>
+
+    <span class="qty-count" id="qty-${item.name.replace(/\s/g,'')}">0</span>
+
+    <button class="qty-btn" onclick="removeFromCart('${item.name}')">
+      <img src="/assets/icons/black-icons/minus.svg">
+    </button>
+  </div>
+
+  ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
+`;
 
     block.appendChild(div);
   });
@@ -238,4 +252,57 @@ function toAMPM(t) {
 }
 function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/* =========================
+   CART LOGIC (BASIC)
+========================= */
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, label, price){
+  const existing = cart.find(i => i.name === name);
+
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({ name, label, price, qty: 1 });
+  }
+
+  saveCart();
+}
+
+function removeFromCart(name){
+  const index = cart.findIndex(i => i.name === name);
+  if(index > -1){
+    cart[index].qty -= 1;
+    if(cart[index].qty <= 0){
+      cart.splice(index, 1);
+    }
+    saveCart();
+  }
+}
+
+function saveCart(){
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartUI(){
+  let totalQty = 0;
+  let totalPrice = 0;
+
+  cart.forEach(i => {
+    totalQty += i.qty;
+    totalPrice += i.qty * i.price;
+  });
+
+  document.getElementById("cartItemCount").textContent = totalQty;
+  document.getElementById("cartTotal").textContent = totalPrice;
+
+  if(totalQty > 0){
+    document.getElementById("cartBar").classList.remove("hidden");
+  } else {
+    document.getElementById("cartBar").classList.add("hidden");
+  }
 }
