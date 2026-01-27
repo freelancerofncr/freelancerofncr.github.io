@@ -396,11 +396,11 @@ function setRestaurantWhatsapp(number){
   restaurantWhatsapp = number;
 }
 
-function placeOrderOnWhatsapp(){
-  if(!restaurantOpen){
-    alert("Restaurant is currently closed");
-    return;
-  }
+// function placeOrderOnWhatsapp(){
+ // if(!restaurantOpen){
+  //  alert("Restaurant is currently closed");
+  //  return;
+//  }
 
   if(cart.length === 0){
     alert("Cart is empty");
@@ -543,6 +543,7 @@ function decreaseFromModal(index){
 ========================= */
 
 function openCheckout(){
+  <button class="checkout-btn" onclick="openCheckout()">Proceed</button>
   closeCartModal();
   document.getElementById("checkoutModal").classList.remove("hidden");
 
