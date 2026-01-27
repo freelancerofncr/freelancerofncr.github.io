@@ -299,15 +299,26 @@ function updateCartUI(){
   let totalQty = 0;
   let totalPrice = 0;
 
+  // reset all qty labels to 0
+  document.querySelectorAll(".qty-count").forEach(el=>{
+    el.textContent = "0";
+  });
+
   cart.forEach(i => {
     totalQty += i.qty;
     totalPrice += i.qty * i.price;
+
+    const id = "qty-" + i.name.replace(/\s/g,'');
+    const qtyEl = document.getElementById(id);
+    if(qtyEl){
+      qtyEl.textContent = i.qty;
+    }
   });
 
   document.getElementById("cartItemCount").textContent = totalQty;
   document.getElementById("cartTotal").textContent = totalPrice;
 
-  if(totalQty > 0){
+  if(totalQty > 0 && restaurantOpen){
     document.getElementById("cartBar").classList.remove("hidden");
   } else {
     document.getElementById("cartBar").classList.add("hidden");
@@ -408,3 +419,5 @@ function placeOrderOnWhatsapp(){
 
   window.open(url, "_blank");
 }
+
+updateCartUI();
