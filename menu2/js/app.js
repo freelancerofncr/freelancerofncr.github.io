@@ -14,7 +14,8 @@ function loadBusiness() {
 }
 
 function renderBusiness(data) {
-  
+
+  setRestaurantWhatsapp(cleanNumber(data.contact.whatsappNumber));
   checkRestaurantOpen(data.openingHours);
   updateOrderAvailability();
   /* ===== BASIC INFO ===== */
@@ -361,4 +362,49 @@ function updateOrderAvailability(){
   } else {
     if(msg) msg.remove();
   }
+}
+
+/* =========================
+   WHATSAPP ORDER
+========================= */
+
+let restaurantWhatsapp = "";
+
+function setRestaurantWhatsapp(number){
+  restaurantWhatsapp = number;
+}
+
+function placeOrderOnWhatsapp(){
+  if(!restaurantOpen){
+    alert("Restaurant is currently closed");
+    return;
+  }
+
+  if(cart.length === 0){
+    alert("Cart is empty");
+    return;
+  }
+
+  let message = "Hello 👋\nNew Order Received 🧾\n\n";
+
+  cart.forEach((item, index) => {
+    message += `${index+1}. ${item.name} (${item.label}) × ${item.qty} – ₹${item.qty * item.price}\n`;
+  });
+
+  let total = cart.reduce((sum, i) => sum + i.qty * i.price, 0);
+
+  message += `\n------------------\n`;
+  message += `Total: ₹${total}\n`;
+  message += `------------------\n\n`;
+  message += `Customer Name:\n`;
+  message += `Delivery / Pickup:\n`;
+  message += `Address:\n`;
+
+  const url =
+    "https://wa.me/" +
+    restaurantWhatsapp +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
 }
