@@ -466,3 +466,64 @@ function addSelectedToCart(itemName){
 
   saveCart();
 }
+
+/* =========================
+   CART MODAL
+========================= */
+
+function openCartModal(){
+  if(cart.length === 0) return;
+
+  renderCartModal();
+  document.getElementById("cartModal").classList.remove("hidden");
+}
+
+function closeCartModal(){
+  document.getElementById("cartModal").classList.add("hidden");
+}
+
+function renderCartModal(){
+  const box = document.getElementById("cartItems");
+  box.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((item, idx) => {
+    total += item.qty * item.price;
+
+    const row = document.createElement("div");
+    row.className = "cart-item-row";
+
+    row.innerHTML = `
+      <div>
+        <strong>${item.name}</strong><br>
+        <small>${item.label} – ₹${item.price}</small>
+      </div>
+
+      <div class="cart-item-actions">
+        <img src="/assets/icons/black-icons/minus.svg" onclick="decreaseFromModal(${idx})">
+        <strong>${item.qty}</strong>
+        <img src="/assets/icons/black-icons/plus.svg" onclick="increaseFromModal(${idx})">
+      </div>
+    `;
+
+    box.appendChild(row);
+  });
+
+  document.getElementById("modalCartTotal").textContent = total;
+}
+
+function increaseFromModal(index){
+  cart[index].qty += 1;
+  saveCart();
+  renderCartModal();
+}
+
+function decreaseFromModal(index){
+  cart[index].qty -= 1;
+  if(cart[index].qty <= 0){
+    cart.splice(index,1);
+  }
+  saveCart();
+  renderCartModal();
+}
