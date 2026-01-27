@@ -150,72 +150,47 @@ function renderMenu(categories) {
 function buildMenuBlock(title, items, type) {
   const block = document.createElement("div");
   block.className = `menu-block ${type}`;
-
   block.innerHTML = `<h3 class="${type}-title">${title}</h3>`;
 
   items.forEach(item => {
-    const priceOptions = item.prices.map((p, idx) => {
-  const radioId = `price-${item.name.replace(/\s/g,'')}-${idx}`;
-  return `
-    <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
-      <input type="radio" 
-             name="price-${item.name.replace(/\s/g,'')}" 
-             value="${p.price}" 
-             data-label="${p.label}"
-             ${idx === 0 ? "checked" : ""}>
-      ${p.label} – ₹${p.price}
-    </label>
-  `;
-}).join("");
+    const div = document.createElement("div");
+    div.className = "menu-item";
 
-div.innerHTML = `
-  <div class="item-header">
-    <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
-    <strong>${item.name}</strong>
-  </div>
-
-  <div class="price-options">
-    ${priceOptions}
-  </div>
-
-  <div class="cart-actions">
-    <button class="qty-btn" onclick="addSelectedToCart('${item.name}')">
-      <img src="/assets/icons/black-icons/plus.svg">
-    </button>
-
-    <span class="qty-count" id="qty-${item.name.replace(/\s/g,'')}">0</span>
-
-    <button class="qty-btn" onclick="removeFromCart('${item.name}')">
-      <img src="/assets/icons/black-icons/minus.svg">
-    </button>
-  </div>
-
-  ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
-`;
-    });
+    const priceOptions = item.prices.map((p, idx) => `
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
+        <input type="radio"
+               name="price-${item.name.replace(/\s/g,'')}"
+               value="${p.price}"
+               data-label="${p.label}"
+               ${idx === 0 ? "checked" : ""}>
+        ${p.label} – ₹${p.price}
+      </label>
+    `).join("");
 
     div.innerHTML = `
-  <div class="item-header">
-    <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
-    <strong>${item.name}</strong>
-  </div>
+      <div class="item-header">
+        <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
+        <strong>${item.name}</strong>
+      </div>
 
-  ${prices}
+      <div class="price-options">
+        ${priceOptions}
+      </div>
 
-  <div class="cart-actions">
-    <button class="qty-btn" onclick="addToCart('${item.name}', '${item.prices[0].label}', ${item.prices[0].price})">
-      <img src="/assets/icons/black-icons/plus.svg">
-    </button>
+      <div class="cart-actions">
+        <button class="qty-btn" onclick="addSelectedToCart('${item.name}')">
+          <img src="/assets/icons/black-icons/plus.svg">
+        </button>
 
-    <span class="qty-count" id="qty-${item.name.replace(/\s/g,'')}">0</span>
+        <span class="qty-count" id="qty-${item.name.replace(/\s/g,'')}">0</span>
 
-    <button class="qty-btn" onclick="removeFromCart('${item.name}')">
-      <img src="/assets/icons/black-icons/minus.svg">
-    </button>
-  </div>
+        <button class="qty-btn" onclick="removeFromCart('${item.name}')">
+          <img src="/assets/icons/black-icons/minus.svg">
+        </button>
+      </div>
 
-  ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
-`;
+      ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
+    `;
 
     block.appendChild(div);
   });
