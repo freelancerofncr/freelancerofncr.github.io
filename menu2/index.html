@@ -496,7 +496,51 @@ a{text-decoration:none}
 .price-options label{
   cursor:pointer;
 }
-   
+
+   #addressBox.hidden{
+  display: none !important;
+}
+
+   /* ===============================
+   PRICE RADIO – PILL STYLE
+================================ */
+
+.price-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:8px 0 4px 20px;
+}
+
+.price-options label{
+  position:relative;
+  cursor:pointer;
+}
+
+/* hide default radio */
+.price-options input[type="radio"]{
+  display:none;
+}
+
+/* pill look */
+.price-options label span{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:20px;
+  border:1.5px solid #ccc;
+  font-size:13px;
+  font-weight:600;
+  background:#f7f7f7;
+  transition:.2s;
+}
+
+/* checked state */
+.price-options input[type="radio"]:checked + span{
+  background:#25d366;
+  color:#fff;
+  border-color:#25d366;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
 </style>
   
 <script src="./js/app.js"></script>
