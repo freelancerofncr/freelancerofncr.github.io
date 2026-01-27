@@ -14,7 +14,9 @@ function loadBusiness() {
 }
 
 function renderBusiness(data) {
-
+  
+  checkRestaurantOpen(data.openingHours);
+  updateOrderAvailability();
   /* ===== BASIC INFO ===== */
   setText("#restaurantName", data.identity.name);
   setText("#categoryLine", data.identity.categoryLine);
@@ -261,6 +263,10 @@ function capitalize(s) {
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(name, label, price){
+  if(!restaurantOpen){
+  alert("Restaurant is currently closed");
+  return;
+}
   const existing = cart.find(i => i.name === name);
 
   if(existing){
@@ -304,5 +310,55 @@ function updateCartUI(){
     document.getElementById("cartBar").classList.remove("hidden");
   } else {
     document.getElementById("cartBar").classList.add("hidden");
+  }
+}
+
+/* =========================
+   RESTAURANT OPEN CHECK
+========================= */
+
+let restaurantOpen = true;
+
+function checkRestaurantOpen(hours){
+  const now = new Date();
+  const day = now.toLocaleDateString("en-US",{ weekday:"long" }).toLowerCase();
+  const currentMinutes = now.getHours()*60 + now.getMinutes();
+
+  const today = hours[day];
+  if(!today || today.isClosed){
+    restaurantOpen = false;
+    return;
+  }
+
+  restaurantOpen = today.slots.some(slot=>{
+    const [oh,om] = slot.open.split(":").map(Number);
+    const [ch,cm] = slot.close.split(":").map(Number);
+    const openM = oh*60+om;
+    const closeM = ch*60+cm;
+    return currentMinutes >= openM && currentMinutes <= closeM;
+  });
+}
+
+function updateOrderAvailability(){
+  const cartBar = document.getElementById("cartBar");
+  const msgId = "closedMsg";
+
+  let msg = document.getElementById(msgId);
+  if(!restaurantOpen){
+    if(!msg){
+      msg = document.createElement("div");
+      msg.id = msgId;
+      msg.style.background = "#fdecea";
+      msg.style.color = "#c62828";
+      msg.style.padding = "12px";
+      msg.style.margin = "12px";
+      msg.style.borderRadius = "12px";
+      msg.style.fontWeight = "700";
+      msg.textContent = "🚫 Restaurant Closed – Please visit during opening hours";
+      document.body.insertBefore(msg, document.body.firstChild);
+    }
+    cartBar.classList.add("hidden");
+  } else {
+    if(msg) msg.remove();
   }
 }
