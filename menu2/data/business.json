@@ -28,13 +28,13 @@
     "tuesday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "10:00", "close": "23:59" }
       ]
     },
     "wednesday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "00:01", "close": "23:00" }
       ]
     },
     "thursday": {
