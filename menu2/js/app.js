@@ -480,13 +480,16 @@ function addSelectedToCart(itemName){
 ========================= */
 
 function openCartModal(){
+  
   if(cart.length === 0) return;
 
   renderCartModal();
+  document.body.style.overflow = "hidden";
   document.getElementById("cartModal").classList.remove("hidden");
 }
 
 function closeCartModal(){
+  document.body.style.overflow = "";
   document.getElementById("cartModal").classList.add("hidden");
 }
 
