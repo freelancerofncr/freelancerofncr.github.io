@@ -527,3 +527,83 @@ function decreaseFromModal(index){
   saveCart();
   renderCartModal();
 }
+/* =========================
+   CHECKOUT LOGIC
+========================= */
+
+function openCheckout(){
+  closeCartModal();
+  document.getElementById("checkoutModal").classList.remove("hidden");
+
+  // toggle address on load
+  toggleAddress();
+}
+
+function closeCheckout(){
+  document.getElementById("checkoutModal").classList.add("hidden");
+}
+
+document.addEventListener("change", function(e){
+  if(e.target.name === "orderType"){
+    toggleAddress();
+  }
+});
+
+function toggleAddress(){
+  const type = document.querySelector('input[name="orderType"]:checked').value;
+  const box = document.getElementById("addressBox");
+  if(type === "Delivery"){
+    box.classList.remove("hidden");
+  } else {
+    box.classList.add("hidden");
+  }
+}
+
+function finalPlaceOrder(){
+  if(!restaurantOpen){
+    alert("Restaurant is currently closed");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  if(!name){
+    alert("Please enter customer name");
+    return;
+  }
+
+  const type = document.querySelector('input[name="orderType"]:checked').value;
+  let address = "";
+
+  if(type === "Delivery"){
+    address = document.getElementById("deliveryAddress").value.trim();
+    if(!address){
+      alert("Please enter delivery address");
+      return;
+    }
+  }
+
+  // -------- CLEAN WHATSAPP MESSAGE (NO EMOJI) --------
+  let message = "New Order\n\n";
+
+  cart.forEach((item, index) => {
+    message += `${index+1}. ${item.name} (${item.label}) x ${item.qty} = Rs ${item.qty * item.price}\n`;
+  });
+
+  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+
+  message += `\nTotal: Rs ${total}\n`;
+  message += `\nCustomer: ${name}\n`;
+  message += `Order Type: ${type}\n`;
+
+  if(type === "Delivery"){
+    message += `Address: ${address}\n`;
+  }
+
+  const url =
+    "https://wa.me/" +
+    restaurantWhatsapp +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
