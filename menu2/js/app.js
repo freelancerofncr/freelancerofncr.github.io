@@ -163,11 +163,11 @@ function buildMenuBlock(title, items, type) {
       ? item.prices.map((p, idx) => `
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
             <input type="radio"
-                   name="price-${item.name.replace(/\s/g,'')}"
-                   value="${p.price}"
-                   data-label="${p.label}"
-                   ${idx === 0 ? "checked" : ""}>
-            ${p.label} – ₹${p.price}
+name="price-${item.name.replace(/\s/g,'')}"
+value="${p.price}"
+data-label="${p.label}"
+${idx === 0 ? "checked" : ""}>
+<span>${p.label} – ₹${p.price}</span>
           </label>
         `).join("")
       : "";
