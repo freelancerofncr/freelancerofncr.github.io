@@ -156,16 +156,21 @@ function buildMenuBlock(title, items, type) {
     const div = document.createElement("div");
     div.className = "menu-item";
 
-    const priceOptions = item.prices.map((p, idx) => `
-      <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
-        <input type="radio"
-               name="price-${item.name.replace(/\s/g,'')}"
-               value="${p.price}"
-               data-label="${p.label}"
-               ${idx === 0 ? "checked" : ""}>
-        ${p.label} – ₹${p.price}
-      </label>
-    `).join("");
+    const hasMultiplePrices = item.prices.length > 1;
+
+    // RADIO OPTIONS (sirf jab 2+ prices ho)
+    const priceOptions = hasMultiplePrices
+      ? item.prices.map((p, idx) => `
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
+            <input type="radio"
+                   name="price-${item.name.replace(/\s/g,'')}"
+                   value="${p.price}"
+                   data-label="${p.label}"
+                   ${idx === 0 ? "checked" : ""}>
+            ${p.label} – ₹${p.price}
+          </label>
+        `).join("")
+      : "";
 
     div.innerHTML = `
       <div class="item-header">
@@ -173,12 +178,15 @@ function buildMenuBlock(title, items, type) {
         <strong>${item.name}</strong>
       </div>
 
-      <div class="price-options">
-        ${priceOptions}
-      </div>
+      ${hasMultiplePrices ? `<div class="price-options">${priceOptions}</div>` : ""}
 
       <div class="cart-actions">
-        <button class="qty-btn" onclick="addSelectedToCart('${item.name}')">
+        <button class="qty-btn"
+          onclick="${
+            hasMultiplePrices
+              ? `addSelectedToCart('${item.name}')`
+              : `addSinglePriceToCart('${item.name}', '${item.prices[0].label}', ${item.prices[0].price})`
+          }">
           <img src="/assets/icons/black-icons/plus.svg">
         </button>
 
@@ -606,4 +614,20 @@ function finalPlaceOrder(){
     encodeURIComponent(message);
 
   window.open(url, "_blank");
+}
+function addSinglePriceToCart(name, label, price){
+  if(!restaurantOpen){
+    alert("Restaurant is currently closed");
+    return;
+  }
+
+  const existing = cart.find(i => i.name === name && i.label === label);
+
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({ name, label, price, qty: 1 });
+  }
+
+  saveCart();
 }
