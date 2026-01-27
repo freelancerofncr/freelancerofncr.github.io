@@ -518,6 +518,7 @@ function openCheckout(){
 
 function closeCheckout(){
   document.getElementById("checkoutModal").classList.add("hidden");
+  document.body.style.overflow = "";
 }
 
 document.addEventListener("change", function(e){
@@ -527,9 +528,15 @@ document.addEventListener("change", function(e){
 });
 
 function toggleAddress(){
-  const type = document.querySelector('input[name="orderType"]:checked').value;
+  const checked = document.querySelector('input[name="orderType"]:checked');
   const box = document.getElementById("addressBox");
-  if(type === "Delivery"){
+
+  if(!checked){
+    box.classList.add("hidden");
+    return;
+  }
+
+  if(checked.value === "Delivery"){
     box.classList.remove("hidden");
   } else {
     box.classList.add("hidden");
