@@ -571,5 +571,62 @@ a{text-decoration:none}
   color:#fff;
 }
 </style>
+   <!-- ===============================
+     CHECKOUT MODAL
+================================ -->
+<div id="checkoutModal" class="cart-modal hidden">
+  <div class="cart-modal-box">
+    <h3>Checkout</h3>
+
+    <div class="checkout-field">
+      <label>Customer Name *</label>
+      <input id="customerName" type="text" placeholder="Enter your name">
+    </div>
+
+    <div class="checkout-field">
+      <label>Order Type *</label>
+      <div class="order-type">
+        <label>
+          <input type="radio" name="orderType" value="Dine-In" checked>
+          Dine-In
+        </label>
+        <label>
+          <input type="radio" name="orderType" value="Delivery">
+          Delivery
+        </label>
+      </div>
+    </div>
+
+    <div class="checkout-field hidden" id="addressBox">
+      <label>Delivery Address *</label>
+      <textarea id="deliveryAddress" rows="3" placeholder="Enter delivery address"></textarea>
+    </div>
+
+    <div class="cart-modal-actions">
+      <button onclick="closeCheckout()">Back</button>
+      <button class="checkout-btn" onclick="finalPlaceOrder()">Place Order</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.checkout-field{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.checkout-field input,
+.checkout-field textarea{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+.order-type{
+  display:flex;
+  gap:14px;
+}
+</style>
 </body>
 </html>
