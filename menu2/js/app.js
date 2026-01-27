@@ -511,8 +511,23 @@ function decreaseFromModal(index){
 
 function openCheckout(){
   closeCartModal();
-  document.getElementById("checkoutModal").classList.remove("hidden");
+
+  const checkout = document.getElementById("checkoutModal");
+  const addressBox = document.getElementById("addressBox");
+
+  checkout.classList.remove("hidden");
   document.body.style.overflow = "hidden";
+
+  // 🔒 HARD RESET (IMPORTANT)
+  addressBox.classList.add("hidden");
+
+  // force Dine-In checked (safety)
+  const dineInRadio = document.querySelector('input[name="orderType"][value="Dine-In"]');
+  if(dineInRadio){
+    dineInRadio.checked = true;
+  }
+
+  // now apply logic
   toggleAddress();
 }
 
@@ -528,18 +543,14 @@ document.addEventListener("change", function(e){
 });
 
 function toggleAddress(){
-  const checked = document.querySelector('input[name="orderType"]:checked');
   const box = document.getElementById("addressBox");
+  const selected = document.querySelector('input[name="orderType"]:checked');
 
-  if(!checked){
-    box.classList.add("hidden");
-    return;
-  }
+  // default safe state
+  box.classList.add("hidden");
 
-  if(checked.value === "Delivery"){
+  if(selected && selected.value === "Delivery"){
     box.classList.remove("hidden");
-  } else {
-    box.classList.add("hidden");
   }
 }
 
