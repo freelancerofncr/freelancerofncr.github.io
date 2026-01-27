@@ -154,16 +154,44 @@ function buildMenuBlock(title, items, type) {
   block.innerHTML = `<h3 class="${type}-title">${title}</h3>`;
 
   items.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "menu-item";
+    const priceOptions = item.prices.map((p, idx) => {
+  const radioId = `price-${item.name.replace(/\s/g,'')}-${idx}`;
+  return `
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
+      <input type="radio" 
+             name="price-${item.name.replace(/\s/g,'')}" 
+             value="${p.price}" 
+             data-label="${p.label}"
+             ${idx === 0 ? "checked" : ""}>
+      ${p.label} – ₹${p.price}
+    </label>
+  `;
+}).join("");
 
-    let prices = "";
-    item.prices.forEach(p => {
-      prices += `
-        <div class="price-line">
-          <span>${p.label}</span>
-          <span>₹${p.price}</span>
-        </div>`;
+div.innerHTML = `
+  <div class="item-header">
+    <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
+    <strong>${item.name}</strong>
+  </div>
+
+  <div class="price-options">
+    ${priceOptions}
+  </div>
+
+  <div class="cart-actions">
+    <button class="qty-btn" onclick="addSelectedToCart('${item.name}')">
+      <img src="/assets/icons/black-icons/plus.svg">
+    </button>
+
+    <span class="qty-count" id="qty-${item.name.replace(/\s/g,'')}">0</span>
+
+    <button class="qty-btn" onclick="removeFromCart('${item.name}')">
+      <img src="/assets/icons/black-icons/minus.svg">
+    </button>
+  </div>
+
+  ${item.description ? `<div class="item-desc">${item.description}</div>` : ""}
+`;
     });
 
     div.innerHTML = `
@@ -421,3 +449,45 @@ function placeOrderOnWhatsapp(){
 }
 
 updateCartUI();
+function addSelectedToCart(itemName){
+  if(!restaurantOpen){
+    alert("Restaurant is currently closed");
+    return;
+  }
+
+  const radios = document.querySelectorAll(
+    `input[name="price-${itemName.replace(/\s/g,'')}"]`
+  );
+
+  let selectedPrice = null;
+  let selectedLabel = "";
+
+  radios.forEach(r=>{
+    if(r.checked){
+      selectedPrice = Number(r.value);
+      selectedLabel = r.dataset.label;
+    }
+  });
+
+  if(selectedPrice === null){
+    alert("Please select a price option");
+    return;
+  }
+
+  const existing = cart.find(
+    i => i.name === itemName && i.label === selectedLabel
+  );
+
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({
+      name: itemName,
+      label: selectedLabel,
+      price: selectedPrice,
+      qty: 1
+    });
+  }
+
+  saveCart();
+}
