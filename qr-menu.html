@@ -7,40 +7,42 @@
 <link rel="icon" href="assets/images/favicon.png">
 
 <style>
-/* ================= RESET & VARIABLES ================= */
+/* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box}
 
+/* ================= VARIABLES ================= */
 :root{
   --bg:#f5f7fb;
   --card:#ffffff;
-  --border:#e6e9ef;
+  --border:#e5e7eb;
   --text:#0f172a;
   --muted:#475569;
   --green:#16a34a;
-  --blue:#2563eb;
   --orange:#f97316;
-  --shadow:0 18px 40px rgba(2,6,23,.12);
+  --blue:#2563eb;
+  --shadow:0 20px 45px rgba(15,23,42,.15);
 }
 
+/* ================= BODY ================= */
 body{
   font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at 20% 30%, rgba(31,191,117,.18), transparent 45%),
-    radial-gradient(circle at 80% 20%, rgba(0,224,255,.18), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(22,163,74,.18), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(37,99,235,.15), transparent 40%),
     var(--bg);
   color:var(--text);
   line-height:1.6;
   overflow-x:hidden;
 }
 
-a{text-decoration:none;color:inherit}
 .container{max-width:1100px;margin:auto;padding:0 18px}
 section{padding:90px 0}
+a{text-decoration:none;color:inherit}
 
 /* ================= HEADER ================= */
 .header{
   position:sticky;top:0;z-index:100;
-  background:rgba(11,15,20,.85);
+  background:rgba(15,23,42,.85);
   backdrop-filter:blur(10px);
 }
 .header-inner{
@@ -49,171 +51,155 @@ section{padding:90px 0}
   align-items:center;
   justify-content:space-between;
 }
-.header img{height:36px}
-.header a{font-size:14px;color:#cbd5e1}
+.header img{height:34px}
+.header a{color:#cbd5e1;font-size:14px}
 
-/* ================= BUTTON ================= */
+/* ================= HERO ================= */
+.hero{
+  text-align:center;
+  padding:80px 0 100px;
+}
+.hero h1{
+  font-size:38px;
+  font-weight:900;
+  line-height:1.3;
+}
+.hero h1 span{
+  color:var(--green);
+}
+.hero p{
+  max-width:760px;
+  margin:18px auto 0;
+  color:var(--muted);
+  font-size:17px;
+}
+
+/* ================= PRICE ANIMATION ================= */
+.price-box{
+  background:var(--card);
+  max-width:460px;
+  margin:36px auto;
+  padding:34px;
+  border-radius:26px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.old-price{
+  color:#dc2626;
+  font-weight:700;
+  position:relative;
+  display:inline-block;
+  animation:cutPrice 3s infinite;
+}
+.old-price::after{
+  content:'';
+  position:absolute;
+  left:-10%;
+  top:50%;
+  width:120%;
+  height:3px;
+  background:#dc2626;
+  transform:rotate(-5deg);
+}
+
+@keyframes cutPrice{
+  0%{opacity:1}
+  40%{opacity:1}
+  60%{opacity:0}
+  100%{opacity:0}
+}
+
+.new-price{
+  font-size:46px;
+  font-weight:900;
+  color:var(--green);
+  margin-top:10px;
+  animation:pulsePrice 2.5s infinite;
+}
+
+@keyframes pulsePrice{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+.price-note{
+  font-size:14px;
+  color:#334155;
+  margin-top:6px;
+}
+
+#countdown{
+  margin-top:10px;
+  font-weight:800;
+  color:#dc2626;
+}
+
+/* ================= CTA BUTTON ================= */
 .btn-primary{
   display:inline-block;
-  padding:16px 42px;
+  padding:18px 48px;
   border-radius:999px;
   background:linear-gradient(135deg,var(--orange),#ffb703);
   color:#fff;
-  font-weight:800;
-  box-shadow:0 12px 30px rgba(249,115,22,.45);
-  transition:.25s;
-}
-.btn-primary:hover{transform:translateY(-2px)}
-
-/* ================= HERO ================= */
-.hero{text-align:center;padding:70px 0 80px}
-.hero h1{font-size:36px;font-weight:800;margin-bottom:18px}
-.hero h1 span{color:var(--green)}
-.hero p{max-width:720px;margin:auto;color:var(--muted)}
-
-.price-box{
-  background:var(--card);
-  max-width:440px;
-  margin:36px auto 28px;
-  padding:32px;
-  border-radius:22px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-}
-.old-price{color:#ef4444;text-decoration:line-through}
-.new-price{font-size:44px;font-weight:900;color:var(--green)}
-.price-note{font-size:14px;color:#334155}
-#countdown{margin-top:10px;font-weight:700;color:#dc2626}
-
-/* ================= WHY ================= */
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
-}
-.why-card{
-  background:var(--card);
-  padding:28px;
-  border-radius:22px;
-  border:1px solid var(--border);
-}
-
-/* ================= STEPS ================= */
-.steps{max-width:900px;margin:50px auto 0;display:grid;gap:22px}
-.step{
-  display:flex;
-  gap:18px;
-  background:var(--card);
-  padding:22px;
-  border-radius:16px;
-  border:1px solid var(--border);
-}
-.step-number{
-  width:46px;height:46px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#16a34a,#22c55e);
-  color:#fff;
   font-weight:900;
+  letter-spacing:.3px;
+  box-shadow:0 18px 40px rgba(249,115,22,.55);
+  position:relative;
+  overflow:hidden;
+}
+
+.btn-primary::after{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:100%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
+  animation:shine 2.8s infinite;
+}
+
+@keyframes shine{
+  0%{left:-100%}
+  60%{left:120%}
+  100%{left:120%}
+}
+
+/* ================= FLOATING BUTTONS ================= */
+.floating{
+  position:fixed;
+  right:16px;
+  bottom:110px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999;
+}
+.float-btn{
+  width:54px;height:54px;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  animation:floatPulse 2s infinite;
+}
+.float-btn img{width:26px}
+.whatsapp{background:#25d366}
+.call{background:#2563eb}
+
+@keyframes floatPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
 }
 
-/* ================= MOBILE DEMO ================= */
-.phone-wrap{
-  max-width:280px;
-  margin:50px auto 0;
-  background:#000;
-  padding:14px;
-  border-radius:50px;
-  position:relative;
-  box-shadow:0 30px 70px rgba(0,0,0,.55);
-}
-.phone-notch{
-  width:120px;height:16px;
-  background:#000;
-  position:absolute;
-  top:0;left:50%;
-  transform:translateX(-50%);
-  border-radius:0 0 16px 16px;
-}
-.screen{
-  height:660px;
-  border-radius:40px;
-  overflow:hidden;
-}
-.screen img{
-  width:100%;
-  animation:demoScroll 26s linear infinite;
-}
-@keyframes demoScroll{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(calc(-100% + 660px))}
-  100%{transform:translateY(0)}
-}
-
-/* ================= REVIEWS ================= */
-.review-row{
-  display:flex;
-  gap:22px;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-}
-.review-row::-webkit-scrollbar{display:none}
-.review-card{
-  min-width:260px;
-  background:var(--card);
-  padding:22px;
-  border-radius:16px;
-  border:1px solid var(--border);
-}
-.stars{color:#f5b301}
-
-/* ================= FINAL OFFER ================= */
-.final-box{
-  max-width:480px;
-  margin:auto;
-  background:var(--card);
-  padding:40px;
-  border-radius:22px;
-  border:1px solid var(--border);
-  box-shadow:0 25px 60px rgba(15,23,42,.15);
-}
-.final-features{list-style:none;margin:24px 0}
-.final-features li{margin-bottom:8px;color:#334155}
-
-/* ================= FOOTER ================= */
-.qr-footer{
-  margin-top:90px;
-  padding-top:36px;
-  border-top:1px solid var(--border);
-  font-size:12px;
-  color:#94a3b8;
-  text-align:center;
-}
-
-/* ================= STICKY BUY ================= */
-.sticky-buy{
-  position:fixed;
-  bottom:0;left:0;width:100%;
-  background:#0f172a;
-  padding:12px;
-  display:none;
-  z-index:999;
-}
-.sticky-buy a{
-  display:block;
-  text-align:center;
-  background:linear-gradient(135deg,var(--orange),#ffb703);
-  color:#fff;
-  padding:14px;
-  font-weight:800;
-  border-radius:10px;
-}
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  h1{font-size:30px}
-  h2{font-size:26px}
-  .sticky-buy{display:block}
+  .hero h1{font-size:30px}
+  section{padding:70px 0}
 }
 </style>
 </head>
@@ -227,141 +213,697 @@ section{padding:90px 0}
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <h1>Stop Losing Customers Because of Paper Menus<br>
-      <span>Upgrade to Digital QR Menu Today</span>
+    <h1>
+      Paper Menu Se Customers Bore Ho Rahe Hai 😐<br>
+      <span>Digital QR Menu Se Wo Khush Ho Jate Hai 😄</span>
     </h1>
 
     <p>
-      Customers today expect fast, hygienic and mobile-friendly menus.
-      Paper menus look outdated and unprofessional.
-      Upgrade once and use forever.
+      Aaj ke customers fast, hygienic aur mobile-friendly menu expect karte hai.
+      Gande paper menu se impression girta hai.
+      <strong>Ek baar upgrade kijiye — saalon tak use kijiye.</strong>
     </p>
 
     <div class="price-box">
-      <div class="old-price">Old Price: ₹2500</div>
+      <div class="old-price">Purana Price ₹2500</div>
       <div class="new-price">₹999 / Year</div>
-      <div class="price-note">One Year Validity • No Monthly Charges • No Hidden Cost</div>
+      <div class="price-note">
+        No Monthly Charges • No App • One Time Setup
+      </div>
       <div id="countdown">Offer ends in 10:00</div>
     </div>
 
     <a href="https://rzp.io/rzp/K7l7D8je" class="btn-primary">
-      Order Digital QR Menu
+      Abhi Order Kare 🚀
     </a>
   </div>
 </section>
-
-<!-- WHY -->
-<section>
+<!-- ================= WHY DIGITAL QR MENU ================= -->
+<section class="why-section">
   <div class="container">
-    <h2 style="text-align:center">Why Digital QR Menu Is Now Necessary</h2>
-    <p class="sub" style="text-align:center;max-width:760px;margin:14px auto 60px">
-      Paper menus are outdated, unhygienic and costly.
-      Digital QR Menu is no longer an option — it is a necessity
-      for restaurants, cafes and food businesses.
+    <h2 class="section-title">
+      Aaj Paper Menu Kyun Nuksaan Kar Raha Hai?
+    </h2>
+    <p class="section-sub">
+      Customers ka decision sirf khane par nahi,
+      <strong>experience par hota hai</strong>.
     </p>
 
     <div class="why-grid">
-      <!-- SAME CARDS AS BEFORE -->
-      <div class="why-card"><h3>Hygiene & Safety</h3><p>Paper menus get dirty and touched by many customers. QR menu removes this problem completely.</p></div>
-      <div class="why-card"><h3>No Reprinting Cost</h3><p>Change prices or items anytime without printing menus again. One time setup, lifetime use.</p></div>
-      <div class="why-card"><h3>Mobile Friendly</h3><p>Customers scan and view menu instantly on their phone. No app needed.</p></div>
-      <div class="why-card"><h3>Professional Image</h3><p>Digital menu gives your restaurant a modern, professional and trusted look.</p></div>
+      <div class="why-card">
+        <img src="assets/icons/black-icons/close-line.svg">
+        <h3>Paper Menu = Ganda 😖</h3>
+        <p>Roz touch hone wale paper menu hygiene aur trust dono girate hai.</p>
+      </div>
+
+      <div class="why-card">
+        <img src="assets/icons/black-icons/rupee-coin-solid.svg">
+        <h3>Bar-Bar Printing Ka Kharcha</h3>
+        <p>Price ya item badalne par fir se printing — direct loss.</p>
+      </div>
+
+      <div class="why-card">
+        <img src="assets/icons/black-icons/mobile.svg">
+        <h3>Mobile Friendly Nahi</h3>
+        <p>Aaj ka customer phone par hi sab dekhna chahta hai.</p>
+      </div>
+
+      <div class="why-card highlight">
+        <img src="assets/icons/black-icons/qr.svg">
+        <h3>Digital QR Menu = Smart 😍</h3>
+        <p>Scan karo, dekho, order decide karo — fast & clean experience.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section>
+<!-- ================= TRUST BADGES ================= -->
+<section class="trust-section">
   <div class="container">
-    <h2 style="text-align:center">How Digital QR Menu Works</h2>
-    <div class="steps">
-      <div class="step"><div class="step-number">1</div><div><h4>Send Your Old Menu</h4><p>Share your menu photo, PDF or text on WhatsApp.</p></div></div>
-      <div class="step"><div class="step-number">2</div><div><h4>We Create Digital QR Menu</h4><p>We convert your menu into a clean, mobile-friendly digital QR menu page.</p></div></div>
-      <div class="step"><div class="step-number">3</div><div><h4>You Get QR Code</h4><p>QR code is shared in image & PDF format for easy printing.</p></div></div>
-      <div class="step"><div class="step-number">4</div><div><h4>Customers Scan & View Menu</h4><p>Customers scan QR and instantly see your menu on their mobile phone.</p></div></div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/quality-badge-checkmark.svg">
+        <h4>150+ QR Menus Delivered</h4>
+        <p>Real restaurants. Real usage.</p>
+      </div>
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/clock.svg">
+        <h4>24–48 Hours Setup</h4>
+        <p>Fast delivery without headache.</p>
+      </div>
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/shield-checkmark.svg">
+        <h4>Safe & Secure</h4>
+        <p>No app. No data risk.</p>
+      </div>
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/infinity.svg">
+        <h4>Unlimited Usage</h4>
+        <p>Scan kitni bhi baar ho.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- LIVE DEMO -->
-<section>
-  <div class="container" style="text-align:center">
-    <h2>See How Your Digital QR Menu Looks</h2>
-    <p class="sub" style="margin-bottom:40px">
-      Ye exactly wahi experience hai jo customer ko QR scan karne par milta hai.
-    </p>
+<!-- ================= SCROLL COMPARISON STRIP ================= -->
+<section class="compare-strip">
+  <div class="strip-track">
+    <div class="strip-item bad">
+      ❌ Dirty Paper Menu ❌ Re-Printing ❌ Slow Service
+    </div>
+    <div class="strip-item good">
+      ✅ Digital QR Menu ✅ Clean & Fast ✅ Modern Look
+    </div>
+    <div class="strip-item bad">
+      ❌ Old Style ❌ Poor Impression ❌ Customer Irritation
+    </div>
+    <div class="strip-item good">
+      ✅ Smart Restaurant ✅ Happy Customers 😄
+    </div>
+  </div>
+</section>
 
-    <div class="phone-wrap">
+<style>
+/* ================= WHY ================= */
+.why-section{background:#f8fafc}
+.section-title{
+  text-align:center;
+  font-size:32px;
+  font-weight:900;
+}
+.section-sub{
+  text-align:center;
+  max-width:720px;
+  margin:14px auto 60px;
+  color:#475569;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
+.why-card{
+  background:#fff;
+  padding:26px;
+  border-radius:22px;
+  border:1px solid #e5e7eb;
+  text-align:center;
+  transition:.4s;
+}
+.why-card img{
+  width:42px;
+  margin-bottom:14px;
+}
+.why-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 25px 60px rgba(15,23,42,.15);
+}
+.why-card.highlight{
+  border:2px solid #16a34a;
+}
+
+/* ================= TRUST ================= */
+.trust-section{
+  padding:70px 0;
+}
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px;
+}
+.trust-card{
+  background:#fff;
+  padding:22px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+  animation:trustFloat 3s ease-in-out infinite;
+}
+.trust-card img{
+  width:36px;
+  margin-bottom:10px;
+}
+@keyframes trustFloat{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+  100%{transform:translateY(0)}
+}
+
+/* ================= SCROLL STRIP ================= */
+.compare-strip{
+  background:#0f172a;
+  overflow:hidden;
+  padding:18px 0;
+}
+.strip-track{
+  display:flex;
+  width:max-content;
+  animation:scrollStrip 22s linear infinite;
+}
+.strip-item{
+  white-space:nowrap;
+  padding:10px 40px;
+  font-size:18px;
+  font-weight:700;
+}
+.strip-item.bad{color:#fca5a5}
+.strip-item.good{color:#86efac}
+
+@keyframes scrollStrip{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+</style>
+  <!-- ================= MOBILE DEMO ================= -->
+<section class="demo-section">
+  <div class="container demo-flex">
+    
+    <div class="demo-content">
+      <h2 class="section-title">
+        Customer Ko Exactly Yehi Dikhta Hai 📱
+      </h2>
+      <p class="section-sub">
+        QR scan karte hi menu <strong>turant open</strong> hota hai.  
+        Koi app nahi. Koi loading drama nahi.
+      </p>
+      <ul class="demo-points">
+        <li>⚡ Super fast loading</li>
+        <li>🧼 100% hygienic & contactless</li>
+        <li>📲 Works on all mobile phones</li>
+        <li>😄 Customer ka mood happy ho jata hai</li>
+      </ul>
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone">
       <div class="phone-notch"></div>
-      <div class="screen">
+      <div class="phone-screen">
         <img src="assets/images/longss.jpg" alt="QR Menu Demo">
       </div>
     </div>
 
-    <div style="margin-top:30px">
-      <a href="https://rupmaxdigital.in/menu/brijwasi-restaurant/" target="_blank" class="btn-primary">
-        View Live Demo
-      </a>
-    </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section>
+<!-- ================= HOW IT WORKS ================= -->
+<section class="steps-section">
   <div class="container">
-    <div class="review-row">
-      <!-- SAME REVIEWS AS BEFORE -->
-      <div class="review-card"><div class="stars">★★★★★</div><p>Very good QR menu service. Our customers find it easy to scan and view menu.</p><div class="review-author">Restaurant Owner – Delhi</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>Best digital QR menu at this price. One time payment is very helpful.</p><div class="review-author">Cafe Owner – Gurugram</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>Setup was fast and support is good. Menu looks professional.</p><div class="review-author">Food Outlet – Noida</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>Hygienic solution and affordable price. Customers like scanning QR menu.</p><div class="review-author">Restaurant – Faridabad</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL OFFER -->
-<section>
-  <div class="container">
-    <h2 style="text-align:center">Get Your Digital QR Menu Today</h2>
-    <p class="sub" style="text-align:center;max-width:760px;margin:14px auto 40px">
-      Ab paper menu band kijiye aur ek modern digital experience shuru kijiye.
+    <h2 class="section-title">
+      Digital QR Menu Kaise Milega? 🤝
+    </h2>
+    <p class="section-sub">
+      Sirf 4 simple steps — bina technical headache
     </p>
 
-    <div class="final-box">
-      <div class="old-price">Old Price: ₹2500</div>
-      <div class="new-price">₹999 / Year</div>
-      <div class="price-note">Limited Time Offer • Yearly Renewal • No Monthly Billing</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-circle">1</div>
+        <h4>Old Menu Bhejo</h4>
+        <p>Photo, PDF ya text — WhatsApp par send karo.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-circle">2</div>
+        <h4>Hum Digital Menu Banayenge</h4>
+        <p>Clean, fast aur mobile-friendly QR menu.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-circle">3</div>
+        <h4>QR Code Milega</h4>
+        <p>Image + PDF — print ya stand me lagao.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-circle">4</div>
+        <h4>Customer Scan Kare 😄</h4>
+        <p>Menu dekhe, decide kare, impressed ho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ================= DEMO ================= */
+.demo-section{background:#ffffff}
+.demo-flex{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.demo-points{
+  margin-top:20px;
+  list-style:none;
+}
+.demo-points li{
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+/* PHONE */
+.phone{
+  width:260px;
+  margin:auto;
+  background:#000;
+  border-radius:40px;
+  padding:12px;
+  position:relative;
+  box-shadow:0 35px 80px rgba(0,0,0,.55);
+}
+.phone-notch{
+  position:absolute;
+  top:6px;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:18px;
+  background:#000;
+  border-radius:0 0 14px 14px;
+  z-index:2;
+}
+.phone-screen{
+  height:520px;
+  overflow:hidden;
+  border-radius:32px;
+}
+.phone-screen img{
+  width:100%;
+  animation:screenScroll 24s linear infinite;
+}
+
+@keyframes screenScroll{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(calc(-100% + 520px))}
+  100%{transform:translateY(0)}
+}
+
+/* ================= STEPS ================= */
+.steps-section{background:#f8fafc}
+.steps-grid{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+.step-card{
+  background:#fff;
+  padding:26px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 18px 45px rgba(0,0,0,.08);
+  transition:.4s;
+}
+.step-card:hover{
+  transform:translateY(-8px);
+}
+.step-circle{
+  width:60px;
+  height:60px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:stepPulse 2.5s infinite;
+}
+
+@keyframes stepPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(.88)}
+  100%{transform:scale(1)}
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .demo-flex{grid-template-columns:1fr}
+}
+</style>
+  <!-- ================= REVIEWS ================= -->
+<section class="review-section">
+  <div class="container">
+    <h2 class="section-title">
+      Real Restaurant Owners Ka Experience ⭐
+    </h2>
+    <p class="section-sub">
+      Jo log use kar rahe hai, wahi sabse achha bolte hai
+    </p>
+
+    <div class="review-row" id="reviewRow">
+
+      <div class="review-card">
+        <div class="review-top">
+          <img src="assets/icons/color-icons/google-color.svg" class="google-logo">
+          <div class="stars">★★★★★</div>
+        </div>
+        <p>
+          QR menu lene ke baad customers ko menu samjhane ka tension hi khatam.
+          Scan karte hi dekh lete hai.
+        </p>
+        <div class="review-author">
+          Restaurant Owner – Delhi
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <img src="assets/icons/color-icons/google-color.svg" class="google-logo">
+          <div class="stars">★★★★★</div>
+        </div>
+        <p>
+          Is price me itna professional menu milna unexpected tha.
+          Fast delivery aur support bhi acha hai.
+        </p>
+        <div class="review-author">
+          Cafe Owner – Gurugram
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <img src="assets/icons/color-icons/google-color.svg" class="google-logo">
+          <div class="stars">★★★★★</div>
+        </div>
+        <p>
+          Ab paper menu bilkul band kar diya.
+          Customers ko bhi QR scan karna easy lagta hai.
+        </p>
+        <div class="review-author">
+          Food Outlet – Noida
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <img src="assets/icons/color-icons/google-color.svg" class="google-logo">
+          <div class="stars">★★★★★</div>
+        </div>
+        <p>
+          Hygienic solution hai aur modern look aata hai.
+          Customers impressed rehte hai.
+        </p>
+        <div class="review-author">
+          Restaurant – Faridabad
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ================= REVIEWS ================= */
+.review-section{
+  background:#ffffff;
+}
+.review-row{
+  display:flex;
+  gap:26px;
+  margin-top:50px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:10px;
+}
+.review-row::-webkit-scrollbar{display:none}
+
+.review-card{
+  min-width:280px;
+  background:#fff;
+  padding:26px;
+  border-radius:22px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 20px 45px rgba(0,0,0,.08);
+  transition:.4s;
+  animation:reviewFloat 4s ease-in-out infinite;
+}
+.review-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 35px 80px rgba(0,0,0,.15);
+}
+
+@keyframes reviewFloat{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+  100%{transform:translateY(0)}
+}
+
+.review-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.google-logo{
+  width:22px;
+}
+.stars{
+  color:#f5b301;
+  font-size:14px;
+  letter-spacing:1px;
+}
+.review-author{
+  margin-top:14px;
+  font-size:13px;
+  font-weight:700;
+  color:#475569;
+}
+</style>
+
+<script>
+/* AUTO SCROLL REVIEWS */
+const reviewRow = document.getElementById('reviewRow');
+let reviewScroll = setInterval(()=>{
+  reviewRow.scrollLeft += 1;
+  if(reviewRow.scrollLeft >= reviewRow.scrollWidth - reviewRow.clientWidth){
+    reviewRow.scrollLeft = 0;
+  }
+}, 35);
+
+reviewRow.addEventListener('touchstart', ()=> clearInterval(reviewScroll));
+reviewRow.addEventListener('touchend', ()=>{
+  reviewScroll = setInterval(()=>{
+    reviewRow.scrollLeft += 1;
+  },35);
+});
+</script>
+  <!-- ================= FINAL DECISION SECTION ================= -->
+<section class="final-section">
+  <div class="container">
+
+    <h2 class="section-title">
+      Ab Decision Aapke Haath Me Hai 🤝
+    </h2>
+    <p class="section-sub">
+      Ya to aaj bhi paper menu… 😐  
+      ya phir <strong>modern Digital QR Menu</strong> 😄
+    </p>
+
+    <div class="final-box-animated">
+      <div class="final-old-price">₹2500</div>
+      <div class="final-new-price">₹999 / Year</div>
 
       <ul class="final-features">
-        <li>✔ Mobile Friendly Digital QR Menu</li>
-        <li>✔ Unlimited Menu Items & Categories</li>
-        <li>✔ Super Fast Loading (No App Needed)</li>
-        <li>✔ WhatsApp, Call & Google Map Button</li>
-        <li>✔ Easy Menu Update Support</li>
-        <li>✔ QR Code Image & Printable PDF</li>
+        <li>✅ Mobile Friendly Digital QR Menu</li>
+        <li>✅ Unlimited Menu Items & Categories</li>
+        <li>✅ No App Required – Direct Scan</li>
+        <li>✅ Super Fast Loading</li>
+        <li>✅ QR Code Image + Printable PDF</li>
+        <li>✅ WhatsApp Support</li>
       </ul>
 
-      <a href="https://rzp.io/rzp/K7l7D8je" class="btn-primary">
-        Pay ₹999 & Order Now
+      <a href="https://rzp.io/rzp/K7l7D8je" class="final-cta">
+        ₹999 Pay Karke Abhi Order Kare 🚀
       </a>
 
-      <div class="price-note" style="margin-top:12px">
-        Payment ke baad WhatsApp par screenshot bheje
+      <div class="final-note">
+        ⏱ Payment ke baad WhatsApp par screenshot bheje  
       </div>
     </div>
 
-    <div class="qr-footer">
-      <p>© RupMax Digital • MSME / Udyam Registered Digital Agency</p>
-      <p>Digital QR Menu | Google Business Profile | Business Websites</p>
-    </div>
   </div>
 </section>
 
-<div class="sticky-buy">
-  <a href="https://rzp.io/rzp/K7l7D8je">Buy QR Menu @ ₹999 / Year</a>
+<!-- ================= STICKY BOTTOM CTA ================= -->
+<div class="sticky-cta">
+  <a href="https://rzp.io/rzp/K7l7D8je">
+    🚀 Get Digital QR Menu @ ₹999 / Year
+  </a>
+</div>
+
+<style>
+/* ================= FINAL SECTION ================= */
+.final-section{
+  background:linear-gradient(180deg,#f8fafc,#ffffff);
+  padding-bottom:120px;
+}
+
+.final-box-animated{
+  max-width:500px;
+  margin:50px auto 0;
+  background:#ffffff;
+  border-radius:28px;
+  padding:40px;
+  text-align:center;
+  border:2px solid #16a34a;
+  box-shadow:0 30px 80px rgba(22,163,74,.25);
+  animation:decisionPulse 3s infinite;
+}
+
+@keyframes decisionPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+  100%{transform:scale(1)}
+}
+
+.final-old-price{
+  color:#dc2626;
+  font-size:20px;
+  font-weight:700;
+  text-decoration:line-through;
+}
+
+.final-new-price{
+  font-size:48px;
+  font-weight:900;
+  color:#16a34a;
+  margin:10px 0 20px;
+}
+
+.final-features{
+  list-style:none;
+  margin:20px 0 30px;
+}
+.final-features li{
+  margin-bottom:10px;
+  font-weight:600;
+  color:#334155;
+}
+
+/* ================= FINAL CTA ================= */
+.final-cta{
+  display:block;
+  padding:18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#f97316,#ffb703);
+  color:#fff;
+  font-weight:900;
+  font-size:18px;
+  box-shadow:0 18px 40px rgba(249,115,22,.5);
+  position:relative;
+  overflow:hidden;
+}
+
+.final-cta::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
+  animation:ctaShine 2.5s infinite;
+}
+
+@keyframes ctaShine{
+  0%{left:-120%}
+  60%{left:120%}
+  100%{left:120%}
+}
+
+.final-note{
+  margin-top:14px;
+  font-size:13px;
+  color:#475569;
+}
+
+/* ================= STICKY CTA ================= */
+.sticky-cta{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0f172a;
+  padding:14px;
+  z-index:999;
+}
+.sticky-cta a{
+  display:block;
+  text-align:center;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  color:#fff;
+  font-weight:900;
+  padding:16px;
+  border-radius:14px;
+  animation:stickyPulse 2s infinite;
+}
+
+@keyframes stickyPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+</style>
+  
+<!-- FLOATING BUTTONS -->
+<div class="floating">
+  <a class="float-btn whatsapp"
+     href="https://wa.me/918979639473?text=I%20want%20to%20purchase%20digital%20QR%20menu%20at%20999%2Fyear"
+     target="_blank">
+    <img src="assets/icons/color-icons/whatsapp.svg">
+  </a>
+  <a class="float-btn call" href="tel:8979639473">
+    <img src="assets/icons/black-icons/call.svg">
+  </a>
 </div>
 
 <script>
@@ -373,12 +915,6 @@ setInterval(()=>{
   document.getElementById("countdown").innerText=`Offer ends in ${m}:${s<10?'0'+s:s}`;
   t--; if(t<0)t=600;
 },1000);
-
-/* REVIEW AUTO SCROLL (PAUSE ON TOUCH) */
-const row=document.querySelector('.review-row');
-let scroll=setInterval(()=>{row.scrollLeft+=1;if(row.scrollLeft>=row.scrollWidth-row.clientWidth)row.scrollLeft=0},35);
-row.addEventListener('touchstart',()=>clearInterval(scroll));
-row.addEventListener('touchend',()=>scroll=setInterval(()=>{row.scrollLeft+=1},35));
 </script>
 
 </body>
