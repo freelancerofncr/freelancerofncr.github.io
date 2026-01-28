@@ -13,6 +13,12 @@ function loadBusiness() {
     .catch(err => console.error("Business JSON error:", err));
 }
 
+window.addEventListener("beforeunload", ()=>{
+  if(localStorage.getItem("pendingOrder")==="true"){
+    // keep it; user decides on return
+  }
+});
+
 function renderBusiness(data) {
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
   setRestaurantWhatsapp(cleanNumber(data.contact.whatsappNumber));
@@ -300,14 +306,17 @@ function addToCart(name, label, price){
 }
 
 function removeFromCart(name){
-  const index = cart.findIndex(i => i.name === name);
-  if(index > -1){
-    cart[index].qty -= 1;
-    if(cart[index].qty <= 0){
-      cart.splice(index, 1);
+  // remove LAST matching item (variant-safe)
+  for(let i = cart.length - 1; i >= 0; i--){
+    if(cart[i].name === name){
+      cart[i].qty -= 1;
+      if(cart[i].qty <= 0){
+        cart.splice(i,1);
+      }
+      break;
     }
-    saveCart();
   }
+  saveCart();
 }
 
 function saveCart(){
@@ -532,7 +541,7 @@ function openCheckout(){
 
   // ❌ DELIVERY MINIMUM ORDER CHECK
   if(selectedType === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
-    alert(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
+    showDialog(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
     return;
   }
   if(total <= 0){
@@ -597,7 +606,7 @@ function finalPlaceOrder(){
 
   // ❌ HARD BLOCK EMPTY CART
   if(!cart || cart.length === 0){
-    alert("Your cart is empty.");
+    showDialog("Your cart is empty. Please add items.")
     return;
   }
 
@@ -613,7 +622,7 @@ function finalPlaceOrder(){
 
   const name = document.getElementById("customerName").value.trim();
   if(!name){
-    alert("Please enter customer name");
+    showDialog("Please enter customer name")
     return;
   }
 
@@ -623,7 +632,7 @@ function finalPlaceOrder(){
   if(type === "Delivery"){
     address = document.getElementById("deliveryAddress").value.trim();
     if(!address){
-      alert("Please enter delivery address");
+      showDialog("Please enter delivery address")
       return;
     }
   }
@@ -657,7 +666,7 @@ function finalPlaceOrder(){
 
 function addSinglePriceToCart(name, label, price){
   if(!restaurantOpen){
-    alert("Restaurant is currently closed");
+    showDialog("Restaurant is currently closed")
     return;
   }
 
@@ -691,6 +700,18 @@ document.addEventListener("DOMContentLoaded", () => {
 function waNotSent(){
   closeWaConfirm();
   // keep cart as-is
+}
+
+function showDialog(message, title="Notice"){
+  document.getElementById("dialogTitle").textContent = title;
+  document.getElementById("dialogMessage").textContent = message;
+  document.getElementById("appDialog").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDialog(){
+  document.getElementById("appDialog").classList.add("hidden");
+  document.body.style.overflow = "";
 }
 
 function waSent(){
