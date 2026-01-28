@@ -914,6 +914,14 @@ flex-shrink:0;
   font-weight:700;
   text-align:center;
 }
+
+   /* ===============================
+   APP DIALOG STYLE
+================================ */
+#appDialog .cart-modal-box{
+  height:auto;
+  max-height:60vh;
+}
 </style>
 
    <!-- ===============================
@@ -937,6 +945,20 @@ flex-shrink:0;
         I have SENT the message
         <div class="wa-desc">Complete order & reset cart</div>
       </button>
+    </div>
+  </div>
+</div>
+
+   <!-- ===============================
+     APP DIALOG (REPLACES ALERT)
+================================ -->
+<div id="appDialog" class="cart-modal hidden">
+  <div class="cart-modal-box" style="max-height:auto">
+    <h3 id="dialogTitle">Notice</h3>
+    <p id="dialogMessage" style="margin-top:8px;font-size:14px;color:#555"></p>
+
+    <div class="cart-modal-actions" style="margin-top:18px">
+      <button class="checkout-btn" onclick="closeDialog()">OK</button>
     </div>
   </div>
 </div>
