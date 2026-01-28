@@ -5,7 +5,13 @@
 <title>Digital QR Menu – One Time ₹499</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="assets/images/favicon.png">
-
+<style>
+@media(max-width:768px){
+  .hero{
+    padding-top:70px;
+  }
+}
+</style>
 <style>
 /* ===============================
    GLOBAL RESET & VARIABLES
@@ -428,19 +434,20 @@ p{
       padding:22px;
       border:1px solid var(--border-soft);
     }
-
-    .step-number{
-      min-width:46px;
-      height:46px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-    }
-
+     
+.step-number{
+  min-width:46px;
+  height:46px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  color:#ffffff;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 18px rgba(22,163,74,.35);
+}
+     
     .step h4{
       font-size:16px;
       margin-bottom:6px;
@@ -569,14 +576,13 @@ p{
 
     /* PHONE PREVIEW */
     .phone-wrap{
-      max-width:360px;
-      margin:0 auto;
-      background:#000;
-      border-radius:34px;
-      padding:14px;
-      box-shadow:0 40px 80px rgba(0,0,0,.6);
-      position:relative;
-    }
+max-width:300px;
+margin:0 auto;
+background:#000;
+border-radius:48px;
+padding:12px;
+box-shadow:0 35px 70px rgba(0,0,0,.6);
+}
 
     .phone-notch{
       width:120px;
@@ -591,23 +597,22 @@ p{
     }
 
     .screen{
-      border-radius:26px;
-      overflow:hidden;
-      max-height:520px;
-    }
+border-radius:36px;
+overflow:hidden;
+height:640px;
+}
 
     .screen img{
-      width:100%;
-      display:block;
-      animation:demoScroll 18s ease-in-out infinite;
-    }
+width:100%;
+display:block;
+animation:demoScroll 30s linear infinite;
+}
 
     @keyframes demoScroll{
-  0%{transform:translateY(0)}
-  30%{transform:translateY(0)}
-  60%{transform:translateY(calc(-100% + 520px))}
-  75%{transform:translateY(calc(-100% + 520px))}
-  100%{transform:translateY(0)}
+0%{transform:translateY(0)}
+45%{transform:translateY(0)}
+85%{transform:translateY(calc(-100% + 640px))}
+100%{transform:translateY(0)}
 }
 
     .demo-btn{
@@ -633,11 +638,15 @@ p{
     }
 
     .review-row{
-      display:flex;
-      gap:22px;
-      overflow-x:auto;
-      padding-bottom:10px;
-    }
+display:flex;
+gap:22px;
+overflow-x:auto;
+scroll-behavior:smooth;
+-webkit-overflow-scrolling:touch;
+}
+.review-row::-webkit-scrollbar{
+display:none;
+}
 
     .review-card{
       min-width:260px;
@@ -664,7 +673,27 @@ p{
       color:#9aa0a6;
     }
   </style>
+<script>
+const reviews = document.querySelector('.review-row');
+let autoScroll;
 
+
+function startScroll(){
+autoScroll = setInterval(()=>{
+reviews.scrollLeft += 1;
+if(reviews.scrollLeft >= reviews.scrollWidth - reviews.clientWidth){
+reviews.scrollLeft = 0;
+}
+},40);
+}
+
+
+reviews.addEventListener('touchstart',()=>clearInterval(autoScroll));
+reviews.addEventListener('touchend',startScroll);
+
+
+startScroll();
+</script>
   <div class="container">
     <h2>See How Your Digital QR Menu Looks</h2>
     <p class="sub">
@@ -925,7 +954,18 @@ p{
   100%{transform:scale(1)}
 }
 </style>
-
+<style>
+.final-box{
+  background:#ffffff;
+  border-radius:22px;
+  padding:40px 30px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 25px 60px rgba(15,23,42,.15);
+}
+.final-features li{
+  color:#334155;
+}
+</style>
 <div class="floating-actions">
   <a href="https://wa.me/919876543210" class="float-btn whatsapp-float">
     <img src="assets/icons/color-icons/whatsapp.svg">
@@ -961,7 +1001,13 @@ p{
   .sticky-buy{display:block}
 }
 </style>
-
+<style>
+.qr-footer{
+  font-size:12px;
+  color:#94a3b8;
+  margin-top:90px;
+}
+</style>
 <div class="sticky-buy">
   <a href="https://rzp.io/rzp/K7l7D8je">
     Buy QR Menu @ ₹999 / Year
