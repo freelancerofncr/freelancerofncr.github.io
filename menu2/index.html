@@ -732,31 +732,113 @@ flex-shrink:0;
    CHECKOUT FIELD – MOBILE FIX
 ================================ */
 
+/* ===============================
+   CHECKOUT FIELD – FIXED LAYOUT
+================================ */
+
 .checkout-field{
-  margin-top:14px;
+  margin-top:16px;
   display:flex;
   flex-direction:column;
-  gap:8px;
 }
 
 .checkout-field label{
   font-size:13px;
   font-weight:700;
-  color:#333;
+  margin-bottom:6px;
+  color:#222;
 }
 
 .checkout-field input,
 .checkout-field textarea{
+  width:100%;
   padding:12px;
   border-radius:12px;
-  border:1px solid #ccc;
+  border:1.5px solid #d0d0d0;
   font-size:14px;
   line-height:1.4;
   background:#fff;
 }
 
 .checkout-field textarea{
+  min-height:90px;
   resize:none;
+}
+
+   /* ===============================
+   DELIVERY ADDRESS – STRICT FIX
+================================ */
+
+#addressBox{
+  margin-top:18px;
+}
+
+#addressBox label{
+  display:block;
+  margin-bottom:6px;
+}
+
+#addressBox textarea{
+  display:block;
+}
+
+   /* ===============================
+   MENU ITEM – CLEAN PROFESSIONAL UI
+================================ */
+
+.menu-item{
+  padding:12px 0;
+}
+
+.item-header{
+  align-items:flex-start;
+}
+
+.item-name{
+  font-size:16px;
+  font-weight:700;
+}
+
+.price-line{
+  margin-top:2px;
+  font-size:13px;
+  color:#555;
+}
+
+/* Variant pills – compact */
+.price-options{
+  margin:8px 0 4px 20px;
+}
+
+.price-options label span{
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:16px;
+}
+
+/* Quantity controls – neat */
+.cart-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:20px;
+  margin-top:6px;
+}
+
+.qty-btn{
+  padding:6px;
+  border-radius:8px;
+}
+
+.qty-btn img{
+  width:13px;
+}
+
+.qty-count{
+  font-size:14px;
+  font-weight:700;
+  min-width:18px;
+  text-align:center;
 }
 
    /* ===============================
