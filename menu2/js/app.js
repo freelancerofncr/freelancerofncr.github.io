@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadBusiness();
   loadMenu();
 });
-
+let minimumDeliveryOrder = 0;
 /* =========================
    LOAD BUSINESS DATA
 ========================= */
@@ -14,7 +14,7 @@ function loadBusiness() {
 }
 
 function renderBusiness(data) {
-
+  minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
   setRestaurantWhatsapp(cleanNumber(data.contact.whatsappNumber));
   checkRestaurantOpen(data.openingHours);
   updateOrderAvailability();
@@ -528,11 +528,19 @@ function openCheckout(){
 
   // ❌ BLOCK if total is zero
   const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+    const selectedType = document.querySelector('input[name="orderType"]:checked')?.value;
+
+  // ❌ DELIVERY MINIMUM ORDER CHECK
+  if(selectedType === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
+    alert(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
+    return;
+  }
   if(total <= 0){
     alert("Please add valid items to proceed.");
     return;
   }
 
+  
   closeCartModal();
 
   const checkout = document.getElementById("checkoutModal");
@@ -594,6 +602,10 @@ function finalPlaceOrder(){
   }
 
   const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+    if(type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
+    alert(`Minimum order for delivery is Rs ${minimumDeliveryOrder}.`);
+    return;
+  }
   if(total <= 0){
     alert("Invalid order. Please add items again.");
     return;
