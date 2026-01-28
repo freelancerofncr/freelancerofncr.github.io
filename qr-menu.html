@@ -17,20 +17,24 @@
 }
 
 :root{
-  --bg-main:#0b0f14;
-  --bg-card:#121824;
-  --border-soft:rgba(255,255,255,.08);
+  /* BACKGROUND */
+  --bg-main:#f5f7fb;
+  --bg-card:#ffffff;
+  --border-soft:#e6e9ef;
 
-  --text-main:#ffffff;
-  --text-muted:#b8c0cc;
+  /* TEXT */
+  --text-main:#0f172a;
+  --text-muted:#475569;
 
-  --primary:#1fbf75;   /* emerald green */
-  --accent:#00e0ff;    /* cyan */
+  /* BRAND / CTA */
+  --primary:#16a34a;     /* trust green */
+  --accent:#2563eb;      /* trust blue */
+  --cta:#f97316;         /* orange urgency */
 
-  --radius-lg:24px;
-  --radius-md:16px;
+  --radius-lg:22px;
+  --radius-md:14px;
 
-  --shadow-soft:0 20px 50px rgba(0,0,0,.45);
+  --shadow-soft:0 18px 40px rgba(2,6,23,.12);
 }
 
 body{
@@ -95,30 +99,45 @@ section{
 ================================ */
 .btn-primary{
   display:inline-block;
-  padding:16px 38px;
-  border-radius:var(--radius-md);
-  background:linear-gradient(90deg,var(--primary),var(--accent));
-  color:#000;
-  font-weight:700;
+  padding:16px 42px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--cta),#ffb703);
+  color:#fff;
+  font-weight:800;
   font-size:16px;
+  letter-spacing:.3px;
   position:relative;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(31,191,117,.35);
+  box-shadow:0 12px 30px rgba(249,115,22,.45);
+  transition:.25s ease;
 }
 
+.btn-primary:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 18px 45px rgba(249,115,22,.55);
+}
+
+/* Shine animation */
 .btn-primary::after{
   content:"";
   position:absolute;
-  inset:0;
-  background:radial-gradient(circle,rgba(255,255,255,.6),transparent 60%);
-  opacity:0;
-  animation:pulse 2.6s infinite;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.5),
+    transparent
+  );
+  animation:ctaShine 3.2s infinite;
 }
 
-@keyframes pulse{
-  0%{opacity:0}
-  50%{opacity:1}
-  100%{opacity:0}
+@keyframes ctaShine{
+  0%{left:-120%}
+  60%{left:140%}
+  100%{left:140%}
 }
 
 /* ===============================
@@ -248,13 +267,14 @@ p{
 
   <div class="container">
     <h1>
-      Stop Using Dirty Paper Menus<br>
-      <span>Switch to Digital QR Menu</span>
+      Stop Losing Customers Because of Paper Menus<br>
+       <span>Upgrade to Digital QR Menu Today</span>
     </h1>
 
     <p>
-      Customers prefer scanning QR instead of touching paper menus.
-      Digital QR Menu is now essential for restaurants & cafes.
+      Customers today expect fast, hygienic and mobile-friendly menus.
+       Paper menus look outdated and unprofessional.
+       Upgrade once and use forever.
     </p>
 
     <div class="price-box">
@@ -541,11 +561,12 @@ p{
     }
 
     @keyframes demoScroll{
-      0%{transform:translateY(0)}
-      40%{transform:translateY(calc(-100% + 520px))}
-      60%{transform:translateY(calc(-100% + 520px))}
-      100%{transform:translateY(0)}
-    }
+  0%{transform:translateY(0)}
+  30%{transform:translateY(0)}
+  60%{transform:translateY(calc(-100% + 520px))}
+  75%{transform:translateY(calc(-100% + 520px))}
+  100%{transform:translateY(0)}
+}
 
     .demo-btn{
       text-align:center;
@@ -828,6 +849,48 @@ p{
     </div>
   </div>
 </section>
-   
+   <!-- FLOATING CONTACT BUTTONS -->
+<style>
+.floating-actions{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:9999;
+}
+
+.float-btn{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+  animation:floatPulse 2.4s infinite;
+}
+
+.float-btn img{width:26px}
+
+.whatsapp-float{background:#25d366}
+.call-float{background:#2563eb}
+
+@keyframes floatPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+</style>
+
+<div class="floating-actions">
+  <a href="https://wa.me/919876543210" class="float-btn whatsapp-float">
+    <img src="assets/icons/color-icons/whatsapp.svg">
+  </a>
+  <a href="tel:+919876543210" class="float-btn call-float">
+    <img src="assets/icons/black-icons/call.svg">
+  </a>
+</div>
 </body>
 </html>
