@@ -170,6 +170,44 @@ p{
   h2{font-size:28px}
 }
 </style>
+   <style>
+/* TEXT CONTRAST FIX */
+.price-note,
+.final-note,
+.final-features li {
+  color:#334155 !important;
+}
+
+.hero p,
+.sub,
+.pay-note {
+  color:#475569 !important;
+}
+
+/* MOBILE LOOK FIX */
+.phone-wrap{
+  max-width:320px;
+  border-radius:42px;
+}
+
+.screen{
+  max-height:620px;
+}
+
+.screen img{
+  animation:demoScroll 22s ease-in-out infinite;
+}
+
+/* PRICE DROP ANIMATION */
+.price-animate{
+  animation:priceDrop .9s ease forwards;
+}
+
+@keyframes priceDrop{
+  0%{transform:translateY(-20px);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+</style>
 </head>
 
 <body>
@@ -277,13 +315,17 @@ p{
        Upgrade once and use forever.
     </p>
 
-    <div class="price-box">
-      <div class="old-price">Market Price: ₹2500</div>
-      <div class="new-price">₹499</div>
-      <div class="price-note">
-        One Time Payment • Lifetime Free • No Monthly Charges
-      </div>
-    </div>
+   <div class="price-box price-animate">
+  <div class="old-price">Old Price: ₹2500</div>
+  <div class="new-price">₹999 / Year</div>
+  <div class="price-note">
+    One Year Validity • No Monthly Charges • No Hidden Cost
+  </div>
+
+  <div id="countdown" style="margin-top:14px;font-weight:700;color:#dc2626">
+    Offer ends in 10:00
+  </div>
+</div>
 
     <div class="hero-cta">
       <a href="https://rzp.io/rzp/K7l7D8je" target="_self" class="btn-primary">
@@ -807,20 +849,20 @@ p{
       hygienic and professional Digital QR Menu for your restaurant.
     </p>
 
-    <div class="final-box">
-      <div class="final-old">Market Price: ₹2500</div>
-      <div class="final-price">₹499</div>
-      <div class="final-note">
-        One Time Payment • Lifetime Free • No Monthly Charges
-      </div>
+    <div class="final-old">Old Price: ₹2500</div>
+<div class="final-price">₹999 / Year</div>
+<div class="final-note">
+  Limited Time Offer • Renew yearly • No Monthly Billing
+</div>
 
-      <ul class="final-features">
-        <li>✔ Digital QR Menu Website</li>
-        <li>✔ Call & WhatsApp Buttons</li>
-        <li>✔ Google Maps Location</li>
-        <li>✔ QR Code Image & PDF</li>
-        <li>✔ Lifetime Free Usage</li>
-      </ul>
+<ul class="final-features">
+  <li>✔ Mobile Friendly Digital QR Menu</li>
+  <li>✔ Unlimited Menu Items & Categories</li>
+  <li>✔ Super Fast Loading (No App Needed)</li>
+  <li>✔ WhatsApp, Call & Google Map Button</li>
+  <li>✔ Easy Menu Update Support</li>
+  <li>✔ QR Code Image + Printable PDF</li>
+</ul>
 
       <a href="https://rzp.io/rzp/K7l7D8je" target="_self" class="btn-primary">
         Pay ₹499 & Order Now
@@ -892,5 +934,62 @@ p{
     <img src="assets/icons/black-icons/call.svg">
   </a>
 </div>
+   <!-- STICKY BUY BAR (MOBILE ONLY) -->
+<style>
+.sticky-buy{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0f172a;
+  padding:12px;
+  display:none;
+  z-index:9998;
+}
+
+.sticky-buy a{
+  display:block;
+  text-align:center;
+  background:linear-gradient(135deg,#f97316,#ffb703);
+  color:#fff;
+  padding:14px;
+  font-weight:800;
+  border-radius:10px;
+}
+
+@media(max-width:768px){
+  .sticky-buy{display:block}
+}
+</style>
+
+<div class="sticky-buy">
+  <a href="https://rzp.io/rzp/K7l7D8je">
+    Buy QR Menu @ ₹999 / Year
+  </a>
+</div>
+
+<script>
+/* COUNTDOWN TIMER (RESET ON REFRESH) */
+let time = 600;
+const timer = document.getElementById("countdown");
+
+setInterval(()=>{
+  let min = Math.floor(time/60);
+  let sec = time % 60;
+  timer.innerHTML = `Offer ends in ${min}:${sec<10?'0'+sec:sec}`;
+  time--;
+  if(time < 0) time = 600;
+},1000);
+
+/* GOOGLE REVIEWS AUTO SCROLL */
+const reviewRow = document.querySelector('.review-row');
+let scrollPos = 0;
+
+setInterval(()=>{
+  scrollPos += 1;
+  reviewRow.scrollLeft = scrollPos;
+  if(scrollPos > reviewRow.scrollWidth) scrollPos = 0;
+},30);
+</script>
 </body>
 </html>
