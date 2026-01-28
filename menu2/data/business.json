@@ -86,9 +86,10 @@
   },
 
   "flags": {
-    "showLogo": true,
-    "showSocialLinks": true,
-    "deliveryAvailable": true,
-    "dineInAvailable": true
-  }
+  "showLogo": true,
+  "showSocialLinks": true,
+  "deliveryAvailable": true,
+  "dineInAvailable": true,
+  "minimumDeliveryOrder": 299
+}
 }
