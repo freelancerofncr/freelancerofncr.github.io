@@ -872,6 +872,73 @@ flex-shrink:0;
   display:flex;
   gap:14px;
 }
+
+   /* ===============================
+   WHATSAPP CONFIRM MODAL
+================================ */
+
+.wa-btn{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.wa-btn.primary{
+  background:#25d366;
+  color:#fff;
+}
+
+.wa-btn.secondary{
+  background:#f1f1f1;
+  color:#333;
+}
+
+.wa-desc{
+  font-size:12px;
+  font-weight:500;
+  margin-top:4px;
+  opacity:.85;
+}
+
+/* success message */
+#orderSuccess{
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:14px;
+  margin:12px;
+  border-radius:14px;
+  font-weight:700;
+  text-align:center;
+}
 </style>
+
+   <!-- ===============================
+     WHATSAPP RETURN CONFIRMATION
+================================ -->
+<div id="waConfirmModal" class="cart-modal hidden">
+  <div class="cart-modal-box">
+    <h3>Order Confirmation</h3>
+
+    <p style="font-size:14px;color:#555;margin-top:6px;">
+      Did you send the order message on WhatsApp?
+    </p>
+
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
+      <button class="wa-btn secondary" onclick="waNotSent()">
+        I did NOT send the message
+        <div class="wa-desc">Continue editing your order</div>
+      </button>
+
+      <button class="wa-btn primary" onclick="waSent()">
+        I have SENT the message
+        <div class="wa-desc">Complete order & reset cart</div>
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
