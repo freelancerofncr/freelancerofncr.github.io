@@ -649,6 +649,9 @@ function finalPlaceOrder(){
     "?text=" +
     encodeURIComponent(message);
 
+    // mark pending order
+  localStorage.setItem("pendingOrder", "true");
+
   window.open(url, "_blank");
 }
 
@@ -667,4 +670,43 @@ function addSinglePriceToCart(name, label, price){
   }
 
   saveCart();
+}
+
+function showWaConfirm(){
+  document.getElementById("waConfirmModal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeWaConfirm(){
+  document.getElementById("waConfirmModal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if(localStorage.getItem("pendingOrder") === "true"){
+    setTimeout(showWaConfirm, 600);
+  }
+}); 
+
+function waNotSent(){
+  closeWaConfirm();
+  // keep cart as-is
+}
+
+function waSent(){
+  // clear cart
+  cart = [];
+  localStorage.removeItem("cart");
+  localStorage.removeItem("pendingOrder");
+  saveCart();
+
+  closeWaConfirm();
+
+  // show success message
+  const msg = document.createElement("div");
+  msg.id = "orderSuccess";
+  msg.textContent = "Order sent successfully. Thank you!";
+  document.body.insertBefore(msg, document.body.firstChild);
+
+  setTimeout(()=>msg.remove(), 4000);
 }
