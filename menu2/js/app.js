@@ -687,11 +687,7 @@ function closeWaConfirm(){
   document.body.style.overflow = "";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  if(localStorage.getItem("pendingOrder") === "true"){
-    setTimeout(showWaConfirm, 600);
-  }
-}); 
+
 
 function waNotSent(){
   closeWaConfirm();
@@ -727,3 +723,19 @@ function waSent(){
 
   setTimeout(()=>msg.remove(), 4000);
 }
+
+// ===============================
+// WHATSAPP RETURN DETECTION (MOBILE SAFE)
+// ===============================
+let waPopupShown = false;
+
+document.addEventListener("visibilitychange", () => {
+  if (
+    document.visibilityState === "visible" &&
+    localStorage.getItem("pendingOrder") === "true" &&
+    !waPopupShown
+  ) {
+    waPopupShown = true;
+    setTimeout(showWaConfirm, 400);
+  }
+});
