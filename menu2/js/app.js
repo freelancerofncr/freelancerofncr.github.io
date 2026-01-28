@@ -519,6 +519,20 @@ function decreaseFromModal(index){
 ========================= */
 
 function openCheckout(){
+
+  // ❌ BLOCK if cart is empty
+  if(!cart || cart.length === 0){
+    alert("Your cart is empty. Please add items before checkout.");
+    return;
+  }
+
+  // ❌ BLOCK if total is zero
+  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+  if(total <= 0){
+    alert("Please add valid items to proceed.");
+    return;
+  }
+
   closeCartModal();
 
   const checkout = document.getElementById("checkoutModal");
@@ -527,11 +541,11 @@ function openCheckout(){
   checkout.classList.remove("hidden");
   document.body.style.overflow = "hidden";
 
-  // 🔒 FORCE RESET EVERY TIME
+  // Force reset address every time
   addressBox.classList.add("hidden");
   addressBox.style.display = "none";
 
-  // force Dine-In selected
+  // Force Dine-In default
   const dineIn = document.querySelector('input[name="orderType"][value="Dine-In"]');
   if(dineIn){
     dineIn.checked = true;
@@ -567,8 +581,21 @@ function toggleAddress(){
 }
 
 function finalPlaceOrder(){
+
   if(!restaurantOpen){
     alert("Restaurant is currently closed");
+    return;
+  }
+
+  // ❌ HARD BLOCK EMPTY CART
+  if(!cart || cart.length === 0){
+    alert("Your cart is empty.");
+    return;
+  }
+
+  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+  if(total <= 0){
+    alert("Invalid order. Please add items again.");
     return;
   }
 
@@ -589,17 +616,15 @@ function finalPlaceOrder(){
     }
   }
 
-  // -------- CLEAN WHATSAPP MESSAGE (NO EMOJI) --------
+  // -------- CLEAN WHATSAPP MESSAGE --------
   let message = "New Order\n\n";
 
   cart.forEach((item, index) => {
     message += `${index+1}. ${item.name} (${item.label}) x ${item.qty} = Rs ${item.qty * item.price}\n`;
   });
 
-  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-
   message += `\nTotal: Rs ${total}\n`;
-  message += `\nCustomer: ${name}\n`;
+  message += `Customer: ${name}\n`;
   message += `Order Type: ${type}\n`;
 
   if(type === "Delivery"){
@@ -614,6 +639,7 @@ function finalPlaceOrder(){
 
   window.open(url, "_blank");
 }
+
 function addSinglePriceToCart(name, label, price){
   if(!restaurantOpen){
     alert("Restaurant is currently closed");
