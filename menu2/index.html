@@ -338,6 +338,26 @@ a{text-decoration:none}
   <div class="contact-line">📍 <span id="fullAddress"></span></div>
 </section>
 
+<!-- PLATFORMS -->
+<section class="card">
+  <h3 style="text-align:center;margin-bottom:10px">We are available on</h3>
+  <div class="platform-buttons">
+    <a id="zomatoBtn" class="zomato">Zomato</a>
+    <a id="swiggyBtn" class="swiggy">Swiggy</a>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="card">
+  <h3 style="text-align:center;margin-bottom:10px">Follow us on Social Media</h3>
+  <div id="socialSection" class="social-section">
+    <a id="instaIcon"><img src="/assets/icons/color-icons/instagram.svg">Instagram</a>
+    <a id="fbIcon"><img src="/assets/icons/color-icons/facebook.svg">Facebook</a>
+    <a id="googleIcon"><img src="/assets/icons/color-icons/google-color.svg">Google</a>
+    <a id="websiteIcon"><img src="/assets/icons/black-icons/globe.svg">Website</a>
+  </div>
+</section>
+   
 <!-- TRUST -->
 <section class="card">
   <div id="badgeContainer"></div>
@@ -368,26 +388,6 @@ a{text-decoration:none}
     <span><img src="/assets/icons/color-icons/paytm.svg"> Paytm</span>
     <span><img src="/assets/icons/color-icons/bhim-app.svg"> BHIM</span>
     <span><img src="/assets/icons/color-icons/indian-rupee-coin.svg"> Cash</span>
-  </div>
-</section>
-
-<!-- PLATFORMS -->
-<section class="card">
-  <h3 style="text-align:center;margin-bottom:10px">We are available on</h3>
-  <div class="platform-buttons">
-    <a id="zomatoBtn" class="zomato">Zomato</a>
-    <a id="swiggyBtn" class="swiggy">Swiggy</a>
-  </div>
-</section>
-
-<!-- SOCIAL -->
-<section class="card">
-  <h3 style="text-align:center;margin-bottom:10px">Follow us on Social Media</h3>
-  <div id="socialSection" class="social-section">
-    <a id="instaIcon"><img src="/assets/icons/color-icons/instagram.svg">Instagram</a>
-    <a id="fbIcon"><img src="/assets/icons/color-icons/facebook.svg">Facebook</a>
-    <a id="googleIcon"><img src="/assets/icons/color-icons/google-color.svg">Google</a>
-    <a id="websiteIcon"><img src="/assets/icons/black-icons/globe.svg">Website</a>
   </div>
 </section>
 
@@ -921,6 +921,130 @@ flex-shrink:0;
 #appDialog .cart-modal-box{
   height:auto;
   max-height:60vh;
+}
+
+   /* ===============================
+   MENU ITEM – SWIGGY STYLE CLEAN UI
+================================ */
+
+.menu-item{
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+}
+
+.item-header{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+}
+
+.item-title-wrap{
+  display:flex;
+  flex-direction:column;
+}
+
+.item-name{
+  font-size:16px;
+  font-weight:700;
+  color:#111;
+}
+
+/* price text */
+.price-line{
+  margin-top:2px;
+  font-size:14px;
+  font-weight:600;
+  color:#444;
+}
+
+/* hide "select option below" text */
+.price-line.muted{
+  display:none;
+}
+
+/* variant buttons – segmented */
+.price-options{
+  display:flex;
+  gap:8px;
+  margin:8px 0 6px 20px;
+}
+
+.price-options label span{
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#f3f3f3;
+  border:1px solid #ddd;
+}
+
+/* selected variant */
+.price-options input[type="radio"]:checked + span{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+/* quantity buttons */
+.cart-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left:20px;
+}
+
+.qty-btn{
+  background:#f1f1f1;
+  padding:8px;
+  border-radius:10px;
+}
+
+.qty-btn img{
+  width:14px;
+}
+
+.qty-count{
+  font-size:15px;
+  font-weight:700;
+  min-width:20px;
+  text-align:center;
+}
+
+   /* ===============================
+   PLATFORM BUTTON ANIMATION
+================================ */
+
+.platform-buttons a{
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle shine */
+.platform-buttons a::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+  animation:shine 3.5s infinite;
+}
+
+@keyframes shine{
+  0%{left:-100%}
+  60%{left:120%}
+  100%{left:120%}
+}
+
+/* hover lift (desktop bonus) */
+.platform-buttons a:hover{
+  transform:translateY(-2px);
+  transition:.2s;
 }
 </style>
 
