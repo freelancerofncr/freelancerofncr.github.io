@@ -537,13 +537,9 @@ function openCheckout(){
 
   // ❌ BLOCK if total is zero
   const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-    const selectedType = document.querySelector('input[name="orderType"]:checked')?.value;
+    
 
   // ❌ DELIVERY MINIMUM ORDER CHECK
-  if(selectedType === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
-    showDialog(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
-    return;
-  }
   if(total <= 0){
     alert("Please add valid items to proceed.");
     return;
@@ -600,44 +596,45 @@ function toggleAddress(){
 function finalPlaceOrder(){
 
   if(!restaurantOpen){
-    alert("Restaurant is currently closed");
+    showDialog("Restaurant is currently closed");
     return;
   }
 
-  // ❌ HARD BLOCK EMPTY CART
   if(!cart || cart.length === 0){
-    showDialog("Your cart is empty. Please add items.")
+    showDialog("Your cart is empty. Please add items.");
     return;
   }
 
   const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-    if(type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
-    alert(`Minimum order for delivery is Rs ${minimumDeliveryOrder}.`);
-    return;
-  }
   if(total <= 0){
-    alert("Invalid order. Please add items again.");
+    showDialog("Invalid order. Please add items again.");
     return;
   }
 
   const name = document.getElementById("customerName").value.trim();
   if(!name){
-    showDialog("Please enter customer name")
+    showDialog("Please enter customer name");
     return;
   }
 
-  const type = document.querySelector('input[name="orderType"]:checked').value;
-  let address = "";
+  const type = document.querySelector('input[name="orderType"]:checked')?.value;
 
+  // ✅ DELIVERY MINIMUM ORDER CHECK (FIXED)
+  if(type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
+    showDialog(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
+    return;
+  }
+
+  let address = "";
   if(type === "Delivery"){
     address = document.getElementById("deliveryAddress").value.trim();
     if(!address){
-      showDialog("Please enter delivery address")
+      showDialog("Please enter delivery address");
       return;
     }
   }
 
-  // -------- CLEAN WHATSAPP MESSAGE --------
+  // -------- WHATSAPP MESSAGE --------
   let message = "New Order\n\n";
 
   cart.forEach((item, index) => {
@@ -652,14 +649,13 @@ function finalPlaceOrder(){
     message += `Address: ${address}\n`;
   }
 
+  localStorage.setItem("pendingOrder", "true");
+
   const url =
     "https://wa.me/" +
     restaurantWhatsapp +
     "?text=" +
     encodeURIComponent(message);
-
-    // mark pending order
-  localStorage.setItem("pendingOrder", "true");
 
   window.open(url, "_blank");
 }
