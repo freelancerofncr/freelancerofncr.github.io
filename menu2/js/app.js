@@ -157,17 +157,23 @@ function buildMenuBlock(title, items, type) {
     div.className = "menu-item";
 
     const hasMultiplePrices = item.prices.length > 1;
+    const singlePrice = item.prices[0];
 
-    // RADIO OPTIONS (sirf jab 2+ prices ho)
+    // Price display line (ALWAYS visible)
+    const priceLine = hasMultiplePrices
+      ? `<div class="price-line muted">Select option below</div>`
+      : `<div class="price-line">₹ ${singlePrice.price}</div>`;
+
+    // Variant pills (ONLY if multiple prices)
     const priceOptions = hasMultiplePrices
       ? item.prices.map((p, idx) => `
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
+          <label>
             <input type="radio"
-name="price-${item.name.replace(/\s/g,'')}"
-value="${p.price}"
-data-label="${p.label}"
-${idx === 0 ? "checked" : ""}>
-<span>${p.label} – ₹${p.price}</span>
+              name="price-${item.name.replace(/\s/g,'')}"
+              value="${p.price}"
+              data-label="${p.label}"
+              ${idx === 0 ? "checked" : ""}>
+            <span>${p.label} – ₹${p.price}</span>
           </label>
         `).join("")
       : "";
@@ -175,7 +181,10 @@ ${idx === 0 ? "checked" : ""}>
     div.innerHTML = `
       <div class="item-header">
         <img class="food-icon" src="/assets/icons/color-icons/${item.type}.svg">
-        <strong>${item.name}</strong>
+        <div class="item-title-wrap">
+          <div class="item-name">${item.name}</div>
+          ${priceLine}
+        </div>
       </div>
 
       ${hasMultiplePrices ? `<div class="price-options">${priceOptions}</div>` : ""}
@@ -185,7 +194,7 @@ ${idx === 0 ? "checked" : ""}>
           onclick="${
             hasMultiplePrices
               ? `addSelectedToCart('${item.name}')`
-              : `addSinglePriceToCart('${item.name}', '${item.prices[0].label}', ${item.prices[0].price})`
+              : `addSinglePriceToCart('${item.name}', '${singlePrice.label}', ${singlePrice.price})`
           }">
           <img src="/assets/icons/black-icons/plus.svg">
         </button>
