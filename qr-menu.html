@@ -222,7 +222,7 @@ a{text-decoration:none;color:inherit}
 
     <p>
       Aaj ke customers fast, hygienic aur mobile-friendly menu expect karte hai.
-      Gande paper menu se impression girta hai.
+      Gande paper menu se impression girta hai.<br>
       <strong>Ek baar upgrade kijiye — saalon tak use kijiye.</strong>
     </p>
 
@@ -672,7 +672,7 @@ a{text-decoration:none;color:inherit}
   margin-top:50px;
   overflow-x:auto;
   scroll-behavior:smooth;
-  padding-bottom:10px;
+  padding:30px 10px 40px;   /* 🔥 EXTRA PADDING FOR SHADOW */
 }
 .review-row::-webkit-scrollbar{display:none}
 
@@ -683,11 +683,12 @@ a{text-decoration:none;color:inherit}
   border-radius:22px;
   border:1px solid #e5e7eb;
   box-shadow:0 20px 45px rgba(0,0,0,.08);
-  transition:.4s;
-  animation:reviewFloat 4s ease-in-out infinite;
+  transition:.35s ease;
+  animation:none;          /* ❌ FLOAT REMOVE */
 }
+
 .review-card:hover{
-  transform:translateY(-10px) scale(1.03);
+  transform:translateY(-8px) scale(1.02);
   box-shadow:0 35px 80px rgba(0,0,0,.15);
 }
 
@@ -720,31 +721,36 @@ a{text-decoration:none;color:inherit}
 </style>
 
 <script>
-/* AUTO SCROLL REVIEWS */
-const reviewRow = document.getElementById('reviewRow');
-let reviewScroll = setInterval(()=>{
-  reviewRow.scrollLeft += 1;
-  if(reviewRow.scrollLeft >= reviewRow.scrollWidth - reviewRow.clientWidth){
-    reviewRow.scrollLeft = 0;
-  }
-}, 35);
+const row = document.getElementById("reviewRow");
 
-reviewRow.addEventListener('touchstart', ()=> clearInterval(reviewScroll));
-reviewRow.addEventListener('touchend', ()=>{
-  reviewScroll = setInterval(()=>{
-    reviewRow.scrollLeft += 1;
-  },35);
-});
+// Clone cards for infinite loop
+row.innerHTML += row.innerHTML;
+
+let scrollSpeed = 0.5;
+
+function autoScroll(){
+  row.scrollLeft += scrollSpeed;
+  if(row.scrollLeft >= row.scrollWidth / 2){
+    row.scrollLeft = 0;
+  }
+  requestAnimationFrame(autoScroll);
+}
+
+autoScroll();
+
+// Pause on touch
+row.addEventListener("touchstart",()=>scrollSpeed=0);
+row.addEventListener("touchend",()=>scrollSpeed=0.5);
 </script>
   <!-- ================= FINAL DECISION SECTION ================= -->
 <section class="final-section">
   <div class="container">
 
     <h2 class="section-title">
-      Ab Decision Aapke Haath Me Hai 🤝
+      Ab Decision <br>Aapke Haath Me Hai 🤝
     </h2>
     <p class="section-sub">
-      Ya to aaj bhi paper menu… 😐  
+      Ya to aaj bhi paper menu… 😐<br>
       ya phir <strong>modern Digital QR Menu</strong> 😄
     </p>
 
@@ -766,7 +772,7 @@ reviewRow.addEventListener('touchend', ()=>{
       </a>
 
       <div class="final-note">
-        ⏱ Payment ke baad WhatsApp par screenshot bheje  
+        ⏱ Please Payment ke baad<br>WhatsApp par screenshot bheje  
       </div>
     </div>
 
@@ -822,11 +828,17 @@ reviewRow.addEventListener('touchend', ()=>{
 .final-features{
   list-style:none;
   margin:20px 0 30px;
+  padding:0;
+  text-align:left;              /* ✅ LEFT ALIGN */
 }
+
 .final-features li{
   margin-bottom:10px;
   font-weight:600;
   color:#334155;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
 }
 
 /* ================= FINAL CTA ================= */
