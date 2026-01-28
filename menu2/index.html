@@ -727,18 +727,64 @@ flex-shrink:0;
 </div>
 
 <style>
+   
+/* ===============================
+   CHECKOUT FIELD – MOBILE FIX
+================================ */
+
 .checkout-field{
-  margin-top:10px;
+  margin-top:14px;
   display:flex;
   flex-direction:column;
-  gap:6px;
+  gap:8px;
 }
+
+.checkout-field label{
+  font-size:13px;
+  font-weight:700;
+  color:#333;
+}
+
 .checkout-field input,
 .checkout-field textarea{
-  padding:10px;
-  border-radius:10px;
+  padding:12px;
+  border-radius:12px;
   border:1px solid #ccc;
   font-size:14px;
+  line-height:1.4;
+  background:#fff;
+}
+
+.checkout-field textarea{
+  resize:none;
+}
+
+   /* ===============================
+   DELIVERY ADDRESS MOBILE POLISH
+================================ */
+
+#addressBox{
+  margin-top:16px;
+}
+
+#addressBox label{
+  font-size:13px;
+  font-weight:700;
+}
+
+#addressBox textarea{
+  min-height:90px;
+}
+
+/* Safer spacing on small screens */
+@media (max-width: 480px){
+  .cart-modal-box{
+    padding:16px;
+  }
+
+  .checkout-field{
+    gap:10px;
+  }
 }
 .order-type{
   display:flex;
