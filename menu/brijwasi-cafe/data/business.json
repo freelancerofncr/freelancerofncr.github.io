@@ -7,10 +7,10 @@
   },
 
   "contact": {
-    "primaryPhone": "+91 9876543210",
-    "secondaryPhone": "+91 9123456780",
-    "whatsappNumber": "+91 9876543210",
-    "email": ""
+    "primaryPhone": "+91 8979639473",
+    "secondaryPhone": "+91 8979639473",
+    "whatsappNumber": "+91 8979639473",
+    "email": "example@gmail.com"
   },
 
   "location": {
@@ -22,43 +22,43 @@
     "monday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "05:00", "close": "23:30" }
       ]
     },
     "tuesday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:59" }
+        { "open": "05:00", "close": "23:30" }
       ]
     },
     "wednesday": {
       "isClosed": false,
       "slots": [
-        { "open": "00:01", "close": "23:00" }
+        { "open": "05:00", "close": "23:30" }
       ]
     },
     "thursday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "05:00", "close": "23:30" }
       ]
     },
     "friday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "05:00", "close": "23:30" }
       ]
     },
     "saturday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "05:00", "close": "23:30" }
       ]
     },
     "sunday": {
       "isClosed": false,
       "slots": [
-        { "open": "10:00", "close": "23:00" }
+        { "open": "05:00", "close": "23:30" }
       ]
     }
   },
