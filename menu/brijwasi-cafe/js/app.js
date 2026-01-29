@@ -707,21 +707,55 @@ function closeDialog(){
 }
 
 function waSent(){
-  // clear cart
+
+  // 1️⃣ CLEAR CART DATA
   cart = [];
   localStorage.removeItem("cart");
   localStorage.removeItem("pendingOrder");
   saveCart();
 
+  // 2️⃣ CLOSE ALL MODALS (VERY IMPORTANT)
   closeWaConfirm();
 
-  // show success message
-  const msg = document.createElement("div");
-  msg.id = "orderSuccess";
-  msg.textContent = "Order sent successfully. Thank you!";
-  document.body.insertBefore(msg, document.body.firstChild);
+  const cartModal = document.getElementById("cartModal");
+  if(cartModal) cartModal.classList.add("hidden");
 
-  setTimeout(()=>msg.remove(), 4000);
+  const checkoutModal = document.getElementById("checkoutModal");
+  if(checkoutModal) checkoutModal.classList.add("hidden");
+
+  document.body.style.overflow = "";
+
+  // 3️⃣ HIDE CART BAR COMPLETELY
+  const cartBar = document.getElementById("cartBar");
+  if(cartBar) cartBar.classList.add("hidden");
+
+  // 4️⃣ SHOW SUCCESS OVERLAY (CENTER, ABOVE EVERYTHING)
+  showOrderSuccess();
+}
+function showOrderSuccess(){
+
+  // safety: agar already open ho
+  if(document.getElementById("orderSuccessOverlay")) return;
+
+  const overlay = document.createElement("div");
+  overlay.id = "orderSuccessOverlay";
+
+  overlay.innerHTML = `
+    <div class="order-success-box">
+      <h2>✅ Order Sent Successfully</h2>
+      <p>
+        Aapka order WhatsApp par send ho chuka hai.<br>
+        Restaurant aapse jaldi contact karega.
+      </p>
+      <button onclick="closeOrderSuccess()">OK</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+}
+function closeOrderSuccess(){
+  const el = document.getElementById("orderSuccessOverlay");
+  if(el) el.remove();
 }
 
 // ===============================
