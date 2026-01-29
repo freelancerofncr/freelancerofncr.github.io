@@ -1086,5 +1086,51 @@ flex-shrink:0;
     </div>
   </div>
 </div>
+   <style>
+/* ===============================
+   ORDER SUCCESS OVERLAY
+=============================== */
+#orderSuccessOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+
+.order-success-box{
+  background:#ffffff;
+  padding:26px 22px;
+  border-radius:16px;
+  text-align:center;
+  max-width:320px;
+  width:90%;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.order-success-box h2{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.order-success-box p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:16px;
+  line-height:1.4;
+}
+
+.order-success-box button{
+  padding:10px 18px;
+  border-radius:10px;
+  border:none;
+  background:#16a34a;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+</style>
 </body>
 </html>
