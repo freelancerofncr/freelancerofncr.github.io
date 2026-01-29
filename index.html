@@ -2,35 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RupMax Digital – Digital Solutions for Businesses</title>
+<title>RupMax Digital | Digital Solutions for Businesses</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
 <link rel="icon" href="assets/images/favicon.png">
 
 <style>
 /* ================= RESET ================= */
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 body{
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height:1.7;
   color:#111;
-
   background:
-    radial-gradient(circle at 15% 20%, rgba(37,211,102,.12), transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(79,172,254,.12), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(0,242,254,.12), transparent 40%),
-    #fff;
+    radial-gradient(circle at 10% 20%, rgba(37,211,102,.10), transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(79,172,254,.10), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(0,242,254,.10), transparent 40%),
+    #ffffff;
   animation:bgMove 18s ease-in-out infinite;
 }
-@keyframes bgMove{
-  0%{background-position:15% 20%,85% 30%,50% 80%}
-  50%{background-position:20% 25%,80% 35%,45% 75%}
-  100%{background-position:15% 20%,85% 30%,50% 80%}
-}
-a{text-decoration:none;color:inherit}
-img{display:block;max-width:100%}
-.container{max-width:1200px;margin:auto;padding:0 16px}
 
-/* ================= HEADER ================= */
+@keyframes bgMove{
+  0%{background-position:10% 20%,90% 30%,50% 80%}
+  50%{background-position:15% 25%,85% 35%,45% 75%}
+  100%{background-position:10% 20%,90% 30%,50% 80%}
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 16px;
+}
+
+/* ================= COMMON UI ================= */
+.section{
+  padding:90px 0;
+}
+
+.section-title{
+  text-align:center;
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.section-subtitle{
+  text-align:center;
+  font-size:15px;
+  color:#555;
+  max-width:720px;
+  margin:0 auto 40px;
+}
+
+/* Card */
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:28px 22px;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.06),
+    0 4px 12px rgba(0,0,0,.05);
+  transition:.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+/* Button */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#25d366;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:500;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle, rgba(255,255,255,.35), transparent 60%);
+  opacity:0;
+  animation:pulse 2.8s infinite;
+}
+
+@keyframes pulse{
+  0%{opacity:0}
+  50%{opacity:1}
+  100%{opacity:0}
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .section{
+    padding:70px 0;
+  }
+  .section-title{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+<style>
 .site-header{
   position:sticky;
   top:0;
@@ -39,56 +137,54 @@ img{display:block;max-width:100%}
   backdrop-filter:blur(8px);
   border-bottom:1px solid #eee;
 }
+
 .header-inner{
   height:70px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:14px;
 }
-.logo img{height:36px}
 
-/* Desktop menu */
+.logo img{
+  height:36px;
+}
+
+/* Desktop Menu */
 .main-nav ul{
   list-style:none;
   display:flex;
   gap:22px;
 }
+
 .main-nav a{
   font-size:14px;
   position:relative;
+  padding:4px 0;
 }
+
 .main-nav a::after{
   content:"";
   position:absolute;
-  left:0;bottom:-6px;
-  width:0;height:2px;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
   background:#25d366;
   transition:.3s;
 }
-.main-nav a:hover::after{width:100%}
 
-/* WhatsApp button */
+.main-nav a:hover::after{
+  width:100%;
+}
+
+/* WhatsApp CTA */
 .header-cta a{
   background:#25d366;
   color:#fff;
   padding:10px 18px;
-  border-radius:8px;
+  border-radius:10px;
   font-size:14px;
-  position:relative;
-  overflow:hidden;
-}
-.header-cta a::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle,rgba(255,255,255,.4),transparent 60%);
-  opacity:0;
-  animation:pulse 2.8s infinite;
-}
-@keyframes pulse{
-  0%{opacity:0}
-  50%{opacity:1}
-  100%{opacity:0}
 }
 
 /* Hamburger */
@@ -98,60 +194,27 @@ img{display:block;max-width:100%}
   border:none;
   cursor:pointer;
 }
-.menu-toggle img{width:26px}
 
-/* ================= HERO ================= */
-.hero-section{
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  text-align:center;
-}
-.hero-inner h1{
-  font-size:42px;
-  margin-bottom:18px;
-}
-.hero-inner h1 span{color:#25d366}
-.hero-inner p{
-  max-width:760px;
-  margin:0 auto 18px;
-  font-size:16px;
-  color:#555;
-}
-.hero-buttons a{
-  display:inline-block;
-  margin-top:20px;
-  background:#111;
-  color:#fff;
-  padding:14px 26px;
-  border-radius:10px;
-  position:relative;
-  overflow:hidden;
-}
-.hero-buttons a::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle,rgba(255,255,255,.35),transparent 60%);
-  opacity:0;
-  animation:pulse 2.8s infinite;
+.menu-toggle img{
+  width:26px;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
 
-  /* header layout: logo | whatsapp | hamburger */
   .header-inner{
     display:grid;
     grid-template-columns:auto 1fr auto;
-    align-items:center;
-    gap:10px;
   }
-  .header-cta{justify-self:center}
 
-  .menu-toggle{display:block}
+  .header-cta{
+    justify-self:center;
+  }
 
-  /* mobile nav */
+  .menu-toggle{
+    display:block;
+  }
+
   .main-nav{
     display:none;
     position:absolute;
@@ -161,20 +224,19 @@ img{display:block;max-width:100%}
     background:#fff;
     border-top:1px solid #eee;
   }
-  .main-nav.open{display:block}
+
+  .main-nav.open{
+    display:block;
+  }
+
   .main-nav ul{
     flex-direction:column;
     align-items:center;
-    gap:18px;
     padding:20px 0;
+    gap:18px;
   }
-
-  .hero-inner h1{font-size:32px}
 }
 </style>
-</head>
-
-<body>
 
 <header class="site-header">
   <div class="container header-inner">
@@ -183,656 +245,1011 @@ img{display:block;max-width:100%}
       <img src="assets/images/logo.png" alt="RupMax Digital">
     </div>
 
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#collaboration">Collaboration</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
     <div class="header-cta">
-      <a href="https://wa.me/918979639473" target="_blank">WhatsApp</a>
+      <a href="https://wa.me/918979639473" target="_blank">
+        WhatsApp
+      </a>
     </div>
 
     <button class="menu-toggle" aria-label="Menu">
       <img src="assets/icons/black-icons/three-horizontal-lines.svg" alt="">
     </button>
 
-    <nav class="main-nav">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
   </div>
 </header>
 
-<section id="home" class="hero-section">
+<!-- ================= HEADER JS ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-nav");
+
+  if(!toggle || !nav) return;
+
+  toggle.addEventListener("click", function(e){
+    e.stopPropagation();
+    nav.classList.toggle("open");
+  });
+
+  nav.querySelectorAll("a").forEach(link=>{
+    link.addEventListener("click", ()=>{
+      nav.classList.remove("open");
+    });
+  });
+
+  document.addEventListener("click", function(e){
+    if(nav.classList.contains("open") &&
+       !nav.contains(e.target) &&
+       !toggle.contains(e.target)){
+      nav.classList.remove("open");
+    }
+  });
+
+});
+</script>
+
+<!-- ================= SMOOTH SCROLL ================= -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener("click", e=>{
+    const target = document.querySelector(link.getAttribute("href"));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:"smooth"});
+    }
+  });
+});
+</script>
+<!-- ================= HERO SECTION ================= -->
+<style>
+.hero-section{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero-inner{
+  text-align:center;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#e9f9f0;
+  color:#0f8a42;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13px;
+  margin-bottom:22px;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+}
+
+.hero-badge img{
+  width:16px;
+}
+
+.hero-inner h1{
+  font-size:44px;
+  line-height:1.25;
+  margin-bottom:18px;
+}
+
+.hero-inner h1 span{
+  color:#25d366;
+}
+
+.hero-inner p{
+  max-width:760px;
+  margin:0 auto 16px;
+  font-size:16px;
+  color:#555;
+}
+
+.hero-actions{
+  margin-top:28px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.hero-actions .btn.secondary{
+  background:#111;
+}
+
+.hero-trust{
+  margin-top:36px;
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  flex-wrap:wrap;
+  font-size:14px;
+  color:#666;
+}
+
+.hero-trust div{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.hero-trust img{
+  width:18px;
+  opacity:.7;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hero-inner h1{
+    font-size:32px;
+  }
+  .hero-inner p{
+    font-size:15px;
+  }
+}
+</style>
+
+<section id="home" class="hero-section section">
   <div class="container hero-inner">
+
+    <div class="hero-badge">
+      <img src="assets/icons/black-icons/quality-badge-checkmark.svg" alt="">
+      Registered & Trusted Digital Agency
+    </div>
+
     <h1>
-      Making Businesses Digital<br>
-      <span>Simple. Affordable. Effective.</span>
+      Digital Solutions for Businesses<br>
+      <span>Simple. Reliable. Result-Oriented.</span>
     </h1>
+
     <p>
-      RupMax Digital is an registered digital agency helping
-      restaurants, shops and local businesses go online.
+      RupMax Digital is a trusted digital solutions provider helping
+      restaurants, shops and local businesses go online with
+      Digital QR Menu, WhatsApp ordering, websites and business solutions.
     </p>
+
     <p>
-      From Digital QR Menu to business websites
-      and business solutions — we focus on results.
+      We focus on practical solutions that actually help businesses grow,
+      not complicated technology.
     </p>
-    <div class="hero-buttons">
-      <a href="https://wa.me/918979639473" target="_blank">
+
+    <div class="hero-actions">
+      <a href="https://wa.me/918979639473" target="_blank" class="btn">
+        <img src="assets/icons/color-icons/whatsapp.svg" alt="" width="18">
         Start on WhatsApp
       </a>
+
+      <a href="#services" class="btn secondary">
+        View Our Services
+      </a>
     </div>
+
+    <div class="hero-trust">
+      <div>
+        <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+        Registered Business
+      </div>
+      <div>
+        <img src="assets/icons/black-icons/globe.svg" alt="">
+        Serving All India
+      </div>
+      <div>
+        <img src="assets/icons/black-icons/male-services-support.svg" alt="">
+        Dedicated Support
+      </div>
+    </div>
+
   </div>
 </section>
+<!-- ================= TRUST / CREDIBILITY ================= -->
+<style>
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
 
+.trust-card{
+  background:#fff;
+  border-radius:22px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.06),
+    0 4px 12px rgba(0,0,0,.05);
+}
 
-  
-</body>
-</html>
+.trust-card img{
+  width:40px;
+  margin:0 auto 14px;
+  opacity:.8;
+}
 
+.trust-card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
 
-<!-- ================= TRUST / STATS ================= -->
-<section class="trust-section">
-  <style>
-    .trust-section{
-      padding:70px 0;
-    }
-    .trust-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:20px;
-      text-align:center;
-    }
-    .trust-item{
-      background:#fff;
-      border-radius:18px;
-      padding:26px 18px;
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.06),
-        0 2px 8px rgba(0,0,0,.04);
-    }
-    .trust-item strong{
-      display:block;
-      font-size:28px;
-      margin-bottom:6px;
-      color:#111;
-    }
-    .trust-item p{
-      font-size:14px;
-      color:#555;
-    }
+.trust-card p{
+  font-size:14px;
+  color:#555;
+}
 
-    @media(max-width:768px){
-      .trust-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-    }
-  </style>
+/* Mobile */
+@media(max-width:768px){
+  .trust-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+</style>
 
-  <div class="container trust-grid">
-    <div class="trust-item">
-      <strong>MSME</strong>
-      <p>Registered Business</p>
-    </div>
-
-    <div class="trust-item">
-      <strong>150+</strong>
-      <p>Businesses Served</p>
-    </div>
-
-    <div class="trust-item">
-      <strong>24 Hr</strong>
-      <p>Fast Delivery</p>
-    </div>
-
-    <div class="trust-item">
-      <strong>All India</strong>
-      <p>Service Coverage</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section id="services" class="services-section">
-  <style>
-    .services-section{
-      padding:90px 0;
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:28px;
-    }
-
-    .service-card{
-      position:relative;
-      background:#fff;
-      border-radius:22px;
-      padding:34px 26px;
-      text-align:center;
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.06),
-        0 2px 8px rgba(0,0,0,.04);
-    }
-
-    /* Animated gradient BORDER only */
-    .service-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius:inherit;
-      background:linear-gradient(
-        90deg,
-        #25d366,
-        #4facfe,
-        #00f2fe,
-        #25d366
-      );
-      background-size:300% 300%;
-      animation:borderMove 4s linear infinite;
-      z-index:-1;
-    }
-
-    @keyframes borderMove{
-      0%{background-position:0% 50%}
-      100%{background-position:300% 50%}
-    }
-
-    .service-icon img{
-      width:54px;
-      margin:0 auto 18px;
-    }
-
-    .service-card h3{
-      font-size:20px;
-      margin-bottom:10px;
-    }
-
-    .service-card p{
-      font-size:14px;
-      color:#555;
-      margin-bottom:12px;
-    }
-
-    .service-price{
-      font-weight:700;
-      font-size:16px;
-      margin:14px 0;
-      color:#111;
-    }
-
-    .service-cta{
-      margin-top:18px;
-    }
-
-    .service-cta a{
-      display:inline-block;
-      background:#25d366;
-      color:#fff;
-      padding:12px 22px;
-      border-radius:10px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .service-cta a::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle,rgba(255,255,255,.35),transparent 60%);
-      opacity:0;
-      animation:pulse 2.8s infinite;
-    }
-  </style>
-
+<section class="section">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:50px;">Our Services</h2>
+
+    <h2 class="section-title">Why Businesses Trust RupMax Digital</h2>
+    <p class="section-subtitle">
+      We position ourselves as a reliable digital solutions provider
+      with transparent process and long-term support.
+    </p>
+
+    <div class="trust-grid">
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/quality-badge-checkmark.svg" alt="">
+        <h3>Registered Agency</h3>
+        <p>
+          We are a registered digital agency working with
+          businesses across India.
+        </p>
+      </div>
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/globe.svg" alt="">
+        <h3>All India Service</h3>
+        <p>
+          Our services are available PAN India,
+          not limited to a single city.
+        </p>
+      </div>
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/qr.svg" alt="">
+        <h3>QR Menu Experts</h3>
+        <p>
+          Specialized in Digital QR Menu with
+          WhatsApp ordering integration.
+        </p>
+      </div>
+
+      <div class="trust-card">
+        <img src="assets/icons/black-icons/male-services-support.svg" alt="">
+        <h3>Reliable Support</h3>
+        <p>
+          Setup, updates and maintenance are
+          handled by our team.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ================= SERVICES ================= -->
+<style>
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:26px;
+}
+
+.service-card{
+  position:relative;
+  background:#fff;
+  border-radius:22px;
+  padding:30px 24px;
+  text-align:center;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.06),
+    0 4px 12px rgba(0,0,0,.05);
+}
+
+.service-icon{
+  width:64px;
+  height:64px;
+  margin:0 auto 18px;
+  border-radius:18px;
+  background:#f3fbf7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.service-icon img{
+  width:34px;
+  opacity:.85;
+}
+
+.service-card h3{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.service-card p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:8px;
+}
+
+.service-card .service-points{
+  margin-top:14px;
+  font-size:14px;
+  color:#444;
+}
+
+.service-points div{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:6px;
+}
+
+.service-points img{
+  width:16px;
+  opacity:.7;
+}
+</style>
+
+<section id="services" class="section">
+  <div class="container">
+
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">
+      We provide practical digital solutions designed for
+      small and medium businesses across India.
+    </p>
 
     <div class="services-grid">
 
       <!-- QR MENU -->
-      <article class="service-card">
+      <div class="service-card">
         <div class="service-icon">
           <img src="assets/icons/black-icons/qr.svg" alt="">
         </div>
         <h3>Digital QR Menu</h3>
         <p>
-          Convert your paper menu into a digital QR menu.
-          Customers scan and view menu instantly on mobile.
+          Paper menu ko digital QR menu me convert karke
+          customers ko fast, contactless experience dete hain.
         </p>
-        <p>
-          Includes call button, WhatsApp, Google Maps,
-          social links and payment QR.
-        </p>
-        <div class="service-price">
-          ₹999/Year
+        <div class="service-points">
+          <div>
+            <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+            WhatsApp Ordering Integration
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/mobile.svg" alt="">
+            Mobile Friendly & Fast Loading
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/infinity.svg" alt="">
+            Easy Update & Maintenance
+          </div>
         </div>
-        <div class="service-cta">
-          <a href="https://wa.me/918979639473" target="_blank">
-            Order on WhatsApp
-          </a>
-        </div>
-      </article>
+      </div>
 
-      <!-- GOOGLE BUSINESS PROFILE -->
-      <article class="service-card">
-        <div class="service-icon">
-          <img src="assets/icons/black-icons/search.svg" alt="">
-        </div>
-        <h3>Digital Solutions</h3>
-        <p>
-          Our focus is on affordable, easy-to-use digital solutions with reliable support
-        </p>
-        <p>
-          Serving clients across NCR and all over India..
-        </p>
-        <div class="service-price">
-          ₹999 / Month
-        </div>
-        <div class="service-cta">
-          <a href="https://wa.me/918979639473" target="_blank">
-            Book on WhatsApp
-          </a>
-        </div>
-      </article>
-
-      <!-- WORDPRESS WEBSITE -->
-      <article class="service-card">
+      <!-- WEBSITE -->
+      <div class="service-card">
         <div class="service-icon">
           <img src="assets/icons/black-icons/globe.svg" alt="">
         </div>
-        <h3>WordPress Business Website</h3>
+        <h3>Website Development</h3>
         <p>
-          Professional business website that is fast,
-          mobile-friendly and easy to manage.
+          Professional business websites built on WordPress
+          with clean design and easy management.
         </p>
+        <div class="service-points">
+          <div>
+            <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+            Mobile Optimized Design
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/shield-checkmark.svg" alt="">
+            Secure & Reliable Setup
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/search.svg" alt="">
+            SEO Friendly Structure
+          </div>
+        </div>
+      </div>
+
+      <!-- DIGITAL SOLUTIONS -->
+      <div class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/chart-arrow-up.svg" alt="">
+        </div>
+        <h3>Digital Solutions for Business</h3>
         <p>
-          Includes domain, hosting, SSL and premium theme.
+          Businesses ke liye simple aur effective digital solutions
+          jo visibility aur trust build kare.
         </p>
-        <div class="service-price">
-          ₹8999
+        <div class="service-points">
+          <div>
+            <img src="assets/icons/black-icons/search.svg" alt="">
+            Google Business Profile Support
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/star.svg" alt="">
+            Online Presence Improvement
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/clock.svg" alt="">
+            Regular Assistance
+          </div>
         </div>
-        <div class="service-cta">
-          <a href="https://wa.me/918979639473" target="_blank">
-            Book on WhatsApp
-          </a>
+      </div>
+
+      <!-- LANDING PAGES -->
+      <div class="service-card">
+        <div class="service-icon">
+          <img src="assets/icons/black-icons/demo.svg" alt="">
         </div>
-      </article>
+        <h3>Landing Pages</h3>
+        <p>
+          Birthday, anniversary, event ya promotion ke liye
+          attractive single-page websites.
+        </p>
+        <div class="service-points">
+          <div>
+            <img src="assets/icons/black-icons/mobile.svg" alt="">
+            Mobile First Design
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/lightning.svg" alt="">
+            Fast Load & Shareable
+          </div>
+          <div>
+            <img src="assets/icons/black-icons/free.svg" alt="">
+            Easy to Access
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
 </section>
+<!-- ================= PRINTING PRESS COLLABORATION ================= -->
+<style>
+.collab-section{
+  background:#f7f7f7;
+}
 
-<!-- ================= TESTIMONIALS ================= -->
-<section id="testimonials" class="testimonials-section">
-  <style>
-    .testimonials-section{padding:90px 0}
-    .testimonials-wrap{
-      display:flex;
-      gap:22px;
-      overflow-x:auto;
-      scroll-behavior:smooth;
-      padding-bottom:10px;
-    }
-    .testimonial-card{
-      min-width:280px;
-      background:#fff;
-      border-radius:22px;
-      padding:26px;
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.06),
-        0 2px 8px rgba(0,0,0,.04);
-    }
-    .stars{color:#f5b301;margin-bottom:8px;font-size:14px}
-    .testimonial-card p{font-size:14px;color:#555;margin-bottom:10px}
-    .author{font-size:13px;color:#777}
-  </style>
+.collab-wrap{
+  max-width:920px;
+  margin:auto;
+  text-align:center;
+}
 
+.collab-box{
+  background:#fff;
+  border-radius:26px;
+  padding:40px 26px;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.07),
+    0 6px 16px rgba(0,0,0,.05);
+}
+
+.collab-box h2{
+  font-size:26px;
+  margin-bottom:14px;
+}
+
+.collab-box p{
+  font-size:15px;
+  color:#555;
+  margin-bottom:16px;
+}
+
+.collab-points{
+  margin:26px 0;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.collab-point{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  color:#444;
+}
+
+.collab-point img{
+  width:18px;
+  margin-top:2px;
+  opacity:.8;
+}
+
+.collab-cta{
+  margin-top:30px;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .collab-points{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+<section id="collaboration" class="section collab-section">
+  <div class="container collab-wrap">
+
+    <div class="collab-box">
+
+      <h2>Printing Press Collaboration</h2>
+      <p>
+        Agar aap restaurant ke <strong>menu, banner, standee ya flex</strong>
+        printing ka kaam karte hain, to hum aapke saath
+        <strong>long-term business collaboration</strong> karna chahte hain.
+      </p>
+
+      <div class="collab-points">
+        <div class="collab-point">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+          QR Menu wholesale price par milega
+        </div>
+        <div class="collab-point">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+          Aap apni marzi ke rate par sell kar sakte hain
+        </div>
+        <div class="collab-point">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+          Menu design, live & maintenance hum handle karte hain
+        </div>
+        <div class="collab-point">
+          <img src="assets/icons/black-icons/check-mark-box.svg" alt="">
+          Koi monthly fee ya hidden charges nahi
+        </div>
+      </div>
+
+      <p>
+        Is collaboration me <strong>har QR menu par direct earning</strong> hogi,
+        bina extra workload ke.
+      </p>
+
+      <div class="collab-cta">
+        <a class="btn" target="_blank"
+          href="https://wa.me/918979639473">
+          <img src="assets/icons/color-icons/whatsapp.svg" width="18" alt="">
+          Get QR Menu at Wholesale Price
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ================= WHY RUPMAX DIGITAL ================= -->
+<style>
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:26px;
+}
+
+.why-card{
+  background:#fff;
+  border-radius:22px;
+  padding:30px 24px;
+  text-align:center;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.06),
+    0 4px 12px rgba(0,0,0,.05);
+}
+
+.why-icon{
+  width:60px;
+  height:60px;
+  margin:0 auto 16px;
+  border-radius:16px;
+  background:#f3fbf7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.why-icon img{
+  width:30px;
+  opacity:.85;
+}
+
+.why-card h3{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.why-card p{
+  font-size:14px;
+  color:#555;
+}
+</style>
+
+<section class="section">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:14px;">What Our Customers Say</h2>
-    <p style="text-align:center;color:#666;margin-bottom:36px;">
-      Real feedback from businesses using our services
+
+    <h2 class="section-title">Why RupMax Digital</h2>
+    <p class="section-subtitle">
+      We don’t just deliver services. We work as a
+      long-term digital solutions partner for businesses.
     </p>
 
-    <div class="testimonials-wrap">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>QR menu service was quick and simple. Customers love scanning instead of paper menus.</p>
-        <div class="author">Restaurant Owner – Delhi</div>
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-icon">
+          <img src="assets/icons/black-icons/quality-badge-checkmark.svg" alt="">
+        </div>
+        <h3>Trusted & Registered</h3>
+        <p>
+          RupMax Digital is a registered agency working
+          with businesses across India.
+        </p>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>Affordable and professional. Google profile optimization brought more calls.</p>
-        <div class="author">Local Business – Noida</div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <img src="assets/icons/black-icons/chart-arrow-up.svg" alt="">
+        </div>
+        <h3>Solution-Oriented Approach</h3>
+        <p>
+          Hum sirf service sell nahi karte,
+          hum business problems ke practical solutions dete hain.
+        </p>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>Best QR menu at this price. One-time payment is very helpful.</p>
-        <div class="author">Cafe Owner – Gurugram</div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <img src="assets/icons/black-icons/mobile.svg" alt="">
+        </div>
+        <h3>Mobile-First Thinking</h3>
+        <p>
+          Aaj ke customers mobile par hote hain,
+          isliye hum mobile-first solutions banate hain.
+        </p>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>Website delivered on time with a clean look. Support is responsive.</p>
-        <div class="author">Startup Founder – India</div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <img src="assets/icons/black-icons/male-services-support.svg" alt="">
+        </div>
+        <h3>Ongoing Support</h3>
+        <p>
+          Setup ke baad bhi hum support, updates
+          aur guidance dete rehte hain.
+        </p>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>Regular updates and review replies improved local visibility.</p>
-        <div class="author">Service Business – Faridabad</div>
-      </div>
+
     </div>
+
   </div>
 </section>
+<!-- ================= SOCIAL PRESENCE ================= -->
+<style>
+.social-wrap{
+  max-width:880px;
+  margin:auto;
+  text-align:center;
+}
 
-<!-- ================= PRICING ================= -->
-<section id="pricing" class="pricing-section">
-  <style>
-    .pricing-section{padding:90px 0}
-    .pricing-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:28px;
-    }
-    .pricing-card{
-      position:relative;
-      background:#fff;
-      border-radius:22px;
-      padding:34px 26px;
-      text-align:center;
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.06),
-        0 2px 8px rgba(0,0,0,.04);
-    }
-    /* animated border */
-    .pricing-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius:inherit;
-      background:linear-gradient(90deg,#25d366,#4facfe,#00f2fe,#25d366);
-      background-size:300% 300%;
-      animation:borderMove 4s linear infinite;
-      z-index:-1;
-    }
-    .price{
-      font-size:34px;
-      font-weight:700;
-      margin:12px 0;
-    }
-    .note{font-size:13px;color:#666;margin-bottom:12px}
-    .features{list-style:none;margin:18px 0}
-    .features li{
-      display:flex;align-items:center;gap:10px;
-      font-size:14px;color:#555;margin-bottom:8px;
-      justify-content:center;
-    }
-    .features img{width:18px;opacity:.7}
-    .price-cta a{
-      display:inline-block;
-      margin-top:16px;
-      background:#25d366;color:#fff;
-      padding:12px 22px;border-radius:10px;
-      position:relative;overflow:hidden;
-    }
-    .price-cta a::after{
-      content:"";
-      position:absolute;inset:0;
-      background:radial-gradient(circle,rgba(255,255,255,.35),transparent 60%);
-      opacity:0;animation:pulse 2.8s infinite;
-    }
-  </style>
+.social-box{
+  background:#fff;
+  border-radius:24px;
+  padding:36px 26px;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.07),
+    0 6px 16px rgba(0,0,0,.05);
+}
 
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:14px;">Pricing</h2>
-    <p style="text-align:center;color:#666;margin-bottom:36px;">
-      Simple & transparent pricing
-    </p>
+.social-icons{
+  margin-top:26px;
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
 
-    <div class="pricing-grid">
-      <!-- QR MENU -->
-      <article class="pricing-card">
-        <h3>Digital QR Menu</h3>
-        <div class="price">₹999</div>
-        <div class="note">One time • Yearly Use</div>
-        <ul class="features">
-          <li><img src="assets/icons/black-icons/check-mark-box.svg" alt="">Digital menu page</li>
-          <li><img src="assets/icons/black-icons/call.svg" alt="">Call & WhatsApp</li>
-          <li><img src="assets/icons/black-icons/globe.svg" alt="">Google Maps</li>
-          <li><img src="assets/icons/black-icons/qr.svg" alt="">Payment QR</li>
-        </ul>
-        <div class="price-cta">
-          <a href="https://wa.me/918979639473" target="_blank">Get on WhatsApp</a>
-        </div>
-      </article>
+.social-icon{
+  width:64px;
+  height:64px;
+  border-radius:18px;
+  background:#f6f6f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s ease;
+}
 
-      <!-- GMB -->
-      <article class="pricing-card">
-        <h3>Google Business Profile</h3>
-        <div class="price">₹1999 / Month</div>
-        <ul class="features">
-          <li><img src="assets/icons/black-icons/star.svg" alt="">Review replies</li>
-          <li><img src="assets/icons/black-icons/search.svg" alt="">Optimization</li>
-          <li><img src="assets/icons/black-icons/mobile.svg" alt="">Photos & posts</li>
-        </ul>
-        <div class="price-cta">
-          <a href="https://wa.me/918979639473" target="_blank">Book on WhatsApp</a>
-        </div>
-      </article>
+.social-icon:hover{
+  transform:translateY(-4px);
+}
 
-      <!-- WEBSITE -->
-      <article class="pricing-card">
-        <h3>WordPress Website</h3>
-        <div class="price">₹8999</div>
-        <ul class="features">
-          <li><img src="assets/icons/black-icons/check-mark-box.svg" alt="">Up to 5 pages</li>
-          <li><img src="assets/icons/black-icons/globe.svg" alt="">Domain & hosting</li>
-          <li><img src="assets/icons/black-icons/shield-checkmark.svg" alt="">SSL & security</li>
-        </ul>
-        <div class="price-cta">
-          <a href="https://wa.me/918979639473" target="_blank">Book on WhatsApp</a>
-        </div>
-      </article>
+.social-icon img{
+  width:32px;
+}
+
+.social-note{
+  margin-top:24px;
+  font-size:14px;
+  color:#555;
+}
+</style>
+
+<section class="section">
+  <div class="container social-wrap">
+
+    <div class="social-box">
+      <h2 class="section-title">Our Online Presence</h2>
+      <p class="section-subtitle">
+        We believe in transparent communication and real online presence.
+        You can connect with us anytime.
+      </p>
+
+      <div class="social-icons">
+
+        <a href="https://www.instagram.com/rupmaxdigital" target="_blank" class="social-icon">
+          <img src="assets/icons/color-icons/instagram.svg" alt="Instagram">
+        </a>
+
+        <a href="https://www.facebook.com/rupmaxdigital" target="_blank" class="social-icon">
+          <img src="assets/icons/color-icons/facebook.svg" alt="Facebook">
+        </a>
+
+        <a href="https://wa.me/918979639473" target="_blank" class="social-icon">
+          <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp">
+        </a>
+
+        <a href="https://rupmaxdigital.in" target="_blank" class="social-icon">
+          <img src="assets/icons/color-icons/google-color.svg" alt="Website">
+        </a>
+
+      </div>
+
+      <p class="social-note">
+        Active on Instagram & Facebook as <strong>@rupmaxdigital</strong><br>
+        Serving businesses across India with trusted digital solutions.
+      </p>
     </div>
+
   </div>
 </section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="about-section">
-  <style>
-    .about-section{padding:90px 0}
-    .about-wrap{
-      max-width:820px;
-      margin:auto;
-      text-align:center;
-    }
-    .about-wrap p{
-      font-size:15px;
-      color:#555;
-      margin-bottom:16px;
-    }
-  </style>
-
-  <div class="container about-wrap">
-    <h2 style="margin-bottom:30px;">About RupMax Digital</h2>
-
-    <p>
-      RupMax Digital is a Delhi NCR based MSME / Udyam registered
-      digital agency. The name comes from our base location,
-      but our services are available all across India.
-    </p>
-
-    <p>
-      We help small and medium businesses go digital with
-      simple, affordable and practical online solutions.
-      Our focus is not on complicated technology,
-      but on solutions that actually help businesses grow.
-    </p>
-
-    <p>
-      From Digital QR Menu to Google Business Profile management
-      and WordPress business websites, we provide services
-      that are easy to use, cost-effective and result oriented.
-    </p>
-  </div>
-</section>
-
 <!-- ================= CONTACT ================= -->
-<section id="contact" class="contact-section">
-  <style>
-    .contact-section{
-      padding:90px 0;
-      background:#f7f7f7;
-    }
-    .contact-wrap{
-      max-width:720px;
-      margin:auto;
-      text-align:center;
-    }
-    .contact-wrap p{
-      font-size:15px;
-      color:#555;
-      margin-bottom:18px;
-    }
-    .contact-cta a{
-      display:inline-block;
-      background:#25d366;
-      color:#fff;
-      padding:14px 28px;
-      border-radius:12px;
-      font-size:16px;
-      position:relative;
-      overflow:hidden;
-    }
-    .contact-cta a::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle,rgba(255,255,255,.35),transparent 60%);
-      opacity:0;
-      animation:pulse 2.8s infinite;
-    }
-    .contact-info{
-      margin-top:22px;
-      font-size:14px;
-      color:#666;
-    }
-  </style>
+<style>
+.contact-section{
+  background:#f7f7f7;
+}
 
+.contact-wrap{
+  max-width:880px;
+  margin:auto;
+  text-align:center;
+}
+
+.contact-box{
+  background:#fff;
+  border-radius:26px;
+  padding:40px 26px;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.07),
+    0 6px 16px rgba(0,0,0,.05);
+}
+
+.contact-box h2{
+  font-size:26px;
+  margin-bottom:14px;
+}
+
+.contact-box p{
+  font-size:15px;
+  color:#555;
+  margin-bottom:16px;
+}
+
+.contact-actions{
+  margin-top:26px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.contact-info{
+  margin-top:26px;
+  font-size:14px;
+  color:#555;
+}
+
+.contact-info div{
+  margin-bottom:6px;
+}
+
+.payment-box{
+  margin-top:30px;
+  padding-top:24px;
+  border-top:1px dashed #ddd;
+}
+
+.payment-icons{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.payment-icons img{
+  height:28px;
+}
+</style>
+
+<section id="contact" class="section contact-section">
   <div class="container contact-wrap">
-    <h2 style="margin-bottom:20px;">Contact Us</h2>
 
-    <p>
-      Call or WhatsApp us to discuss the right digital solution
-      for your business. We serve businesses across India.
-    </p>
+    <div class="contact-box">
 
-    <div class="contact-cta">
-      <a href="https://wa.me/918979639473" target="_blank">
-        Chat on WhatsApp
-      </a>
+      <h2>Contact RupMax Digital</h2>
+      <p>
+        Aap apne business ke liye right digital solution
+        discuss karna chahte ho to seedha WhatsApp ya call karein.
+      </p>
+
+      <div class="contact-actions">
+        <a href="https://wa.me/918979639473" target="_blank" class="btn">
+          <img src="assets/icons/color-icons/whatsapp.svg" width="18" alt="">
+          Chat on WhatsApp
+        </a>
+
+        <a href="tel:8979639473" class="btn secondary">
+          <img src="assets/icons/black-icons/call.svg" width="18" alt="">
+          Call Now
+        </a>
+      </div>
+
+      <div class="contact-info">
+        <div><strong>Phone / WhatsApp:</strong> 8979639473</div>
+        <div><strong>Location:</strong> Noida, Uttar Pradesh</div>
+        <div><strong>Service Area:</strong> All India</div>
+        <div><strong>Status:</strong> Registered Digital Agency</div>
+      </div>
+
+      <div class="payment-box">
+        <p>
+          Secure online payment supported via Razorpay
+        </p>
+
+        <a href="https://razorpay.me/@rupmaxdigital" target="_blank" class="btn">
+          <img src="assets/icons/color-icons/upi.svg" width="18" alt="">
+          Pay Securely Online
+        </a>
+
+        <div class="payment-icons">
+          <img src="assets/icons/color-icons/upi.svg" alt="UPI">
+          <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay">
+          <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe">
+          <img src="assets/icons/color-icons/paytm.svg" alt="Paytm">
+        </div>
+      </div>
+
     </div>
 
-    <div class="contact-info">
-      <p>Phone / WhatsApp: <strong>8979639473</strong></p>
-      <p>Service Area: <strong>All India</strong></p>
-    </div>
   </div>
 </section>
-
 <!-- ================= FOOTER ================= -->
+<style>
+.site-footer{
+  background:#111;
+  color:#fff;
+  padding:40px 0 20px;
+}
+
+.footer-inner{
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer-about p{
+  font-size:14px;
+  opacity:.85;
+  margin-bottom:6px;
+}
+
+.footer-links{
+  font-size:14px;
+}
+
+.footer-links a{
+  color:#fff;
+  opacity:.8;
+  margin:0 6px;
+}
+
+.footer-links a:hover{
+  opacity:1;
+  text-decoration:underline;
+}
+
+.footer-social{
+  display:flex;
+  gap:14px;
+}
+
+.footer-social img{
+  width:22px;
+  opacity:.85;
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:24px;
+  font-size:13px;
+  opacity:.6;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .footer-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
+
 <footer class="site-footer">
-  <style>
-    .site-footer{
-      background:#111;
-      color:#fff;
-      padding:40px 0 20px;
-    }
-
-    .footer-inner{
-      display:flex;
-      flex-wrap:wrap;
-      gap:24px;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .footer-about p{
-      font-size:14px;
-      opacity:.85;
-      margin-bottom:6px;
-    }
-
-    .footer-links{
-      font-size:14px;
-    }
-    .footer-links a{
-      color:#fff;
-      opacity:.85;
-      text-decoration:none;
-      margin:0 6px;
-    }
-    .footer-links a:hover{
-      opacity:1;
-      text-decoration:underline;
-    }
-
-    .footer-payments{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
-    .footer-payments img{
-      height:28px;
-      background:#fff;
-      padding:4px 6px;
-      border-radius:6px;
-    }
-
-    .footer-bottom{
-      text-align:center;
-      margin-top:24px;
-      font-size:13px;
-      opacity:.6;
-    }
-
-    @media(max-width:768px){
-      .footer-inner{
-        flex-direction:column;
-        text-align:center;
-      }
-    }
-  </style>
-
   <div class="container footer-inner">
 
-    <!-- ABOUT -->
     <div class="footer-about">
+      <p><strong>RupMax Digital</strong></p>
       <p>
-        RupMax Digital provides affordable digital solutions
-        for Indian businesses.
+        Trusted digital solutions provider helping Indian
+        businesses grow online.
       </p>
       <p>
-        Digital QR Menu • Digital Solutions • Business Websites
+        Digital QR Menu • Websites • Digital Business Solutions
       </p>
     </div>
 
-    <!-- LINKS -->
     <div class="footer-links">
-      <a href="terms-and-conditions.html">Terms & Conditions</a>
-      <span>|</span>
-      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="#home">Home</a> |
+      <a href="#services">Services</a> |
+      <a href="#collaboration">Collaboration</a> |
+      <a href="#contact">Contact</a>
     </div>
 
-    <!-- PAYMENTS -->
-    <div class="footer-payments">
-      <img src="assets/icons/color-icons/upi.svg" alt="UPI">
-      <img src="assets/icons/color-icons/google-pay.svg" alt="Google Pay">
-      <img src="assets/icons/color-icons/phonepe.svg" alt="PhonePe">
-      <img src="assets/icons/color-icons/paytm.svg" alt="Paytm">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/rupmaxdigital" target="_blank">
+        <img src="assets/icons/color-icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://www.facebook.com/rupmaxdigital" target="_blank">
+        <img src="assets/icons/color-icons/facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://wa.me/918979639473" target="_blank">
+        <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp">
+      </a>
     </div>
 
   </div>
@@ -842,60 +1259,5 @@ img{display:block;max-width:100%}
   </div>
 </footer>
 
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".main-nav");
-
-  if (!toggle || !nav) return;
-
-  // hamburger toggle
-  toggle.addEventListener("click", function (e) {
-    e.stopPropagation();
-    nav.classList.toggle("open");
-  });
-
-  // close on menu link click
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-    });
-  });
-
-  // close on outside click
-  document.addEventListener("click", function (e) {
-    if (
-      nav.classList.contains("open") &&
-      !nav.contains(e.target) &&
-      !toggle.contains(e.target)
-    ) {
-      nav.classList.remove("open");
-    }
-  });
-});
-</script>
-
-
-<!-- ================= FINAL JS (SAFE & MINIMAL) ================= -->
-<script>
-/* Smooth scroll for menu links */
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
-  link.addEventListener("click",e=>{
-    const target=document.querySelector(link.getAttribute("href"));
-    if(target){
-      e.preventDefault();
-      target.scrollIntoView({behavior:"smooth"});
-    }
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-
+</body>
+</html>
