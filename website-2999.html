@@ -2,34 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Website @ ₹2999 – 24 Hours Website Live</title>
+<title>Business Website @ ₹2999 | RupMax Digital</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- FAVICON -->
-<link rel="icon" href="assets/icons/color-icons/demo.svg">
+<link rel="icon" href="assets/images/favicon.png">
 
 <style>
 /* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* ================= VARIABLES ================= */
+/* ================= THEME ================= */
 :root{
-  --bg:#0b1020;
-  --card:#111827;
-  --text:#f8fafc;
-  --muted:#cbd5f5;
-  --green:#22c55e;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
   --blue:#2563eb;
-  --yellow:#facc15;
-  --shadow:0 30px 80px rgba(0,0,0,.6);
+  --green:#16a34a;
+  --orange:#f97316;
+  --border:#e5e7eb;
+  --shadow:0 25px 60px rgba(15,23,42,.15);
 }
 
 /* ================= BODY ================= */
 body{
   font-family:system-ui,-apple-system,Segoe UI,sans-serif;
   background:
-    radial-gradient(circle at 20% 20%, rgba(37,99,235,.25), transparent 40%),
-    radial-gradient(circle at 80% 10%, rgba(34,197,94,.25), transparent 40%),
+    radial-gradient(circle at 15% 10%, rgba(37,99,235,.15), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(249,115,22,.12), transparent 40%),
     var(--bg);
   color:var(--text);
   line-height:1.6;
@@ -37,98 +38,133 @@ body{
 }
 
 .container{
-  max-width:1100px;
+  max-width:1120px;
   margin:auto;
   padding:0 18px;
 }
 
 section{padding:90px 0}
 
+/* ================= HEADER ================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(248,250,252,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+}
+
+.brand img{
+  height:34px;
+}
+
+.back-link{
+  font-size:14px;
+  font-weight:700;
+  color:var(--blue);
+  text-decoration:none;
+}
+
 /* ================= HERO ================= */
 .hero{
+  padding-top:70px;
   text-align:center;
-  padding-top:110px;
-  position:relative;
 }
 
 .hero-badge{
   display:inline-block;
-  background:#16a34a;
-  color:#fff;
-  padding:10px 26px;
+  padding:10px 22px;
   border-radius:999px;
+  background:#dcfce7;
+  color:#166534;
   font-weight:900;
   margin-bottom:26px;
-  animation:pulse 2s infinite;
+  animation:slideIn .9s ease forwards;
 }
 
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.06)}
-  100%{transform:scale(1)}
+@keyframes slideIn{
+  from{transform:translateY(20px);opacity:0}
+  to{transform:translateY(0);opacity:1}
 }
 
 .hero h1{
-  font-size:44px;
+  font-size:42px;
   font-weight:900;
   line-height:1.25;
 }
 
 .hero h1 span{
-  color:var(--green);
+  color:var(--blue);
 }
 
 .hero p{
   max-width:760px;
-  margin:20px auto 0;
-  color:var(--muted);
+  margin:18px auto 0;
   font-size:18px;
+  color:var(--muted);
 }
 
-/* ================= PRICE CARD ================= */
+/* ================= PRICE BOX ================= */
 .price-box{
   background:var(--card);
-  max-width:520px;
-  margin:50px auto 0;
-  padding:40px;
-  border-radius:28px;
+  max-width:540px;
+  margin:44px auto 0;
+  padding:38px;
+  border-radius:26px;
+  border:2px solid var(--blue);
   box-shadow:var(--shadow);
-  border:2px solid var(--green);
-  position:relative;
 }
 
-.old-price{
-  text-decoration:line-through;
-  color:#f87171;
-  font-weight:800;
+.cut-price{
   font-size:18px;
+  font-weight:800;
+  color:#dc2626;
+  text-decoration:line-through;
 }
 
-.new-price{
-  font-size:52px;
+.main-price{
+  font-size:48px;
   font-weight:900;
-  color:var(--green);
-  margin:8px 0;
+  color:var(--blue);
+  margin:6px 0 10px;
 }
 
-.pay-note{
+.pay-info{
   font-size:15px;
-  color:#e5e7eb;
+  color:#334155;
   margin-bottom:20px;
+}
+
+.pay-info strong{
+  color:#0f172a;
 }
 
 /* ================= CTA ================= */
 .pay-btn{
   display:block;
-  margin-top:22px;
-  padding:20px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
+  padding:18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--orange),#ffb703);
   color:#fff;
+  font-size:19px;
   font-weight:900;
-  font-size:20px;
   text-decoration:none;
-  box-shadow:0 20px 50px rgba(34,197,94,.5);
+  box-shadow:0 18px 40px rgba(249,115,22,.45);
   position:relative;
   overflow:hidden;
 }
@@ -136,107 +172,84 @@ section{padding:90px 0}
 .pay-btn::after{
   content:'';
   position:absolute;
-  top:0;
-  left:-120%;
-  width:120%;
-  height:100%;
+  inset:0;
   background:linear-gradient(
     120deg,
-    transparent,
+    transparent 30%,
     rgba(255,255,255,.6),
-    transparent
+    transparent 70%
   );
-  animation:shine 2.5s infinite;
+  transform:translateX(-120%);
+  animation:shineX 3s infinite;
 }
 
-@keyframes shine{
-  0%{left:-120%}
-  60%{left:120%}
-  100%{left:120%}
+@keyframes shineX{
+  to{transform:translateX(120%)}
 }
 
-.pay-sub{
-  margin-top:14px;
-  font-size:14px;
-  color:#d1d5db;
-}
-
-/* ================= FLOATING SHAPES ================= */
-.shape{
-  position:absolute;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  filter:blur(40px);
-  opacity:.6;
-  animation:float 8s infinite ease-in-out;
-}
-
-.shape.one{
-  background:#2563eb;
-  top:10%;
-  left:5%;
-}
-
-.shape.two{
-  background:#22c55e;
-  bottom:15%;
-  right:8%;
-  animation-delay:3s;
-}
-
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-40px)}
-  100%{transform:translateY(0)}
+.note{
+  margin-top:12px;
+  font-size:13px;
+  color:#475569;
 }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
   .hero h1{font-size:32px}
-  .new-price{font-size:44px}
+  .main-price{font-size:40px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND SHAPES -->
-<div class="shape one"></div>
-<div class="shape two"></div>
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="assets/images/logo.png" alt="RupMax Digital">
+      RupMax Digital
+    </div>
+    <a href="https://rupmaxdigital.in" class="back-link">
+      ← Back to Main Website
+    </a>
+  </div>
+</header>
 
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="container">
 
     <div class="hero-badge">
-      आज ORDER → कल WEBSITE LIVE 🚀
+      Aaj Order → 24 Hours Me Website Live
     </div>
 
     <h1>
-      Professional Business Website <br>
-      <span>@ ₹2,999 Only</span>
+      Professional Business Website<br>
+      <span>@ Just ₹2,999</span>
     </h1>
 
     <p>
-      Single-Page animated website • Mobile friendly • Call & WhatsApp buttons  
-      <br>GitHub Pages par hosted • 1 Year valid • Kisi bhi business ke liye
+      Clean • Modern • Mobile-First single page website  
+      <br>Service, shop, restaurant, consultant — sab ke liye perfect.
     </p>
 
     <div class="price-box">
-      <div class="old-price">Actual Price ₹2999</div>
-      <div class="new-price">Pay ₹1499 Now</div>
+      <div class="cut-price">Actual Price ₹6,500</div>
+      <div class="main-price">₹2,999 Only</div>
 
-      <div class="pay-note">
-        Remaining ₹1500 website complete hone ke baad  
-        <br><strong>(Advance + Final Payment Model)</strong>
+      <div class="pay-info">
+        👉 <strong>Pay ₹1,499 now</strong> and we start your website  
+        <br>👉 Remaining <strong>₹1,500 after website is ready</strong>
       </div>
 
-      <a class="pay-btn" href="https://rzp.io/rzp/BQk0NF7I" target="_blank">
-        ₹1499 Pay Karke Abhi Order Kare
+      <a href="https://rzp.io/rzp/BQk0NF7I" target="_blank" class="pay-btn">
+        Pay ₹1,499 & Start Website
       </a>
 
-      <div class="pay-sub">
-        ✔ Invoice milega • ✔ Non-GST • ✔ No hidden charges
+      <div class="note">
+        ✔ Free .in domain • ✔ Hosting included  
+        <br>✔ Invoice provided • Non-GST billing
       </div>
     </div>
 
@@ -245,55 +258,55 @@ section{padding:90px 0}
 
 </body>
 </html>
-<!-- ================= SERVICES SECTION ================= -->
-<section id="services" style="background:#0f172a;">
+<!-- ================= SERVICES / FEATURES ================= -->
+<section style="background:#ffffff;">
   <div class="container">
 
     <h2 class="section-title">
-      ₹2999 Me <span>Sab Kuch Included</span>
+      ₹2,999 Me <span>Kya-Kya Milega?</span>
     </h2>
 
     <p class="section-sub">
-      Itna sab mil raha hai — ab aur kya sochna dost?  
-      <br>Payment karo, website hum sambhal lenge.
+      Business ko online lane ke liye jo bhi zaroori hai — sab included.  
+      <br>No confusion. No hidden charges.
     </p>
 
-    <div class="services-grid">
+    <div class="features-grid">
 
-      <div class="service-card">
+      <div class="feature-card">
         <img src="assets/icons/black-icons/globe.svg">
-        <h4>Custom .IN Domain</h4>
-        <p>Aap apna business name ka professional domain doge.</p>
+        <h4>Free .IN Domain</h4>
+        <p>Aapke business name ka professional domain.</p>
       </div>
 
-      <div class="service-card">
+      <div class="feature-card">
         <img src="assets/icons/black-icons/mobile.svg">
-        <h4>Mobile Friendly Website</h4>
-        <p>Har phone, har screen par perfect look.</p>
+        <h4>Mobile-First Design</h4>
+        <p>90% users mobile se aate hain — design mobile ke liye perfect.</p>
       </div>
 
-      <div class="service-card">
+      <div class="feature-card">
         <img src="assets/icons/black-icons/food-menu.svg">
-        <h4>Single Page Sections</h4>
-        <p>Home • About • Services • Contact — smooth scroll.</p>
+        <h4>Single Page Website</h4>
+        <p>Home, About, Services, Contact — smooth scroll sections.</p>
       </div>
 
-      <div class="service-card">
+      <div class="feature-card">
         <img src="assets/icons/black-icons/call.svg">
-        <h4>Call & WhatsApp Button</h4>
-        <p>Customer ek tap me aapse connect kare.</p>
+        <h4>Call & WhatsApp Buttons</h4>
+        <p>Customer ek click me aapse connect kare.</p>
       </div>
 
-      <div class="service-card">
+      <div class="feature-card">
         <img src="assets/icons/black-icons/lightning.svg">
-        <h4>Fast Loading</h4>
-        <p>GitHub Pages hosting — super fast speed.</p>
+        <h4>Super Fast Loading</h4>
+        <p>Lightweight code. Fast open. Better conversion.</p>
       </div>
 
-      <div class="service-card">
+      <div class="feature-card">
         <img src="assets/icons/black-icons/shield-checkmark.svg">
         <h4>1 Year Validity</h4>
-        <p>Hosting + domain 1 saal ke liye included.</p>
+        <p>Domain + hosting full 1 year ke liye.</p>
       </div>
 
     </div>
@@ -302,194 +315,269 @@ section{padding:90px 0}
 </section>
 
 <style>
-/* ================= SERVICES ================= */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-  margin-top:60px;
+/* ================= FEATURES ================= */
+.section-title{
+  text-align:center;
+  font-size:36px;
+  font-weight:900;
+}
+.section-title span{
+  color:#2563eb;
+}
+.section-sub{
+  text-align:center;
+  max-width:760px;
+  margin:14px auto 60px;
+  color:#475569;
+  font-size:17px;
 }
 
-.service-card{
-  background:#111827;
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+
+.feature-card{
+  background:#f8fafc;
   padding:30px;
   border-radius:24px;
+  border:1px solid #e5e7eb;
   text-align:center;
-  box-shadow:0 25px 60px rgba(0,0,0,.6);
-  transition:.4s;
+  transition:.45s ease;
+  position:relative;
+  overflow:hidden;
 }
 
-.service-card img{
-  width:42px;
+.feature-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(37,99,235,.08),
+    transparent
+  );
+  transform:translateX(-120%);
+}
+
+.feature-card:hover::before{
+  animation:sweep 1.2s forwards;
+}
+
+@keyframes sweep{
+  to{transform:translateX(120%)}
+}
+
+.feature-card img{
+  width:40px;
   margin-bottom:14px;
 }
 
-.service-card:hover{
-  transform:translateY(-12px) scale(1.04);
-  box-shadow:0 45px 100px rgba(0,0,0,.9);
+.feature-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 25px 60px rgba(15,23,42,.12);
 }
 </style>
 
-<!-- ================= PAYMENT CLARITY ================= -->
-<section style="background:#020617;">
+<!-- ================= DELIVERY PROMISE ================= -->
+<section style="background:linear-gradient(180deg,#f8fafc,#ffffff);">
   <div class="container">
 
-    <div class="price-box" style="margin-top:0;">
-      <div class="old-price">Total Price ₹2999</div>
-      <div class="new-price">Pay ₹1499 Now</div>
+    <div class="delivery-box">
+      <img src="assets/icons/black-icons/clock.svg">
 
-      <div class="pay-note">
-        Baaki ₹1500 website complete hone ke baad  
-        <br>Demo dekh kar hi final payment lenge.
-      </div>
+      <h3>Superfast Delivery</h3>
 
-      <a class="pay-btn" href="https://rzp.io/rzp/BQk0NF7I" target="_blank">
-        ₹1499 Advance Pay Kare
-      </a>
-
-      <div class="pay-sub">
-        ✔ Proper Invoice Milega  
-        <br>✔ Non-GST Billing
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" style="background:#0b1020;">
-  <div class="container">
-
-    <h2 class="section-title">
-      Abhi Order Karo, <span>Kal Website Live</span>
-    </h2>
-
-    <p class="section-sub">
-      Serious enquiries only.  
-      <br>WhatsApp par details bhejo.
-    </p>
-
-    <div style="text-align:center;margin-top:40px;">
-      <a href="https://wa.me/918979639473"
-         style="
-           display:inline-block;
-           padding:18px 40px;
-           background:#22c55e;
-           color:#fff;
-           font-weight:900;
-           border-radius:999px;
-           text-decoration:none;
-           box-shadow:0 20px 50px rgba(34,197,94,.6);
-         ">
-        WhatsApp Now
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= FLOATING BUTTONS ================= -->
-<div style="
-  position:fixed;
-  right:18px;
-  bottom:100px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  z-index:999;
-">
-  <a href="https://wa.me/918979639473" target="_blank"
-     style="width:56px;height:56px;border-radius:50%;background:#25d366;
-     display:flex;align-items:center;justify-content:center;
-     box-shadow:0 20px 50px rgba(0,0,0,.6);">
-    <img src="assets/icons/color-icons/whatsapp.svg" width="28">
-  </a>
-
-  <a href="tel:8979639473"
-     style="width:56px;height:56px;border-radius:50%;background:#2563eb;
-     display:flex;align-items:center;justify-content:center;
-     box-shadow:0 20px 50px rgba(0,0,0,.6);">
-    <img src="assets/icons/black-icons/call.svg" width="26">
-  </a>
-</div>
-<!-- ================= SOCIAL PROOF STRIP ================= -->
-<section style="background:#020617;padding:60px 0;">
-  <div class="container">
-
-    <h2 class="section-title">
-      Bahut Saare <span>Businesses Humse Banwa Chuke</span>
-    </h2>
-
-    <p class="section-sub">
-      Restaurants • Shops • Clinics • Consultants • Service Providers  
-      <br>Small business se lekar growing brands tak.
-    </p>
-
-    <div class="logo-strip">
-      <img src="assets/icons/color-icons/google-color.svg">
-      <img src="assets/icons/color-icons/facebook.svg">
-      <img src="assets/icons/color-icons/instagram.svg">
-      <img src="assets/icons/color-icons/google-map.svg">
-      <img src="assets/icons/color-icons/upi.svg">
-      <img src="assets/icons/color-icons/paytm.svg">
-      <img src="assets/icons/color-icons/phonepe.svg">
+      <p>
+        Order aaj kariye —  
+        <strong>24 hours ke andar website live.</strong>  
+        <br>Content WhatsApp par share karna hota hai.
+      </p>
     </div>
 
   </div>
 </section>
 
 <style>
-.logo-strip{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:28px;
-  margin-top:40px;
+.delivery-box{
+  max-width:700px;
+  margin:auto;
+  background:#ffffff;
+  border:2px dashed #2563eb;
+  padding:40px;
+  border-radius:26px;
+  text-align:center;
 }
-.logo-strip img{
-  height:36px;
-  opacity:.85;
-  filter:grayscale(1);
-  transition:.3s;
+.delivery-box img{
+  width:46px;
+  margin-bottom:14px;
 }
-.logo-strip img:hover{
-  opacity:1;
-  filter:grayscale(0);
-  transform:scale(1.1);
+.delivery-box h3{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.delivery-box p{
+  font-size:17px;
+  color:#475569;
 }
 </style>
 
-<!-- ================= FINAL URGENCY CTA ================= -->
-<section style="background:linear-gradient(180deg,#0b1020,#020617);padding:100px 0;">
+<!-- ================= TRUST / SOCIAL PROOF ================= -->
+<section style="background:#ffffff;">
+  <div class="container">
+
+    <h2 class="section-title">
+      100+ <span>Businesses Already Online</span>
+    </h2>
+
+    <p class="section-sub">
+      Restaurants • Shops • Clinics • Service Providers • Startups  
+      <br>Log hum par bharosa karte hain — kyunki process simple hai.
+    </p>
+
+    <div class="trust-row">
+      <div class="trust-pill">Restaurant</div>
+      <div class="trust-pill">Shop</div>
+      <div class="trust-pill">Clinic</div>
+      <div class="trust-pill">Salon</div>
+      <div class="trust-pill">Consultant</div>
+      <div class="trust-pill">Service Business</div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+  margin-top:30px;
+}
+.trust-pill{
+  padding:12px 22px;
+  border-radius:999px;
+  background:#eff6ff;
+  color:#1e40af;
+  font-weight:700;
+  font-size:14px;
+}
+</style>
+<!-- ================= CONTACT SECTION ================= -->
+<section style="background:#f8fafc;">
+  <div class="container">
+
+    <h2 class="section-title">
+      Ab Website Banwana <span>Bahut Easy Hai</span>
+    </h2>
+
+    <p class="section-sub">
+      Aap sirf business details bhejo —  
+      design, setup aur live karna hum sambhal lenge.
+    </p>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <img src="assets/icons/black-icons/whatsapp.svg">
+        <h4>WhatsApp Details</h4>
+        <p>
+          Business name, phone, services  
+          WhatsApp par bhej do.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <img src="assets/icons/black-icons/demo.svg">
+        <h4>Website Demo</h4>
+        <p>
+          Website ready hone ke baad  
+          pehle demo dikhaya jayega.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <img src="assets/icons/black-icons/check-mark-box.svg">
+        <h4>Final Approval</h4>
+        <p>
+          Aap approve karoge  
+          tabhi final payment lenge.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+.contact-card{
+  background:#ffffff;
+  padding:34px;
+  border-radius:26px;
+  text-align:center;
+  border:1px solid #e5e7eb;
+  transition:.4s;
+}
+.contact-card img{
+  width:42px;
+  margin-bottom:14px;
+}
+.contact-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(15,23,42,.12);
+}
+</style>
+
+<!-- ================= FINAL PAYMENT CTA ================= -->
+<section style="background:linear-gradient(180deg,#ffffff,#f1f5f9);padding:100px 0;">
   <div class="container">
 
     <div class="final-box">
+
       <h2>
         Itna Sab Mil Raha Hai…<br>
-        <span>Ab Aur Kya Sochna Dost?</span>
+        <span>Ab Aur Kya Sochna?</span>
       </h2>
 
-      <p>
-        Professional animated website • Call & WhatsApp buttons •  
-        Social media links • Fast loading • 1 year validity  
-        <br><strong>Aaj order → kal website live.</strong>
-      </p>
+      <ul class="final-list">
+        <li>✔ Free .IN Domain</li>
+        <li>✔ Hosting Included (1 Year)</li>
+        <li>✔ Mobile-Friendly Design</li>
+        <li>✔ Call & WhatsApp Buttons</li>
+        <li>✔ 24 Hours Delivery</li>
+      </ul>
 
       <div class="final-price">
-        <div class="cut">₹2999</div>
-        <div class="now">Pay ₹1499 Now</div>
+        <div class="cut">₹6,500</div>
+        <div class="now">₹2,999 Only</div>
       </div>
+
+      <p class="final-pay-info">
+        👉 Pay <strong>₹1,499 now</strong> to start website  
+        <br>👉 Remaining <strong>₹1,500 after website is ready</strong>
+      </p>
 
       <a href="https://rzp.io/rzp/BQk0NF7I"
          target="_blank"
          class="final-btn">
-        ₹1499 Advance Pay Karke Order Kare
+        Pay ₹1,499 & Start Website
       </a>
 
       <div class="final-note">
-        ✔ Invoice milega • ✔ Non-GST  
-        <br>✔ Baaki payment website complete hone ke baad
+        Invoice milega • Non-GST billing  
+        <br>No hidden charges
       </div>
+
     </div>
 
   </div>
@@ -497,76 +585,122 @@ section{padding:90px 0}
 
 <style>
 .final-box{
-  max-width:560px;
+  max-width:580px;
   margin:auto;
-  background:#111827;
+  background:#ffffff;
   padding:50px;
   border-radius:30px;
   text-align:center;
-  border:2px solid #22c55e;
-  box-shadow:0 40px 120px rgba(34,197,94,.35);
-  animation:finalPulse 3s infinite;
+  border:2px solid #2563eb;
+  box-shadow:0 40px 100px rgba(37,99,235,.25);
 }
 .final-box h2{
   font-size:34px;
   font-weight:900;
 }
 .final-box h2 span{
-  color:#22c55e;
+  color:#2563eb;
 }
-.final-box p{
-  margin:18px 0 28px;
-  color:#cbd5f5;
+.final-list{
+  list-style:none;
+  margin:24px 0;
+  padding:0;
+  text-align:left;
+}
+.final-list li{
+  margin-bottom:10px;
+  font-weight:700;
+  color:#334155;
 }
 .final-price .cut{
-  text-decoration:line-through;
-  color:#f87171;
+  color:#dc2626;
   font-weight:800;
+  text-decoration:line-through;
 }
 .final-price .now{
   font-size:46px;
   font-weight:900;
-  color:#22c55e;
-  margin:6px 0 20px;
+  color:#2563eb;
+  margin:6px 0 14px;
+}
+.final-pay-info{
+  font-size:15px;
+  color:#475569;
+  margin-bottom:18px;
 }
 .final-btn{
   display:block;
   padding:20px;
   border-radius:16px;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
+  background:linear-gradient(135deg,#f97316,#ffb703);
   color:#fff;
   font-size:20px;
   font-weight:900;
   text-decoration:none;
-  box-shadow:0 20px 60px rgba(34,197,94,.55);
+  box-shadow:0 20px 50px rgba(249,115,22,.45);
 }
 .final-note{
-  margin-top:14px;
-  font-size:14px;
-  color:#d1d5db;
+  margin-top:12px;
+  font-size:13px;
+  color:#64748b;
 }
-@keyframes finalPulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.04)}
-  100%{transform:scale(1)}
+</style>
+
+<!-- ================= FLOATING CONTACT BUTTONS ================= -->
+<div class="float-wrap">
+  <a href="https://wa.me/918979639473" target="_blank" class="float-btn whatsapp">
+    <img src="assets/icons/color-icons/whatsapp.svg">
+  </a>
+  <a href="tel:8979639473" class="float-btn call">
+    <img src="assets/icons/black-icons/call.svg">
+  </a>
+</div>
+
+<style>
+.float-wrap{
+  position:fixed;
+  right:18px;
+  bottom:90px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  z-index:999;
+}
+.float-btn{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 18px 40px rgba(0,0,0,.3);
+  animation:floatUp 3s ease-in-out infinite;
+}
+.float-btn img{width:26px}
+.float-btn.whatsapp{background:#25d366}
+.float-btn.call{background:#2563eb}
+@keyframes floatUp{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
 }
 </style>
 
 <!-- ================= FOOTER ================= -->
-<footer style="background:#020617;padding:40px 0;">
-  <div class="container" style="text-align:center;color:#94a3b8;">
+<footer style="background:#0f172a;color:#cbd5f5;padding:36px 0;">
+  <div class="container" style="text-align:center;">
 
-    <p style="font-weight:700;">
-      © RupMax Digital – Website Development Services
+    <p style="font-weight:800;">
+      © RupMax Digital
     </p>
 
     <p style="font-size:13px;margin-top:6px;">
-      Single-Page Business Websites • Fast Delivery • Non-GST Billing
+      Business Website Development • Fast Delivery
     </p>
 
-    <div style="margin-top:14px;font-size:12px;">
-      Domain & hosting validity: 1 year • Serious enquiries only
-    </div>
+    <p style="font-size:12px;margin-top:8px;opacity:.8;">
+      Domain & hosting valid for 1 year • Non-GST invoice provided
+    </p>
 
   </div>
 </footer>
