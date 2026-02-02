@@ -448,6 +448,17 @@ a{text-decoration:none;color:inherit}
       </div>
     </div>
 
+<!-- ================= LIVE DEMO CTA ================= -->
+<div class="live-demo-wrap">
+  <a href="https://rupmaxdigital.in/menu/brijwasi-restaurant/"
+     target="_blank"
+     class="live-demo-btn">
+    👀 View Live QR Menu Demo
+    <span>Tap to experience real customer view</span>
+  </a>
+</div>
+
+    
   </div>
 </section>
 
@@ -588,6 +599,64 @@ a{text-decoration:none;color:inherit}
 @media(max-width:900px){
   .demo-flex{grid-template-columns:1fr}
 }
+
+/* ================= LIVE DEMO BUTTON ================= */
+.live-demo-wrap{
+  text-align:center;
+  margin-top:40px;
+}
+
+.live-demo-btn{
+  display:inline-block;
+  padding:20px 46px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#2563eb,#22c55e);
+  color:#fff;
+  font-weight:900;
+  font-size:18px;
+  box-shadow:0 22px 50px rgba(37,99,235,.45);
+  position:relative;
+  overflow:hidden;
+  animation:demoPulse 2.2s infinite;
+}
+
+.live-demo-btn span{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  opacity:.9;
+  margin-top:6px;
+}
+
+.live-demo-btn::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.7),
+    transparent
+  );
+  animation:demoShine 2.5s infinite;
+}
+
+@keyframes demoPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+  100%{transform:scale(1)}
+}
+
+@keyframes demoShine{
+  0%{left:-120%}
+  60%{left:120%}
+  100%{left:120%}
+}
+
+  
 </style>
   <!-- ================= REVIEWS ================= -->
 <section class="review-section">
