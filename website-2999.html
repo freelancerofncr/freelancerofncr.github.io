@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Website @ ₹2999 – 24 Hours Website Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FAVICON -->
+<link rel="icon" href="assets/icons/color-icons/demo.svg">
+
+<style>
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ================= VARIABLES ================= */
+:root{
+  --bg:#0b1020;
+  --card:#111827;
+  --text:#f8fafc;
+  --muted:#cbd5f5;
+  --green:#22c55e;
+  --blue:#2563eb;
+  --yellow:#facc15;
+  --shadow:0 30px 80px rgba(0,0,0,.6);
+}
+
+/* ================= BODY ================= */
+body{
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,.25), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(34,197,94,.25), transparent 40%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 18px;
+}
+
+section{padding:90px 0}
+
+/* ================= HERO ================= */
+.hero{
+  text-align:center;
+  padding-top:110px;
+  position:relative;
+}
+
+.hero-badge{
+  display:inline-block;
+  background:#16a34a;
+  color:#fff;
+  padding:10px 26px;
+  border-radius:999px;
+  font-weight:900;
+  margin-bottom:26px;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+  100%{transform:scale(1)}
+}
+
+.hero h1{
+  font-size:44px;
+  font-weight:900;
+  line-height:1.25;
+}
+
+.hero h1 span{
+  color:var(--green);
+}
+
+.hero p{
+  max-width:760px;
+  margin:20px auto 0;
+  color:var(--muted);
+  font-size:18px;
+}
+
+/* ================= PRICE CARD ================= */
+.price-box{
+  background:var(--card);
+  max-width:520px;
+  margin:50px auto 0;
+  padding:40px;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  border:2px solid var(--green);
+  position:relative;
+}
+
+.old-price{
+  text-decoration:line-through;
+  color:#f87171;
+  font-weight:800;
+  font-size:18px;
+}
+
+.new-price{
+  font-size:52px;
+  font-weight:900;
+  color:var(--green);
+  margin:8px 0;
+}
+
+.pay-note{
+  font-size:15px;
+  color:#e5e7eb;
+  margin-bottom:20px;
+}
+
+/* ================= CTA ================= */
+.pay-btn{
+  display:block;
+  margin-top:22px;
+  padding:20px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;
+  font-weight:900;
+  font-size:20px;
+  text-decoration:none;
+  box-shadow:0 20px 50px rgba(34,197,94,.5);
+  position:relative;
+  overflow:hidden;
+}
+
+.pay-btn::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.6),
+    transparent
+  );
+  animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+  0%{left:-120%}
+  60%{left:120%}
+  100%{left:120%}
+}
+
+.pay-sub{
+  margin-top:14px;
+  font-size:14px;
+  color:#d1d5db;
+}
+
+/* ================= FLOATING SHAPES ================= */
+.shape{
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  filter:blur(40px);
+  opacity:.6;
+  animation:float 8s infinite ease-in-out;
+}
+
+.shape.one{
+  background:#2563eb;
+  top:10%;
+  left:5%;
+}
+
+.shape.two{
+  background:#22c55e;
+  bottom:15%;
+  right:8%;
+  animation-delay:3s;
+}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-40px)}
+  100%{transform:translateY(0)}
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .new-price{font-size:44px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND SHAPES -->
+<div class="shape one"></div>
+<div class="shape two"></div>
+
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-badge">
+      आज ORDER → कल WEBSITE LIVE 🚀
+    </div>
+
+    <h1>
+      Professional Business Website <br>
+      <span>@ ₹2,999 Only</span>
+    </h1>
+
+    <p>
+      Single-Page animated website • Mobile friendly • Call & WhatsApp buttons  
+      <br>GitHub Pages par hosted • 1 Year valid • Kisi bhi business ke liye
+    </p>
+
+    <div class="price-box">
+      <div class="old-price">Actual Price ₹2999</div>
+      <div class="new-price">Pay ₹1499 Now</div>
+
+      <div class="pay-note">
+        Remaining ₹1500 website complete hone ke baad  
+        <br><strong>(Advance + Final Payment Model)</strong>
+      </div>
+
+      <a class="pay-btn" href="https://rzp.io/rzp/BQk0NF7I" target="_blank">
+        ₹1499 Pay Karke Abhi Order Kare
+      </a>
+
+      <div class="pay-sub">
+        ✔ Invoice milega • ✔ Non-GST • ✔ No hidden charges
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
+<!-- ================= SERVICES SECTION ================= -->
+<section id="services" style="background:#0f172a;">
+  <div class="container">
+
+    <h2 class="section-title">
+      ₹2999 Me <span>Sab Kuch Included</span>
+    </h2>
+
+    <p class="section-sub">
+      Itna sab mil raha hai — ab aur kya sochna dost?  
+      <br>Payment karo, website hum sambhal lenge.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <img src="assets/icons/black-icons/globe.svg">
+        <h4>Custom .IN Domain</h4>
+        <p>Aap apna business name ka professional domain doge.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="assets/icons/black-icons/mobile.svg">
+        <h4>Mobile Friendly Website</h4>
+        <p>Har phone, har screen par perfect look.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="assets/icons/black-icons/food-menu.svg">
+        <h4>Single Page Sections</h4>
+        <p>Home • About • Services • Contact — smooth scroll.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="assets/icons/black-icons/call.svg">
+        <h4>Call & WhatsApp Button</h4>
+        <p>Customer ek tap me aapse connect kare.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="assets/icons/black-icons/lightning.svg">
+        <h4>Fast Loading</h4>
+        <p>GitHub Pages hosting — super fast speed.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="assets/icons/black-icons/shield-checkmark.svg">
+        <h4>1 Year Validity</h4>
+        <p>Hosting + domain 1 saal ke liye included.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ================= SERVICES ================= */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:60px;
+}
+
+.service-card{
+  background:#111827;
+  padding:30px;
+  border-radius:24px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.6);
+  transition:.4s;
+}
+
+.service-card img{
+  width:42px;
+  margin-bottom:14px;
+}
+
+.service-card:hover{
+  transform:translateY(-12px) scale(1.04);
+  box-shadow:0 45px 100px rgba(0,0,0,.9);
+}
+</style>
+
+<!-- ================= PAYMENT CLARITY ================= -->
+<section style="background:#020617;">
+  <div class="container">
+
+    <div class="price-box" style="margin-top:0;">
+      <div class="old-price">Total Price ₹2999</div>
+      <div class="new-price">Pay ₹1499 Now</div>
+
+      <div class="pay-note">
+        Baaki ₹1500 website complete hone ke baad  
+        <br>Demo dekh kar hi final payment lenge.
+      </div>
+
+      <a class="pay-btn" href="https://rzp.io/rzp/BQk0NF7I" target="_blank">
+        ₹1499 Advance Pay Kare
+      </a>
+
+      <div class="pay-sub">
+        ✔ Proper Invoice Milega  
+        <br>✔ Non-GST Billing
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" style="background:#0b1020;">
+  <div class="container">
+
+    <h2 class="section-title">
+      Abhi Order Karo, <span>Kal Website Live</span>
+    </h2>
+
+    <p class="section-sub">
+      Serious enquiries only.  
+      <br>WhatsApp par details bhejo.
+    </p>
+
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://wa.me/918979639473"
+         style="
+           display:inline-block;
+           padding:18px 40px;
+           background:#22c55e;
+           color:#fff;
+           font-weight:900;
+           border-radius:999px;
+           text-decoration:none;
+           box-shadow:0 20px 50px rgba(34,197,94,.6);
+         ">
+        WhatsApp Now
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<div style="
+  position:fixed;
+  right:18px;
+  bottom:100px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  z-index:999;
+">
+  <a href="https://wa.me/918979639473" target="_blank"
+     style="width:56px;height:56px;border-radius:50%;background:#25d366;
+     display:flex;align-items:center;justify-content:center;
+     box-shadow:0 20px 50px rgba(0,0,0,.6);">
+    <img src="assets/icons/color-icons/whatsapp.svg" width="28">
+  </a>
+
+  <a href="tel:8979639473"
+     style="width:56px;height:56px;border-radius:50%;background:#2563eb;
+     display:flex;align-items:center;justify-content:center;
+     box-shadow:0 20px 50px rgba(0,0,0,.6);">
+    <img src="assets/icons/black-icons/call.svg" width="26">
+  </a>
+</div>
+<!-- ================= SOCIAL PROOF STRIP ================= -->
+<section style="background:#020617;padding:60px 0;">
+  <div class="container">
+
+    <h2 class="section-title">
+      Bahut Saare <span>Businesses Humse Banwa Chuke</span>
+    </h2>
+
+    <p class="section-sub">
+      Restaurants • Shops • Clinics • Consultants • Service Providers  
+      <br>Small business se lekar growing brands tak.
+    </p>
+
+    <div class="logo-strip">
+      <img src="assets/icons/color-icons/google-color.svg">
+      <img src="assets/icons/color-icons/facebook.svg">
+      <img src="assets/icons/color-icons/instagram.svg">
+      <img src="assets/icons/color-icons/google-map.svg">
+      <img src="assets/icons/color-icons/upi.svg">
+      <img src="assets/icons/color-icons/paytm.svg">
+      <img src="assets/icons/color-icons/phonepe.svg">
+    </div>
+
+  </div>
+</section>
+
+<style>
+.logo-strip{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:28px;
+  margin-top:40px;
+}
+.logo-strip img{
+  height:36px;
+  opacity:.85;
+  filter:grayscale(1);
+  transition:.3s;
+}
+.logo-strip img:hover{
+  opacity:1;
+  filter:grayscale(0);
+  transform:scale(1.1);
+}
+</style>
+
+<!-- ================= FINAL URGENCY CTA ================= -->
+<section style="background:linear-gradient(180deg,#0b1020,#020617);padding:100px 0;">
+  <div class="container">
+
+    <div class="final-box">
+      <h2>
+        Itna Sab Mil Raha Hai…<br>
+        <span>Ab Aur Kya Sochna Dost?</span>
+      </h2>
+
+      <p>
+        Professional animated website • Call & WhatsApp buttons •  
+        Social media links • Fast loading • 1 year validity  
+        <br><strong>Aaj order → kal website live.</strong>
+      </p>
+
+      <div class="final-price">
+        <div class="cut">₹2999</div>
+        <div class="now">Pay ₹1499 Now</div>
+      </div>
+
+      <a href="https://rzp.io/rzp/BQk0NF7I"
+         target="_blank"
+         class="final-btn">
+        ₹1499 Advance Pay Karke Order Kare
+      </a>
+
+      <div class="final-note">
+        ✔ Invoice milega • ✔ Non-GST  
+        <br>✔ Baaki payment website complete hone ke baad
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.final-box{
+  max-width:560px;
+  margin:auto;
+  background:#111827;
+  padding:50px;
+  border-radius:30px;
+  text-align:center;
+  border:2px solid #22c55e;
+  box-shadow:0 40px 120px rgba(34,197,94,.35);
+  animation:finalPulse 3s infinite;
+}
+.final-box h2{
+  font-size:34px;
+  font-weight:900;
+}
+.final-box h2 span{
+  color:#22c55e;
+}
+.final-box p{
+  margin:18px 0 28px;
+  color:#cbd5f5;
+}
+.final-price .cut{
+  text-decoration:line-through;
+  color:#f87171;
+  font-weight:800;
+}
+.final-price .now{
+  font-size:46px;
+  font-weight:900;
+  color:#22c55e;
+  margin:6px 0 20px;
+}
+.final-btn{
+  display:block;
+  padding:20px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;
+  font-size:20px;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 20px 60px rgba(34,197,94,.55);
+}
+.final-note{
+  margin-top:14px;
+  font-size:14px;
+  color:#d1d5db;
+}
+@keyframes finalPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+  100%{transform:scale(1)}
+}
+</style>
+
+<!-- ================= FOOTER ================= -->
+<footer style="background:#020617;padding:40px 0;">
+  <div class="container" style="text-align:center;color:#94a3b8;">
+
+    <p style="font-weight:700;">
+      © RupMax Digital – Website Development Services
+    </p>
+
+    <p style="font-size:13px;margin-top:6px;">
+      Single-Page Business Websites • Fast Delivery • Non-GST Billing
+    </p>
+
+    <div style="margin-top:14px;font-size:12px;">
+      Domain & hosting validity: 1 year • Serious enquiries only
+    </div>
+
+  </div>
+</footer>
