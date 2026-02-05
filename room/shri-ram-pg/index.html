@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PG Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #f4f6f8;
+      color: #222;
+    }
+    .container {
+      max-width: 720px;
+      margin: auto;
+      padding: 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    h1 { margin: 8px 0 4px }
+    h2 { margin: 0 0 10px }
+    h3 { margin: 0 0 6px }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      background: #e3f2fd;
+      color: #1565c0;
+      margin-top: 6px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+    }
+    .call { background: #2e7d32 }
+    .whatsapp { background: #25d366 }
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 14px;
+    }
+    .list span {
+      background: #f1f1f1;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .room {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .photos {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+    .photos img {
+      height: 120px;
+      border-radius: 10px;
+      background: #ddd;
+    }
+
+    .qr {
+      text-align: center;
+    }
+    .qr img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    .muted { color: #666; font-size: 14px }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- LOGO + NAME -->
+    <div class="card" id="identityCard">
+      <img id="logo" style="max-width:120px;display:none" />
+      <h1 id="pgName"></h1>
+      <p class="muted" id="description"></p>
+      <div id="genderBadge"></div>
+    </div>
+
+    <!-- CALL / WHATSAPP -->
+    <div class="card" id="contactCard">
+      <div class="btn-row">
+        <a id="callBtn" class="btn call">Call</a>
+        <a id="whatsappBtn" class="btn whatsapp">WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- ROOMS -->
+    <div class="card" id="roomsCard">
+      <h2>Rooms</h2>
+      <div id="roomsContainer"></div>
+    </div>
+
+    <!-- FOOD -->
+    <div class="card" id="foodCard">
+      <h2>Food</h2>
+      <p id="foodText"></p>
+    </div>
+
+    <!-- COMMON FACILITIES -->
+    <div class="card" id="facilitiesCard">
+      <h2>Common Facilities</h2>
+      <div class="list" id="facilityList"></div>
+    </div>
+
+    <!-- PAYMENT QR -->
+    <div class="card qr" id="paymentCard">
+      <h2 id="paymentLabel"></h2>
+      <img id="paymentQR" />
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
