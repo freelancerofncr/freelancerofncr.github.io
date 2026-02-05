@@ -1,17 +1,17 @@
 {
   // =================================================
-  // BASIC IDENTITY (MANDATORY)
+  // BASIC IDENTITY (TOP SECTION)
   // =================================================
   identity: {
     name: "Shri Ram PG",
 
-    // 1–4 lines allowed (short ya long)
+    // 1–4 lines allowed (short / long both OK)
     description: "Affordable PG near metro for students and working professionals",
 
     // boys | girls | both
     genderType: "boys",
 
-    // Aap khud add / remove kar sakte ho
+    // Suitable for (free text also allowed)
     suitableFor: [
       "Students",
       "Working Professionals",
@@ -21,12 +21,21 @@
   },
 
   // =================================================
-  // CONTACT (Multiple numbers supported)
+  // BRANDING (LOGO)
+  // Place logo image inside photos/ folder
+  // =================================================
+  branding: {
+    showLogo: true,            // true | false
+    logoImage: "logo.webp",    // photos/logo.webp
+  },
+
+  // =================================================
+  // CONTACT (MULTIPLE NUMBERS SUPPORTED)
   // =================================================
   contact: {
     primaryCall: "+919650000000",
 
-    // Extra numbers (optional)
+    // Optional extra numbers (2, 3, or more)
     otherNumbers: [
       "+919811111111",
       // "+919822222222",
@@ -44,29 +53,32 @@
   },
 
   // =================================================
-  // SOCIAL / EXTRA LINKS
-  // Leave empty "" to auto-hide
+  // SOCIAL / EXTERNAL LINKS
+  // Leave empty "" → auto-hide on website
   // =================================================
   socialLinks: {
     instagram: "",
     facebook: "",
     youtube: "",
     website: "",
-    // customLink: "https://example.com",
+    // customLink1: "https://example.com",
   },
 
   // =================================================
-  // PROPERTY INFO
+  // PROPERTY INFORMATION
   // =================================================
   property: {
-    type: "PG", // PG | Rooms | Flat
+    // PG | Rooms | Flat
+    type: "PG",
+
     totalFloors: 3,
+
     liftAvailable: true,
   },
 
   // =================================================
-  // COMMON FACILITIES (PG LEVEL)
-  // Uncomment jo chahiye
+  // COMMON FACILITIES (PG / PROPERTY LEVEL)
+  // Uncomment what applies
   // =================================================
   commonFacilities: [
     "Lift",
@@ -79,56 +91,59 @@
     "Housekeeping",
     "WiFi",
     // "Security Guard",
+    // "Water Dispenser",
   ],
 
   // =================================================
-  // FOOD SYSTEM (SIMPLE + FLEXIBLE)
+  // FOOD SYSTEM (ALL CASES HANDLED)
   // =================================================
   food: {
-    // true = food available (included ya paid)
+    // true  = food available (included OR paid)
     // false = food NOT available at all
     available: true,
 
-    // If food is PAID (leave empty if included)
+    // If food is PAID (leave "" if included)
     price: "", // "₹2000 / month"
 
-    // Free text – jo aap likho wahi dikhega
+    // Free text (no dropdown / no logic)
     note: "Mon–Fri: 2 times, Sat–Sun: 3 times",
     // examples:
     // "All days 3 times"
     // "Self cooking only"
+    // "No food provided"
   },
 
   // =================================================
-  // ELECTRICITY / OTHER CHARGES
+  // ELECTRICITY / WATER / MAINTENANCE
   // =================================================
   charges: {
     electricityIncluded: false,
     electricityRate: "₹10 per unit",
 
-    waterIncluded: true,
-    maintenanceIncluded: true,
+    waterIncluded: true,       // true | false
+    maintenanceIncluded: true, // true | false
   },
 
   // =================================================
-  // PAYMENT QR
+  // PAYMENT QR (UPI / RENT COLLECTION)
   // Place image: photos/qr.webp
   // =================================================
   payment: {
-    show: true, // true | false
+    show: true,                 // true | false
     label: "Pay Rent via UPI",
+    qrImage: "qr.webp",         // photos/qr.webp
   },
 
   // =================================================
-  // ROOMS
-  // Photos auto-detected by PREFIX from photos folder
-  // Example:
+  // ROOMS CONFIGURATION
+  // Photos rule:
   // single1.webp, single2.webp → prefix: "single"
+  // double1.webp → prefix: "double"
   // =================================================
   rooms: [
     {
       type: "Single Room",
-      prefix: "single",
+      prefix: "single",       // photo prefix
       price: "₹9,000",
 
       roomFacilities: [
@@ -167,11 +182,19 @@
   ],
 
   // =================================================
-  // RULES / POLICIES
+  // RULES / POLICIES (OPTIONAL)
   // Sirf jo likha hoga wahi dikhega
   // =================================================
   rules: [
     "No alcohol allowed",
     "Entry after 10 PM not allowed",
   ],
+
+  // =================================================
+  // META (INTERNAL / OPTIONAL)
+  // =================================================
+  meta: {
+    lastUpdated: "2026-02-01",
+    ownerName: "", // optional, frontend me hide rahega
+  },
 }
