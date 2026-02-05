@@ -1,0 +1,177 @@
+{
+  // =================================================
+  // BASIC IDENTITY (MANDATORY)
+  // =================================================
+  identity: {
+    name: "Shri Ram PG",
+
+    // 1–4 lines allowed (short ya long)
+    description: "Affordable PG near metro for students and working professionals",
+
+    // boys | girls | both
+    genderType: "boys",
+
+    // Aap khud add / remove kar sakte ho
+    suitableFor: [
+      "Students",
+      "Working Professionals",
+      // "Families",
+      // "Couples",
+    ],
+  },
+
+  // =================================================
+  // CONTACT (Multiple numbers supported)
+  // =================================================
+  contact: {
+    primaryCall: "+919650000000",
+
+    // Extra numbers (optional)
+    otherNumbers: [
+      "+919811111111",
+      // "+919822222222",
+    ],
+
+    whatsapp: "+919650000000",
+  },
+
+  // =================================================
+  // LOCATION
+  // =================================================
+  location: {
+    addressShort: "Sector 104, Noida",
+    mapLink: "https://maps.google.com/xxxxx",
+  },
+
+  // =================================================
+  // SOCIAL / EXTRA LINKS
+  // Leave empty "" to auto-hide
+  // =================================================
+  socialLinks: {
+    instagram: "",
+    facebook: "",
+    youtube: "",
+    website: "",
+    // customLink: "https://example.com",
+  },
+
+  // =================================================
+  // PROPERTY INFO
+  // =================================================
+  property: {
+    type: "PG", // PG | Rooms | Flat
+    totalFloors: 3,
+    liftAvailable: true,
+  },
+
+  // =================================================
+  // COMMON FACILITIES (PG LEVEL)
+  // Uncomment jo chahiye
+  // =================================================
+  commonFacilities: [
+    "Lift",
+    "Washing Machine",
+    "Fridge",
+    "RO Water",
+    "Power Backup",
+    "Parking",
+    "CCTV",
+    "Housekeeping",
+    "WiFi",
+    // "Security Guard",
+  ],
+
+  // =================================================
+  // FOOD SYSTEM (SIMPLE + FLEXIBLE)
+  // =================================================
+  food: {
+    // true = food available (included ya paid)
+    // false = food NOT available at all
+    available: true,
+
+    // If food is PAID (leave empty if included)
+    price: "", // "₹2000 / month"
+
+    // Free text – jo aap likho wahi dikhega
+    note: "Mon–Fri: 2 times, Sat–Sun: 3 times",
+    // examples:
+    // "All days 3 times"
+    // "Self cooking only"
+  },
+
+  // =================================================
+  // ELECTRICITY / OTHER CHARGES
+  // =================================================
+  charges: {
+    electricityIncluded: false,
+    electricityRate: "₹10 per unit",
+
+    waterIncluded: true,
+    maintenanceIncluded: true,
+  },
+
+  // =================================================
+  // PAYMENT QR
+  // Place image: photos/qr.webp
+  // =================================================
+  payment: {
+    show: true, // true | false
+    label: "Pay Rent via UPI",
+  },
+
+  // =================================================
+  // ROOMS
+  // Photos auto-detected by PREFIX from photos folder
+  // Example:
+  // single1.webp, single2.webp → prefix: "single"
+  // =================================================
+  rooms: [
+    {
+      type: "Single Room",
+      prefix: "single",
+      price: "₹9,000",
+
+      roomFacilities: [
+        "Bed",
+        "Almirah",
+        "Mattress",
+        "Attached Bathroom",
+        // "Balcony",
+        // "Kitchen",
+        // "AC",
+      ],
+    },
+
+    {
+      type: "Double Sharing",
+      prefix: "double",
+      price: "₹6,000",
+
+      roomFacilities: [
+        "Bed",
+        "Almirah",
+      ],
+    },
+
+    {
+      type: "1 BHK",
+      prefix: "1bhk",
+      price: "₹14,000",
+
+      roomFacilities: [
+        "Kitchen",
+        "Balcony",
+        "Attached Bathroom",
+      ],
+    },
+  ],
+
+  // =================================================
+  // RULES / POLICIES
+  // Sirf jo likha hoga wahi dikhega
+  // =================================================
+  rules: [
+    "No alcohol allowed",
+    "Entry after 10 PM not allowed",
+  ],
+}
