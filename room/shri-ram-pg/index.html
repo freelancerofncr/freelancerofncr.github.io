@@ -490,18 +490,17 @@ body{
  COMMON FACILITIES GRID
 ====================================================== */
 .facilities-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
 }
 
 .facility-item{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:var(--radius-md);
-  background:#f8fafc;
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#f1f5f9;
   font-weight:600;
   font-size:13px;
   color:var(--text);
@@ -510,13 +509,12 @@ body{
 }
 
 .facility-item:hover{
-  background:#f1f5f9;
-  transform:translateY(-2px);
+  background:#e2e8f0;
+  transform:translateY(-1px);
 }
 
 .facility-item img{
-  width:18px;
-  height:18px;
+  display:none;
 }
 
 /* ======================================================
@@ -907,30 +905,8 @@ body{
 ====================================================== -->
 <section class="card" id="propertyInfoCard">
   <h2 class="section-title">Property Information</h2>
-
-  <div class="info-grid">
-    <div class="info-pill" id="propertyType">
-      <img src="/assets/icons/black-icons/shop.svg">
-      <span></span>
-    </div>
-
-    <div class="info-pill" id="totalFloors">
-      <img src="/assets/icons/black-icons/chart-arrow-up.svg">
-      <span></span>
-    </div>
-
-    <div class="info-pill" id="liftInfo">
-      <img src="/assets/icons/black-icons/lift.svg">
-      <span></span>
-    </div>
-
-    <div class="info-pill" id="parkingInfo">
-      <img src="/assets/icons/black-icons/parking.svg">
-      <span></span>
-    </div>
-  </div>
+  <div class="info-grid" id="infoGrid"></div>
 </section>
-
 <!-- ======================================================
  COMMON FACILITIES (PROPERTY-LEVEL)
 ====================================================== -->
