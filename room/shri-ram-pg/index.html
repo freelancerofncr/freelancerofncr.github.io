@@ -240,6 +240,15 @@ body{
   box-shadow:0 8px 20px rgba(0,0,0,.12);
   transform:translateY(-2px);
 }
+ .action-btn{
+  transition:.25s ease;
+}
+
+.action-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
 
 </style>
 </head>
@@ -572,7 +581,13 @@ body{
 <footer class="footer">
   <div class="footer-inner">
     <img src="/assets/images/logo.png" class="footer-logo" alt="">
-    <p>Verified PG / Room Details</p>
+    <p>
+  Powered by 
+  <a href="https://rupmaxdigital.in/" target="_blank" style="color:#93c5fd;text-decoration:none">
+    RupMax Digital
+  </a>
+</p>
+
   </div>
 </footer>
 
@@ -666,7 +681,8 @@ body{
   padding:14px;
   border-radius:var(--radius-md);
   background:#f8fafc;
-  font-weight:700;
+  font-weight:600;
+ font-size:14px;
 }
 
 .charge-pill img{
