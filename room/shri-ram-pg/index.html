@@ -189,16 +189,23 @@ body{
 ====================================================== -->
 .gender-badge{
   display:inline-block;
-  margin-top:16px;
-  padding:10px 24px;
+  margin-top:20px;
+  padding:14px 32px;
   border-radius:999px;
-  font-weight:800;
-  font-size:15px;
-  letter-spacing:0.5px;
-  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
   border:3px solid;
   position:relative;
   overflow:hidden;
+  animation:badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.03)}
 }
 
 .gender-badge::before{
@@ -208,8 +215,8 @@ body{
   left:-100%;
   width:100%;
   height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
-  transition:left .5s ease;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+  transition:left .6s ease;
 }
 
 .gender-badge:hover::before{
@@ -217,21 +224,24 @@ body{
 }
 
 .gender-boys{
-  background:linear-gradient(135deg,#dbeafe,#bfdbfe);
-  color:#1e3a8a;
-  border-color:#60a5fa;
+  background:linear-gradient(135deg,#3b82f6,#60a5fa);
+  color:#ffffff;
+  border-color:#1d4ed8;
+  box-shadow:0 8px 20px rgba(59,130,246,.4),0 0 30px rgba(59,130,246,.3);
 }
 
 .gender-girls{
-  background:linear-gradient(135deg,#fce7f3,#fbcfe8);
-  color:#9f1239;
-  border-color:#f472b6;
+  background:linear-gradient(135deg,#ec4899,#f472b6);
+  color:#ffffff;
+  border-color:#be185d;
+  box-shadow:0 8px 20px rgba(236,72,153,.4),0 0 30px rgba(236,72,153,.3);
 }
 
 .gender-both{
-  background:linear-gradient(135deg,#ede9fe,#ddd6fe);
-  color:#5b21b6;
-  border-color:#a78bfa;
+  background:linear-gradient(135deg,#8b5cf6,#a78bfa);
+  color:#ffffff;
+  border-color:#6d28d9;
+  box-shadow:0 8px 20px rgba(139,92,246,.4),0 0 30px rgba(139,92,246,.3);
 }
 
 /* ======================================================
@@ -364,10 +374,8 @@ body{
 }
 
 .pill{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 12px;
+  display:inline-block;
+  padding:6px 14px;
   border-radius:999px;
   background:#f1f5f9;
   font-size:13px;
@@ -391,8 +399,7 @@ body{
 }
 
 .pill img{
-  width:16px;
-  height:16px;
+  display:none;
 }
 
 .pill:hover{
