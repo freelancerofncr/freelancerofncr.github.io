@@ -29,12 +29,22 @@ function init(d){
   setText("pgName", d.identity?.name);
   setText("description", d.identity?.description);
 
-  /* ================= LOGO ================= */
-  if(d.branding?.logoImage && d.branding.showLogo !== false){
-    setImage("logo", "photos/" + d.branding.logoImage, true);
-  }else{
-    hide("logo");
+ /* ================= LOGO ================= */
+if(d.branding?.logoImage && d.branding.showLogo !== false){
+  const logoEl = document.getElementById("logo");
+  if(logoEl){
+    logoEl.src = "photos/" + d.branding.logoImage;
+    logoEl.style.display = "block";
+    logoEl.onload = function(){
+      logoEl.classList.add("loaded");
+    };
+    logoEl.onerror = function(){
+      logoEl.style.display = "none";
+    };
   }
+}else{
+  hide("logo");
+}
 
   /* ================= GENDER BADGE ================= */
   if(d.identity?.genderType){
