@@ -1,407 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Property Details</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Property Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- =====================
-       GLOBAL STYLES
-  ====================== -->
-  <style>
-    :root{
-      --blue:#2563eb;
-      --green:#16a34a;
-      --pink:#ec4899;
-      --dark:#111827;
-      --muted:#6b7280;
-      --card:#ffffff;
-    }
+<style>
+:root{
+  --blue:#2563eb;
+  --pink:#ec4899;
+  --green:#16a34a;
+  --orange:#f97316;
+  --dark:#111827;
+  --muted:#6b7280;
+  --card:#ffffff;
+}
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-    }
+/* RESET */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+}
 
-    body{
-      min-height:100vh;
-      color:var(--dark);
-      background:
-        radial-gradient(circle at 10% 10%, #e0e7ff, transparent 40%),
-        radial-gradient(circle at 90% 20%, #dcfce7, transparent 45%),
-        radial-gradient(circle at 50% 90%, #ffe4e6, transparent 40%),
-        #f8fafc;
-      animation:bgMove 18s linear infinite alternate;
-    }
+body{
+  min-height:100vh;
+  color:var(--dark);
+  background:
+    radial-gradient(circle at 10% 10%, #e0e7ff, transparent 40%),
+    radial-gradient(circle at 90% 20%, #dcfce7, transparent 45%),
+    radial-gradient(circle at 50% 90%, #ffe4e6, transparent 40%),
+    #f8fafc;
+  animation:bgMove 18s linear infinite alternate;
+}
 
-    @keyframes bgMove{
-      0%{background-position:0% 0%,100% 0%,50% 100%}
-      100%{background-position:10% 20%,90% 10%,40% 90%}
-    }
+@keyframes bgMove{
+  0%{background-position:0% 0%,100% 0%,50% 100%}
+  100%{background-position:10% 20%,90% 10%,40% 90%}
+}
 
-    .container{
-      max-width:900px;
-      margin:auto;
-      padding:16px;
-    }
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:16px;
+}
 
-    .card{
-      background:var(--card);
-      border-radius:20px;
-      padding:20px;
-      margin-bottom:18px;
-      border:1px solid #e5e7eb;
-      box-shadow:
-        0 10px 25px rgba(0,0,0,.08),
-        inset 0 1px 0 rgba(255,255,255,.6);
-      animation:fadeUp .6s ease both;
-    }
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
 
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(20px)}
-      to{opacity:1;transform:translateY(0)}
-    }
+h1{font-size:26px;margin-top:10px}
+h2{font-size:22px;margin-bottom:12px}
+h3{font-size:18px;margin-bottom:8px}
+.muted{color:var(--muted);font-size:14px}
 
-    h1{
-      font-size:26px;
-      margin-top:10px;
-    }
+/* HEADER */
+.header{text-align:center}
 
-    h2{
-      font-size:22px;
-      margin-bottom:12px;
-    }
+.logo{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:contain;
+  border:4px solid #fff;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  display:none;
+  margin:auto;
+}
 
-    .muted{
-      color:var(--muted);
-      font-size:15px;
-      margin-top:6px;
-    }
+/* GENDER */
+.gender{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 16px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+}
+.gender.boys{background:#e0f2fe;color:#0369a1}
+.gender.girls{background:#fce7f3;color:#9d174d}
+.gender.both{background:#ede9fe;color:#5b21b6}
 
-    /* =====================
-       HEADER / BRANDING
-    ====================== */
-    .header{
-      text-align:center;
-    }
+/* ACTION BUTTONS */
+.actions{margin-top:18px}
+.action-row{
+  display:grid;
+  gap:12px;
+}
+.action-row.two{grid-template-columns:1fr 1fr}
+.action-row.one{grid-template-columns:1fr;margin-top:12px}
 
-    .logo{
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      object-fit:contain;
-      border:4px solid #fff;
-      box-shadow:0 10px 25px rgba(0,0,0,.15);
-      display:none;
-    }
+.action-btn{
+  position:relative;
+  padding:14px 10px;
+  border-radius:16px;
+  font-weight:700;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  overflow:hidden;
+}
 
-    .gender{
-      display:inline-block;
-      margin-top:10px;
-      padding:6px 16px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:14px;
-    }
-    .gender.boys{background:#e0f2fe;color:#0369a1}
-    .gender.girls{background:#fce7f3;color:#9d174d}
-    .gender.both{background:#ede9fe;color:#5b21b6}
+.action-btn img{width:20px;height:20px}
 
-    /* =====================
-       ACTION BUTTONS
-    ====================== */
-    .actions{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:18px;
-    }
+.action-btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform:translateX(-100%);
+  animation:shine 3s infinite;
+}
 
-    .action-btn{
-      position:relative;
-      padding:14px 10px;
-      border-radius:14px;
-      font-weight:700;
-      color:#fff;
-      text-decoration:none;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      overflow:hidden;
-    }
+@keyframes shine{
+  to{transform:translateX(100%)}
+}
 
-    .action-btn::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);
-      transform:translateX(-100%);
-      animation:shine 2.8s infinite;
-    }
+.call{background:var(--blue)}
+.whatsapp{background:#25d366}
+.map{background:var(--orange)}
 
-    @keyframes shine{
-      to{transform:translateX(100%)}
-    }
+/* PILLS */
+.pill-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
 
-    .call{background:var(--blue)}
-    .whatsapp{background:#25d366}
-    .map{background:#f97316}
+.pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#f1f5f9;
+  font-size:14px;
+  font-weight:600;
+}
 
-    .action-btn img{
-      width:20px;
-      height:20px;
-    }
+.pill img{width:18px;height:18px}
 
-    /* =====================
-       ICON LISTS
-    ====================== */
-    .pill-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+/* ROOMS */
+.room{
+  border:2px solid #e5e7eb;
+  border-radius:16px;
+  padding:14px;
+  margin-bottom:16px;
+}
 
-    .pill{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#f1f5f9;
-      font-size:14px;
-      font-weight:600;
-    }
+.room .price{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:700;
+  margin-bottom:8px;
+}
 
-    .pill img{
-      width:18px;
-      height:18px;
-    }
-  </style>
+.photos{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:6px;
+}
+
+.photos img{
+  height:140px;
+  border-radius:12px;
+}
+
+.swipe{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:6px;
+}
+</style>
 </head>
 
 <body>
 <div class="container">
 
-  <!-- =====================
-       HEADER SECTION
-  ====================== -->
-  <section class="card header" id="headerCard">
+<!-- HEADER -->
+<section class="card header">
+  <img id="logo" class="logo" alt="Logo">
+  <h1 id="pgName"></h1>
+  <p id="description" class="muted"></p>
+  <div id="genderBadge"></div>
 
-    <img id="logo" class="logo" src="" alt="Logo" />
-
-    <h1 id="pgName">Property Name</h1>
-    <p class="muted" id="description">
-      Property description will appear here
-    </p>
-
-    <!-- Gender badge -->
-    <div id="genderBadge"></div>
-
-    <!-- Action buttons -->
-    <div class="actions">
+  <div class="actions">
+    <div class="action-row two">
       <a id="callBtn" class="action-btn call">
-        <img src="../assets/icons/black-icons/call.svg" />
-        Call
+        <img src="/assets/icons/black-icons/call.svg">Call
       </a>
       <a id="whatsappBtn" class="action-btn whatsapp">
-        <img src="../assets/icons/color-icons/whatsapp.svg" />
-        WhatsApp
+        <img src="/assets/icons/color-icons/whatsapp.svg">WhatsApp
       </a>
+    </div>
+    <div class="action-row one">
       <a id="mapBtn" class="action-btn map">
-        <img src="../assets/icons/color-icons/google-map.svg" />
-        Location
+        <img src="/assets/icons/color-icons/google-map.svg">Location
       </a>
     </div>
+  </div>
+</section>
 
-  </section>
-  <!-- =====================
-       SUITABLE FOR
-  ====================== -->
-  <section class="card" id="suitableForCard">
-    <h2>Suitable For</h2>
-    <div class="pill-list" id="suitableForList">
-      <!-- JS se fill hoga -->
-      <!-- Example pills:
-      <div class="pill">
-        <img src="../assets/icons/black-icons/student.svg" />
-        Students
-      </div>
-      -->
+<!-- SUITABLE -->
+<section class="card" id="suitableForCard">
+  <h2>Suitable For</h2>
+  <div class="pill-list" id="suitableForList"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="card" id="contactDetailsCard">
+  <h2>Contact</h2>
+  <div class="pill-list" id="contactNumbers"></div>
+  <p id="addressText" class="muted" style="margin-top:12px;display:flex;gap:8px"></p>
+</section>
+
+<!-- SOCIAL -->
+<section class="card" id="socialCard">
+  <h2>Connect</h2>
+  <div class="pill-list" id="socialLinks"></div>
+</section>
+
+<!-- PROPERTY INFO -->
+<section class="card" id="propertyInfoCard">
+  <h2>Property Info</h2>
+  <div class="pill-list">
+    <div class="pill" id="propertyType">
+      <img src="/assets/icons/black-icons/shop.svg"><span></span>
     </div>
-  </section>
-
-  <!-- =====================
-       CONTACT DETAILS
-  ====================== -->
-  <section class="card" id="contactDetailsCard">
-    <h2>Contact Details</h2>
-
-    <div class="pill-list" id="contactNumbers">
-      <!-- Primary + other numbers -->
-      <!-- Example:
-      <div class="pill">
-        <img src="../assets/icons/black-icons/mobile.svg" />
-        +91 9650000000
-      </div>
-      -->
+    <div class="pill" id="totalFloors">
+      <img src="/assets/icons/black-icons/chart-arrow-up.svg"><span></span>
     </div>
-
-    <p class="muted" id="addressText" style="margin-top:12px;display:flex;align-items:center;gap:8px">
-      <img src="../assets/icons/color-icons/google-map.svg" width="18" />
-      Address will appear here
-    </p>
-  </section>
-
-  <!-- =====================
-       SOCIAL MEDIA LINKS
-  ====================== -->
-  <section class="card" id="socialCard">
-    <h2>Connect With Us</h2>
-
-    <div class="pill-list" id="socialLinks">
-      <!-- Icons only if link exists -->
-      <!--
-      <a class="pill" href="#">
-        <img src="../assets/icons/color-icons/instagram.svg" />
-        Instagram
-      </a>
-      -->
+    <div class="pill" id="liftInfo">
+      <img src="/assets/icons/black-icons/lift.svg"><span></span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- =====================
-       PROPERTY INFORMATION
-  ====================== -->
-  <section class="card" id="propertyInfoCard">
-    <h2>Property Information</h2>
+<!-- ROOMS -->
+<section class="card" id="roomsCard">
+  <h2>Rooms & Pricing</h2>
+  <div id="roomsContainer"></div>
+</section>
 
-    <div class="pill-list">
-      <div class="pill" id="propertyType">
-        <img src="../assets/icons/black-icons/shop.svg" />
-        <span>Type</span>
-      </div>
-
-      <div class="pill" id="totalFloors">
-        <img src="../assets/icons/black-icons/chart-arrow-up.svg" />
-        <span>Floors</span>
-      </div>
-
-      <div class="pill" id="liftInfo">
-        <img src="../assets/icons/black-icons/lift.svg" />
-        <span>Lift</span>
-      </div>
+<!-- CHARGES -->
+<section class="card" id="chargesCard">
+  <h2>Charges</h2>
+  <div class="pill-list">
+    <div class="pill" id="electricityCharge">
+      <img src="/assets/icons/color-icons/lightning.svg"><span></span>
     </div>
-  </section>
-  <!-- =====================
-       ROOMS SECTION
-  ====================== -->
-  <section class="card" id="roomsCard">
-    <h2>Rooms & Pricing</h2>
-
-    <!-- Room card (JS se repeat hoga) -->
-    <div id="roomsContainer">
-      <!-- Example structure:
-      <div class="room">
-        <h3>Single Room</h3>
-        <div class="price">
-          <img src="../assets/icons/black-icons/indian-rupee-coin.svg" width="18" />
-          ₹9,000 / month
-        </div>
-
-        <div class="facility-list">
-          <span><img src="../assets/icons/black-icons/bed.svg" /> Bed</span>
-          <span><img src="../assets/icons/black-icons/almirah.svg" /> Almirah</span>
-        </div>
-
-        <div class="photos">
-          <img src="photos/single1.webp" />
-          <img src="photos/single2.webp" />
-        </div>
-
-        <div class="swipe-indicator">
-          <img src="../assets/icons/black-icons/long-arrow-right.svg" />
-          Swipe for more photos
-        </div>
-      </div>
-      -->
+    <div class="pill" id="waterCharge">
+      <img src="/assets/icons/black-icons/ro-water.svg"><span></span>
     </div>
-  </section>
-
-  <!-- =====================
-       CHARGES SECTION
-  ====================== -->
-  <section class="card" id="chargesCard">
-    <h2>Charges & Utilities</h2>
-
-    <div class="pill-list" id="chargesList">
-      <!-- Electricity -->
-      <div class="pill" id="electricityCharge">
-        <img src="../assets/icons/color-icons/lightning.svg" />
-        <span>Electricity</span>
-      </div>
-
-      <!-- Water -->
-      <div class="pill" id="waterCharge">
-        <img src="../assets/icons/black-icons/ro-water.svg" />
-        <span>Water</span>
-      </div>
-
-      <!-- Maintenance -->
-      <div class="pill" id="maintenanceCharge">
-        <img src="../assets/icons/black-icons/quality-badge-checkmark.svg" />
-        <span>Maintenance</span>
-      </div>
+    <div class="pill" id="maintenanceCharge">
+      <img src="/assets/icons/black-icons/quality-badge-checkmark.svg"><span></span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- =====================
-       PAYMENT SECTION
-  ====================== -->
-  <section class="card" id="paymentCard">
-    <h2 id="paymentLabel">Payment</h2>
+<!-- PAYMENT -->
+<section class="card" id="paymentCard">
+  <h2 id="paymentLabel"></h2>
+  <img id="paymentQR" style="width:220px;display:block;margin:auto">
+  <div class="pill-list" style="justify-content:center;margin-top:14px">
+    <span class="pill"><img src="/assets/icons/color-icons/google-pay.svg">Google Pay</span>
+    <span class="pill"><img src="/assets/icons/color-icons/phonepe.svg">PhonePe</span>
+    <span class="pill"><img src="/assets/icons/color-icons/paytm.svg">Paytm</span>
+    <span class="pill"><img src="/assets/icons/color-icons/bhim-app.svg">BHIM</span>
+    <span class="pill"><img src="/assets/icons/color-icons/upi.svg">UPI</span>
+  </div>
+</section>
 
-    <div class="qr-box">
-      <img id="paymentQR" src="" alt="Payment QR" />
-    </div>
+</div>
 
-    <!-- Accepted apps -->
-    <div class="pill-list" style="margin-top:14px;justify-content:center">
-      <span class="pill">
-        <img src="../assets/icons/color-icons/google-pay.svg" />
-        Google Pay
-      </span>
-      <span class="pill">
-        <img src="../assets/icons/color-icons/phonepe.svg" />
-        PhonePe
-      </span>
-      <span class="pill">
-        <img src="../assets/icons/color-icons/paytm.svg" />
-        Paytm
-      </span>
-      <span class="pill">
-        <img src="../assets/icons/color-icons/bhim-app.svg" />
-        BHIM
-      </span>
-      <span class="pill">
-        <img src="../assets/icons/color-icons/upi.svg" />
-        UPI
-      </span>
-    </div>
-  </section>
-
-  <!-- =====================
-       FOOTER
-  ====================== -->
-  <section class="card" style="text-align:center">
-    <p class="muted">
-      Powered by Digital Property Page
-    </p>
-  </section>
-
-</div> <!-- container -->
-
+<script src="app.js"></script>
 </body>
 </html>
