@@ -37,7 +37,7 @@
     // Optional: Add more contact numbers
     otherNumbers: [
       "+919811111111",
-      // "+919822222222",
+      "+919822222222",
     ],
 
     whatsapp: "+919650000000",
@@ -59,7 +59,7 @@
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",
     youtube: "https://www.youtube.com/",
-    website: "",
+    website: "https://www.youtube.com/",
   },
 
   // =================================================
@@ -90,7 +90,7 @@
     "CCTV",
     "Housekeeping",
     "WiFi",
-    // "AC",
+    "AC",
     // "Security Guard",
     // "Water Dispenser",
   ],
