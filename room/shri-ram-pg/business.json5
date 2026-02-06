@@ -11,18 +11,18 @@
     // boys | girls | both
     genderType: "boys",
 
-    // Suitable for (free text also allowed)
+    // Suitable for (Students, Working Professionals, Families, Couples, Bachlores)
     suitableFor: [
       "Students",
       "Working Professionals",
-      // "Families",
-      // "Couples",
+      "Families",
+      "Couples",
+    //"Bachlores",
     ],
   },
 
   // =================================================
   // BRANDING (LOGO)
-  // Place logo image inside photos/ folder
   // =================================================
   branding: {
     showLogo: true,            // true | false
@@ -107,10 +107,7 @@
 
     // Free text (no dropdown / no logic)
     note: "Mon–Fri: 2 times, Sat–Sun: 3 times",
-    // examples:
-    // "All days 3 times"
-    // "Self cooking only"
-    // "No food provided"
+    // examples: "All days 3 times" "Self cooking only" "No food provided"
   },
 
   // =================================================
@@ -188,13 +185,7 @@
   rules: [
     "No alcohol allowed",
     "Entry after 10 PM not allowed",
+    "Security 50% of Rent",
   ],
 
-  // =================================================
-  // META (INTERNAL / OPTIONAL)
-  // =================================================
-  meta: {
-    lastUpdated: "2026-02-01",
-    ownerName: "", // optional, frontend me hide rahega
-  },
 }
