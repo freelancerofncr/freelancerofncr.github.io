@@ -163,7 +163,13 @@ body{
   box-shadow:var(--shadow-lg);
   background:#fff;
   margin:auto;
-  display:none;
+  display:block;
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+
+.logo.loaded{
+  opacity:1;
 }
 
 .pg-name{
