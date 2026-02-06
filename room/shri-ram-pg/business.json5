@@ -9,7 +9,7 @@
     description: "Affordable PG near metro for students and working professionals",
 
     // boys | girls | both
-    genderType: "boys",
+    genderType: "both",
 
     // Suitable for (Students, Working Professionals, Families, Couples, Bachlores)
     suitableFor: [
@@ -49,7 +49,7 @@
   // =================================================
   location: {
     addressShort: "Sector 104, Noida",
-    mapLink: "https://maps.google.com/xxxxx",
+    mapLink: "https://maps.google.com/",
   },
 
   // =================================================
@@ -57,10 +57,10 @@
   // Leave empty "" → auto-hide on website
   // =================================================
   socialLinks: {
-    instagram: "",
-    facebook: "",
-    youtube: "",
-    website: "",
+    instagram: "https://www.instagram.com/",
+    facebook: "https://www.instagram.com/",
+    youtube: "https://www.instagram.com/",
+    website: "https://www.instagram.com/",
     // customLink1: "https://example.com",
   },
 
@@ -71,7 +71,7 @@
     // PG | Rooms | Flat
     type: "PG",
 
-    totalFloors: 3,
+    totalFloors: 5,
 
     liftAvailable: true,
   },
@@ -103,7 +103,7 @@
     available: true,
 
     // If food is PAID (leave "" if included)
-    price: "", // "₹2000 / month"
+    price: "₹2499/Month", // "₹2000 / month"
 
     // Free text (no dropdown / no logic)
     note: "Mon–Fri: 2 times, Sat–Sun: 3 times",
@@ -115,7 +115,7 @@
   // =================================================
   charges: {
     electricityIncluded: false,
-    electricityRate: "₹10 per unit",
+    electricityRate: "₹10/unit",
 
     waterIncluded: true,       // true | false
     maintenanceIncluded: true, // true | false
@@ -148,8 +148,8 @@
         "Almirah",
         "Mattress",
         "Attached Bathroom",
-        // "Balcony",
-        // "Kitchen",
+        "Balcony",
+        "Kitchen",
         // "AC",
       ],
     },
