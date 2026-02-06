@@ -5,19 +5,18 @@
   identity: {
     name: "Shri Ram PG",
 
-    // 1–4 lines allowed (short / long both OK)
-    description: "Affordable PG near metro for students and working professionals",
+    // Short description (1-3 lines recommended)
+    description: "Affordable PG near metro for students and working professionals with modern amenities",
 
     // boys | girls | both
     genderType: "both",
 
-    // Suitable for (Students, Working Professionals, Families, Couples, Bachlores)
+    // Suitable for: Students, Working Professionals, Families, Couples, Bachelors
     suitableFor: [
       "Students",
       "Working Professionals",
       "Families",
       "Couples",
-    //"Bachlores",
     ],
   },
 
@@ -26,7 +25,7 @@
   // =================================================
   branding: {
     showLogo: true,            // true | false
-    logoImage: "logo.webp",    // photos/logo.webp
+    logoImage: "logo.webp",    // Place file at: photos/logo.webp
   },
 
   // =================================================
@@ -35,7 +34,7 @@
   contact: {
     primaryCall: "+919650000000",
 
-    // Optional extra numbers (2, 3, or more)
+    // Optional: Add more contact numbers
     otherNumbers: [
       "+919811111111",
       // "+919822222222",
@@ -48,37 +47,38 @@
   // LOCATION
   // =================================================
   location: {
-    addressShort: "Sector 104, Noida",
+    addressShort: "Sector 104, Noida, Uttar Pradesh",
     mapLink: "https://maps.google.com/",
   },
 
   // =================================================
   // SOCIAL / EXTERNAL LINKS
-  // Leave empty "" → auto-hide on website
+  // Leave empty "" to auto-hide on website
   // =================================================
   socialLinks: {
     instagram: "https://www.instagram.com/",
-    facebook: "https://www.instagram.com/",
-    youtube: "https://www.instagram.com/",
-    website: "https://www.instagram.com/",
-    // customLink1: "https://example.com",
+    facebook: "https://www.facebook.com/",
+    youtube: "https://www.youtube.com/",
+    website: "",
   },
 
   // =================================================
   // PROPERTY INFORMATION
   // =================================================
   property: {
-    // PG | Rooms | Flat
+    // PG | Rooms | Flat | Building
     type: "PG",
 
     totalFloors: 5,
 
     liftAvailable: true,
+    
+    parkingAvailable: true,
   },
 
   // =================================================
-  // COMMON FACILITIES (PG / PROPERTY LEVEL)
-  // Uncomment what applies
+  // COMMON FACILITIES (PROPERTY-LEVEL AMENITIES)
+  // These are shared facilities available for all residents
   // =================================================
   commonFacilities: [
     "Lift",
@@ -90,28 +90,28 @@
     "CCTV",
     "Housekeeping",
     "WiFi",
+    // "AC",
     // "Security Guard",
     // "Water Dispenser",
   ],
 
   // =================================================
-  // FOOD SYSTEM (ALL CASES HANDLED)
+  // FOOD SYSTEM
   // =================================================
   food: {
-    // true  = food available (included OR paid)
-    // false = food NOT available at all
+    // true = food available | false = no food
     available: true,
 
-    // If food is PAID (leave "" if included)
-    price: "₹2499/Month", // "₹2000 / month"
+    // If food is charged separately (leave empty "" if included in rent)
+    price: "₹2,499/Month",
 
-    // Free text (no dropdown / no logic)
+    // Free text for timing/schedule
     note: "Mon–Fri: 2 times, Sat–Sun: 3 times",
-    // examples: "All days 3 times" "Self cooking only" "No food provided"
+    // Examples: "3 meals daily", "Self cooking allowed", "Breakfast + Dinner"
   },
 
   // =================================================
-  // ELECTRICITY / WATER / MAINTENANCE
+  // ELECTRICITY / WATER / MAINTENANCE CHARGES
   // =================================================
   charges: {
     electricityIncluded: false,
@@ -123,7 +123,7 @@
 
   // =================================================
   // PAYMENT QR (UPI / RENT COLLECTION)
-  // Place image: photos/qr.webp
+  // Place QR image at: photos/qr.webp
   // =================================================
   payment: {
     show: true,                 // true | false
@@ -133,23 +133,22 @@
 
   // =================================================
   // ROOMS CONFIGURATION
-  // Photos rule:
-  // single1.webp, single2.webp → prefix: "single"
-  // double1.webp → prefix: "double"
+  // Photo naming: single1.webp, single2.webp (prefix: "single")
   // =================================================
   rooms: [
     {
       type: "Single Room",
-      prefix: "single",       // photo prefix
+      prefix: "single",       // Photo prefix for auto-loading
       price: "₹9,000",
 
+      // Room-specific facilities (NOT property-level)
       roomFacilities: [
         "Bed",
         "Almirah",
         "Mattress",
         "Attached Bathroom",
         "Balcony",
-        "Kitchen",
+        "Kitchen Access",
         // "AC",
       ],
     },
@@ -162,6 +161,8 @@
       roomFacilities: [
         "Bed",
         "Almirah",
+        "Mattress",
+        "Common Bathroom",
       ],
     },
 
@@ -174,18 +175,23 @@
         "Kitchen",
         "Balcony",
         "Attached Bathroom",
+        "Bed",
+        "Wardrobe",
       ],
     },
   ],
 
   // =================================================
   // RULES / POLICIES (OPTIONAL)
-  // Sirf jo likha hoga wahi dikhega
+  // Add house rules here - will auto-hide if empty
   // =================================================
   rules: [
-    "No alcohol allowed",
+    "No alcohol or smoking inside premises",
     "Entry after 10 PM not allowed",
-    "Security 50% of Rent",
+    "Security deposit: 50% of monthly rent",
+    "1 month notice required before vacating",
+    // "Guests allowed with prior permission",
+    // "Maintain cleanliness in common areas",
   ],
 
 }

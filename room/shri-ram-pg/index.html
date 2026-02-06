@@ -21,30 +21,35 @@
 ====================================================== -->
 <style>
 :root{
-  --bg-1:#1e293b;
-  --bg-2:#0f172a;
+  --bg-primary:#f8fafc;
+  --bg-secondary:#ffffff;
   --card:#ffffff;
-  --border:#e5e7eb;
-  --text:#020617;
-  --muted:#64748b;
+  --border:#e2e8f0;
+  --text:#0f172a;
+  --text-muted:#64748b;
+  --text-light:#94a3b8;
 
-  --primary:#1a73e8; /* Google Blue */
+  --primary:#1a73e8;
+  --primary-hover:#1557b0;
   --success:#16a34a;
   --whatsapp:#25d366;
+  --whatsapp-hover:#1fa855;
 
-  --radius-xl:22px;
+  --radius-xl:20px;
   --radius-lg:16px;
   --radius-md:12px;
+  --radius-sm:8px;
 
-  --shadow-lg:0 25px 50px rgba(0,0,0,.12);
-  --shadow-md:0 10px 30px rgba(0,0,0,.08);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 10px 30px rgba(0,0,0,.12);
 }
 
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
 }
 
 html,body{
@@ -53,61 +58,68 @@ html,body{
 
 body{
   color:var(--text);
-  background:#020617;
+  background:var(--bg-primary);
   overflow-x:hidden;
+  line-height:1.6;
 }
 
 /* ======================================================
- ANIMATED BACKGROUND (PROFESSIONAL)
+ ANIMATED BACKGROUND (LIGHT & PROFESSIONAL)
 ====================================================== */
 .bg-wrap{
   position:fixed;
   inset:0;
   z-index:-1;
   overflow:hidden;
+  background:linear-gradient(135deg,#f0f9ff 0%,#f8fafc 50%,#fef3c7 100%);
 }
 
 .blob{
   position:absolute;
-  width:520px;
-  height:520px;
   border-radius:50%;
-  filter:blur(80px);
-  opacity:.45;
-  animation:float 22s infinite alternate ease-in-out;
+  filter:blur(100px);
+  opacity:.3;
+  animation:float 25s infinite alternate ease-in-out;
 }
 
 .blob.blue{
-  background:#1a73e8;
-  top:-120px;
-  left:-120px;
+  background:linear-gradient(135deg,#dbeafe,#bfdbfe);
+  width:600px;
+  height:600px;
+  top:-200px;
+  left:-150px;
 }
 
 .blob.purple{
-  background:#7c3aed;
-  bottom:-160px;
-  right:-160px;
-  animation-duration:26s;
+  background:linear-gradient(135deg,#e9d5ff,#ddd6fe);
+  width:500px;
+  height:500px;
+  bottom:-150px;
+  right:-100px;
+  animation-duration:30s;
 }
 
 .blob.green{
-  background:#16a34a;
-  top:40%;
-  left:60%;
-  animation-duration:30s;
+  background:linear-gradient(135deg,#d1fae5,#a7f3d0);
+  width:450px;
+  height:450px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  animation-duration:35s;
 }
 
 @keyframes float{
   from{transform:translateY(0) translateX(0)}
-  to{transform:translateY(-80px) translateX(60px)}
+  to{transform:translateY(-60px) translateX(50px)}
 }
 
-/* noise overlay */
+/* subtle pattern overlay */
 .bg-wrap::after{
   content:"";
   position:absolute;
   inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cbd5e1' fill-opacity='0.05'%3E%3Cpath d='M30 30l15-15m-15 15l-15 15m15-15l15 15m-15-15l-15-15'/%3E%3C/g%3E%3C/svg%3E");
   pointer-events:none;
 }
 
@@ -115,18 +127,23 @@ body{
  LAYOUT
 ====================================================== */
 .page{
-  max-width:960px;
+  max-width:1000px;
   margin:auto;
-  padding:18px;
+  padding:24px 16px;
 }
 
 .card{
   background:var(--card);
   border-radius:var(--radius-xl);
-  padding:22px;
-  margin-bottom:18px;
+  padding:28px 24px;
+  margin-bottom:20px;
   border:1px solid var(--border);
   box-shadow:var(--shadow-md);
+  transition:box-shadow .3s ease;
+}
+
+.card:hover{
+  box-shadow:var(--shadow-lg);
 }
 
 /* ======================================================
@@ -134,13 +151,14 @@ body{
 ====================================================== */
 .hero{
   text-align:center;
+  padding:32px 24px;
 }
 
 .logo{
-  width:120px;
-  height:120px;
+  width:110px;
+  height:110px;
   object-fit:contain;
-  border-radius:16px;
+  border-radius:var(--radius-lg);
   border:3px solid #fff;
   box-shadow:var(--shadow-lg);
   background:#fff;
@@ -149,39 +167,45 @@ body{
 }
 
 .pg-name{
-  font-size:28px;
+  font-size:32px;
   font-weight:800;
-  margin-top:14px;
+  margin-top:16px;
+  color:var(--text);
+  letter-spacing:-0.5px;
 }
 
 .pg-desc{
-  color:var(--muted);
-  font-size:15px;
-  margin-top:6px;
-  line-height:1.5;
+  color:var(--text-muted);
+  font-size:16px;
+  margin-top:10px;
+  line-height:1.6;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 /* ======================================================
  GENDER BADGE
-====================================================== */
+====================================================== -->
 .gender-badge{
   display:inline-block;
-  margin-top:12px;
-  padding:6px 16px;
+  margin-top:16px;
+  padding:8px 20px;
   border-radius:999px;
   font-weight:700;
   font-size:14px;
+  letter-spacing:0.3px;
 }
 
-.gender-boys{background:#e0f2fe;color:#075985}
-.gender-girls{background:#fce7f3;color:#9d174d}
-.gender-both{background:#ede9fe;color:#5b21b6}
+.gender-boys{background:#dbeafe;color:#1e40af;border:2px solid #93c5fd}
+.gender-girls{background:#fce7f3;color:#be185d;border:2px solid #f9a8d4}
+.gender-both{background:#ede9fe;color:#6d28d9;border:2px solid #c4b5fd}
 
 /* ======================================================
  ACTION BUTTONS
 ====================================================== */
 .actions{
-  margin-top:20px;
+  margin-top:24px;
   display:grid;
   gap:12px;
 }
@@ -199,57 +223,515 @@ body{
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding:14px;
+  padding:16px 24px;
   border-radius:var(--radius-lg);
   font-weight:700;
+  font-size:15px;
   text-decoration:none;
   border:2px solid transparent;
+  transition:all .25s ease;
+  cursor:pointer;
 }
 
 .action-btn img{
-  width:20px;
-  height:20px;
+  width:22px;
+  height:22px;
 }
 
 .call-btn{
   background:var(--primary);
   color:#fff;
+  box-shadow:0 4px 14px rgba(26,115,232,.3);
+}
+
+.call-btn:hover{
+  background:var(--primary-hover);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(26,115,232,.4);
 }
 
 .whatsapp-btn{
   background:var(--whatsapp);
   color:#fff;
+  box-shadow:0 4px 14px rgba(37,211,102,.3);
+}
+
+.whatsapp-btn:hover{
+  background:var(--whatsapp-hover);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(37,211,102,.4);
 }
 
 .map-btn{
   background:#fff;
-  color:#000;
-  border-color:var(--primary);
-}
- #socialLinks .pill{
-  background:#fff;
-  border:1px solid #e5e7eb;
-  text-decoration:none;
+  color:var(--text);
+  border:2px solid var(--border);
+  box-shadow:var(--shadow-sm);
 }
 
-#socialLinks .pill img{
+.map-btn:hover{
+  border-color:var(--primary);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+}
+
+/* ======================================================
+ SECTION TITLE
+====================================================== */
+.section-title{
+  font-size:24px;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:24px;
+  color:var(--text);
+  position:relative;
+  letter-spacing:-0.3px;
+}
+
+.section-title::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:4px;
+  background:linear-gradient(to right,var(--primary),#7c3aed);
+  margin:10px auto 0;
+  border-radius:4px;
+}
+
+/* ======================================================
+ PILLS & LISTS
+====================================================== */
+.pill-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+}
+
+.pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:#f1f5f9;
+  font-size:14px;
+  font-weight:600;
+  color:var(--text);
+  border:1px solid var(--border);
+  transition:all .2s ease;
+}
+
+.pill img{
   width:20px;
+  height:20px;
+}
+
+.pill:hover{
+  background:#e2e8f0;
+  transform:translateY(-1px);
+}
+
+/* Social Links - special styling */
+#socialLinks .pill{
+  background:#fff;
+  border:2px solid var(--border);
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
 }
 
 #socialLinks .pill:hover{
-  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-3px);
+  border-color:var(--primary);
+}
+
+/* ======================================================
+ CONTACT & ADDRESS
+====================================================== */
+.address{
+  margin-top:16px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:15px;
+  color:var(--text-muted);
+  padding:14px;
+  background:#f8fafc;
+  border-radius:var(--radius-md);
+}
+
+.address img{
+  width:22px;
+  margin-top:2px;
+}
+
+/* ======================================================
+ PROPERTY INFO
+====================================================== */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;
+}
+
+.info-pill{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+  font-size:14px;
+  color:var(--text);
+  border:1px solid var(--border);
+  transition:all .2s ease;
+}
+
+.info-pill:hover{
+  background:#f1f5f9;
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-sm);
+}
+
+.info-pill img{
+  width:24px;
+  height:24px;
+}
+
+/* ======================================================
+ COMMON FACILITIES GRID
+====================================================== */
+.facilities-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+}
+
+.facility-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+  font-size:14px;
+  color:var(--text);
+  border:1px solid var(--border);
+  transition:all .2s ease;
+}
+
+.facility-item:hover{
+  background:#f1f5f9;
   transform:translateY(-2px);
 }
- .action-btn{
-  transition:.25s ease;
+
+.facility-item img{
+  width:22px;
+  height:22px;
 }
 
-.action-btn:hover{
+/* ======================================================
+ FOOD DETAILS
+====================================================== */
+.food-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.food-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+  font-size:14px;
+  border:1px solid var(--border);
+}
+
+.food-row img{
+  width:24px;
+  height:24px;
+}
+
+.food-row.highlight{
+  background:linear-gradient(135deg,#ecfdf5,#d1fae5);
+  border-color:#86efac;
+}
+
+/* ======================================================
+ ROOMS & PRICING
+====================================================== */
+.room-card{
+  border:2px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+  margin-bottom:20px;
+  background:#fff;
+  transition:all .3s ease;
+}
+
+.room-card:hover{
+  border-color:var(--primary);
+  box-shadow:var(--shadow-lg);
   transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
+.room-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
 
+.room-title{
+  font-size:20px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.room-price{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:800;
+  font-size:18px;
+  color:#16a34a;
+  background:#ecfdf5;
+  padding:8px 16px;
+  border-radius:999px;
+  border:2px solid #86efac;
+}
+
+.room-price img{
+  width:20px;
+}
+
+/* ROOM FEATURES */
+.room-features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.room-feature{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#f1f5f9;
+  font-weight:600;
+  border:1px solid var(--border);
+}
+
+.room-feature img{
+  width:16px;
+}
+
+/* ROOM PHOTOS */
+.room-photos{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--border) transparent;
+}
+
+.room-photos::-webkit-scrollbar{
+  height:6px;
+}
+
+.room-photos::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.room-photos::-webkit-scrollbar-thumb{
+  background:var(--border);
+  border-radius:999px;
+}
+
+.room-photos img{
+  height:160px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:var(--radius-md);
+  border:2px solid var(--border);
+  transition:all .2s ease;
+  cursor:pointer;
+}
+
+.room-photos img:hover{
+  border-color:var(--primary);
+  transform:scale(1.05);
+}
+
+/* ======================================================
+ CHARGES
+====================================================== */
+.charges-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+}
+
+.charge-pill{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+  font-size:14px;
+  border:1px solid var(--border);
+  transition:all .2s ease;
+}
+
+.charge-pill:hover{
+  background:#f1f5f9;
+  transform:translateY(-2px);
+}
+
+.charge-pill img{
+  width:24px;
+}
+
+/* ======================================================
+ RULES / POLICIES
+====================================================== */
+.rules-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.rule-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px;
+  border-radius:var(--radius-md);
+  background:#fef3c7;
+  border:1px solid #fde68a;
+  font-size:14px;
+  font-weight:600;
+  color:#78350f;
+}
+
+.rule-item img{
+  width:20px;
+  margin-top:2px;
+  flex-shrink:0;
+}
+
+/* ======================================================
+ PAYMENT
+====================================================== */
+.payment-wrap{
+  text-align:center;
+}
+
+#paymentQR{
+  width:240px;
+  aspect-ratio:1/1;
+  object-fit:contain;
+  border-radius:var(--radius-lg);
+  border:2px solid var(--border);
+  padding:16px;
+  margin:20px auto;
+  display:none;
+  background:#fff;
+  box-shadow:var(--shadow-md);
+}
+
+.upi-icons{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.upi-icons img{
+  width:48px;
+  height:48px;
+  transition:transform .2s ease;
+}
+
+.upi-icons img:hover{
+  transform:scale(1.1);
+}
+
+/* ======================================================
+ FOOTER
+====================================================== */
+.footer{
+  padding:32px 16px 48px;
+  text-align:center;
+  color:var(--text-muted);
+}
+
+.footer-inner{
+  max-width:600px;
+  margin:auto;
+}
+
+.footer-logo{
+  width:50px;
+  opacity:.8;
+  margin-bottom:12px;
+}
+
+.footer p{
+  font-size:14px;
+  line-height:1.6;
+}
+
+.footer a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.footer a:hover{
+  text-decoration:underline;
+}
+
+/* ======================================================
+ RESPONSIVE
+====================================================== */
+@media(max-width:640px){
+  .pg-name{font-size:26px}
+  .pg-desc{font-size:15px}
+  .section-title{font-size:20px}
+  
+  .actions.two{
+    grid-template-columns:1fr;
+  }
+  
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+  
+  .room-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  
+  .charges-grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
@@ -293,6 +775,7 @@ body{
   </div>
 
 </section>
+
 <!-- ======================================================
  SUITABLE FOR
 ====================================================== -->
@@ -359,13 +842,12 @@ body{
 </section>
 
 <!-- ======================================================
- AMENITIES / FACILITIES
+ COMMON FACILITIES (PROPERTY-LEVEL)
 ====================================================== -->
-<section class="card" id="amenitiesCard">
-  <h2 class="section-title">Amenities</h2>
-
-  <div class="amenities-grid" id="amenitiesList">
-    <!-- wifi, ac, fridge, washing machine, power backup -->
+<section class="card" id="facilitiesCard">
+  <h2 class="section-title">Common Facilities</h2>
+  <div class="facilities-grid" id="facilitiesList">
+    <!-- JS will inject facilities -->
   </div>
 </section>
 
@@ -375,154 +857,11 @@ body{
 <section class="card" id="foodCard">
   <h2 class="section-title">Food Facility</h2>
 
-  <div class="food-wrap">
-    <div class="food-item" id="vegFood">
-      <img src="/assets/icons/color-icons/veg.svg">
-      <span>Veg Food Available</span>
-    </div>
-
-    <div class="food-item" id="nonVegFood">
-      <img src="/assets/icons/color-icons/non-veg.svg">
-      <span>Non-Veg Food Available</span>
-    </div>
-
-    <div class="food-item" id="foodTiming">
-      <img src="/assets/icons/black-icons/clock.svg">
-      <span></span>
-    </div>
+  <div class="food-wrap" id="foodWrap">
+    <!-- JS will inject food details -->
   </div>
 </section>
 
-<!-- ======================================================
- PART 2 – SHARED STYLES
-====================================================== -->
-<style>
-.section-title{
-  font-size:22px;
-  font-weight:800;
-  text-align:center;
-  margin-bottom:18px;
-  position:relative;
-}
-
-.section-title::after{
-  content:"";
-  display:block;
-  width:60px;
-  height:3px;
-  background:linear-gradient(to right,#1a73e8,#7c3aed);
-  margin:8px auto 0;
-  border-radius:4px;
-}
-
-
-.pill-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.pill{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#f1f5f9;
-  font-size:12px;
-  font-weight:600;
-}
-
-.pill img{
-  width:18px;
-  height:18px;
-}
-
-/* CONTACT */
-.address{
-  margin-top:14px;
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  font-size:14px;
-  color:var(--muted);
-}
-
-.address img{
-  width:18px;
-}
-
-/* PROPERTY INFO */
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.info-pill{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px;
-  border-radius:var(--radius-md);
-  background:#f8fafc;
-  font-weight:600;
-}
-
-.info-pill img{
-  width:22px;
-  height:22px;
-}
-
-/* AMENITIES */
-.amenities-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:14px;
-}
-
-.amenity{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px;
-  border-radius:var(--radius-md);
-  background:#f8fafc;
-  font-weight:600;
-}
-
-.amenity img{
-  width:22px;
-}
-
-/* FOOD */
-.food-wrap{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.food-item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 16px;
-  border-radius:var(--radius-md);
-  background:#f8fafc;
-  font-weight:600;
-}
-
-.food-item img{
-  width:22px;
-}
- .room-price{
-  color:#16a34a;
-  background:#ecfdf5;
-  padding:6px 12px;
-  border-radius:999px;
-}
-
-</style>
 <!-- ======================================================
  ROOMS & PRICING
 ====================================================== -->
@@ -538,7 +877,7 @@ body{
  CHARGES
 ====================================================== -->
 <section class="card" id="chargesCard">
-  <h2 class="section-title">Charges</h2>
+  <h2 class="section-title">Additional Charges</h2>
 
   <div class="charges-grid">
     <div class="charge-pill" id="electricityCharge">
@@ -559,6 +898,16 @@ body{
 </section>
 
 <!-- ======================================================
+ RULES / POLICIES
+====================================================== -->
+<section class="card" id="rulesCard">
+  <h2 class="section-title">House Rules & Policies</h2>
+  <div class="rules-list" id="rulesList">
+    <!-- JS will inject rules -->
+  </div>
+</section>
+
+<!-- ======================================================
  PAYMENT / QR
 ====================================================== -->
 <section class="card" id="paymentCard">
@@ -567,10 +916,10 @@ body{
   <div class="payment-wrap">
     <img id="paymentQR" alt="Payment QR">
     <div class="upi-icons">
-      <img src="/assets/icons/color-icons/google-pay.svg">
-      <img src="/assets/icons/color-icons/phonepe.svg">
-      <img src="/assets/icons/color-icons/paytm.svg">
-      <img src="/assets/icons/color-icons/bhim-app.svg">
+      <img src="/assets/icons/color-icons/google-pay.svg" alt="Google Pay">
+      <img src="/assets/icons/color-icons/phonepe.svg" alt="PhonePe">
+      <img src="/assets/icons/color-icons/paytm.svg" alt="Paytm">
+      <img src="/assets/icons/color-icons/bhim-app.svg" alt="BHIM">
     </div>
   </div>
 </section>
@@ -580,160 +929,20 @@ body{
 ====================================================== -->
 <footer class="footer">
   <div class="footer-inner">
-    <img src="/assets/images/logo.png" class="footer-logo" alt="">
+    <img src="/assets/images/logo.png" class="footer-logo" alt="Logo">
     <p>
-  Powered by 
-  <a href="https://rupmaxdigital.in/" target="_blank" style="color:#93c5fd;text-decoration:none">
-    RupMax Digital
-  </a>
-</p>
-
+      Powered by 
+      <a href="https://rupmaxdigital.in/" target="_blank">RupMax Digital</a>
+    </p>
   </div>
 </footer>
 
-<!-- ======================================================
- PART 3 STYLES
-====================================================== -->
-<style>
-/* ROOMS */
-.room-card{
-  border:2px solid var(--border);
-  border-radius:var(--radius-lg);
-  padding:16px;
-  margin-bottom:18px;
-  background:#fff;
-}
-
-.room-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-}
-
-.room-title{
-  font-size:18px;
-  font-weight:800;
-}
-
-.room-price{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-weight:800;
-}
-
-.room-price img{
-  width:18px;
-}
-
-/* ROOM FEATURES */
-.room-features{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:10px;
-}
-
-.room-feature{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-size:13px;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#f1f5f9;
-  font-weight:600;
-}
-
-.room-feature img{
-  width:16px;
-}
-
-/* ROOM PHOTOS */
-.room-photos{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-  margin-top:14px;
-  padding-bottom:6px;
-}
-
-.room-photos img{
-  height:150px;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:14px;
-  border:1px solid var(--border);
-}
-
-/* CHARGES */
-.charges-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
-}
-
-.charge-pill{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:14px;
-  border-radius:var(--radius-md);
-  background:#f8fafc;
-  font-weight:600;
- font-size:14px;
-}
-
-.charge-pill img{
-  width:22px;
-}
-
-/* PAYMENT */
-.payment-wrap{
-  text-align:center;
-}
-
-#paymentQR{
-  width:220px;
-  aspect-ratio:1/1;
-  object-fit:contain;
-  border-radius:16px;
-  border:2px dashed var(--border);
-  padding:10px;
-  margin:14px auto;
-  display:none;
-}
-
-.upi-icons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-}
-
-.upi-icons img{
-  width:42px;
-}
-
-/* FOOTER */
-.footer{
-  padding:26px 10px 40px;
-  text-align:center;
-  color:#cbd5f5;
-}
-
-.footer-logo{
-  width:44px;
-  opacity:.85;
-  margin-bottom:6px;
-}
-</style>
+</div> <!-- page -->
 
 <!-- ======================================================
  APP SCRIPT
 ====================================================== -->
 <script src="app.js"></script>
 
-</div> <!-- page -->
 </body>
 </html>
