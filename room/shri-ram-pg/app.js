@@ -51,7 +51,7 @@ function renderPage(d){
       const div = document.createElement("div");
       div.className = "pill";
       div.innerHTML = `
-        <img src="../assets/icons/black-icons/${iconForSuitable(item)}" />
+        <img src="/assets/icons/black-icons/${iconForSuitable(item)}" />
         ${item}
       `;
       qs("suitableForList").appendChild(div);
@@ -71,7 +71,7 @@ function renderPage(d){
   /* ---------- ADDRESS ---------- */
   if(d.location?.addressShort){
     qs("addressText").innerHTML = `
-      <img src="../assets/icons/color-icons/google-map.svg" width="18" />
+      <img src="/assets/icons/color-icons/google-map.svg" width="18" />
       ${d.location.addressShort}
     `;
   } else {
@@ -88,7 +88,7 @@ function renderPage(d){
       a.href = val;
       a.target = "_blank";
       a.innerHTML = `
-        <img src="../assets/icons/${socialIcon(key)}" />
+        <img src="/assets/icons/${socialIcon(key)}" />
         ${capitalize(key)}
       `;
       qs("socialLinks").appendChild(a);
@@ -114,14 +114,14 @@ function renderPage(d){
       room.innerHTML = `
         <h3>${r.type}</h3>
         <div class="price">
-          <img src="../assets/icons/black-icons/indian-rupee-coin.svg" width="18" />
+          <img src="/assets/icons/black-icons/indian-rupee-coin.svg" width="18" />
           ${r.price}
         </div>
 
         <div class="facility-list">
           ${(r.roomFacilities||[]).map(f=>`
             <span>
-              <img src="../assets/icons/black-icons/${iconForRoom(f)}" />
+              <img src="/assets/icons/black-icons/${iconForRoom(f)}" />
               ${f}
             </span>
           `).join("")}
@@ -130,7 +130,7 @@ function renderPage(d){
         <div class="photos" id="ph-${r.prefix}"></div>
 
         <div class="muted" style="margin-top:8px;display:flex;align-items:center;gap:6px">
-          <img src="../assets/icons/black-icons/long-arrow-right.svg" width="18" />
+          <img src="/assets/icons/black-icons/long-arrow-right.svg" width="18" />
           Swipe for more photos
         </div>
       `;
@@ -232,7 +232,7 @@ function addNumber(num){
   const d = document.createElement("div");
   d.className = "pill";
   d.innerHTML = `
-    <img src="../assets/icons/black-icons/mobile.svg" />
+    <img src="/assets/icons/black-icons/mobile.svg" />
     ${num}
   `;
   qs("contactNumbers").appendChild(d);
