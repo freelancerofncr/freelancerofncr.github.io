@@ -386,6 +386,6 @@ function iconSocial(k){
   if(key === "instagram") return "color-icons/instagram.svg";
   if(key === "facebook") return "color-icons/facebook.svg";
   if(key === "youtube") return "color-icons/youtube.svg";
-  if(key === "website") return "black-icons/check-mark-box.svg";
+  if(key === "website") return "black-icons/globe.svg";
   return "black-icons/check-mark-box.svg";
 }
