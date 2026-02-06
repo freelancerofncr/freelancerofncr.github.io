@@ -1,325 +1,120 @@
-/* =====================================================
-   LOAD business.json5 (JSON5 REQUIRED)
-===================================================== */
 fetch("business.json5")
-  .then(res => res.text())
-  .then(text => JSON5.parse(text))
-  .then(data => renderPage(data))
-  .catch(err => console.error("JSON5 Load Error:", err));
+  .then(r => r.text())
+  .then(t => JSON5.parse(t))
+  .then(d => render(d))
+  .catch(e => console.error("JSON5 error:", e));
 
+function render(d){
 
-/* =====================================================
-   MAIN RENDER FUNCTION
-===================================================== */
-function renderPage(d){
-
-  /* ---------- BASIC INFO ---------- */
-  setText("pgName", d.identity?.name);
-  setText("description", d.identity?.description);
+  text("pgName", d.identity?.name);
+  text("description", d.identity?.description);
 
   if(d.branding?.showLogo && d.branding.logoImage){
-    setImage("logo", "photos/" + d.branding.logoImage);
-  } else {
-    hide("logo");
+    image("logo", "photos/" + d.branding.logoImage);
   }
 
-  /* ---------- GENDER BADGE ---------- */
   if(d.identity?.genderType){
-    const g = d.identity.genderType;
-    const badge = document.createElement("div");
-
-    badge.className =
-      "gender " +
-      (g === "boys" ? "boys" : g === "girls" ? "girls" : "both");
-
-    badge.textContent =
-      g === "boys" ? "Boys" :
-      g === "girls" ? "Girls" :
-      "Boys & Girls";
-
-    qs("genderBadge").appendChild(badge);
+    const g=d.identity.genderType;
+    const el=document.createElement("div");
+    el.className="gender "+(g==="boys"?"boys":g==="girls"?"girls":"both");
+    el.textContent=g==="boys"?"Boys":g==="girls"?"Girls":"Boys & Girls";
+    $("genderBadge").appendChild(el);
   }
 
-  /* ---------- ACTION BUTTONS ---------- */
-  if(d.contact?.primaryCall){
-    setLink("callBtn", "tel:" + d.contact.primaryCall);
-  } else {
-    hide("callBtn");
-  }
+  if(d.contact?.primaryCall) link("callBtn","tel:"+d.contact.primaryCall); else hide("callBtn");
+  if(d.contact?.whatsapp) link("whatsappBtn","https://wa.me/"+clean(d.contact.whatsapp)); else hide("whatsappBtn");
+  if(d.location?.mapLink) link("mapBtn",d.location.mapLink); else hide("mapBtn");
 
-  if(d.contact?.whatsapp){
-    setLink("whatsappBtn", "https://wa.me/" + clean(d.contact.whatsapp));
-  } else {
-    hide("whatsappBtn");
-  }
-
-  if(d.location?.mapLink){
-    setLink("mapBtn", d.location.mapLink);
-  } else {
-    hide("mapBtn");
-  }
-
-  /* ---------- SUITABLE FOR ---------- */
   if(d.identity?.suitableFor?.length){
-    d.identity.suitableFor.forEach(item=>{
-      const pill = document.createElement("div");
-      pill.className = "pill";
-      pill.innerHTML = `
-        <img src="/assets/icons/black-icons/${iconForSuitable(item)}">
-        ${item}
-      `;
-      qs("suitableForList").appendChild(pill);
-    });
-  } else {
-    hide("suitableForCard");
-  }
+    d.identity.suitableFor.forEach(v=>pill("suitableForList",iconSuit(v),v));
+  } else hide("suitableForCard");
 
-  /* ---------- CONTACT NUMBERS ---------- */
-  let hasContact = false;
+  if(d.contact?.primaryCall) number(d.contact.primaryCall);
+  d.contact?.otherNumbers?.forEach(number);
 
-  if(d.contact?.primaryCall){
-    addNumber(d.contact.primaryCall);
-    hasContact = true;
-  }
-
-  if(d.contact?.otherNumbers?.length){
-    d.contact.otherNumbers.forEach(n=>{
-      addNumber(n);
-      hasContact = true;
-    });
-  }
-
-  if(!hasContact){
-    hide("contactDetailsCard");
-  }
-
-  /* ---------- ADDRESS ---------- */
   if(d.location?.addressShort){
-    qs("addressText").innerHTML = `
-      <img src="/assets/icons/color-icons/google-map.svg" width="18">
-      ${d.location.addressShort}
-    `;
-  } else {
-    hide("addressText");
+    $("addressText").innerHTML=`<img src="/assets/icons/color-icons/google-map.svg" width="18">${d.location.addressShort}`;
   }
 
-  /* ---------- SOCIAL LINKS ---------- */
-  let socialCount = 0;
-
-  Object.entries(d.socialLinks || {}).forEach(([key,val])=>{
-    if(val){
-      socialCount++;
-      const a = document.createElement("a");
-      a.className = "pill";
-      a.href = val;
-      a.target = "_blank";
-      a.innerHTML = `
-        <img src="/assets/icons/${socialIcon(key)}">
-        ${capitalize(key)}
-      `;
-      qs("socialLinks").appendChild(a);
-    }
+  let sc=0;
+  Object.entries(d.socialLinks||{}).forEach(([k,v])=>{
+    if(v){sc++;pill("socialLinks",iconSocial(k),cap(k),v)}
   });
+  if(!sc) hide("socialCard");
 
-  if(!socialCount){
-    hide("socialCard");
-  }
-
-  /* ---------- PROPERTY INFO ---------- */
   if(d.property){
-    setPill("propertyType", d.property.type);
-    setPill("totalFloors", d.property.totalFloors + " Floors");
-    setPill(
-      "liftInfo",
-      d.property.liftAvailable ? "Lift Available" : "No Lift"
-    );
-  } else {
-    hide("propertyInfoCard");
-  }
+    span("propertyType",d.property.type);
+    span("totalFloors",d.property.totalFloors+" Floors");
+    span("liftInfo",d.property.liftAvailable?"Lift Available":"No Lift");
+  } else hide("propertyInfoCard");
 
-  /* ---------- ROOMS ---------- */
   if(d.rooms?.length){
-    d.rooms.forEach(room=>{
-      const box = document.createElement("div");
-      box.className = "room";
-
-      box.innerHTML = `
-        <h3>${room.type}</h3>
-
-        <div class="price">
-          <img src="/assets/icons/black-icons/rupee-coin-solid.svg" width="18">
-          ${room.price}
-        </div>
-
-        <div class="pill-list">
-          ${(room.roomFacilities || []).map(f=>`
-            <span class="pill">
-              <img src="/assets/icons/black-icons/${iconForRoom(f)}">
-              ${f}
-            </span>
-          `).join("")}
-        </div>
-
-        <div class="photos" id="photos-${room.prefix}"></div>
-
-        <div class="swipe">
-          <img src="/assets/icons/black-icons/long-arrow-right.svg" width="16">
-          Swipe for more photos
-        </div>
+    d.rooms.forEach(r=>{
+      const box=document.createElement("div");
+      box.className="room";
+      box.innerHTML=`
+        <h3>${r.type}</h3>
+        <div class="price"><img src="/assets/icons/black-icons/rupee-coin-solid.svg">${r.price}</div>
+        <div class="photos" id="ph-${r.prefix}"></div>
+        <div class="swipe"><img src="/assets/icons/black-icons/long-arrow-right.svg" width="16">Swipe for photos</div>
       `;
-
-      qs("roomsContainer").appendChild(box);
-      loadRoomPhotos(room.prefix, "photos-" + room.prefix);
+      $("roomsContainer").appendChild(box);
+      loadPhotos(r.prefix,"ph-"+r.prefix);
     });
-  } else {
-    hide("roomsCard");
-  }
+  } else hide("roomsCard");
 
-  /* ---------- CHARGES ---------- */
   if(d.charges){
-    setPill(
-      "electricityCharge",
-      d.charges.electricityIncluded
-        ? "Electricity Included"
-        : d.charges.electricityRate
-    );
+    span("electricityCharge",d.charges.electricityIncluded?"Electricity Included":d.charges.electricityRate);
+    span("waterCharge",d.charges.waterIncluded?"Water Included":"Extra");
+    span("maintenanceCharge",d.charges.maintenanceIncluded?"Included":"Extra");
+  } else hide("chargesCard");
 
-    setPill(
-      "waterCharge",
-      d.charges.waterIncluded
-        ? "Water Included"
-        : "Water Charges Extra"
-    );
-
-    setPill(
-      "maintenanceCharge",
-      d.charges.maintenanceIncluded
-        ? "Maintenance Included"
-        : "Maintenance Extra"
-    );
-  } else {
-    hide("chargesCard");
-  }
-
-  /* ---------- PAYMENT ---------- */
   if(d.payment?.show){
-    setText("paymentLabel", d.payment.label || "Payment");
-    setImage("paymentQR", "photos/" + d.payment.qrImage);
-  } else {
-    hide("paymentCard");
-  }
+    text("paymentLabel",d.payment.label||"Payment");
+    image("paymentQR","photos/"+d.payment.qrImage);
+  } else hide("paymentCard");
 }
 
-
-/* =====================================================
-   ROOM PHOTO AUTO LOADER (0 → N)
-===================================================== */
-function loadRoomPhotos(prefix, containerId){
-  const box = document.getElementById(containerId);
-  let index = 1;
-  let found = 0;
-
-  function tryLoad(){
-    const img = new Image();
-    img.src = `photos/${prefix}${index}.webp`;
-
-    img.onload = ()=>{
-      found++;
-      box.appendChild(img);
-      index++;
-      tryLoad();
-    };
-  }
-
-  tryLoad();
-
-  setTimeout(()=>{
-    if(!found){
-      box.remove();
-    }
-  }, 600);
+/* PHOTO AUTO 0→N */
+function loadPhotos(p,id){
+  const box=$(id);
+  let i=1,found=0;
+  (function next(){
+    const img=new Image();
+    img.src=`photos/${p}${i}.webp`;
+    img.onload=()=>{found++;box.appendChild(img);i++;next();}
+  })();
+  setTimeout(()=>{if(!found)box.remove()},600);
 }
 
+/* HELPERS */
+const $=id=>document.getElementById(id);
+const hide=id=>$(id)?.remove();
+const text=(i,v)=>v&&($(i).textContent=v);
+const image=(i,s)=>{const e=$(i);e.src=s;e.style.display="block";}
+const link=(i,h)=>$(i).href=h;
+const span=(i,t)=>$(i).querySelector("span").textContent=t;
+const clean=n=>n.replace(/\D/g,"");
+const cap=s=>s[0].toUpperCase()+s.slice(1);
 
-/* =====================================================
-   HELPERS
-===================================================== */
-function qs(id){ return document.getElementById(id); }
-
-function hide(id){
-  const el = qs(id);
-  if(el) el.remove();
+function pill(box,icon,text,href){
+  const e=document.createElement(href?"a":"div");
+  e.className="pill";
+  if(href){e.href=href;e.target="_blank";}
+  e.innerHTML=`<img src="/assets/icons/${icon}">${text}`;
+  $(box).appendChild(e);
 }
+function number(n){pill("contactNumbers","black-icons/mobile.svg",n);}
 
-function setText(id,val){
-  if(val) qs(id).textContent = val;
+function iconSuit(v){
+  return v.includes("Student")?"black-icons/student.svg":
+         v.includes("Working")?"black-icons/Working-Professional.svg":
+         v.includes("Family")?"black-icons/family.svg":
+         v.includes("Couple")?"black-icons/couple.svg":
+         "black-icons/check-mark-box.svg";
 }
-
-function setImage(id,src){
-  const el = qs(id);
-  if(!el) return;
-  el.src = src;
-  el.style.display = "block";
-}
-
-function setLink(id,href){
-  const el = qs(id);
-  if(el) el.href = href;
-}
-
-function setPill(id,text){
-  const el = qs(id);
-  if(el) el.querySelector("span").textContent = text;
-}
-
-function clean(num){
-  return num.replace(/\D/g,"");
-}
-
-function addNumber(num){
-  const div = document.createElement("div");
-  div.className = "pill";
-  div.innerHTML = `
-    <img src="/assets/icons/black-icons/mobile.svg">
-    ${num}
-  `;
-  qs("contactNumbers").appendChild(div);
-}
-
-function capitalize(str){
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-
-/* =====================================================
-   ICON MAPPERS (NO HARDCODED TEXT)
-===================================================== */
-function iconForSuitable(v){
-  return v.includes("Student") ? "student.svg" :
-         v.includes("Working") ? "Working-Professional.svg" :
-         v.includes("Family") ? "family.svg" :
-         v.includes("Couple") ? "couple.svg" :
-         "check-mark-box.svg";
-}
-
-function iconForRoom(v){
-  const map = {
-    "Bed":"bed.svg",
-    "Almirah":"almirah.svg",
-    "Mattress":"bed.svg",
-    "Balcony":"balcony.svg",
-    "Kitchen":"kitchen.svg",
-    "Attached Bathroom":"bathroom.svg",
-    "AC":"infinity.svg",
-    "WiFi":"wifi.svg",
-    "Fridge":"fridge.svg"
-  };
-  return map[v] || "check-mark-box.svg";
-}
-
-function socialIcon(k){
-  return k === "instagram" ? "color-icons/instagram.svg" :
-         k === "facebook"  ? "color-icons/facebook.svg" :
-         k === "youtube"   ? "color-icons/youtube.svg" :
+function iconSocial(k){
+  return k==="instagram"?"color-icons/instagram.svg":
+         k==="facebook"?"color-icons/facebook.svg":
          "black-icons/globe.svg";
 }
