@@ -75,16 +75,24 @@ function init(d){
   }
 
   /* ================= CONTACT NUMBERS ================= */
-  let hasContact = false;
-  if(d.contact?.primaryCall){
-    addPill("contactNumbers","black-icons/mobile.svg",d.contact.primaryCall);
-    hasContact = true;
+let hasContact = false;
+const contactBox = document.getElementById("contactNumbers");
+if(contactBox && d.contact?.primaryCall){
+  const numbers = [d.contact.primaryCall];
+  if(d.contact.otherNumbers){
+    numbers.push(...d.contact.otherNumbers);
   }
-  d.contact?.otherNumbers?.forEach(n=>{
-    addPill("contactNumbers","black-icons/mobile.svg",n);
-    hasContact = true;
-  });
-  if(!hasContact) hide("contactCard");
+  
+  const phoneRow = document.createElement("div");
+  phoneRow.className = "contact-row";
+  phoneRow.innerHTML = `
+    <img src="/assets/icons/black-icons/mobile.svg" alt="">
+    <span>${numbers.join(", ")}</span>
+  `;
+  contactBox.appendChild(phoneRow);
+  hasContact = true;
+}
+if(!hasContact) hide("contactCard");
 
   /* ================= ADDRESS ================= */
   if(d.location?.addressShort){
