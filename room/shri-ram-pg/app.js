@@ -334,7 +334,16 @@ function setImage(id,src,showIt){
   const e=$(id);
   if(e && src){
     e.src=src;
-    if(showIt) e.style.display="block";
+    e.onerror = function(){
+      e.style.display="none";
+      console.log("Image failed to load:", src);
+    };
+    e.onload = function(){
+      if(showIt){
+        e.style.display="block";
+        e.classList.add("loaded");
+      }
+    };
   }
 }
 
