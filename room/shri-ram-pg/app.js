@@ -111,15 +111,21 @@ if(!hasContact) hide("contactCard");
   });
   if(!sc) hide("socialCard");
 
-  /* ================= PROPERTY INFO ================= */
-  if(d.property){
-    setSpan("propertyType", d.property.type);
-    setSpan("totalFloors", d.property.totalFloors ? d.property.totalFloors+" Floors" : "");
-    setSpan("liftInfo", d.property.liftAvailable ? "Lift Available" : "");
-    setSpan("parkingInfo", d.property.parkingAvailable ? "Parking Available" : "");
-  }else{
-    hide("propertyInfoCard");
+ /* ================= PROPERTY INFO ================= */
+if(d.property){
+  const infoGrid = document.getElementById("infoGrid");
+  if(infoGrid){
+    const parts = [];
+    
+    if(d.property.type) parts.push(d.property.type);
+    if(d.property.totalFloors) parts.push(d.property.totalFloors + " Floors");
+    if(d.property.liftAvailable) parts.push("Lift Available");
+    
+    infoGrid.textContent = parts.join(" • ");
   }
+}else{
+  hide("propertyInfoCard");
+}
 
   /* ================= COMMON FACILITIES (NEW) ================= */
   if(d.commonFacilities && d.commonFacilities.length > 0){
