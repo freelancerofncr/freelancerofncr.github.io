@@ -115,7 +115,7 @@
   // =================================================
   charges: {
     electricityIncluded: false,
-    electricityRate: "₹10/unit",
+    electricityRate: "Electricity: ₹10/unit",
 
     waterIncluded: true,       // true | false
     maintenanceIncluded: true, // true | false
