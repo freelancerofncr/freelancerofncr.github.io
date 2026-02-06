@@ -278,6 +278,7 @@ body{
   cursor:pointer;
   position:relative;
   overflow:hidden;
+  background-size:200% auto;
 }
 
  .action-btn::before{
@@ -304,40 +305,52 @@ body{
 }
 
 .call-btn{
-  background:var(--primary);
+  background:linear-gradient(90deg,var(--primary),#60a5fa,var(--primary));
+  background-size:200% auto;
   color:#fff;
   box-shadow:0 4px 14px rgba(26,115,232,.3);
+  animation:shine 3s linear infinite;
 }
 
 .call-btn:hover{
-  background:var(--primary-hover);
   transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(26,115,232,.4);
+  box-shadow:0 8px 20px rgba(26,115,232,.5);
 }
 
 .whatsapp-btn{
-  background:var(--whatsapp);
+  background:linear-gradient(90deg,var(--whatsapp),#4ade80,var(--whatsapp));
+  background-size:200% auto;
   color:#fff;
   box-shadow:0 4px 14px rgba(37,211,102,.3);
+  animation:shine 3s linear infinite;
 }
 
 .whatsapp-btn:hover{
-  background:var(--whatsapp-hover);
   transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(37,211,102,.4);
+  box-shadow:0 8px 20px rgba(37,211,102,.5);
 }
 
 .map-btn{
   background:#fff;
   color:var(--text);
-  border:2px solid var(--border);
-  box-shadow:var(--shadow-sm);
+  border:3px solid;
+  border-image:linear-gradient(90deg,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6) 1;
+  box-shadow:var(--shadow-sm),0 0 20px rgba(59,130,246,.3);
+  position:relative;
+  animation:borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate{
+  0%{border-image-source:linear-gradient(0deg,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6)}
+  25%{border-image-source:linear-gradient(90deg,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6)}
+  50%{border-image-source:linear-gradient(180deg,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6)}
+  75%{border-image-source:linear-gradient(270deg,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6)}
+  100%{border-image-source:linear-gradient(360deg,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6)}
 }
 
 .map-btn:hover{
-  border-color:var(--primary);
   transform:translateY(-2px);
-  box-shadow:var(--shadow-md);
+  box-shadow:var(--shadow-md),0 0 30px rgba(59,130,246,.5);
 }
 
 /* ======================================================
@@ -575,56 +588,28 @@ body{
 }
 
 .room-title{
-  font-size:22px;
+  font-size:20px;
   font-weight:800;
   color:var(--text);
+  margin-bottom:6px;
+}
+
+.room-rent{
+  font-size:24px;
+  font-weight:900;
+  color:#16a34a;
   margin-bottom:14px;
+  letter-spacing:-0.5px;
 }
 
 .room-price{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  font-weight:800;
-  font-size:20px;
-  color:#16a34a;
-  background:linear-gradient(135deg,#ecfdf5,#d1fae5);
-  padding:12px 20px;
-  border-radius:var(--radius-lg);
-  border:2px solid #86efac;
-  margin-top:16px;
-  width:100%;
-  box-shadow:0 4px 10px rgba(22,163,74,.2);
+  display:none;
 }
 
 .room-price img{
   width:20px;
 }
 
-/* ROOM FEATURES */
-.room-features{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.room-feature{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-size:13px;
-  padding:8px 12px;
-  border-radius:999px;
-  background:#f1f5f9;
-  font-weight:600;
-  border:1px solid var(--border);
-}
-
-.room-feature img{
-  width:16px;
-}
 
 /* ROOM PHOTOS */
 .room-photos{
@@ -820,6 +805,84 @@ body{
     grid-template-columns:1fr;
   }
 }
+
+.room-book-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:14px;
+  background:var(--whatsapp);
+  color:#fff;
+  text-decoration:none;
+  border-radius:var(--radius-lg);
+  font-weight:700;
+  font-size:15px;
+  border:none;
+  box-shadow:0 4px 14px rgba(37,211,102,.3);
+  transition:all .3s ease;
+  margin-top:14px;
+}
+
+.room-book-btn img{
+  width:22px;
+  height:22px;
+}
+
+.room-book-btn:hover{
+  background:var(--whatsapp-hover);
+  box-shadow:0 8px 20px rgba(37,211,102,.4);
+  transform:translateY(-2px);
+}
+
+.room-book-btn:active{
+  transform:translateY(0);
+}
+
+/* ======================================================
+ PAGE ANIMATIONS
+====================================================== */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+@keyframes shine{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+
+.card{
+  animation:fadeInUp 0.6s ease-out backwards;
+}
+
+.card:nth-child(1){animation-delay:0.1s}
+.card:nth-child(2){animation-delay:0.2s}
+.card:nth-child(3){animation-delay:0.3s}
+.card:nth-child(4){animation-delay:0.4s}
+.card:nth-child(5){animation-delay:0.5s}
+.card:nth-child(6){animation-delay:0.6s}
+.card:nth-child(7){animation-delay:0.7s}
+.card:nth-child(8){animation-delay:0.8s}
+.card:nth-child(9){animation-delay:0.9s}
+.card:nth-child(10){animation-delay:1s}
+
+.logo{
+  animation:float 3s ease-in-out infinite;
+}
+ 
 </style>
 </head>
 
