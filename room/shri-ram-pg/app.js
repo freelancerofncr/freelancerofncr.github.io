@@ -208,21 +208,37 @@ if(d.rooms?.length){
   hide("roomsCard");
 }
 
-  /* ================= CHARGES ================= */
-  if(d.charges){
+/* ================= CHARGES ================= */
+if(d.charges){
+  // Electricity
+  if(d.charges.electricityIncluded || d.charges.electricityRate){
     setSpan("electricityCharge",
       d.charges.electricityIncluded ? "Electricity Included" : d.charges.electricityRate
     );
+  }else{
+    hide("electricityCharge");
+  }
+  
+  // Water
+  if(d.charges.waterIncluded !== undefined){
     setSpan("waterCharge",
       d.charges.waterIncluded ? "Water Included" : "Water Extra"
     );
+  }else{
+    hide("waterCharge");
+  }
+  
+  // Maintenance
+  if(d.charges.maintenanceIncluded !== undefined){
     setSpan("maintenanceCharge",
       d.charges.maintenanceIncluded ? "Maintenance Included" : "Maintenance Extra"
     );
   }else{
-    hide("chargesCard");
+    hide("maintenanceCharge");
   }
-
+}else{
+  hide("chargesCard");
+}
   /* ================= RULES / POLICIES (NEW) ================= */
   if(d.rules && d.rules.length > 0){
     const rulesList = document.getElementById("rulesList");
