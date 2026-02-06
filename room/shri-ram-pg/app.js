@@ -1,96 +1,107 @@
-// Load JSON5 (simple parser)
 fetch("business.json5")
   .then(r => r.text())
   .then(t => JSON5.parse(t))
-  .then(data => init(data));
+  .then(d => render(d));
 
-function init(d) {
+function render(d){
 
-  // ---------- IDENTITY ----------
-  setText("#pgName", d.identity?.name);
-  setText("#description", d.identity?.description);
+  // ===== BASIC =====
+  setText("pgName", d.identity.name);
+  setText("description", d.identity.description);
 
-  if (d.branding?.showLogo && d.branding.logoImage) {
-    setImage("#logo", "photos/" + d.branding.logoImage);
-  } else hide("#logo");
-
-  if (d.identity?.genderType) {
-    const map = { boys: "👦 Boys", girls: "👧 Girls", both: "👦👧 Boys & Girls" };
-    setHTML("#genderBadge", `<span class="badge">${map[d.identity.genderType]}</span>`);
+  if(d.branding?.showLogo){
+    setImage("logo","photos/"+d.branding.logoImage);
   }
 
-  // ---------- CONTACT ----------
-  if (d.contact?.primaryCall) {
-    setLink("#callBtn", "tel:" + d.contact.primaryCall);
-  } else hide("#contactCard");
-
-  if (d.contact?.whatsapp) {
-    setLink("#whatsappBtn", "https://wa.me/" + clean(d.contact.whatsapp));
+  const genderMap={
+    boys:"👦 Boys PG",
+    girls:"👧 Girls PG",
+    both:"👦👧 Boys & Girls PG"
+  };
+  if(d.identity.genderType){
+    document.getElementById("genderBadge").innerHTML =
+      `<span class="badge">${genderMap[d.identity.genderType]}</span>`;
   }
 
-  // ---------- ROOMS ----------
-  const roomBox = qs("#roomsContainer");
-  if (!d.rooms || !d.rooms.length) {
-    hide("#roomsCard");
-  } else {
-    d.rooms.forEach(r => {
-      const div = document.createElement("div");
-      div.className = "room";
-      div.innerHTML = `
-        <h3>${r.type}</h3>
-        <strong>${r.price}</strong>
-        <div class="muted">${(r.roomFacilities || []).join(", ")}</div>
-        <div class="photos" id="ph-${r.prefix}"></div>
-      `;
-      roomBox.appendChild(div);
-      loadPhotos(r.prefix, `ph-${r.prefix}`);
+  // ===== CONTACT =====
+  setLink("callBtn","tel:"+d.contact.primaryCall);
+  setLink("whatsappBtn","https://wa.me/"+clean(d.contact.whatsapp));
+
+  // ===== ROOMS =====
+  const roomBox=document.getElementById("roomsContainer");
+  d.rooms.forEach(r=>{
+    const div=document.createElement("div");
+    div.className="room";
+
+    div.innerHTML=`
+      <h3>${r.type}</h3>
+      <div class="price">${r.price}</div>
+      <div class="facility-list">
+        ${(r.roomFacilities||[]).map(f=>`<span>${f}</span>`).join("")}
+      </div>
+      <div class="photos" id="ph-${r.prefix}"></div>
+    `;
+    roomBox.appendChild(div);
+    loadPhotos(r.prefix,"ph-"+r.prefix);
+  });
+
+  // ===== FOOD =====
+  if(!d.food || d.food.available===false){
+    hide("foodCard");
+  }else{
+    let t="Food Available";
+    if(d.food.price) t+=" ("+d.food.price+")";
+    if(d.food.note) t+="<br>"+d.food.note;
+    document.getElementById("foodText").innerHTML=t;
+  }
+
+  // ===== FACILITIES =====
+  if(!d.commonFacilities?.length){
+    hide("facilitiesCard");
+  }else{
+    d.commonFacilities.forEach(f=>{
+      const s=document.createElement("span");
+      s.textContent=f;
+      document.getElementById("facilityList").appendChild(s);
     });
   }
 
-  // ---------- FOOD ----------
-  if (!d.food || d.food.available === false) {
-    hide("#foodCard");
-  } else {
-    let txt = "Food Available";
-    if (d.food.price) txt += " (" + d.food.price + ")";
-    if (d.food.note) txt += "<br>" + d.food.note;
-    setHTML("#foodText", txt);
-  }
-
-  // ---------- FACILITIES ----------
-  if (!d.commonFacilities?.length) {
-    hide("#facilitiesCard");
-  } else {
-    d.commonFacilities.forEach(f => {
-      const s = document.createElement("span");
-      s.textContent = f;
-      qs("#facilityList").appendChild(s);
+  // ===== RULES =====
+  if(!d.rules?.length){
+    hide("rulesCard");
+  }else{
+    d.rules.forEach(r=>{
+      const li=document.createElement("li");
+      li.textContent=r;
+      document.getElementById("rulesList").appendChild(li);
     });
   }
 
-  // ---------- PAYMENT ----------
-  if (d.payment?.show && d.payment.qrImage) {
-    setText("#paymentLabel", d.payment.label || "Payment");
-    setImage("#paymentQR", "photos/" + d.payment.qrImage);
-  } else hide("#paymentCard");
-}
-
-// ---------- PHOTO PREFIX LOGIC ----------
-function loadPhotos(prefix, containerId) {
-  const box = qs("#" + containerId);
-  // testing placeholders
-  for (let i = 1; i <= 3; i++) {
-    const img = document.createElement("img");
-    img.src = "https://via.placeholder.com/200x140?text=" + prefix + i;
-    box.appendChild(img);
+  // ===== PAYMENT =====
+  if(d.payment?.show){
+    setText("paymentLabel",d.payment.label);
+    setImage("paymentQR","photos/"+d.payment.qrImage);
+  }else{
+    hide("paymentCard");
   }
 }
 
-// ---------- HELPERS ----------
-function qs(s){ return document.querySelector(s) }
-function hide(s){ qs(s)?.remove() }
-function setText(s,v){ if(v) qs(s).textContent=v }
-function setHTML(s,v){ if(v) qs(s).innerHTML=v }
-function setImage(s,src){ const e=qs(s); e.src=src; e.style.display="block" }
-function setLink(s,href){ qs(s).href=href }
+// ===== PHOTO PREFIX LOADER =====
+function loadPhotos(prefix,id){
+  const box=document.getElementById(id);
+  for(let i=1;i<=10;i++){
+    const img=new Image();
+    img.src=`photos/${prefix}${i}.webp`;
+    img.onload=()=>box.appendChild(img);
+  }
+}
+
+// ===== HELPERS =====
+function setText(id,val){ if(val) document.getElementById(id).textContent=val }
+function setImage(id,src){
+  const e=document.getElementById(id);
+  e.src=src; e.style.display="block";
+}
+function setLink(id,href){ document.getElementById(id).href=href }
+function hide(id){ document.getElementById(id)?.remove() }
 function clean(n){ return n.replace(/\D/g,"") }
