@@ -168,19 +168,16 @@ function init(d){
   if(d.rooms?.length){
     d.rooms.forEach(r=>{
       const card = document.createElement("div");
-      card.className = "room-card";
-      card.innerHTML = `
-        <div class="room-head">
-          <div class="room-title">${r.type}</div>
-          <div class="room-price">
-            <img src="/assets/icons/black-icons/rupee-coin-solid.svg" alt="">
-            ${r.price}
-          </div>
-        </div>
-
-        <div class="room-features" id="rf-${r.prefix}"></div>
-        <div class="room-photos" id="rp-${r.prefix}"></div>
-      `;
+card.className = "room-card";
+card.innerHTML = `
+  <div class="room-title">${r.type}</div>
+  <div class="room-photos" id="rp-${r.prefix}"></div>
+  <div class="room-features" id="rf-${r.prefix}"></div>
+  <div class="room-price">
+    <img src="/assets/icons/black-icons/rupee-coin-solid.svg" alt="">
+    ${r.price}
+  </div>
+`;
       safeAppend("roomsContainer", card);
 
       // Add room facilities (not "features")
