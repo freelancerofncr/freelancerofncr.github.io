@@ -179,32 +179,34 @@ if(d.property){
   }
 
   /* ================= ROOMS & PRICING ================= */
-  if(d.rooms?.length){
-    d.rooms.forEach(r=>{
-      const card = document.createElement("div");
-card.className = "room-card";
-card.innerHTML = `
-  <div class="room-title">${r.type}</div>
-  <div class="room-photos" id="rp-${r.prefix}"></div>
-  <div class="room-features" id="rf-${r.prefix}"></div>
-  <div class="room-price">
-    <img src="/assets/icons/black-icons/rupee-coin-solid.svg" alt="">
-    ${r.price}
-  </div>
-`;
-      safeAppend("roomsContainer", card);
+if(d.rooms?.length){
+  d.rooms.forEach(r=>{
+    const card = document.createElement("div");
+    card.className = "room-card";
+    card.innerHTML = `
+      <div class="room-title">${r.type}</div>
+      <div class="room-rent">₹${r.price.replace('₹','')}/month</div>
+      <div class="room-photos" id="rp-${r.prefix}"></div>
+      <div class="room-features" id="rf-${r.prefix}"></div>
+      <a href="https://wa.me/${digits(d.contact?.whatsapp || d.contact?.primaryCall)}?text=${encodeURIComponent('Hi, I want to book ' + r.type)}" 
+         class="room-book-btn" target="_blank">
+        <img src="/assets/icons/color-icons/whatsapp.svg" alt="">
+        Book Now
+      </a>
+    `;
+    safeAppend("roomsContainer", card);
 
-      // Add room facilities (not "features")
-      r.roomFacilities?.forEach(f=>{
-        addRoomFeature("rf-"+r.prefix, f);
-      });
-
-      // Load room photos
-      loadRoomPhotos(r.prefix, "rp-"+r.prefix);
+    // Add room facilities
+    r.roomFacilities?.forEach(f=>{
+      addRoomFacility("rf-"+r.prefix, f);
     });
-  }else{
-    hide("roomsCard");
-  }
+
+    // Load room photos
+    loadRoomPhotos(r.prefix, "rp-"+r.prefix);
+  });
+}else{
+  hide("roomsCard");
+}
 
   /* ================= CHARGES ================= */
   if(d.charges){
@@ -374,6 +376,13 @@ function addRoomFeature(box,f){
   const d=document.createElement("div");
   d.className="room-feature";
   d.innerHTML=`<img src="/assets/icons/black-icons/check-mark-box.svg" alt="">${f}`;
+  safeAppend(box,d);
+}
+
+function addRoomFacility(box,f){
+  const d=document.createElement("div");
+  d.className="room-facility";
+  d.textContent = f;
   safeAppend(box,d);
 }
 
