@@ -121,7 +121,7 @@ if(d.property){
     if(d.property.totalFloors) parts.push(d.property.totalFloors + " Floors");
     if(d.property.liftAvailable) parts.push("Lift Available");
     
-    infoGrid.textContent = parts.join(" • ");
+    infoGrid.textContent = parts.join(" | ");
   }
 }else{
   hide("propertyInfoCard");
