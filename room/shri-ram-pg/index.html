@@ -226,6 +226,21 @@ body{
   color:#000;
   border-color:var(--primary);
 }
+ #socialLinks .pill{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  text-decoration:none;
+}
+
+#socialLinks .pill img{
+  width:20px;
+}
+
+#socialLinks .pill:hover{
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  transform:translateY(-2px);
+}
+
 </style>
 </head>
 
@@ -431,7 +446,7 @@ body{
 /* PROPERTY INFO */
 .info-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
 
@@ -491,6 +506,13 @@ body{
 .food-item img{
   width:22px;
 }
+ .room-price{
+  color:#16a34a;
+  background:#ecfdf5;
+  padding:6px 12px;
+  border-radius:999px;
+}
+
 </style>
 <!-- ======================================================
  ROOMS & PRICING
