@@ -1,217 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Property Details</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
 
-<!-- JSON5 (MANDATORY) -->
+<!-- ======================================================
+ BASIC SEO (DYNAMIC VIA JSON5)
+====================================================== -->
+<title id="seo-title">PG / Room Details</title>
+<meta name="description" id="seo-desc" content="PG and Room rental details" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- FAVICON -->
+<link rel="icon" href="/assets/images/favicon.png" />
+
+<!-- JSON5 (REQUIRED) -->
 <script src="https://unpkg.com/json5@2/dist/index.min.js"></script>
 
+<!-- ======================================================
+ GLOBAL STYLES
+====================================================== -->
 <style>
 :root{
-  --blue:#2563eb;
-  --pink:#ec4899;
-  --green:#16a34a;
-  --orange:#f97316;
-  --dark:#111827;
-  --muted:#6b7280;
+  --bg-1:#0f172a;
+  --bg-2:#020617;
   --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#020617;
+  --muted:#64748b;
+
+  --primary:#1a73e8; /* Google Blue */
+  --success:#16a34a;
+  --whatsapp:#25d366;
+
+  --radius-xl:22px;
+  --radius-lg:16px;
+  --radius-md:12px;
+
+  --shadow-lg:0 25px 50px rgba(0,0,0,.12);
+  --shadow-md:0 10px 30px rgba(0,0,0,.08);
 }
 
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
+}
+
+html,body{
+  min-height:100%;
 }
 
 body{
-  min-height:100vh;
-  color:var(--dark);
-  background:
-    radial-gradient(circle at 10% 10%, #e0e7ff, transparent 40%),
-    radial-gradient(circle at 90% 20%, #dcfce7, transparent 45%),
-    radial-gradient(circle at 50% 90%, #ffe4e6, transparent 40%),
-    #f8fafc;
-  animation:bgMove 18s linear infinite alternate;
+  color:var(--text);
+  background:#020617;
+  overflow-x:hidden;
 }
 
-@keyframes bgMove{
-  0%{background-position:0% 0%,100% 0%,50% 100%}
-  100%{background-position:10% 20%,90% 10%,40% 90%}
+/* ======================================================
+ ANIMATED BACKGROUND (PROFESSIONAL)
+====================================================== */
+.bg-wrap{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
 }
 
-.container{max-width:900px;margin:auto;padding:16px}
+.blob{
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.45;
+  animation:float 22s infinite alternate ease-in-out;
+}
+
+.blob.blue{
+  background:#1a73e8;
+  top:-120px;
+  left:-120px;
+}
+
+.blob.purple{
+  background:#7c3aed;
+  bottom:-160px;
+  right:-160px;
+  animation-duration:26s;
+}
+
+.blob.green{
+  background:#16a34a;
+  top:40%;
+  left:60%;
+  animation-duration:30s;
+}
+
+@keyframes float{
+  from{transform:translateY(0) translateX(0)}
+  to{transform:translateY(-80px) translateX(60px)}
+}
+
+/* noise overlay */
+.bg-wrap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+/* ======================================================
+ LAYOUT
+====================================================== */
+.page{
+  max-width:960px;
+  margin:auto;
+  padding:18px;
+}
 
 .card{
   background:var(--card);
-  border-radius:20px;
-  padding:20px;
+  border-radius:var(--radius-xl);
+  padding:22px;
   margin-bottom:18px;
-  border:1px solid #e5e7eb;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-md);
 }
 
-h1{font-size:26px;margin-top:10px}
-h2{font-size:22px;margin-bottom:12px}
-h3{font-size:18px;margin-bottom:8px}
-.muted{color:var(--muted);font-size:14px}
+/* ======================================================
+ HEADER / HERO
+====================================================== */
+.hero{
+  text-align:center;
+}
 
-/* HEADER */
-.header{text-align:center}
 .logo{
-  width:120px;height:120px;border-radius:50%;
-  object-fit:contain;border:4px solid #fff;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-  display:none;margin:auto;
+  width:120px;
+  height:120px;
+  object-fit:contain;
+  border-radius:16px;
+  border:3px solid #fff;
+  box-shadow:var(--shadow-lg);
+  background:#fff;
+  margin:auto;
+  display:none;
 }
 
-/* GENDER */
-.gender{
-  display:inline-block;margin-top:10px;
-  padding:6px 16px;border-radius:999px;
-  font-weight:700;font-size:14px;
+.pg-name{
+  font-size:28px;
+  font-weight:800;
+  margin-top:14px;
 }
-.gender.boys{background:#e0f2fe;color:#0369a1}
-.gender.girls{background:#fce7f3;color:#9d174d}
-.gender.both{background:#ede9fe;color:#5b21b6}
 
-/* ACTIONS */
-.actions{margin-top:18px}
-.action-row{display:grid;gap:12px}
-.action-row.two{grid-template-columns:1fr 1fr}
-.action-row.one{grid-template-columns:1fr;margin-top:12px}
+.pg-desc{
+  color:var(--muted);
+  font-size:15px;
+  margin-top:6px;
+  line-height:1.5;
+}
+
+/* ======================================================
+ GENDER BADGE
+====================================================== */
+.gender-badge{
+  display:inline-block;
+  margin-top:12px;
+  padding:6px 16px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+}
+
+.gender-boys{background:#e0f2fe;color:#075985}
+.gender-girls{background:#fce7f3;color:#9d174d}
+.gender-both{background:#ede9fe;color:#5b21b6}
+
+/* ======================================================
+ ACTION BUTTONS
+====================================================== */
+.actions{
+  margin-top:20px;
+  display:grid;
+  gap:12px;
+}
+
+.actions.two{
+  grid-template-columns:1fr 1fr;
+}
+
+.actions.one{
+  grid-template-columns:1fr;
+}
 
 .action-btn{
-  position:relative;
-  padding:14px;border-radius:16px;
-  font-weight:700;color:#fff;
-  text-decoration:none;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  overflow:hidden;
-}
-.action-btn img{width:20px;height:20px}
-
-.action-btn::after{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);
-  transform:translateX(-100%);
-  animation:shine 3s infinite;
-}
-@keyframes shine{to{transform:translateX(100%)}}
-
-.call{background:var(--blue)}
-.whatsapp{background:#25d366}
-.map{background:var(--orange)}
-
-/* PILLS */
-.pill-list{display:flex;flex-wrap:wrap;gap:10px}
-.pill{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 14px;border-radius:999px;
-  background:#f1f5f9;font-size:14px;font-weight:600;
-}
-.pill img{width:18px;height:18px}
-
-/* ROOMS */
-.room{
-  border:2px solid #e5e7eb;
-  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
   padding:14px;
-  margin-bottom:16px;
+  border-radius:var(--radius-lg);
+  font-weight:700;
+  text-decoration:none;
+  border:2px solid transparent;
 }
-.room .price{
-  display:flex;align-items:center;gap:6px;
-  font-weight:700;margin-bottom:8px;
+
+.action-btn img{
+  width:20px;
+  height:20px;
 }
-.photos{
-  display:flex;gap:10px;
-  overflow-x:auto;padding-bottom:6px;
+
+.call-btn{
+  background:var(--primary);
+  color:#fff;
 }
-.photos img{
-  height:140px;border-radius:12px;
+
+.whatsapp-btn{
+  background:var(--whatsapp);
+  color:#fff;
 }
-.swipe{
-  display:flex;align-items:center;gap:6px;
-  font-size:13px;color:var(--muted);margin-top:6px;
+
+.map-btn{
+  background:#fff;
+  color:#000;
+  border-color:var(--primary);
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-<section class="card header">
-  <img id="logo" class="logo">
-  <h1 id="pgName"></h1>
-  <p id="description" class="muted"></p>
-  <div id="genderBadge"></div>
-
-  <div class="actions">
-    <div class="action-row two">
-      <a id="callBtn" class="action-btn call">
-        <img src="/assets/icons/black-icons/call.svg">Call
-      </a>
-      <a id="whatsappBtn" class="action-btn whatsapp">
-        <img src="/assets/icons/color-icons/whatsapp.svg">WhatsApp
-      </a>
-    </div>
-    <div class="action-row one">
-      <a id="mapBtn" class="action-btn map">
-        <img src="/assets/icons/color-icons/google-map.svg">Location
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="card" id="suitableForCard">
-  <h2>Suitable For</h2>
-  <div class="pill-list" id="suitableForList"></div>
-</section>
-
-<section class="card" id="contactDetailsCard">
-  <h2>Contact</h2>
-  <div class="pill-list" id="contactNumbers"></div>
-  <p id="addressText" class="muted" style="margin-top:12px;display:flex;gap:8px"></p>
-</section>
-
-<section class="card" id="socialCard">
-  <h2>Connect</h2>
-  <div class="pill-list" id="socialLinks"></div>
-</section>
-
-<section class="card" id="propertyInfoCard">
-  <h2>Property Info</h2>
-  <div class="pill-list">
-    <div class="pill" id="propertyType"><img src="/assets/icons/black-icons/shop.svg"><span></span></div>
-    <div class="pill" id="totalFloors"><img src="/assets/icons/black-icons/chart-arrow-up.svg"><span></span></div>
-    <div class="pill" id="liftInfo"><img src="/assets/icons/black-icons/lift.svg"><span></span></div>
-  </div>
-</section>
-
-<section class="card" id="roomsCard">
-  <h2>Rooms & Pricing</h2>
-  <div id="roomsContainer"></div>
-</section>
-
-<section class="card" id="chargesCard">
-  <h2>Charges</h2>
-  <div class="pill-list">
-    <div class="pill" id="electricityCharge"><img src="/assets/icons/color-icons/lightning.svg"><span></span></div>
-    <div class="pill" id="waterCharge"><img src="/assets/icons/black-icons/ro-water.svg"><span></span></div>
-    <div class="pill" id="maintenanceCharge"><img src="/assets/icons/black-icons/quality-badge-checkmark.svg"><span></span></div>
-  </div>
-</section>
-
-<section class="card" id="paymentCard">
-  <h2 id="paymentLabel"></h2>
-  <img id="paymentQR" style="width:220px;display:block;margin:auto">
-</section>
-
+<!-- BACKGROUND -->
+<div class="bg-wrap">
+  <div class="blob blue"></div>
+  <div class="blob purple"></div>
+  <div class="blob green"></div>
 </div>
 
+<div class="page">
+
+<!-- ======================================================
+ HERO / HEADER CARD
+====================================================== -->
+<section class="card hero">
+
+  <img id="logo" class="logo" alt="PG Logo" />
+
+  <h1 id="pgName" class="pg-name">PG / Room Name</h1>
+
+  <p id="description" class="pg-desc"></p>
+
+  <div id="genderBadge"></div>
+
+  <div class="actions two">
+    <a id="callBtn" class="action-btn call-btn">
+      <img src="/assets/icons/black-icons/call.svg" alt="">Call
+    </a>
+    <a id="whatsappBtn" class="action-btn whatsapp-btn">
+      <img src="/assets/icons/color-icons/whatsapp.svg" alt="">WhatsApp
+    </a>
+  </div>
+
+  <div class="actions one">
+    <a id="mapBtn" class="action-btn map-btn">
+      <img src="/assets/icons/color-icons/google-map.svg" alt="">Location
+    </a>
+  </div>
+
+</section>
+<!-- ======================================================
+ SUITABLE FOR
+====================================================== -->
+<section class="card" id="suitableForCard">
+  <h2 class="section-title">Suitable For</h2>
+  <div class="pill-list" id="suitableForList">
+    <!-- JS inject -->
+  </div>
+</section>
+
+<!-- ======================================================
+ CONTACT & ADDRESS
+====================================================== -->
+<section class="card" id="contactCard">
+  <h2 class="section-title">Contact Details</h2>
+
+  <div class="pill-list" id="contactNumbers">
+    <!-- numbers -->
+  </div>
+
+  <div class="address" id="addressWrap">
+    <img src="/assets/icons/color-icons/google-map.svg" alt="">
+    <span id="addressText"></span>
+  </div>
+</section>
+
+<!-- ======================================================
+ SOCIAL MEDIA
+====================================================== -->
+<section class="card" id="socialCard">
+  <h2 class="section-title">Connect With Us</h2>
+  <div class="pill-list" id="socialLinks">
+    <!-- instagram / facebook / youtube etc -->
+  </div>
+</section>
+
+<!-- ======================================================
+ PROPERTY INFO
+====================================================== -->
+<section class="card" id="propertyInfoCard">
+  <h2 class="section-title">Property Information</h2>
+
+  <div class="info-grid">
+    <div class="info-pill" id="propertyType">
+      <img src="/assets/icons/black-icons/shop.svg">
+      <span></span>
+    </div>
+
+    <div class="info-pill" id="totalFloors">
+      <img src="/assets/icons/black-icons/chart-arrow-up.svg">
+      <span></span>
+    </div>
+
+    <div class="info-pill" id="liftInfo">
+      <img src="/assets/icons/black-icons/lift.svg">
+      <span></span>
+    </div>
+
+    <div class="info-pill" id="parkingInfo">
+      <img src="/assets/icons/black-icons/parking.svg">
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+ AMENITIES / FACILITIES
+====================================================== -->
+<section class="card" id="amenitiesCard">
+  <h2 class="section-title">Amenities</h2>
+
+  <div class="amenities-grid" id="amenitiesList">
+    <!-- wifi, ac, fridge, washing machine, power backup -->
+  </div>
+</section>
+
+<!-- ======================================================
+ FOOD DETAILS
+====================================================== -->
+<section class="card" id="foodCard">
+  <h2 class="section-title">Food Facility</h2>
+
+  <div class="food-wrap">
+    <div class="food-item" id="vegFood">
+      <img src="/assets/icons/color-icons/veg.svg">
+      <span>Veg Food Available</span>
+    </div>
+
+    <div class="food-item" id="nonVegFood">
+      <img src="/assets/icons/color-icons/non-veg.svg">
+      <span>Non-Veg Food Available</span>
+    </div>
+
+    <div class="food-item" id="foodTiming">
+      <img src="/assets/icons/black-icons/clock.svg">
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+ PART 2 – SHARED STYLES
+====================================================== -->
+<style>
+.section-title{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.pill-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#f1f5f9;
+  font-size:14px;
+  font-weight:600;
+}
+
+.pill img{
+  width:18px;
+  height:18px;
+}
+
+/* CONTACT */
+.address{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.address img{
+  width:18px;
+}
+
+/* PROPERTY INFO */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+.info-pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+}
+
+.info-pill img{
+  width:22px;
+  height:22px;
+}
+
+/* AMENITIES */
+.amenities-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;
+}
+
+.amenity{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+}
+
+.amenity img{
+  width:22px;
+}
+
+/* FOOD */
+.food-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.food-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:600;
+}
+
+.food-item img{
+  width:22px;
+}
+</style>
+<!-- ======================================================
+ ROOMS & PRICING
+====================================================== -->
+<section class="card" id="roomsCard">
+  <h2 class="section-title">Rooms & Pricing</h2>
+
+  <div id="roomsContainer">
+    <!-- JS will inject room cards -->
+  </div>
+</section>
+
+<!-- ======================================================
+ CHARGES
+====================================================== -->
+<section class="card" id="chargesCard">
+  <h2 class="section-title">Charges</h2>
+
+  <div class="charges-grid">
+    <div class="charge-pill" id="electricityCharge">
+      <img src="/assets/icons/color-icons/lightning.svg">
+      <span></span>
+    </div>
+
+    <div class="charge-pill" id="waterCharge">
+      <img src="/assets/icons/black-icons/ro-water.svg">
+      <span></span>
+    </div>
+
+    <div class="charge-pill" id="maintenanceCharge">
+      <img src="/assets/icons/black-icons/quality-badge-checkmark.svg">
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+ PAYMENT / QR
+====================================================== -->
+<section class="card" id="paymentCard">
+  <h2 class="section-title" id="paymentLabel">Payment</h2>
+
+  <div class="payment-wrap">
+    <img id="paymentQR" alt="Payment QR">
+    <div class="upi-icons">
+      <img src="/assets/icons/color-icons/google-pay.svg">
+      <img src="/assets/icons/color-icons/phonepe.svg">
+      <img src="/assets/icons/color-icons/paytm.svg">
+      <img src="/assets/icons/color-icons/bhim-app.svg">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+ FOOTER
+====================================================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="/assets/images/logo.png" class="footer-logo" alt="">
+    <p>Verified PG / Room Details</p>
+  </div>
+</footer>
+
+<!-- ======================================================
+ PART 3 STYLES
+====================================================== -->
+<style>
+/* ROOMS */
+.room-card{
+  border:2px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:16px;
+  margin-bottom:18px;
+  background:#fff;
+}
+
+.room-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.room-title{
+  font-size:18px;
+  font-weight:800;
+}
+
+.room-price{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:800;
+}
+
+.room-price img{
+  width:18px;
+}
+
+/* ROOM FEATURES */
+.room-features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
+
+.room-feature{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#f1f5f9;
+  font-weight:600;
+}
+
+.room-feature img{
+  width:16px;
+}
+
+/* ROOM PHOTOS */
+.room-photos{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  margin-top:14px;
+  padding-bottom:6px;
+}
+
+.room-photos img{
+  height:150px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+
+/* CHARGES */
+.charges-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+
+.charge-pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px;
+  border-radius:var(--radius-md);
+  background:#f8fafc;
+  font-weight:700;
+}
+
+.charge-pill img{
+  width:22px;
+}
+
+/* PAYMENT */
+.payment-wrap{
+  text-align:center;
+}
+
+#paymentQR{
+  width:220px;
+  aspect-ratio:1/1;
+  object-fit:contain;
+  border-radius:16px;
+  border:2px dashed var(--border);
+  padding:10px;
+  margin:14px auto;
+  display:none;
+}
+
+.upi-icons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+}
+
+.upi-icons img{
+  width:42px;
+}
+
+/* FOOTER */
+.footer{
+  padding:26px 10px 40px;
+  text-align:center;
+  color:#cbd5f5;
+}
+
+.footer-logo{
+  width:44px;
+  opacity:.85;
+  margin-bottom:6px;
+}
+</style>
+
+<!-- ======================================================
+ APP SCRIPT
+====================================================== -->
 <script src="app.js"></script>
+
+</div> <!-- page -->
 </body>
 </html>
