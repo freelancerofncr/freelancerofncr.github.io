@@ -411,8 +411,9 @@ body{
 #socialLinks{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
-  justify-content:center;
+  gap:10px;
+  max-width:500px;
+  margin:auto;
 }
 
 #socialLinks .pill{
@@ -421,16 +422,17 @@ body{
   text-decoration:none;
   color:var(--text);
   font-weight:600;
-  justify-content:center;
-  padding:12px 16px;
+  text-align:center;
+  padding:10px 14px;
+  transition:all .3s ease;
 }
 
 #socialLinks .pill:hover{
   box-shadow:var(--shadow-md);
   transform:translateY(-3px);
   border-color:var(--primary);
+  background:#f8fafc;
 }
-
 /* ======================================================
  CONTACT & ADDRESS
 ====================================================== */
@@ -445,6 +447,21 @@ body{
   background:transparent;
 }
 
+.contact-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-size:14px;
+  color:var(--text);
+  font-weight:500;
+  margin-bottom:8px;
+}
+
+.contact-row img{
+  width:18px;
+  height:18px;
+}
+ 
 .address img{
   width:18px;
 }
@@ -453,24 +470,15 @@ body{
  PROPERTY INFO
 ====================================================== */
 .info-grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  justify-content:center;
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  color:var(--text-muted);
+  line-height:1.8;
 }
 
 .info-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#f8fafc;
-  font-weight:600;
-  font-size:13px;
-  color:var(--text);
-  border:1px solid var(--border);
-  transition:all .2s ease;
+  display:none;
 }
 
 .info-pill img{
