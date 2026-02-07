@@ -6,7 +6,7 @@
     name: "Shri Ram PG",
 
     // Short description (1-3 lines recommended)
-    description: "Affordable PG near metro for students and working professionals with modern amenities",
+    description: "Affordable PG with modern amenities",
 
     // boys | girls | both
     genderType: "both",
@@ -17,6 +17,7 @@
       "Working Professionals",
       "Families",
       "Couples",
+      "Bachelors",
     ],
   },
 
@@ -32,22 +33,22 @@
   // CONTACT (MULTIPLE NUMBERS SUPPORTED)
   // =================================================
   contact: {
-    primaryCall: "+919650000000",
+    primaryCall: "+918979639473",
 
     // Optional: Add more contact numbers
     otherNumbers: [
-      "+919811111111",
-      "+919822222222",
+      "+918979639473",
+      "+918979639473",
     ],
 
-    whatsapp: "+919650000000",
+    whatsapp: "+918979639473",
   },
 
   // =================================================
   // LOCATION
   // =================================================
   location: {
-    addressShort: "Sector 104, Noida, Uttar Pradesh",
+    addressShort: "Near Starling Mall, Sector 104, Noida, Uttar Pradesh",
     mapLink: "https://maps.google.com/",
   },
 
@@ -56,10 +57,10 @@
   // Leave empty "" to auto-hide on website
   // =================================================
   socialLinks: {
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/rupmaxdigital/",
+    facebook: "https://www.facebook.com/rupmaxdigital",
     youtube: "https://www.youtube.com/",
-    website: "https://www.youtube.com/",
+    website: "https://rupmaxdigital.in/",
   },
 
   // =================================================
@@ -67,7 +68,7 @@
   // =================================================
   property: {
     // PG | Rooms | Flat | Building
-    type: "PG",
+    type: "PG & Flat",
 
     totalFloors: 5,
 
@@ -148,8 +149,10 @@
         "Mattress",
         "Attached Bathroom",
         "Balcony",
-        "Kitchen Access",
-        // "AC",
+        "Kitchen",
+        "Table & Chair",
+        "Gyzer",
+        "AC",
       ],
     },
 
@@ -162,7 +165,12 @@
         "Bed",
         "Almirah",
         "Mattress",
-        "Common Bathroom",
+        "Attached Bathroom",
+        "Balcony",
+        "Kitchen",
+        "Table & Chair",
+        "Gyzer",
+        "AC",
       ],
     },
 
@@ -172,11 +180,15 @@
       price: "₹14,000",
 
       roomFacilities: [
-        "Kitchen",
-        "Balcony",
-        "Attached Bathroom",
         "Bed",
-        "Wardrobe",
+        "Almirah",
+        "Mattress",
+        "Attached Bathroom",
+        "Balcony",
+        "Kitchen",
+        "Table & Chair",
+        "Gyzer",
+        "AC",
       ],
     },
   ],
@@ -187,9 +199,9 @@
   // =================================================
   rules: [
     "No alcohol or smoking inside premises",
-    "Entry after 10 PM not allowed",
+    "Entry after 11:30 PM not allowed",
     "Security deposit: 50% of monthly rent",
-    "1 month notice required before vacating",
+    "15 Days notice required before vacating",
     // "Guests allowed with prior permission",
     // "Maintain cleanliness in common areas",
   ],
