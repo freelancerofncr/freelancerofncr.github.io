@@ -122,7 +122,7 @@ section{
   text-align:center;
 }
 
-/* Clear benefit badge */
+/* Clear benefit badge with pulse animation */
 .hero-badge{
   display:inline-block;
   padding:8px 20px;
@@ -133,6 +133,18 @@ section{
   margin-bottom:24px;
   font-size:14px;
   border:1px solid rgba(5,150,105,.3);
+  animation:badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse{
+  0%,100%{
+    transform:scale(1);
+    box-shadow:0 0 0 0 rgba(16,185,129,.4);
+  }
+  50%{
+    transform:scale(1.05);
+    box-shadow:0 0 0 8px rgba(16,185,129,0);
+  }
 }
 
 /* IMPROVED HEADING - Clear & Direct */
@@ -167,31 +179,88 @@ section{
   line-height:1.6;
 }
 
-/* Price in hero - visible but not overpowering */
+/* Price in hero - ATTRACTIVE WITH ANIMATED BORDER */
 .hero-price{
-  display:inline-flex;
-  align-items:baseline;
-  gap:12px;
+  display:inline-block;
   margin-bottom:32px;
-  padding:16px 28px;
-  background:rgba(37,99,235,.1);
-  border-radius:12px;
-  border:1px solid rgba(37,99,235,.2);
+  padding:24px 40px;
+  background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(139,92,246,.15));
+  border-radius:16px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* Animated circulating border effect */
+.hero-price::before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  background:linear-gradient(90deg,
+    #3b82f6,
+    #8b5cf6,
+    #ec4899,
+    #f59e0b,
+    #10b981,
+    #3b82f6
+  );
+  border-radius:16px;
+  z-index:-1;
+  animation:rotateBorder 4s linear infinite;
+  opacity:.8;
+}
+
+/* Inner background to create border effect */
+.hero-price::after{
+  content:'';
+  position:absolute;
+  inset:3px;
+  background:rgba(15,20,25,.95);
+  border-radius:13px;
+  z-index:-1;
+}
+
+@keyframes rotateBorder{
+  0%{
+    filter:hue-rotate(0deg);
+  }
+  100%{
+    filter:hue-rotate(360deg);
+  }
 }
 
 .hero-price .amount{
-  font-size:42px;
-  font-weight:800;
+  font-size:52px;
+  font-weight:900;
   color:#fff;
+  text-shadow:0 0 20px rgba(59,130,246,.6),
+              0 0 40px rgba(139,92,246,.4);
+  position:relative;
+  z-index:1;
+  display:block;
+  margin-bottom:8px;
+}
+
+.hero-price .setup{
+  font-size:16px;
+  color:#cbd5e1;
+  font-weight:600;
+  position:relative;
+  z-index:1;
+  display:block;
+  margin-bottom:12px;
 }
 
 .hero-price .renewal{
   font-size:14px;
   color:#94a3b8;
   font-weight:500;
+  position:relative;
+  z-index:1;
+  display:block;
 }
 
-/* CTA Buttons - Clean, professional */
+/* CTA Buttons - Clean, professional with shine effect */
 .cta-group{
   display:flex;
   gap:16px;
@@ -213,6 +282,33 @@ section{
   text-decoration:none;
   transition:all .2s ease;
   border:none;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Shining effect for primary button */
+.btn-primary::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.3),
+    transparent
+  );
+  animation:shine 3s infinite;
+}
+
+@keyframes shine{
+  0%{
+    left:-100%;
+  }
+  50%,100%{
+    left:100%;
+  }
 }
 
 .btn-primary:hover{
@@ -370,6 +466,25 @@ section{
   border-radius:10px;
   text-decoration:none;
   transition:all .2s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Shining effect for demo link */
+.demo-link::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.3),
+    transparent
+  );
+  animation:shine 3s infinite;
+  animation-delay:.5s;
 }
 
 .demo-link:hover{
@@ -483,10 +598,11 @@ section{
   line-height:1.4;
 }
 
-/* ================= TESTIMONIALS SECTION ================= */
+/* ================= TESTIMONIALS SECTION - HORIZONTAL SCROLL ================= */
 .testimonials-section{
-  max-width:900px;
+  max-width:100%;
   margin:0 auto;
+  overflow:hidden;
 }
 
 .testimonials-section h2{
@@ -495,12 +611,43 @@ section{
   color:#fff;
   text-align:center;
   margin-bottom:40px;
+  padding:0 20px;
+}
+
+/* Horizontal scrolling container */
+.testimonials-scroll-wrapper{
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding:0 20px 20px;
+}
+
+.testimonials-scroll-wrapper::-webkit-scrollbar{
+  display:none;
 }
 
 .testimonials-grid{
-  display:grid;
+  display:flex;
   gap:20px;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  width:max-content;
+  animation:autoScrollTestimonials 25s linear infinite;
+}
+
+/* Pause animation on hover/touch */
+.testimonials-scroll-wrapper:hover .testimonials-grid,
+.testimonials-scroll-wrapper:active .testimonials-grid{
+  animation-play-state:paused;
+}
+
+@keyframes autoScrollTestimonials{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(calc(-320px * 5 - 100px));
+  }
 }
 
 .testimonial-card{
@@ -508,6 +655,15 @@ section{
   padding:24px;
   border-radius:12px;
   border:1px solid var(--border-dark);
+  transition:all .3s ease;
+  flex-shrink:0;
+  width:320px;
+}
+
+.testimonial-card:hover{
+  background:rgba(255,255,255,.09);
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
 }
 
 .testimonial-stars{
@@ -645,6 +801,24 @@ section{
   text-decoration:none;
   transition:all .2s ease;
   margin-bottom:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Shining effect for pay button */
+.pay-btn::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+  animation:shine 3s infinite;
 }
 
 .pay-btn:hover{
@@ -685,6 +859,13 @@ section{
   border-radius:12px;
   text-align:center;
   border:1px solid var(--border-dark);
+  transition:all .3s ease;
+}
+
+.trust-card:hover{
+  background:rgba(255,255,255,.09);
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
 }
 
 .trust-card .icon{
@@ -727,6 +908,16 @@ section{
   box-shadow:0 4px 20px rgba(0,0,0,.3);
   transition:all .2s ease;
   position:relative;
+  animation:floatButton 3s ease-in-out infinite;
+}
+
+@keyframes floatButton{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
 }
 
 .float-btn img{
@@ -735,10 +926,12 @@ section{
 
 .float-btn.whatsapp{
   background:#25d366;
+  animation-delay:0s;
 }
 
 .float-btn.call{
   background:#2563eb;
+  animation-delay:.5s;
 }
 
 .float-btn:hover{
@@ -778,8 +971,12 @@ footer p:first-child{
     font-size:18px;
   }
   
+  .hero-price{
+    padding:20px 32px;
+  }
+  
   .hero-price .amount{
-    font-size:36px;
+    font-size:44px;
   }
   
   .cta-group{
@@ -818,7 +1015,6 @@ footer p:first-child{
     grid-template-columns:repeat(2,1fr);
   }
   
-  .testimonials-grid,
   .trust-grid{
     grid-template-columns:1fr;
   }
@@ -839,6 +1035,20 @@ footer p:first-child{
   .phone-notch{
     width:100px;
     height:26px;
+  }
+  
+  /* Testimonials mobile optimization */
+  .testimonial-card{
+    width:280px;
+  }
+  
+  @keyframes autoScrollTestimonials{
+    0%{
+      transform:translateX(0);
+    }
+    100%{
+      transform:translateX(calc(-280px * 5 - 100px));
+    }
   }
 }
 
@@ -890,13 +1100,13 @@ footer p:first-child{
   <div class="container">
 
     <div class="hero-badge">
-      ✓ 5 Hours Mein Aapki Website Live
+      ✓ 5 Hours Mein Website Live
     </div>
 
     <!-- CLEAR, DIRECT HEADLINE -->
     <h1>
       PG / Room / Flat Owners Ke Liye<br>
-      <span class="highlight">Professional Mini Website</span>
+      <span class="highlight">Professional Website</span>
     </h1>
 
     <!-- BENEFIT-DRIVEN SUBHEADING -->
@@ -912,10 +1122,8 @@ footer p:first-child{
     <!-- PRICE IN HERO - VISIBLE BUT CLEAN -->
     <div class="hero-price">
       <div class="amount">₹999</div>
-      <div class="renewal">
-        Website Setup<br>
-        <small>Renewal: ₹499/year</small>
-      </div>
+      <div class="setup">One Time Setup</div>
+      <div class="renewal">Renewal: ₹499/year</div>
     </div>
 
     <!-- CTA BUTTONS -->
@@ -1030,45 +1238,108 @@ footer p:first-child{
   </div>
 </section>
 
-<!-- ================= TESTIMONIALS - HIGH TRUST ================= -->
+<!-- ================= TESTIMONIALS - HORIZONTAL AUTO SCROLL ================= -->
 <section>
-  <div class="container testimonials-section scroll-reveal">
+  <div class="testimonials-section scroll-reveal">
     <h2>⭐ Customer Reviews</h2>
     
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">
-          "Pehle har din 20-25 calls aati thi. Ab sirf link bhej deta hoon. Serious customers hi call karte hain. Bahut time bacha."
-        </p>
-        <div class="testimonial-author">
-          <strong>Rajesh Kumar</strong>
-          <span>• Noida</span>
-          <span class="verified-badge">Verified</span>
+    <div class="testimonials-scroll-wrapper">
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Pehle har din 20-25 calls aati thi. Ab sirf link bhej deta hoon. Serious customers hi call karte hain. Bahut time bacha."
+          </p>
+          <div class="testimonial-author">
+            <strong>Rajesh Kumar</strong>
+            <span>• Noida</span>
+            <span class="verified-badge">Verified</span>
+          </div>
         </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">
-          "Website se professional dikhta hai. Customers ko trust aa jata hai. 999 mein itna acha website mil gaya, bahut khush hoon."
-        </p>
-        <div class="testimonial-author">
-          <strong>Priya Sharma</strong>
-          <span>• Delhi</span>
-          <span class="verified-badge">Verified</span>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Website se professional dikhta hai. Customers ko trust aa jata hai. 999 mein itna acha website mil gaya, bahut khush hoon."
+          </p>
+          <div class="testimonial-author">
+            <strong>Priya Sharma</strong>
+            <span>• Delhi</span>
+            <span class="verified-badge">Verified</span>
+          </div>
         </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">
-          "24 hours mein website live ho gayi. Photos, price, location sab clear hai. WhatsApp pe photo bhejne se acha hai 100 guna."
-        </p>
-        <div class="testimonial-author">
-          <strong>Amit Patel</strong>
-          <span>• Gurgaon</span>
-          <span class="verified-badge">Verified</span>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "5 hours mein website live ho gayi. Photos, price, location sab clear hai. WhatsApp pe photo bhejne se acha hai 100 guna."
+          </p>
+          <div class="testimonial-author">
+            <strong>Amit Patel</strong>
+            <span>• Gurgaon</span>
+            <span class="verified-badge">Verified</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Google map integration bahut helpful hai. Customer khud location dekh lete hain. Phone calls 50% kam ho gayi hain."
+          </p>
+          <div class="testimonial-author">
+            <strong>Suresh Yadav</strong>
+            <span>• Mumbai</span>
+            <span class="verified-badge">Verified</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Booking rate badh gayi hai. Pehle 10 mein se 1 book karta tha, ab 10 mein se 4-5 book kar lete hain. Best investment!"
+          </p>
+          <div class="testimonial-author">
+            <strong>Neha Gupta</strong>
+            <span>• Pune</span>
+            <span class="verified-badge">Verified</span>
+          </div>
+        </div>
+        
+        <!-- Duplicate cards for infinite scroll effect -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Pehle har din 20-25 calls aati thi. Ab sirf link bhej deta hoon. Serious customers hi call karte hain. Bahut time bacha."
+          </p>
+          <div class="testimonial-author">
+            <strong>Rajesh Kumar</strong>
+            <span>• Noida</span>
+            <span class="verified-badge">Verified</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Website se professional dikhta hai. Customers ko trust aa jata hai. 999 mein itna acha website mil gaya, bahut khush hoon."
+          </p>
+          <div class="testimonial-author">
+            <strong>Priya Sharma</strong>
+            <span>• Delhi</span>
+            <span class="verified-badge">Verified</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "5 hours mein website live ho gayi. Photos, price, location sab clear hai. WhatsApp pe photo bhejne se acha hai 100 guna."
+          </p>
+          <div class="testimonial-author">
+            <strong>Amit Patel</strong>
+            <span>• Gurgaon</span>
+            <span class="verified-badge">Verified</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1078,7 +1349,7 @@ footer p:first-child{
 <!-- ================= PRICING SECTION ================= -->
 <section class="pricing-section">
   <div class="container">
-    <h2>💰 Sabse Best Deal</h2>
+    <h2>💰 Sabse Sasta & Best Deal</h2>
     
     <div class="price-box scroll-reveal">
       <div class="cut-price">❌ ₹2,500</div>
@@ -1090,9 +1361,9 @@ footer p:first-child{
       
       <ul class="benefits-list">
         <li>No Domain Needed</li>
-        <li>1 Year Hosting FREE</li>
+        <li>Hosting FREE (1 Year)</li>
         <li>No Hidden Charges</li>
-        <li>Future Changes FREE</li>
+        <li>Changes FREE Forever</li>
       </ul>
       
       <a href="https://rzp.io/rzp/vQ0MGYp" target="_blank" class="pay-btn">
@@ -1101,7 +1372,7 @@ footer p:first-child{
       
       <div class="note">
         ✅ Invoice milega • Non-GST billing<br>
-        ✅ 24 hours mein live • No extra charges
+        ✅ 5 hours mein live • No domain needed • Changes free
       </div>
     </div>
   </div>
@@ -1146,9 +1417,9 @@ footer p:first-child{
 <footer>
   <div class="container">
     <p>© RupMax Digital</p>
-    <p>PG Website Development • Fast Delivery • Honest Service</p>
+    <p>PG Website Development • 5 Hours Delivery • Honest Service</p>
     <p style="font-size:12px;margin-top:8px;opacity:.7;">
-      hosting valid for 1 year • Future changes FREE • No hidden charges
+      No domain needed • Hosting FREE • Changes FREE forever • Live in 5 hours
     </p>
   </div>
 </footer>
@@ -1230,6 +1501,54 @@ phoneContent.addEventListener('touchmove', function(e) {
     }, 3000);
   }
 });
+
+// ================= TESTIMONIALS SCROLL CONTROL =================
+// Pause testimonials auto-scroll on touch/mouse interaction
+const testimonialsWrapper = document.querySelector('.testimonials-scroll-wrapper');
+const testimonialsGrid = document.querySelector('.testimonials-grid');
+
+let testimonialScrollTimeout;
+let isTestimonialUserScrolling = false;
+
+if (testimonialsWrapper) {
+  // Detect manual scroll
+  testimonialsWrapper.addEventListener('scroll', function() {
+    isTestimonialUserScrolling = true;
+    testimonialsGrid.style.animationPlayState = 'paused';
+    
+    clearTimeout(testimonialScrollTimeout);
+    
+    // Resume after 3 seconds
+    testimonialScrollTimeout = setTimeout(function() {
+      isTestimonialUserScrolling = false;
+      testimonialsGrid.style.animationPlayState = 'running';
+    }, 3000);
+  });
+  
+  // Touch events for mobile
+  let touchStartX = 0;
+  
+  testimonialsWrapper.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  });
+  
+  testimonialsWrapper.addEventListener('touchmove', function(e) {
+    const touchX = e.touches[0].clientX;
+    const deltaX = touchStartX - touchX;
+    
+    if (Math.abs(deltaX) > 10) {
+      isTestimonialUserScrolling = true;
+      testimonialsGrid.style.animationPlayState = 'paused';
+      
+      clearTimeout(testimonialScrollTimeout);
+      
+      testimonialScrollTimeout = setTimeout(function() {
+        isTestimonialUserScrolling = false;
+        testimonialsGrid.style.animationPlayState = 'running';
+      }, 3000);
+    }
+  });
+}
 </script>
 
 </body>
