@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PG/Room Website @ ₹999 | RupMax Digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/images/favicon.png">
+
+<style>
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ================= FONTS ================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ================= CALM PROFESSIONAL THEME ================= */
+:root{
+  /* Calm, professional colors - no neon */
+  --bg-primary:#0f1419;
+  --bg-secondary:#1a1f2e;
+  --bg-card:#ffffff;
+  --text-primary:#0f172a;
+  --text-secondary:#475569;
+  --text-light:#94a3b8;
+  --accent-blue:#2563eb;
+  --accent-green:#059669;
+  --accent-orange:#ea580c;
+  --border-light:#e2e8f0;
+  --border-dark:rgba(255,255,255,.1);
+  
+  /* Subtle shadows - no heavy glow */
+  --shadow-sm:0 1px 3px rgba(0,0,0,.12);
+  --shadow-md:0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.2);
+}
+
+/* ================= BODY ================= */
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:#0f1419;
+  color:#fff;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* Subtle gradient background - not flashy */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(37,99,235,.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(5,150,105,.06), transparent 40%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  max-width:1140px;
+  margin:auto;
+  padding:0 20px;
+  position:relative;
+  z-index:2;
+}
+
+section{
+  padding:80px 0;
+  position:relative;
+  z-index:2;
+}
+
+/* ================= HEADER ================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(15,20,25,.98);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border-dark);
+}
+
+.header-inner{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  color:#fff;
+  font-size:16px;
+}
+
+.brand img{
+  height:32px;
+}
+
+.back-link{
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  text-decoration:none;
+  padding:8px 16px;
+  border-radius:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border-dark);
+  transition:all .2s ease;
+}
+
+.back-link:hover{
+  background:rgba(255,255,255,.12);
+}
+
+/* ================= HERO - MOST IMPORTANT FIX ================= */
+.hero{
+  padding-top:60px;
+  padding-bottom:40px;
+  text-align:center;
+}
+
+/* Clear benefit badge */
+.hero-badge{
+  display:inline-block;
+  padding:8px 20px;
+  border-radius:20px;
+  background:rgba(5,150,105,.15);
+  color:#10b981;
+  font-weight:600;
+  margin-bottom:24px;
+  font-size:14px;
+  border:1px solid rgba(5,150,105,.3);
+}
+
+/* IMPROVED HEADING - Clear & Direct */
+.hero h1{
+  font-size:48px;
+  font-weight:800;
+  line-height:1.15;
+  color:#fff;
+  margin-bottom:20px;
+  letter-spacing:-.02em;
+}
+
+.hero h1 .highlight{
+  color:#3b82f6;
+}
+
+/* Clear sub-heading with benefits */
+.hero-subhead{
+  max-width:700px;
+  margin:0 auto 16px;
+  font-size:20px;
+  color:#cbd5e1;
+  font-weight:500;
+  line-height:1.5;
+}
+
+.hero-features{
+  max-width:680px;
+  margin:0 auto 32px;
+  font-size:16px;
+  color:#94a3b8;
+  line-height:1.6;
+}
+
+/* Price in hero - visible but not overpowering */
+.hero-price{
+  display:inline-flex;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:32px;
+  padding:16px 28px;
+  background:rgba(37,99,235,.1);
+  border-radius:12px;
+  border:1px solid rgba(37,99,235,.2);
+}
+
+.hero-price .amount{
+  font-size:42px;
+  font-weight:800;
+  color:#fff;
+}
+
+.hero-price .renewal{
+  font-size:14px;
+  color:#94a3b8;
+  font-weight:500;
+}
+
+/* CTA Buttons - Clean, professional */
+.cta-group{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:14px 32px;
+  border-radius:10px;
+  background:#2563eb;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .2s ease;
+  border:none;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(37,99,235,.3);
+}
+
+.btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:14px 32px;
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid var(--border-dark);
+  transition:all .2s ease;
+}
+
+.btn-secondary:hover{
+  background:rgba(255,255,255,.12);
+}
+
+/* ================= LIVE DEMO - MOBILE MOCKUP WITH SCROLL ================= */
+.demo-section{
+  background:rgba(26,31,46,.6);
+  border-radius:24px;
+  padding:60px 30px;
+  margin:0 auto;
+  max-width:1000px;
+}
+
+.demo-section h2{
+  font-size:36px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.demo-section .subtitle{
+  text-align:center;
+  color:#94a3b8;
+  font-size:16px;
+  margin-bottom:40px;
+}
+
+/* Mobile mockup frame - iPhone style */
+.mobile-mockup{
+  max-width:380px;
+  margin:0 auto;
+  position:relative;
+}
+
+.phone-frame{
+  position:relative;
+  width:100%;
+  /* iPhone 14 Pro aspect ratio */
+  aspect-ratio:390/844;
+  background:#000;
+  border-radius:48px;
+  padding:12px;
+  box-shadow:
+    0 0 0 12px #1f1f1f,
+    0 0 0 14px #0a0a0a,
+    0 30px 80px rgba(0,0,0,.6);
+}
+
+/* Notch */
+.phone-notch{
+  position:absolute;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:30px;
+  background:#000;
+  border-radius:0 0 20px 20px;
+  z-index:10;
+}
+
+/* Screen area with overflow for scrolling */
+.phone-screen{
+  width:100%;
+  height:100%;
+  background:#fff;
+  border-radius:38px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* Scrollable content container */
+.phone-content{
+  width:100%;
+  height:100%;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.phone-content::-webkit-scrollbar{
+  display:none;
+}
+
+/* The actual screenshot - will auto-scroll */
+.phone-content img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* Auto-scroll animation - smooth & continuous */
+@keyframes autoScroll{
+  0%{
+    transform:translateY(0);
+  }
+  45%{
+    transform:translateY(-60%);
+  }
+  50%{
+    transform:translateY(-60%);
+  }
+  95%{
+    transform:translateY(0);
+  }
+  100%{
+    transform:translateY(0);
+  }
+}
+
+.phone-content.auto-scrolling img{
+  animation:autoScroll 20s ease-in-out infinite;
+}
+
+/* Demo link button below mockup */
+.demo-link-wrap{
+  text-align:center;
+  margin-top:32px;
+}
+
+.demo-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 28px;
+  background:#8b5cf6;
+  color:#fff;
+  font-weight:600;
+  border-radius:10px;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+
+.demo-link:hover{
+  background:#7c3aed;
+  transform:translateY(-2px);
+}
+
+/* ================= PROBLEM SECTION ================= */
+.problem-section{
+  background:rgba(220,38,38,.08);
+  border-radius:20px;
+  padding:50px 30px;
+  margin:0 auto;
+  max-width:900px;
+  border:1px solid rgba(220,38,38,.15);
+}
+
+.problem-section h2{
+  font-size:32px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:32px;
+}
+
+.problem-grid{
+  display:grid;
+  gap:16px;
+}
+
+.problem-card{
+  background:rgba(255,255,255,.05);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid rgba(220,38,38,.2);
+  color:#fca5a5;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-size:15px;
+  line-height:1.5;
+}
+
+.problem-card .icon{
+  font-size:24px;
+  flex-shrink:0;
+}
+
+/* ================= SOLUTION/FEATURES SECTION - COMPACT ================= */
+.solution-section{
+  background:rgba(5,150,105,.08);
+  border-radius:20px;
+  padding:50px 30px;
+  max-width:900px;
+  margin:0 auto;
+  border:1px solid rgba(5,150,105,.15);
+}
+
+.solution-section h2{
+  font-size:32px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.solution-section .subtitle{
+  text-align:center;
+  color:#94a3b8;
+  margin-bottom:32px;
+  font-size:16px;
+}
+
+/* Compact feature cards - mobile first */
+.solution-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:16px;
+}
+
+.solution-card{
+  background:rgba(255,255,255,.05);
+  padding:20px 16px;
+  border-radius:12px;
+  text-align:center;
+  border:1px solid rgba(5,150,105,.2);
+  transition:all .2s ease;
+}
+
+.solution-card:hover{
+  background:rgba(255,255,255,.08);
+  transform:translateY(-2px);
+}
+
+.solution-card .icon{
+  font-size:32px;
+  display:block;
+  margin-bottom:8px;
+}
+
+.solution-card h4{
+  font-size:15px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:4px;
+}
+
+.solution-card p{
+  font-size:13px;
+  color:#94a3b8;
+  line-height:1.4;
+}
+
+/* ================= TESTIMONIALS SECTION ================= */
+.testimonials-section{
+  max-width:900px;
+  margin:0 auto;
+}
+
+.testimonials-section h2{
+  font-size:32px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.testimonials-grid{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.testimonial-card{
+  background:rgba(255,255,255,.06);
+  padding:24px;
+  border-radius:12px;
+  border:1px solid var(--border-dark);
+}
+
+.testimonial-stars{
+  color:#fbbf24;
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.testimonial-text{
+  color:#cbd5e1;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:16px;
+  font-style:italic;
+}
+
+.testimonial-author{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+}
+
+.testimonial-author strong{
+  color:#fff;
+  font-weight:600;
+}
+
+.testimonial-author span{
+  color:#94a3b8;
+}
+
+.verified-badge{
+  display:inline-block;
+  padding:2px 8px;
+  background:rgba(5,150,105,.15);
+  color:#10b981;
+  border-radius:4px;
+  font-size:11px;
+  font-weight:600;
+  margin-left:4px;
+}
+
+/* ================= PRICING SECTION ================= */
+.pricing-section{
+  background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(139,92,246,.12));
+  padding:80px 0;
+}
+
+.pricing-section h2{
+  font-size:36px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.price-box{
+  max-width:480px;
+  margin:0 auto;
+  background:rgba(255,255,255,.08);
+  padding:40px 32px;
+  border-radius:20px;
+  text-align:center;
+  border:1px solid var(--border-dark);
+}
+
+.cut-price{
+  font-size:22px;
+  color:#ef4444;
+  text-decoration:line-through;
+  margin-bottom:8px;
+  font-weight:600;
+}
+
+.main-price{
+  font-size:56px;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:12px;
+  letter-spacing:-.02em;
+}
+
+.renewal-text{
+  font-size:15px;
+  color:#94a3b8;
+  margin-bottom:32px;
+}
+
+.renewal-text strong{
+  color:#10b981;
+  font-weight:700;
+}
+
+.benefits-list{
+  list-style:none;
+  margin-bottom:32px;
+  text-align:left;
+  max-width:320px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.benefits-list li{
+  padding:10px 0;
+  color:#cbd5e1;
+  font-size:15px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  position:relative;
+  padding-left:28px;
+}
+
+.benefits-list li:last-child{
+  border-bottom:none;
+}
+
+.benefits-list li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:#10b981;
+  font-weight:700;
+  font-size:18px;
+}
+
+.pay-btn{
+  display:inline-block;
+  width:100%;
+  padding:16px;
+  background:#10b981;
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  border-radius:12px;
+  text-decoration:none;
+  transition:all .2s ease;
+  margin-bottom:20px;
+}
+
+.pay-btn:hover{
+  background:#059669;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(16,185,129,.3);
+}
+
+.note{
+  font-size:13px;
+  color:#94a3b8;
+  line-height:1.6;
+}
+
+/* ================= TRUST SECTION ================= */
+.trust-section{
+  max-width:900px;
+  margin:0 auto;
+}
+
+.trust-section h2{
+  font-size:32px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.trust-grid{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.trust-card{
+  background:rgba(255,255,255,.06);
+  padding:28px 24px;
+  border-radius:12px;
+  text-align:center;
+  border:1px solid var(--border-dark);
+}
+
+.trust-card .icon{
+  font-size:40px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.trust-card h4{
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:8px;
+}
+
+.trust-card p{
+  font-size:14px;
+  color:#94a3b8;
+  line-height:1.5;
+}
+
+/* ================= FLOATING CONTACT BUTTONS ================= */
+.float-wrap{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:998;
+}
+
+.float-btn{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+  transition:all .2s ease;
+  position:relative;
+}
+
+.float-btn img{
+  width:28px;
+}
+
+.float-btn.whatsapp{
+  background:#25d366;
+}
+
+.float-btn.call{
+  background:#2563eb;
+}
+
+.float-btn:hover{
+  transform:scale(1.1);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#0a0d14;
+  color:#94a3b8;
+  padding:40px 0 24px;
+  border-top:1px solid var(--border-dark);
+}
+
+footer .container{
+  text-align:center;
+}
+
+footer p{
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+footer p:first-child{
+  font-weight:700;
+  font-size:16px;
+  color:#fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .hero h1{
+    font-size:32px;
+  }
+  
+  .hero-subhead{
+    font-size:18px;
+  }
+  
+  .hero-price .amount{
+    font-size:36px;
+  }
+  
+  .cta-group{
+    flex-direction:column;
+  }
+  
+  .btn-primary,
+  .btn-secondary{
+    width:100%;
+    justify-content:center;
+  }
+  
+  .problem-section,
+  .solution-section,
+  .demo-section{
+    padding:40px 20px;
+  }
+  
+  .problem-section h2,
+  .solution-section h2,
+  .demo-section h2,
+  .testimonials-section h2,
+  .trust-section h2{
+    font-size:26px;
+  }
+  
+  .pricing-section h2{
+    font-size:28px;
+  }
+  
+  .main-price{
+    font-size:48px;
+  }
+  
+  .solution-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  
+  .testimonials-grid,
+  .trust-grid{
+    grid-template-columns:1fr;
+  }
+  
+  section{
+    padding:60px 0;
+  }
+  
+  .mobile-mockup{
+    max-width:320px;
+  }
+  
+  .phone-frame{
+    border-radius:40px;
+    padding:10px;
+  }
+  
+  .phone-notch{
+    width:100px;
+    height:26px;
+  }
+}
+
+@media(max-width:480px){
+  .hero h1{
+    font-size:28px;
+  }
+  
+  .solution-grid{
+    grid-template-columns:1fr;
+  }
+  
+  .mobile-mockup{
+    max-width:280px;
+  }
+}
+
+/* Scroll reveal animations */
+.scroll-reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .6s ease;
+}
+
+.scroll-reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="assets/images/logo.png" alt="RupMax Digital">
+      RupMax Digital
+    </div>
+    <a href="https://rupmaxdigital.in" class="back-link">
+      ← Back to Website
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO - IMPROVED ================= -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-badge">
+      ✓ 24 Hours Mein Website Live
+    </div>
+
+    <!-- CLEAR, DIRECT HEADLINE -->
+    <h1>
+      PG / Room / Flat Owners Ke Liye<br>
+      <span class="highlight">Professional Website</span>
+    </h1>
+
+    <!-- BENEFIT-DRIVEN SUBHEADING -->
+    <p class="hero-subhead">
+      WhatsApp pe photos bhejne ki zaroorat nahi — sirf ek link share karo
+    </p>
+
+    <!-- FEATURE SUMMARY -->
+    <p class="hero-features">
+      ✓ Photos Gallery  ✓ Clear Price  ✓ Google Map Location  ✓ Direct Call & WhatsApp Button
+    </p>
+
+    <!-- PRICE IN HERO - VISIBLE BUT CLEAN -->
+    <div class="hero-price">
+      <div class="amount">₹999</div>
+      <div class="renewal">
+        Website Setup<br>
+        <small>Renewal: ₹499/year</small>
+      </div>
+    </div>
+
+    <!-- CTA BUTTONS -->
+    <div class="cta-group">
+      <a href="https://rupmaxdigital.in/room/shri-ram-pg" target="_blank" class="btn-primary">
+        🔥 Live Demo Dekho
+      </a>
+      <a href="https://rzp.io/rzp/vQ0MGYp" target="_blank" class="btn-secondary">
+        💳 Buy Now ₹999
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= LIVE DEMO - MOBILE MOCKUP WITH AUTO SCROLL ================= -->
+<section>
+  <div class="container">
+    <div class="demo-section scroll-reveal">
+      <h2>📱 Live Demo</h2>
+      <p class="subtitle">Dekho kaisa professional website milega</p>
+      
+      <!-- MOBILE MOCKUP WITH SCROLLING -->
+      <div class="mobile-mockup">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-content auto-scrolling" id="phoneContent">
+              <img src="assets/images/longsspg.jpeg" alt="PG Website Demo" id="demoImage">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="demo-link-wrap">
+        <a href="https://rupmaxdigital.in/room/shri-ram-pg" target="_blank" class="demo-link">
+          Live Website Kholo 🚀
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM SECTION ================= -->
+<section>
+  <div class="container">
+    <div class="problem-section scroll-reveal">
+      <h2>❌ WhatsApp Images Se Problem</h2>
+      
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">😩</div>
+          <div>Har customer ko alag-alag photos bhejne padte hain — time waste</div>
+        </div>
+        <div class="problem-card">
+          <div class="icon">📞</div>
+          <div>Phone calls aur messages ka jhamela — reply karte-karte thak gaye</div>
+        </div>
+        <div class="problem-card">
+          <div class="icon">⏰</div>
+          <div>Raat ko 11 baje bhi call aa jati hai — "Bhaiya room dikhao"</div>
+        </div>
+        <div class="problem-card">
+          <div class="icon">💸</div>
+          <div>Serious customer kam, timepass zyada — bookings nahi ho pati</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOLUTION/FEATURES - COMPACT & MOBILE FIRST ================= -->
+<section>
+  <div class="container">
+    <div class="solution-section scroll-reveal">
+      <h2>✅ Ek Link Me Sab Kuch</h2>
+      <p class="subtitle">Customer ko automatically mil jayega sab information</p>
+      
+      <div class="solution-grid">
+        <div class="solution-card">
+          <span class="icon">📸</span>
+          <h4>Room Photos</h4>
+          <p>Gallery me sab dikhega</p>
+        </div>
+        <div class="solution-card">
+          <span class="icon">💰</span>
+          <h4>Clear Price</h4>
+          <p>Price mention rahega</p>
+        </div>
+        <div class="solution-card">
+          <span class="icon">📍</span>
+          <h4>Google Map</h4>
+          <p>Location ek click me</p>
+        </div>
+        <div class="solution-card">
+          <span class="icon">📞</span>
+          <h4>Direct Call</h4>
+          <p>Call button instant</p>
+        </div>
+        <div class="solution-card">
+          <span class="icon">💬</span>
+          <h4>WhatsApp</h4>
+          <p>WhatsApp ready</p>
+        </div>
+        <div class="solution-card">
+          <span class="icon">🏠</span>
+          <h4>Book Now</h4>
+          <p>Advance le sakte ho</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS - HIGH TRUST ================= -->
+<section>
+  <div class="container testimonials-section scroll-reveal">
+    <h2>⭐ Customer Reviews</h2>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "Pehle har din 20-25 calls aati thi. Ab sirf link bhej deta hoon. Serious customers hi call karte hain. Bahut time bacha."
+        </p>
+        <div class="testimonial-author">
+          <strong>Rajesh Kumar</strong>
+          <span>• Noida</span>
+          <span class="verified-badge">Verified</span>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "Website se professional dikhta hai. Customers ko trust aa jata hai. 999 mein itna acha website mil gaya, bahut khush hoon."
+        </p>
+        <div class="testimonial-author">
+          <strong>Priya Sharma</strong>
+          <span>• Delhi</span>
+          <span class="verified-badge">Verified</span>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "24 hours mein website live ho gayi. Photos, price, location sab clear hai. WhatsApp pe photo bhejne se acha hai 100 guna."
+        </p>
+        <div class="testimonial-author">
+          <strong>Amit Patel</strong>
+          <span>• Gurgaon</span>
+          <span class="verified-badge">Verified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING SECTION ================= -->
+<section class="pricing-section">
+  <div class="container">
+    <h2>💰 Sabse Sasta & Best Deal</h2>
+    
+    <div class="price-box scroll-reveal">
+      <div class="cut-price">❌ ₹2,500</div>
+      <div class="main-price">₹999</div>
+      
+      <div class="renewal-text">
+        🔄 Renewal sirf <strong>₹499/year</strong>
+      </div>
+      
+      <ul class="benefits-list">
+        <li>Free .in Domain Name</li>
+        <li>1 Year Hosting FREE</li>
+        <li>No Hidden Charges</li>
+        <li>Future Changes FREE</li>
+      </ul>
+      
+      <a href="https://rzp.io/rzp/vQ0MGYp" target="_blank" class="pay-btn">
+        💳 Pay ₹999 & Start Now
+      </a>
+      
+      <div class="note">
+        ✅ Invoice milega • Non-GST billing<br>
+        ✅ 24 hours mein live • No extra charges
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST SECTION ================= -->
+<section class="trust-section">
+  <div class="container">
+    <h2>🤝 Why Trust RupMax?</h2>
+    
+    <div class="trust-grid">
+      <div class="trust-card scroll-reveal">
+        <div class="icon">⚡</div>
+        <h4>Super Fast</h4>
+        <p>Payment ke 24 hours mein website live ho jayegi</p>
+      </div>
+      <div class="trust-card scroll-reveal">
+        <div class="icon">💯</div>
+        <h4>100% Honest</h4>
+        <p>No hidden charges, no false promises — clear deal</p>
+      </div>
+      <div class="trust-card scroll-reveal">
+        <div class="icon">🔒</div>
+        <h4>Safe & Secure</h4>
+        <p>Invoice milega, official payment — complete professional</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FLOATING CONTACT BUTTONS ================= -->
+<div class="float-wrap">
+  <a href="https://wa.me/918979639473?text=Hi,%20I%20want%20PG%20website%20at%20Rs999" target="_blank" class="float-btn whatsapp">
+    <img src="assets/icons/color-icons/whatsapp.svg" alt="WhatsApp">
+  </a>
+  <a href="tel:918979639473" class="float-btn call">
+    <img src="assets/icons/black-icons/call.svg" alt="Call">
+  </a>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <p>© RupMax Digital</p>
+    <p>PG Website Development • Fast Delivery • Honest Service</p>
+    <p style="font-size:12px;margin-top:8px;opacity:.7;">
+      Domain & hosting valid for 1 year • Future changes FREE • No hidden charges
+    </p>
+  </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+// ================= SCROLL REVEAL ANIMATION =================
+const revealElements = document.querySelectorAll('.scroll-reveal');
+
+const revealOnScroll = () => {
+  revealElements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 120;
+    
+    if (elementTop < window.innerHeight - elementVisible) {
+      element.classList.add('active');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll(); // Initial check on load
+
+// ================= MOBILE MOCKUP AUTO-SCROLL =================
+// This script enables smooth auto-scrolling inside the phone mockup
+// User can also manually scroll, and auto-scroll will resume
+
+const phoneContent = document.getElementById('phoneContent');
+const demoImage = document.getElementById('demoImage');
+
+let isUserScrolling = false;
+let scrollTimeout;
+
+// Detect when user manually scrolls
+phoneContent.addEventListener('scroll', function() {
+  // Pause auto-scroll when user is manually scrolling
+  phoneContent.classList.remove('auto-scrolling');
+  isUserScrolling = true;
+  
+  // Clear previous timeout
+  clearTimeout(scrollTimeout);
+  
+  // Resume auto-scroll after 3 seconds of inactivity
+  scrollTimeout = setTimeout(function() {
+    isUserScrolling = false;
+    phoneContent.classList.add('auto-scrolling');
+  }, 3000);
+});
+
+// Pause animation when demo image loads to ensure smooth start
+demoImage.addEventListener('load', function() {
+  // Small delay to ensure smooth animation start
+  setTimeout(function() {
+    phoneContent.classList.add('auto-scrolling');
+  }, 500);
+});
+
+// Handle touch events for mobile
+let touchStartY = 0;
+
+phoneContent.addEventListener('touchstart', function(e) {
+  touchStartY = e.touches[0].clientY;
+});
+
+phoneContent.addEventListener('touchmove', function(e) {
+  const touchY = e.touches[0].clientY;
+  const deltaY = touchStartY - touchY;
+  
+  // If user is actively swiping, pause auto-scroll
+  if (Math.abs(deltaY) > 10) {
+    phoneContent.classList.remove('auto-scrolling');
+    isUserScrolling = true;
+    
+    clearTimeout(scrollTimeout);
+    
+    scrollTimeout = setTimeout(function() {
+      isUserScrolling = false;
+      phoneContent.classList.add('auto-scrolling');
+    }, 3000);
+  }
+});
+</script>
+
+</body>
+</html>
