@@ -107,7 +107,7 @@
         {"name":"Mint Mojito","type":"veg","prices":[{"label":"Regular","price":269}]},
         {"name":"Cold Coffee with Ice Cream","type":"veg","prices":[{"label":"Regular","price":289}]},
         {"name":"Mango Lassi","type":"veg","prices":[{"label":"Regular","price":229}]},
-        {"name":"Diet Coke","type":"veg","prices":[{"label":"MRP","price":0}]}
+        {"name":"Diet Coke (on MRP)","type":"veg","prices":[{"label":"MRP","price":0}]}
       ]
     },
 
