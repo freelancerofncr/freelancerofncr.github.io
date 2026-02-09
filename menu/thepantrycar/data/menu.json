@@ -30,8 +30,8 @@
         {"name":"Chilli Chicken","type":"non-veg","prices":[{"label":"Regular","price":769}]},
         {"name":"Chicken Manchurian","type":"non-veg","prices":[{"label":"Regular","price":769}]},
         {"name":"Butter Garlic Chicken","type":"non-veg","prices":[{"label":"Regular","price":769}]},
-        {"name":"Paneer Tikka","type":"veg","prices":[{"label":"Regular","price":579}]},
-        {"name":"Chaap Tikka","type":"veg","prices":[{"label":"Regular","price":639}]},
+        {"name":"Paneer Tikka (Malai/Achari/Hariyali/Masala)","type":"veg","prices":[{"label":"Regular","price":579}]},
+        {"name":"Chaap Tikka (Malai/Achari/Hariyali/Masala)","type":"veg","prices":[{"label":"Regular","price":639}]},
         {"name":"Mushroom Tikka","type":"veg","prices":[{"label":"Regular","price":459}]},
         {"name":"Veg Tikka Platter","type":"veg","prices":[{"label":"Regular","price":799}]},
         {"name":"Paneer Tikka Platter","type":"veg","prices":[{"label":"Regular","price":759}]},
@@ -55,7 +55,11 @@
         {"name":"Chicken Kali Mirch Tikka","type":"non-veg","prices":[{"label":"Regular","price":799}]},
         {"name":"Chicken Seekh Kebab","type":"non-veg","prices":[{"label":"Regular","price":699}]},
         {"name":"Mutton Seekh Kebab","type":"non-veg","prices":[{"label":"Regular","price":799}]},
-        {"name":"Non Veg Platter (12 pcs)","type":"non-veg","prices":[{"label":"Regular","price":1199}]}
+        {"name":"Non Veg Platter (12 pcs)","type":"non-veg","prices":[{"label":"Regular","price":1199}]},
+        {"name":"Chicken Lollipop","type":"non-veg","prices":[{"label":"Regular","price":769}]},
+        {"name":"Chilli Chicken","type":"non-veg","prices":[{"label":"Regular","price":769}]},
+        {"name":"Chicken Manchurian","type":"non-veg","prices":[{"label":"Regular","price":769}]},
+        {"name":"Butter Garlic Chicken","type":"non-veg","prices":[{"label":"Regular","price":769}]}
       ]
     },
 
