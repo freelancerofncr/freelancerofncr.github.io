@@ -63,6 +63,32 @@
       ]
     },
 
+{
+  "name": "Sides & Salads",
+  "items": [
+    {"name":"Roasted Papad (2 pcs)","type":"veg","prices":[{"label":"Regular","price":99}]},
+{"name":"Masala Papad (2 pcs)","type":"veg","prices":[{"label":"Regular","price":149}]},
+{"name":"Green Salad","type":"veg","prices":[{"label":"Regular","price":189}]},
+{"name":"Mix Veg Pakoda","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Paneer Pakoda","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Chinese Bhel","type":"veg","prices":[{"label":"Regular","price":349}]},
+{"name":"Kuchumber Salad","type":"veg","prices":[{"label":"Regular","price":249}]},
+{"name":"Aaloo Chana Chaat Salad","type":"veg","prices":[{"label":"Regular","price":249}]}
+  ]
+},
+
+    {
+  "name": "Potato Corner",
+  "items": [
+    {"name":"French Fries","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Peri Peri Fries","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Cheese Loaded Fries","type":"veg","prices":[{"label":"Regular","price":349}]},
+{"name":"Potato Wedges","type":"veg","prices":[{"label":"Regular","price":349}]},
+{"name":"Mashed Potato","type":"veg","prices":[{"label":"Regular","price":349}]},
+{"name":"Loaded Potato","type":"veg","prices":[{"label":"Regular","price":369}]}
+  ]
+},
+
     {
       "name": "Lentils",
       "items": [
@@ -74,14 +100,48 @@
       ]
     },
 
+{
+  "name": "Raita",
+  "items": [
+    {"name":"Boondi Raita","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Veg Raita","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Lahsun Palak Ka Raita","type":"veg","prices":[{"label":"Regular","price":319}]},
+{"name":"Pineapple Raita","type":"veg","prices":[{"label":"Regular","price":319}]},
+{"name":"Fruit Cocktail Raita","type":"veg","prices":[{"label":"Regular","price":319}]},
+{"name":"Tadka Raita","type":"veg","prices":[{"label":"Regular","price":319}]}
+  ]
+},
+    
     {
       "name": "Indian Main Course (Veg)",
       "items": [
         {"name":"Paneer Butter Masala","type":"veg","prices":[{"label":"Regular","price":569}]},
-        {"name":"Palak Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
-        {"name":"Paneer Lababdar","type":"veg","prices":[{"label":"Regular","price":569}]},
-        {"name":"Matar Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
-        {"name":"Chana Masala","type":"veg","prices":[{"label":"Regular","price":499}]}
+{"name":"Palak Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Paneer Lababdar","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Methi Palak","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Handi Nawabi Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Kadhai Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Paneer Tikka Masala","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Paneer Do Pyaza","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Paneer Makhni","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Paneer Methi Malai","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Nawabi Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Matar Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Mushroom Masala","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Kadhai Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Mushroom Do Pyaza","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Rajma Masala","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Veg Subz Taka Tak","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Mix Veg Handi","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Diwani Handi","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Veg Jalfrezi","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Navratan Korma","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Subz Nargisi Kofta","type":"veg","prices":[{"label":"Regular","price":549}]},
+{"name":"Malai Kofta","type":"veg","prices":[{"label":"Regular","price":559}]},
+{"name":"Jaipuri Aloo Pyaz Paneer","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Aloo Gobhi Adarki","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Kashmiri Bharwa Aloo","type":"veg","prices":[{"label":"Regular","price":519}]},
+{"name":"Chana Masala","type":"veg","prices":[{"label":"Regular","price":499}]}
       ]
     },
 
@@ -89,29 +149,137 @@
       "name": "Indian Main Course (Non-Veg)",
       "items": [
         {"name":"Butter Chicken","type":"non-veg","prices":[{"label":"Regular","price":859}]},
-        {"name":"Chicken Tikka Masala","type":"non-veg","prices":[{"label":"Regular","price":859}]},
-        {"name":"Mutton Roganjosh","type":"non-veg","prices":[{"label":"Regular","price":899}]},
-        {"name":"Egg Curry","type":"non-veg","prices":[{"label":"Regular","price":549}]}
+{"name":"Kadhai Chicken","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Chicken Tikka Masala","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Chicken Tariwal","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Chicken Do Pyaza","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Tawa Chicken","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Chicken Lababdar","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Beliram Chicken","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Rara Chicken","type":"non-veg","prices":[{"label":"Regular","price":859}]},
+{"name":"Murg Bemisaal","type":"non-veg","prices":[{"label":"Regular","price":899}]},
+{"name":"Mutton Roganjosh","type":"non-veg","prices":[{"label":"Regular","price":899}]},
+{"name":"Rara Mutton","type":"non-veg","prices":[{"label":"Regular","price":899}]},
+{"name":"Bombay Keema Masala","type":"non-veg","prices":[{"label":"Regular","price":899}]},
+{"name":"Classic Mutton Curry","type":"non-veg","prices":[{"label":"Regular","price":899}]},
+{"name":"Egg Curry","type":"non-veg","prices":[{"label":"Regular","price":549}]},
+{"name":"Kadaknath Egg Curry","type":"non-veg","prices":[{"label":"Regular","price":699}]},
+{"name":"Kadaknath Chicken Curry","type":"non-veg","prices":[{"label":"Regular","price":1099}]}
       ]
     },
 
+{
+  "name": "Breads",
+  "items": [
+    {"name":"Tandoori Roti","type":"veg","prices":[{"label":"Plain","price":69},{"label":"Butter","price":79}]},
+{"name":"Hari Mirchi Ki Roti","type":"veg","prices":[{"label":"Regular","price":119}]},
+{"name":"Jungli Roti","type":"veg","prices":[{"label":"Regular","price":119}]},
+{"name":"Laccha Parantha","type":"veg","prices":[{"label":"Regular","price":139}]},
+{"name":"Naan","type":"veg","prices":[{"label":"Plain","price":139},{"label":"Butter","price":169}]},
+{"name":"Garlic Naan","type":"veg","prices":[{"label":"Regular","price":179}]},
+{"name":"Stuffed Naan","type":"veg","prices":[{"label":"Regular","price":179}]},
+{"name":"Spicy Cheese Naan","type":"veg","prices":[{"label":"Regular","price":179}]},
+{"name":"Kashmiri Naan","type":"veg","prices":[{"label":"Regular","price":189}]},
+{"name":"Pudhina Paratha","type":"veg","prices":[{"label":"Regular","price":179}]},
+{"name":"Rumali Roti","type":"veg","prices":[{"label":"Regular","price":89}]}
+  ]
+},
+    
     {
       "name": "Rice & Biryani",
       "items": [
         {"name":"Veg Biryani (Charminar Style)","type":"veg","prices":[{"label":"Regular","price":649}]},
-        {"name":"Chicken Biryani","type":"non-veg","prices":[{"label":"Regular","price":719}]},
-        {"name":"Mutton Biryani","type":"non-veg","prices":[{"label":"Regular","price":779}]},
-        {"name":"Jeera Rice","type":"veg","prices":[{"label":"Regular","price":429}]}
+{"name":"Masala Chaap Biryani","type":"veg","prices":[{"label":"Regular","price":649}]},
+{"name":"Chicken Biryani","type":"non-veg","prices":[{"label":"Regular","price":719}]},
+{"name":"Mutton Biryani","type":"non-veg","prices":[{"label":"Regular","price":779}]},
+{"name":"Steam Rice","type":"veg","prices":[{"label":"Regular","price":379}]},
+{"name":"Jeera Rice","type":"veg","prices":[{"label":"Regular","price":429}]},
+{"name":"Paneer Peas Pulao","type":"veg","prices":[{"label":"Regular","price":449}]},
+{"name":"Kashmiri Pulao","type":"veg","prices":[{"label":"Regular","price":479}]}
       ]
     },
 
+{
+  "name": "Chinese & Indo-Chinese",
+  "items": [
+    {"name":"Chilli Paneer","type":"veg","prices":[{"label":"Regular","price":549}]},
+{"name":"Chilli Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Chilli Chaap","type":"veg","prices":[{"label":"Regular","price":529}]},
+{"name":"Veg Salt & Pepper","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Manchurian","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Hakka Noodles","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Singaporean Noodles","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Chilli Garlic Noodles","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Fried Rice","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Singaporean Fried Rice","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veg Schezwan Fried Rice","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Roasted Garlic Fried Rice","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Veggies in Hot Garlic Sauce","type":"veg","prices":[{"label":"Regular","price":539}]},
+{"name":"Veg Spring Roll","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Honey Chilli Potato","type":"veg","prices":[{"label":"Regular","price":499}]}
+  ]
+},
+
+{
+  "name": "Pizza & Pasta",
+  "items": [
+    {"name":"Cheese Garlic Bread","type":"veg","prices":[{"label":"Regular","price":459}]},
+{"name":"Exotica Veggie Garlic Bread","type":"veg","prices":[{"label":"Regular","price":499}]},
+{"name":"Pasta Alfredo (White Sauce)","type":"veg","prices":[{"label":"Veg","price":519},{"label":"Non-Veg","price":699}]},
+{"name":"Pasta Arrabiata (Red Sauce)","type":"veg","prices":[{"label":"Veg","price":519},{"label":"Non-Veg","price":699}]},
+{"name":"Pasta Pink Sauce","type":"veg","prices":[{"label":"Veg","price":519},{"label":"Non-Veg","price":699}]},
+{"name":"Margherita Pizza","type":"veg","prices":[{"label":"Regular","price":579}]},
+{"name":"OTC Pizza","type":"veg","prices":[{"label":"Regular","price":579}]},
+{"name":"Corn Mushroom Pizza","type":"veg","prices":[{"label":"Regular","price":639}]},
+{"name":"Pizza De Grande","type":"veg","prices":[{"label":"Regular","price":639}]},
+{"name":"Paneer Tikka Pizza","type":"veg","prices":[{"label":"Regular","price":639}]},
+{"name":"Chicken Afghani Pizza","type":"non-veg","prices":[{"label":"Regular","price":639}]},
+{"name":"Chicken Tikka Pizza","type":"non-veg","prices":[{"label":"Regular","price":639}]}
+  ]
+},
+
+{
+  "name": "Sandwiches",
+  "items": [
+    {"name":"Paneer Grilled Sandwich","type":"veg","prices":[{"label":"Regular","price":299}]},
+{"name":"Chicken Grilled Sandwich","type":"non-veg","prices":[{"label":"Regular","price":329}]},
+{"name":"Veg Coleslaw Sandwich","type":"veg","prices":[{"label":"Regular","price":229}]},
+{"name":"Chicken Coleslaw Sandwich","type":"non-veg","prices":[{"label":"Regular","price":249}]},
+{"name":"Bombay Sandwich","type":"veg","prices":[{"label":"Regular","price":229}]}
+  ]
+},
+
+{
+  "name": "Sizzlers",
+  "items": [
+    {"name":"Chinese Sizzler","type":"veg","prices":[{"label":"Regular","price":569}]},
+{"name":"Steaming Sizzler","type":"veg","prices":[{"label":"Regular","price":569}]}
+  ]
+},
+    
     {
       "name": "Beverages",
       "items": [
         {"name":"Mint Mojito","type":"veg","prices":[{"label":"Regular","price":269}]},
-        {"name":"Cold Coffee with Ice Cream","type":"veg","prices":[{"label":"Regular","price":289}]},
-        {"name":"Mango Lassi","type":"veg","prices":[{"label":"Regular","price":229}]},
-        {"name":"Diet Coke (on MRP)","type":"veg","prices":[{"label":"MRP","price":0}]}
+{"name":"Lemon Iced Tea","type":"veg","prices":[{"label":"Regular","price":269}]},
+{"name":"Peach Iced Tea","type":"veg","prices":[{"label":"Regular","price":269}]},
+{"name":"Kiwi Blast","type":"veg","prices":[{"label":"Regular","price":269}]},
+{"name":"Watermelon Coolant","type":"veg","prices":[{"label":"Regular","price":269}]},
+{"name":"Blackberry Mint","type":"veg","prices":[{"label":"Regular","price":269}]},
+{"name":"Cold Coffee with Ice Cream","type":"veg","prices":[{"label":"Regular","price":289}]},
+{"name":"Choco Brownie Shake","type":"veg","prices":[{"label":"Regular","price":289}]},
+{"name":"Cookie Crumb Shake","type":"veg","prices":[{"label":"Regular","price":289}]},
+{"name":"Red Velvet Shake","type":"veg","prices":[{"label":"Regular","price":289}]},
+{"name":"Strawberry Shake","type":"veg","prices":[{"label":"Regular","price":289}]},
+{"name":"Blackcurrant Shake","type":"veg","prices":[{"label":"Regular","price":289}]},
+{"name":"Masala Chhachh","type":"veg","prices":[{"label":"Regular","price":169}]},
+{"name":"Teekha Pudina Chhachh","type":"veg","prices":[{"label":"Regular","price":169}]},
+{"name":"Mango Lassi","type":"veg","prices":[{"label":"Regular","price":229}]},
+{"name":"Makhaniya Lassi","type":"veg","prices":[{"label":"Regular","price":229}]},
+{"name":"Aerated Cold Drink","type":"veg","prices":[{"label":"Regular","price":139}]},
+{"name":"Masala Lemonade","type":"veg","prices":[{"label":"Regular","price":229}]},
+{"name":"Fresh Lime Soda / Water","type":"veg","prices":[{"label":"Regular","price":229}]},
+{"name":"Diet Coke (on MRP)","type":"veg","prices":[{"label":"MRP","price":0}]}
       ]
     },
 
@@ -119,8 +287,9 @@
       "name": "Desserts",
       "items": [
         {"name":"Hot Gulab Jamun","type":"veg","prices":[{"label":"Regular","price":179}]},
-        {"name":"Ice Cream (2 Scoops)","type":"veg","prices":[{"label":"Regular","price":159}]},
-        {"name":"Kulfi","type":"veg","prices":[{"label":"Regular","price":49}]}
+{"name":"Ice Cream (2 Scoops)","type":"veg","prices":[{"label":"Regular","price":159}]},
+{"name":"Kulfi","type":"veg","prices":[{"label":"Regular","price":49}]},
+{"name":"Choco Brownie with Ice Cream","type":"veg","prices":[{"label":"Regular","price":299}]}
       ]
     }
   ]
