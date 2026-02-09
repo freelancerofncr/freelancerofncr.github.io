@@ -1,75 +1,75 @@
 {
   "identity": {
-    "name": "Brijwasi Restaurant",
-    "categoryLine": "Indian • Fast Food • Chinese",
-    "foodType": "veg",
+    "name": "The Pantry Car (P. Pending)",
+    "categoryLine": "Indian • Mughlai • Chinese • Italian",
+    "foodType": "both",
     "hasLogo": true
   },
 
   "contact": {
-    "primaryPhone": "+91 8979639473",
-    "secondaryPhone": "+91 8979639473",
-    "whatsappNumber": "+91 8979639473",
-    "email": "example@gmail.com"
+    "primaryPhone": "+91 9311944725",
+    "secondaryPhone": "+91 9311944725",
+    "whatsappNumber": "+91 9311944725",
+    "email": "noidarailiciouss2@gmail.com"
   },
 
   "location": {
-    "fullAddress": "Main Market, Sector 62, Noida, Uttar Pradesh, India",
-    "googleMapLink": "https://maps.google.com/?q=sector+62+noida"
+    "fullAddress": "2nd Floor, Mahagun Mart, Sector 78, Noida 201305",
+    "googleMapLink": "https://share.google/YEFpmYHJu5j5Efq9V"
   },
 
   "openingHours": {
     "monday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     },
     "tuesday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     },
     "wednesday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     },
     "thursday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     },
     "friday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     },
     "saturday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     },
     "sunday": {
       "isClosed": false,
       "slots": [
-        { "open": "05:00", "close": "23:30" }
+        { "open": "11:00", "close": "23:00" }
       ]
     }
   },
 
   "onlinePlatforms": {
-    "instagram": "https://instagram.com/",
-    "facebook": "https://facebook.com/",
-    "google": "https://maps.google.com/",
+    "instagram": "https://www.instagram.com/thepantrycarofficial",
+    "facebook": "https://www.threads.com/@thepantrycarofficial",
+    "google": "https://share.google/YEFpmYHJu5j5Efq9V",
     "zomato": "https://www.zomato.com/",
     "swiggy": "https://www.swiggy.com/",
-    "website": "https://demorestaurant.com"
+    "website": "https://rupmaxdigital.in/menu/the-pantry-car/"
   },
 
   "payment": {
@@ -82,7 +82,7 @@
       "Family Friendly",
       "Freshly Made"
     ],
-    "about": "Brijwasi Restaurant & Cafe is a family-friendly dining place serving hygienic and freshly prepared Indian and Chinese food."
+    "about": "Experience an unforgettable dining journey at The Pantry Car, a unique restaurant inspired by the classic railway pantry cars of India."
   },
 
   "flags": {
@@ -90,6 +90,6 @@
   "showSocialLinks": true,
   "deliveryAvailable": true,
   "dineInAvailable": true,
-  "minimumDeliveryOrder": 299
+  "minimumDeliveryOrder": 499
 }
 }
