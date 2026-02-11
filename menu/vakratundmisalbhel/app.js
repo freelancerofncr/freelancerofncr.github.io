@@ -119,7 +119,7 @@ function renderBusiness(data) {
    LOAD MENU DATA
 ========================= */
 function loadMenu() {
-  fetch("./data/menu.json")
+  fetch("./menu.json")
     .then(res => res.json())
     .then(data => renderMenu(data.categories))
     .catch(err => console.error("Menu JSON error:", err));
