@@ -30,7 +30,7 @@
       "name": "भेळ",
       "items": [
         {"name":"स्पेशल मटकी भेळ","type":"veg","prices":[{"label":"Plate","price":60}]},
-        {"name":"स्पेशल संपूर्ण भेळ","type":"veg","prices":[{"label":"Plate","price":70}]}
+        {"name":"स्पेशल सॅम्पल भेळ","type":"veg","prices":[{"label":"Plate","price":70}]}
       ]
     },
     {
