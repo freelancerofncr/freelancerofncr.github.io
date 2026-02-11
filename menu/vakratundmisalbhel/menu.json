@@ -75,10 +75,11 @@
     {
       "name": "थंड पेय",
       "items": [
-        {"name":"ताक","type":"veg","prices":[{"label":"Glass","price":0}]},
-        {"name":"सोलकढी","type":"veg","prices":[{"label":"Glass","price":0}]},
-        {"name":"कोल्ड ड्रिंक (on MRP)","type":"veg","prices":[{"label":"MRP","price":0}]},
-        {"name":"पाणी बाटली (on MRP)","type":"veg","prices":[{"label":"MRP","price":0}]}
+        {"name":"ताक","type":"veg","prices":[{"label":"Glass","price":15}]},
+        {"name":"सोलकढी","type":"veg","prices":[{"label":"Glass","price":30}]},
+        {"name":"कोल्ड ड्रिंक","type":"veg","prices":[{"label":"MRP","price":20}]},
+        {"name":"पाणी बाटली (Small)","type":"veg","prices":[{"label":"MRP","price":10}]},
+        {"name":"पाणी बाटली (on MRP)","type":"veg","prices":[{"label":"MRP","price":20}]}
       ]
     }
   ]
