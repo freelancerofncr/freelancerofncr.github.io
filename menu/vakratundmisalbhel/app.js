@@ -7,7 +7,7 @@ let minimumDeliveryOrder = 0;
    LOAD BUSINESS DATA
 ========================= */
 function loadBusiness() {
-  fetch("./data/business.json")
+  fetch("./business.json")
     .then(res => res.json())
     .then(data => renderBusiness(data))
     .catch(err => console.error("Business JSON error:", err));
