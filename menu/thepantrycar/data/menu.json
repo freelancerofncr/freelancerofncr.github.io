@@ -53,8 +53,6 @@
         {"name":"Chicken Malai Tikka","type":"non-veg","prices":[{"label":"Regular","price":799}]},
         {"name":"Jungli Murg Tikka","type":"non-veg","prices":[{"label":"Regular","price":799}]},
         {"name":"Chicken Kali Mirch Tikka","type":"non-veg","prices":[{"label":"Regular","price":799}]},
-        {"name":"Chicken Seekh Kebab","type":"non-veg","prices":[{"label":"Regular","price":699}]},
-        {"name":"Mutton Seekh Kebab","type":"non-veg","prices":[{"label":"Regular","price":799}]},
         {"name":"Non Veg Platter (12 pcs)","type":"non-veg","prices":[{"label":"Regular","price":1199}]},
         {"name":"Chicken Lollipop","type":"non-veg","prices":[{"label":"Regular","price":769}]},
         {"name":"Chilli Chicken","type":"non-veg","prices":[{"label":"Regular","price":769}]},
@@ -72,8 +70,7 @@
 {"name":"Mix Veg Pakoda","type":"veg","prices":[{"label":"Regular","price":299}]},
 {"name":"Paneer Pakoda","type":"veg","prices":[{"label":"Regular","price":299}]},
 {"name":"Chinese Bhel","type":"veg","prices":[{"label":"Regular","price":349}]},
-{"name":"Kuchumber Salad","type":"veg","prices":[{"label":"Regular","price":249}]},
-{"name":"Aaloo Chana Chaat Salad","type":"veg","prices":[{"label":"Regular","price":249}]}
+{"name":"Kuchumber Salad","type":"veg","prices":[{"label":"Regular","price":249}]}
   ]
 },
 
@@ -118,14 +115,12 @@
         {"name":"Paneer Butter Masala","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Palak Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Paneer Lababdar","type":"veg","prices":[{"label":"Regular","price":569}]},
-{"name":"Methi Palak","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Handi Nawabi Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Kadhai Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Paneer Tikka Masala","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Paneer Do Pyaza","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Paneer Makhni","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Paneer Methi Malai","type":"veg","prices":[{"label":"Regular","price":569}]},
-{"name":"Nawabi Paneer","type":"veg","prices":[{"label":"Regular","price":569}]},
 {"name":"Matar Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
 {"name":"Mushroom Masala","type":"veg","prices":[{"label":"Regular","price":539}]},
 {"name":"Kadhai Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
@@ -179,9 +174,7 @@
 {"name":"Garlic Naan","type":"veg","prices":[{"label":"Regular","price":179}]},
 {"name":"Stuffed Naan","type":"veg","prices":[{"label":"Regular","price":179}]},
 {"name":"Spicy Cheese Naan","type":"veg","prices":[{"label":"Regular","price":179}]},
-{"name":"Kashmiri Naan","type":"veg","prices":[{"label":"Regular","price":189}]},
-{"name":"Pudhina Paratha","type":"veg","prices":[{"label":"Regular","price":179}]},
-{"name":"Rumali Roti","type":"veg","prices":[{"label":"Regular","price":89}]}
+{"name":"Pudhina Paratha","type":"veg","prices":[{"label":"Regular","price":179}]}
   ]
 },
     
@@ -204,7 +197,6 @@
   "items": [
     {"name":"Chilli Paneer","type":"veg","prices":[{"label":"Regular","price":549}]},
 {"name":"Chilli Mushroom","type":"veg","prices":[{"label":"Regular","price":539}]},
-{"name":"Chilli Chaap","type":"veg","prices":[{"label":"Regular","price":529}]},
 {"name":"Veg Salt & Pepper","type":"veg","prices":[{"label":"Regular","price":499}]},
 {"name":"Veg Manchurian","type":"veg","prices":[{"label":"Regular","price":499}]},
 {"name":"Veg Hakka Noodles","type":"veg","prices":[{"label":"Regular","price":499}]},
