@@ -9,6 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+  #mainName{
+  font-size:3.5rem;
+  font-weight:800;
+  letter-spacing:3px;
+  opacity:0;
+  transform:translateY(40px);
+  animation: nameEntry 2s ease forwards;
+}
+
+@keyframes nameEntry{
+  to{
+    opacity:1;
+    transform:translateY(0);
+    text-shadow:0 0 20px #ff4da6,0 0 40px #ff1a75;
+  }
+}
+
 *{
   margin:0;
   padding:0;
@@ -17,10 +34,14 @@
 }
 
 body{
+  margin:0;
+  padding:0;
   overflow-x:hidden;
-  background: linear-gradient(-45deg,#ff0033,#ff3366,#ff004c,#cc0033);
-  background-size:400% 400%;
-  animation: gradientMove 8s ease infinite;
+  background: radial-gradient(circle at 20% 30%, #ff4d6d, transparent 40%),
+              radial-gradient(circle at 80% 70%, #ff0066, transparent 40%),
+              linear-gradient(135deg, #1a001f, #33001a, #1a001f);
+  background-size: 200% 200%;
+  animation: bgMove 12s ease infinite;
   color:#fff;
   text-align:center;
   min-height:100vh;
@@ -31,11 +52,12 @@ body{
   padding:20px;
 }
 
-@keyframes gradientMove{
+@keyframes bgMove{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
+
 
 h1{
   font-size:3rem;
@@ -66,14 +88,17 @@ button{
 }
 
 .love-btn{
-  background:#fff;
-  color:#ff0033;
-  box-shadow:0 0 15px rgba(255,255,255,0.8);
+  background:linear-gradient(45deg,#ff1a75,#ff4da6);
+  color:#fff;
+  box-shadow:0 0 15px #ff4da6;
+  transition:0.4s;
 }
 
 .love-btn:hover{
-  transform:scale(1.1);
+  transform:scale(1.15);
+  box-shadow:0 0 30px #ff66b3;
 }
+
 
 .hidden{
   display:none;
@@ -83,11 +108,12 @@ button{
 .heart{
   position:fixed;
   bottom:-20px;
-  color:#fff;
-  animation: floatUp 6s linear infinite;
-  font-size:20px;
-  opacity:0.8;
+  color:#ff99cc;
+  text-shadow:0 0 10px #ff4da6,0 0 20px #ff1a75;
+  animation: floatUp 8s linear infinite;
+  opacity:0.9;
 }
+
 
 @keyframes floatUp{
   0%{
@@ -105,7 +131,7 @@ button{
 
 <body>
 
-<h1>Rupali ❤️</h1>
+<h1 id="mainName">Rupali ❤️</h1>
 
 <div class="section" id="loveLines"></div>
 
@@ -161,7 +187,7 @@ let charIndex = 0;
 function typeWriter(){
   if(lineIndex < loveLines.length){
     if(charIndex < loveLines[lineIndex].length){
-      loveContainer.innerHTML += loveLines[lineIndex].charAt(charIndex);
+      loveContainer.innerHTML += "<span style='color:#ffb3d9;font-weight:600;'>" + loveLines[lineIndex].charAt(charIndex) + "</span>";
       charIndex++;
       setTimeout(typeWriter, 50);
     }else{
@@ -186,18 +212,21 @@ function showPoem(){
 
   poemSection.classList.remove("hidden");
 
-  const poemLines = [
-    "Shaadi abhi nahi hui 💍",
-    "Par dil se tum meri wife ho 💖",
-    "Tum meri zindagi ho 😘",
-    "Aur meri har smile ki wajah bhi 😍"
-  ];
+ const poemLines = [
+  "Shaadi abhi nahi hui... 💍",
+  "Par sach kahu toh tum meri life ki permanent setting ho 😌💖",
+  "Tum meri zindagi ho...",
+  "Aur meri har hasi ke peeche ka secret bhi 😘",
+  "Aur haan… bina tumhare sab boring lagta hai 😍"
+];
+
 
   let pIndex = 0;
 
   function showNextLine(){
     if(pIndex < poemLines.length){
-      poemText.innerHTML += poemLines[pIndex] + "<br><br>";
+      poemText.innerHTML += "<span style='font-size:1.1rem;color:#ffd6eb;'>" + poemLines[pIndex] + "</span><br><br>";
+
       pIndex++;
       setTimeout(showNextLine, 800);
     }else{
