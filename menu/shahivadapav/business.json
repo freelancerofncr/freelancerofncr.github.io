@@ -1,21 +1,21 @@
 {
   "identity": {
-    "name": "Vakratund Misal & Bhel",
-    "categoryLine": "Bhel • Misal • Tea-Coffee",
+    "name": "Shahi Vadapav",
+    "categoryLine": "Vadapav • Misal • Pav Bhaji",
     "foodType": "veg",
     "hasLogo": true
   },
 
   "contact": {
-    "primaryPhone": "+91 9561140638",
+    "primaryPhone": "+91 7276392207",
     "secondaryPhone": " ",
-    "whatsappNumber": "+91 9561140638",
+    "whatsappNumber": "+91 7276392207",
     "email": ""
   },
 
   "location": {
-    "fullAddress": "Jogeshwari Road, Near Bharat Petrol Pump, Kesnand, Pune, Maharashtra 412207",
-    "googleMapLink": "https://maps.app.goo.gl/dkyorHdemLMUou17A"
+    "fullAddress": "Phaltan, Maharashtra, India, 415523",
+    "googleMapLink": "https://maps.app.goo.gl/GghpkJYDaHEtfkbE6"
   },
 
   "openingHours": {
@@ -64,12 +64,12 @@
   },
 
   "onlinePlatforms": {
-    "instagram": "https://www.instagram.com/vakratundmisal2025/",
-    "facebook": "",
-    "google": "https://maps.app.goo.gl/dkyorHdemLMUou17A",
-    "zomato": "https://www.zomato.com/",
-    "swiggy": "https://www.swiggy.com/",
-    "website": "https://rupmaxdigital.in/menu/vakratundmisalbhel/"
+    "instagram": "",
+    "facebook": "https://www.facebook.com/61582010404307/posts/122121159849067013/",
+    "google": "https://maps.app.goo.gl/GghpkJYDaHEtfkbE6",
+    "zomato": "",
+    "swiggy": "",
+    "website": "https://rupmaxdigital.in/menu/shahivadapav/"
   },
 
   "payment": {
@@ -82,7 +82,7 @@
       "Family Friendly",
       "Freshly Made"
     ],
-    "about": "Famous misal house in Kesnand serving authentic Misal, Bhel, and fresh Chai–Coffee."
+    "about": "Shahi Vadapav – Taste is special, experience is special Shahi Vadapav is not just a snack, but a brand that gives a “royal touch” to Indian street food."
   },
 
   "flags": {
