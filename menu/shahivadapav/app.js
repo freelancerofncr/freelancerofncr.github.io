@@ -29,7 +29,7 @@ function renderBusiness(data) {
   setText("#categoryLine", data.identity.categoryLine);
 
   if (data.identity.hasLogo) {
-    setImage("#restaurantLogo", "./assets/logo.jpeg");
+    setImage("#restaurantLogo", "./assets/logo.jpg");
   }
 
   /* ===== VEG / NON-VEG BADGE ===== */
