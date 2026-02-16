@@ -1,7 +1,7 @@
 {
   "identity": {
     "name": "Wokifry",
-    "categoryLine": "Momo • Burger • Sandwich",
+    "categoryLine": "WOK IT • FRY IT • LOVE IT",
     "foodType": "veg",
     "hasLogo": true
   },
@@ -22,43 +22,43 @@
     "monday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     },
     "tuesday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     },
     "wednesday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     },
     "thursday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     },
     "friday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     },
     "saturday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     },
     "sunday": {
       "isClosed": false,
       "slots": [
-        { "open": "08:00", "close": "22:00" }
+        { "open": "14:00", "close": "22:00" }
       ]
     }
   },
