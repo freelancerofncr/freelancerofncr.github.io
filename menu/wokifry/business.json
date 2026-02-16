@@ -1,21 +1,21 @@
 {
   "identity": {
-    "name": "Vakratund Misal & Bhel",
-    "categoryLine": "Bhel • Misal • Tea-Coffee",
+    "name": "Wokifry",
+    "categoryLine": "Momo • Burger • Sandwich",
     "foodType": "veg",
     "hasLogo": true
   },
 
   "contact": {
-    "primaryPhone": "+91 9561140638",
+    "primaryPhone": "+91 8949442213",
     "secondaryPhone": " ",
-    "whatsappNumber": "+91 9561140638",
+    "whatsappNumber": "+91 8949442213",
     "email": ""
   },
 
   "location": {
-    "fullAddress": "Jogeshwari Road, Near Bharat Petrol Pump, Kesnand, Pune, Maharashtra 412207",
-    "googleMapLink": "https://maps.app.goo.gl/dkyorHdemLMUou17A"
+    "fullAddress": "Jaipur",
+    "googleMapLink": "https://maps.app.goo.gl/"
   },
 
   "openingHours": {
@@ -64,12 +64,12 @@
   },
 
   "onlinePlatforms": {
-    "instagram": "https://www.instagram.com/vakratundmisal2025/",
+    "instagram": "https://www.instagram.com/wokifry/",
     "facebook": "",
-    "google": "https://maps.app.goo.gl/dkyorHdemLMUou17A",
+    "google": "https://maps.app.goo.gl/",
     "zomato": "https://www.zomato.com/",
     "swiggy": "https://www.swiggy.com/",
-    "website": "https://rupmaxdigital.in/menu/vakratundmisalbhel/"
+    "website": "https://rupmaxdigital.in/menu/wokifry/"
   },
 
   "payment": {
@@ -82,7 +82,7 @@
       "Family Friendly",
       "Freshly Made"
     ],
-    "about": "Famous misal house in Kesnand serving authentic Misal, Bhel, and fresh Chai–Coffee."
+    "about": "Wokifry serves a wide range of freshly prepared fast food including burgers, momos, fries, tacos, and beverages, delivering quality taste and value in every bite."
   },
 
   "flags": {
