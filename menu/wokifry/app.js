@@ -43,7 +43,7 @@ function renderBusiness(data) {
 
   badge.textContent =
     data.identity.foodType === "veg"
-      ? "🟢 Pure Veg Restaurant"
+      ? "🟢 100% Pure Veg"
       : data.identity.foodType === "non-veg"
       ? "🔴 Non-Veg Restaurant"
       : "🔴 Veg & Non-Veg Restaurant";
@@ -90,7 +90,7 @@ function renderBusiness(data) {
   /* ===== DELIVERY / DINE IN ===== */
   setText(
     "#deliveryInfo",
-    data.flags.deliveryAvailable ? "🚚 Delivery Available" : ""
+    data.flags.deliveryAvailable ? "🚚 Takeaway Available" : ""
   );
   setText(
     "#dineInInfo",
