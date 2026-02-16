@@ -20,8 +20,8 @@
     {"name":"Oreo Shake","type":"veg","prices":[{"label":"Plate","price":75}]}
 ]},
 {"name":"Momos 6pcs","items":[
-    {"name":"Veg Momos","type":"veg","prices":[{"label":"Half","price":55},{"label":"Full","price":65}]},
-    {"name":"Paneer Momos","type":"veg","prices":[{"label":"Half","price":75},{"label":"Full","price":85}]},
+    {"name":"Veg Momos","type":"veg","prices":[{"label":"Steamed","price":55},{"label":"Fried","price":65}]},
+    {"name":"Paneer Momos","type":"veg","prices":[{"label":"Steamed","price":75},{"label":"Fried","price":85}]},
     {"name":"Veg Malai Momos","type":"veg","prices":[{"label":"Plate","price":110}]},
     {"name":"Paneer Malai Momos","type":"veg","prices":[{"label":"Plate","price":139}]},
     {"name":"Red Sauce Veg Momos","type":"veg","prices":[{"label":"Plate","price":120}]},
