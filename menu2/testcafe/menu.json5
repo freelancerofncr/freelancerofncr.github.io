@@ -1,0 +1,133 @@
+{
+  // =====================================================
+  // MENU STRUCTURE
+  // You only edit this file to manage menu
+  // =====================================================
+
+  categories: [
+
+    // =====================================================
+    // CATEGORY 1
+    // =====================================================
+    {
+      // Category Name (Shows in top scroll navigation)
+      name: "मिसळ",
+
+      items: [
+
+        {
+          // Dish Name (Hindi / Marathi / English allowed)
+          name: "स्पेशल वक्रतुंड मिसळ",
+
+          /*
+            Type:
+            "veg"
+            "nonveg"
+          */
+          type: "veg",
+
+          // Optional description (or write "NO")
+          description: "Spicy traditional Kolhapuri style misal",
+
+          /*
+            Price Options:
+            You can add multiple size/variants
+          */
+          prices: [
+            { label: "Plate", price: 110 }
+          ]
+        },
+
+        {
+          name: "दही मिसळ",
+          type: "veg",
+          description: "NO",
+          prices: [
+            { label: "Plate", price: 79 }
+          ]
+        }
+
+      ]
+    },
+
+    // =====================================================
+    // CATEGORY 2
+    // =====================================================
+    {
+      name: "भेळ",
+
+      items: [
+
+        {
+          name: "स्पेशल मटकी भेळ",
+          type: "veg",
+          description: "Crunchy & fresh",
+          prices: [
+            { label: "Plate", price: 60 }
+          ]
+        },
+
+        {
+          name: "सॅम्पल भेळ",
+          type: "veg",
+          description: "NO",
+          prices: [
+            { label: "Plate", price: 70 }
+          ]
+        }
+
+      ]
+    },
+
+    // =====================================================
+    // CATEGORY 3
+    // =====================================================
+    {
+      name: "चहा / कॉफी",
+
+      items: [
+
+        {
+          name: "स्पेशल चहा",
+          type: "veg",
+          description: "NO",
+          prices: [
+            { label: "Cup", price: 12 }
+          ]
+        },
+
+        {
+          name: "हॉट कॉफी",
+          type: "veg",
+          description: "NO",
+          prices: [
+            { label: "Cup", price: 25 }
+          ]
+        }
+
+      ]
+    },
+
+    // =====================================================
+    // CATEGORY 4 (Example Non-Veg)
+    // =====================================================
+    {
+      name: "Non Veg Specials",
+
+      items: [
+
+        {
+          name: "Chicken Biryani",
+          type: "nonveg",
+          description: "Full spicy biryani",
+          prices: [
+            { label: "Half", price: 120 },
+            { label: "Full", price: 220 }
+          ]
+        }
+
+      ]
+    }
+
+  ]
+}
