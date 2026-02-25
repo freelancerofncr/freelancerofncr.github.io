@@ -1,0 +1,147 @@
+{
+  // =====================================================
+  // BASIC RESTAURANT INFORMATION
+  // =====================================================
+
+  identity: {
+    // Restaurant Name (This will auto set website title also)
+    name: "Vakratund Misal & Bhel",
+
+    // Small subtitle under name
+    categoryLine: "Misal • Bhel • Tea",
+
+    /*
+      Food Type Options:
+      "veg"      → Only veg
+      "nonveg"   → Only non veg
+      "mix"      → Both veg & non-veg
+    */
+    foodType: "veg",
+
+    /*
+      Logo:
+      "YES" → show logo
+      "NO"  → hide logo completely
+    */
+    showLogo: "YES"
+  },
+
+  // =====================================================
+  // CONTACT INFORMATION
+  // If value = "NO" → completely hidden
+  // =====================================================
+
+  contact: {
+    primaryPhone: "+91 9561140638",
+    secondaryPhone: "NO",
+    whatsappNumber: "+91 9561140638",
+    email: "NO"
+  },
+
+  // =====================================================
+  // LOCATION
+  // =====================================================
+
+  location: {
+    fullAddress: "Jogeshwari Road, Kesnand, Pune",
+    googleMapLink: "https://maps.app.goo.gl/example",
+  },
+
+  // =====================================================
+  // OPENING HOURS
+  // Only TODAY timing will show on website
+  // =====================================================
+
+  openingHours: {
+    monday:    { open: "08:00", close: "22:00", closed: false },
+    tuesday:   { open: "08:00", close: "22:00", closed: false },
+    wednesday: { open: "08:00", close: "22:00", closed: false },
+    thursday:  { open: "08:00", close: "22:00", closed: false },
+    friday:    { open: "08:00", close: "22:00", closed: false },
+    saturday:  { open: "08:00", close: "22:00", closed: false },
+    sunday:    { open: "08:00", close: "22:00", closed: false }
+  },
+
+  // =====================================================
+  // SERVICES
+  // If "NO" → hidden automatically
+  // =====================================================
+
+  services: {
+    delivery: "YES",
+    dineIn: "YES",
+    takeaway: "YES",
+
+    /*
+      If YES:
+      When customer selects Dine-In
+      It will ask Table Number also
+    */
+    requireTableNumber: "YES",
+
+    /*
+      Minimum delivery order amount
+      Put 0 if not required
+    */
+    minimumDeliveryOrder: 299
+  },
+
+  // =====================================================
+  // ONLINE ORDER PLATFORMS
+  // Write link OR "NO"
+  // =====================================================
+
+  platforms: {
+    zomato: "https://zomato.com/example",
+    swiggy: "https://swiggy.com/example",
+    eatsure: "NO",
+    ubereats: "NO"
+  },
+
+  // =====================================================
+  // SOCIAL MEDIA
+  // Write link OR "NO"
+  // =====================================================
+
+  social: {
+    instagram: "https://instagram.com/example",
+    facebook: "NO",
+    youtube: "NO",
+    x: "NO",          // Twitter / X
+    threads: "NO",
+    snapchat: "NO",
+    google: "https://maps.app.goo.gl/example",
+    website: "NO"
+  },
+
+  // =====================================================
+  // GOOGLE REVIEW BUTTON
+  // =====================================================
+
+  googleReview: {
+    show: "YES",
+    reviewLink: "https://search.google.com/local/writereview?placeid=example"
+  },
+
+  // =====================================================
+  // PAYMENT SETTINGS
+  // =====================================================
+
+  payment: {
+    /*
+      QR Image:
+      Place image inside:
+      /assets/payment.jpeg
+      Or write "NO" to hide
+    */
+    showQR: "YES",
+
+    /*
+      UPI ID:
+      example@upi
+      Or "NO" to hide pay button
+    */
+    upiId: "example@upi"
+  }
+
+}
