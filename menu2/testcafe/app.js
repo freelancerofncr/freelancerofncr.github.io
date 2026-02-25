@@ -66,7 +66,7 @@ function applyBusinessData(){
 
   /* Logo */
   if(id.showLogo === "YES"){
-    document.getElementById("restaurantLogo").src = "./assets/logo.jpeg";
+    document.getElementById("restaurantLogo").src = "./assets/logo.png";
   }else{
     document.getElementById("restaurantLogo").style.display="none";
   }
@@ -240,7 +240,7 @@ function renderPayment(){
   const section = document.getElementById("paymentSection");
 
   if(p.showQR==="YES"){
-    section.innerHTML += `<img id="paymentQR" src="./assets/payment.jpeg">`;
+    section.innerHTML += `<img id="paymentQR" src="./assets/payment.png">`;
   }
 
   if(!isNO(p.upiId)){
