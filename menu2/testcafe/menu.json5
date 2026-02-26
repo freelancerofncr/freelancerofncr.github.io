@@ -1,131 +1,202 @@
-{
-  // =====================================================
-  // MENU STRUCTURE
-  // You only edit this file to manage menu
-  // =====================================================
 
+// =============================================================
+// MENU CONFIGURATION FILE (JSON5 FORMAT)
+// Supports:
+// - Veg / Non-Veg
+// - Multiple price variants
+// - Hindi / Marathi names supported
+// - Category navigation ready
+// - Search ready
+// =============================================================
+
+{
   categories: [
 
-    // =====================================================
-    // CATEGORY 1
-    // =====================================================
+    // =========================================================
+    // SOUPS
+    // =========================================================
     {
-      // Category Name (Shows in top scroll navigation)
-      name: "मिसळ",
-
+      name: "Soups",
       items: [
-
         {
-          // Dish Name (Hindi / Marathi / English allowed)
-          name: "स्पेशल वक्रतुंड मिसळ",
-
-          /*
-            Type:
-            "veg"
-            "nonveg"
-          */
+          name: "Cream of Tomato Soup",
           type: "veg",
-
-          // Optional description (or write "NO")
-          description: "Spicy traditional Kolhapuri style misal",
-
-          /*
-            Price Options:
-            You can add multiple size/variants
-          */
-          prices: [
-            { label: "Plate", price: 110 }
-          ]
+          description: "Rich tomato soup with cream garnish",
+          prices: [{ label: "Regular", price: 189 }]
         },
-
         {
-          name: "दही मिसळ",
+          name: "Veg Manchow Soup",
           type: "veg",
-          description: "NO",
-          prices: [
-            { label: "Plate", price: 79 }
-          ]
+          description: "Spicy Indo-Chinese soup",
+          prices: [{ label: "Regular", price: 199 }]
+        },
+        {
+          name: "Chicken Sweet Corn Soup",
+          type: "nonveg",
+          description: "Classic chicken corn soup",
+          prices: [{ label: "Regular", price: 219 }]
         }
-
       ]
     },
 
-    // =====================================================
-    // CATEGORY 2
-    // =====================================================
+    // =========================================================
+    // STARTERS
+    // =========================================================
     {
-      name: "भेळ",
-
+      name: "Starters & Kebabs",
       items: [
-
         {
-          name: "स्पेशल मटकी भेळ",
+          name: "Paneer Tikka",
           type: "veg",
-          description: "Crunchy & fresh",
-          prices: [
-            { label: "Plate", price: 60 }
-          ]
+          description: "Marinated paneer grilled in tandoor",
+          prices: [{ label: "Half", price: 299 }, { label: "Full", price: 549 }]
         },
-
         {
-          name: "सॅम्पल भेळ",
+          name: "Chicken Tikka",
+          type: "nonveg",
+          description: "Juicy grilled chicken tikka",
+          prices: [{ label: "Half", price: 349 }, { label: "Full", price: 649 }]
+        },
+        {
+          name: "हरी भरी कबाब",
           type: "veg",
-          description: "NO",
-          prices: [
-            { label: "Plate", price: 70 }
-          ]
+          description: "Spinach & peas cutlet (Hindi name support)",
+          prices: [{ label: "Regular", price: 249 }]
         }
-
       ]
     },
 
-    // =====================================================
-    // CATEGORY 3
-    // =====================================================
+    // =========================================================
+    // MAIN COURSE VEG
+    // =========================================================
     {
-      name: "चहा / कॉफी",
-
+      name: "Indian Main Course (Veg)",
       items: [
-
         {
-          name: "स्पेशल चहा",
+          name: "Paneer Butter Masala",
           type: "veg",
-          description: "NO",
-          prices: [
-            { label: "Cup", price: 12 }
-          ]
+          description: "Creamy tomato gravy with paneer",
+          prices: [{ label: "Regular", price: 399 }]
         },
-
         {
-          name: "हॉट कॉफी",
+          name: "Dal Makhani",
           type: "veg",
-          description: "NO",
-          prices: [
-            { label: "Cup", price: 25 }
-          ]
+          description: "Slow cooked black lentils",
+          prices: [{ label: "Regular", price: 349 }]
+        },
+        {
+          name: "Mix Veg Handi",
+          type: "veg",
+          description: "Seasonal vegetables in rich gravy",
+          prices: [{ label: "Regular", price: 329 }]
         }
-
       ]
     },
 
-    // =====================================================
-    // CATEGORY 4 (Example Non-Veg)
-    // =====================================================
+    // =========================================================
+    // MAIN COURSE NON VEG
+    // =========================================================
     {
-      name: "Non Veg Specials",
-
+      name: "Indian Main Course (Non-Veg)",
       items: [
+        {
+          name: "Butter Chicken",
+          type: "nonveg",
+          description: "Classic creamy butter chicken",
+          prices: [{ label: "Regular", price: 499 }]
+        },
+        {
+          name: "Mutton Rogan Josh",
+          type: "nonveg",
+          description: "Authentic Kashmiri mutton curry",
+          prices: [{ label: "Regular", price: 599 }]
+        }
+      ]
+    },
 
+    // =========================================================
+    // BREADS
+    // =========================================================
+    {
+      name: "Breads",
+      items: [
+        {
+          name: "Tandoori Roti",
+          type: "veg",
+          prices: [{ label: "Plain", price: 29 }, { label: "Butter", price: 39 }]
+        },
+        {
+          name: "Garlic Naan",
+          type: "veg",
+          prices: [{ label: "Regular", price: 59 }]
+        }
+      ]
+    },
+
+    // =========================================================
+    // RICE & BIRYANI
+    // =========================================================
+    {
+      name: "Rice & Biryani",
+      items: [
+        {
+          name: "Veg Biryani",
+          type: "veg",
+          prices: [{ label: "Regular", price: 349 }]
+        },
         {
           name: "Chicken Biryani",
           type: "nonveg",
-          description: "Full spicy biryani",
-          prices: [
-            { label: "Half", price: 120 },
-            { label: "Full", price: 220 }
-          ]
+          prices: [{ label: "Regular", price: 399 }]
         }
+      ]
+    },
 
+    // =========================================================
+    // PIZZA & PASTA
+    // =========================================================
+    {
+      name: "Pizza & Pasta",
+      items: [
+        {
+          name: "Margherita Pizza",
+          type: "veg",
+          prices: [{ label: "Regular", price: 299 }]
+        },
+        {
+          name: "Chicken Tikka Pizza",
+          type: "nonveg",
+          prices: [{ label: "Regular", price: 399 }]
+        },
+        {
+          name: "Pasta Alfredo",
+          type: "veg",
+          prices: [{ label: "Veg", price: 299 }, { label: "Non-Veg", price: 349 }]
+        }
+      ]
+    },
+
+    // =========================================================
+    // BEVERAGES
+    // =========================================================
+    {
+      name: "Beverages",
+      items: [
+        {
+          name: "Cold Coffee",
+          type: "veg",
+          prices: [{ label: "Regular", price: 149 }]
+        },
+        {
+          name: "Mango Lassi",
+          type: "veg",
+          prices: [{ label: "Regular", price: 129 }]
+        },
+        {
+          name: "Diet Coke (on MRP)",
+          type: "veg",
+          prices: [{ label: "MRP", price: 0 }]
+        }
       ]
     }
 

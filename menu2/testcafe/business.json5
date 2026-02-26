@@ -1,147 +1,126 @@
+
+// =============================================================
+// BUSINESS CONFIGURATION FILE (JSON5 FORMAT)
+// Comments allowed
+// YES / NO system enabled
+// All master controls in one place
+// =============================================================
+
 {
-  // =====================================================
-  // BASIC RESTAURANT INFORMATION
-  // =====================================================
+  // ===========================================================
+  // MASTER CONTROL PANEL (TURN SECTIONS ON / OFF HERE)
+  // ===========================================================
+  controls: {
+    header: "YES",
+    contact: "YES",
+    services: "YES",
+    social: "YES",
+    platforms: "YES",
+    payment: "YES",
+    googleReview: "YES",
+    search: "YES",
+    vegToggle: "YES",
+    categoryNav: "YES",
+    requireTableNumber: "YES",
+    minimumDeliveryOrder: 499
+  },
 
+  // ===========================================================
+  // RESTAURANT IDENTITY
+  // foodType options:
+  // "veg"     → Pure Veg
+  // "nonveg"  → Pure Non-Veg
+  // "mix"     → Veg & Non-Veg
+  // ===========================================================
   identity: {
-    // Restaurant Name (This will auto set website title also)
-    name: "Vakratund Misal & Bhel",
-
-    // Small subtitle under name
-    categoryLine: "Misal • Bhel • Tea",
-
-    /*
-      Food Type Options:
-      "veg"      → Only veg
-      "nonveg"   → Only non veg
-      "mix"      → Both veg & non-veg
-    */
-    foodType: "veg",
-
-    /*
-      Logo:
-      "YES" → show logo
-      "NO"  → hide logo completely
-    */
-    showLogo: "YES"
+    name: "Demo Royal Bistro",
+    categoryLine: "Indian • Chinese • Italian • Fast Food",
+    foodType: "mix",
+    logo: "assets/logo.png"
   },
 
-  // =====================================================
-  // CONTACT INFORMATION
-  // If value = "NO" → completely hidden
-  // =====================================================
-
+  // ===========================================================
+  // CONTACT SECTION (Write "NO" to hide any field)
+  // ===========================================================
   contact: {
-    primaryPhone: "+91 9561140638",
-    secondaryPhone: "NO",
-    whatsappNumber: "+91 9561140638",
-    email: "NO"
+    primaryPhone: "+91 9999999999",
+    secondaryPhone: "+91 8888888888",
+    whatsappNumber: "+91 9999999999",
+    email: "demo@royalbistro.com"
   },
 
-  // =====================================================
+  // ===========================================================
   // LOCATION
-  // =====================================================
-
+  // If fullAddress = "NO" → Address hidden
+  // ===========================================================
   location: {
-    fullAddress: "Jogeshwari Road, Kesnand, Pune",
-    googleMapLink: "https://maps.app.goo.gl/example",
+    fullAddress: "2nd Floor, Demo Plaza, Sector 78, Noida 201305",
+    googleMapLink: "https://maps.google.com"
   },
 
-  // =====================================================
-  // OPENING HOURS
-  // Only TODAY timing will show on website
-  // =====================================================
-
-  openingHours: {
-    monday:    { open: "08:00", close: "22:00", closed: false },
-    tuesday:   { open: "08:00", close: "22:00", closed: false },
-    wednesday: { open: "08:00", close: "22:00", closed: false },
-    thursday:  { open: "08:00", close: "22:00", closed: false },
-    friday:    { open: "08:00", close: "22:00", closed: false },
-    saturday:  { open: "08:00", close: "22:00", closed: false },
-    sunday:    { open: "08:00", close: "22:00", closed: false }
-  },
-
-  // =====================================================
-  // SERVICES
-  // If "NO" → hidden automatically
-  // =====================================================
-
+  // ===========================================================
+  // SERVICES (YES / NO)
+  // ===========================================================
   services: {
     delivery: "YES",
     dineIn: "YES",
-    takeaway: "YES",
-
-    /*
-      If YES:
-      When customer selects Dine-In
-      It will ask Table Number also
-    */
-    requireTableNumber: "YES",
-
-    /*
-      Minimum delivery order amount
-      Put 0 if not required
-    */
-    minimumDeliveryOrder: 299
+    takeaway: "YES"
   },
 
-  // =====================================================
-  // ONLINE ORDER PLATFORMS
+  // ===========================================================
+  // ONLINE DELIVERY PLATFORMS
   // Write link OR "NO"
-  // =====================================================
-
+  // ===========================================================
   platforms: {
-    zomato: "https://zomato.com/example",
-    swiggy: "https://swiggy.com/example",
+    swiggy: "https://www.swiggy.com",
+    zomato: "https://www.zomato.com",
     eatsure: "NO",
-    ubereats: "NO"
+    uberEats: "NO"
   },
 
-  // =====================================================
-  // SOCIAL MEDIA
+  // ===========================================================
+  // SOCIAL MEDIA (Only icons shown)
   // Write link OR "NO"
-  // =====================================================
-
+  // ===========================================================
   social: {
-    instagram: "https://instagram.com/example",
-    facebook: "NO",
-    youtube: "NO",
-    x: "NO",          // Twitter / X
+    instagram: "https://instagram.com",
+    facebook: "https://facebook.com",
+    youtube: "https://youtube.com",
+    twitterX: "https://x.com",
     threads: "NO",
     snapchat: "NO",
-    google: "https://maps.app.goo.gl/example",
-    website: "NO"
+    google: "https://g.page",
+    website: "https://example.com"
   },
 
-  // =====================================================
+  // ===========================================================
   // GOOGLE REVIEW BUTTON
-  // =====================================================
-
+  // ===========================================================
   googleReview: {
-    show: "YES",
-    reviewLink: "https://search.google.com/local/writereview?placeid=example"
+    enabled: "YES",
+    link: "https://g.page/review"
   },
 
-  // =====================================================
-  // PAYMENT SETTINGS
-  // =====================================================
-
+  // ===========================================================
+  // PAYMENT SECTION
+  // ===========================================================
   payment: {
-    /*
-      QR Image:
-      Place image inside:
-      /assets/payment.jpeg
-      Or write "NO" to hide
-    */
-    showQR: "YES",
+    enabled: "YES",
+    qrImage: "assets/payment.png",
+    upiId: "demobistro@upi"
+  },
 
-    /*
-      UPI ID:
-      example@upi
-      Or "NO" to hide pay button
-    */
-    upiId: "example@upi"
+  // ===========================================================
+  // OPENING HOURS (Live badge will use today's timing only)
+  // ===========================================================
+  openingHours: {
+    monday:    { open: "11:00", close: "23:00", closed: "NO" },
+    tuesday:   { open: "11:00", close: "23:00", closed: "NO" },
+    wednesday: { open: "11:00", close: "23:00", closed: "NO" },
+    thursday:  { open: "11:00", close: "23:00", closed: "NO" },
+    friday:    { open: "11:00", close: "23:59", closed: "NO" },
+    saturday:  { open: "10:00", close: "23:59", closed: "NO" },
+    sunday:    { open: "10:00", close: "23:00", closed: "NO" }
   }
 
 }
