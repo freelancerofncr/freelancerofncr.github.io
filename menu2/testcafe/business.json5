@@ -71,13 +71,13 @@ openingHours: {
   friday: {
     isClosed: false,
     slots: [
-      { open: "11:00", close: "23:00" }
+      { open: "11:00", close: "23:59" }
     ]
   },
   saturday: {
     isClosed: false,
     slots: [
-      { open: "11:00", close: "23:00" }
+      { open: "00:01", close: "23:00" }
     ]
   },
   sunday: {
