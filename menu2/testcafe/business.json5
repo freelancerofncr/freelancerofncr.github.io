@@ -16,6 +16,8 @@ master: {
   showServiceBadges: true,
   showPaymentSection: true,
   showOpeningHours: true,
+// Veg mode (force hide non-veg)
+vegModeOnly: false,
 whatsAppOrderingEnabled: true
 },
 // Table configuration (Dine-In only)
