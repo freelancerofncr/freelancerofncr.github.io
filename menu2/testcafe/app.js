@@ -7,6 +7,7 @@ let tableSettings = {
   required: false,
   label: "Table Number"
 };
+let minimumDeliveryMessage = "Minimum order required for delivery";
 let orderingEnabled = true;
 let minimumDeliveryOrder = 0;
 /* =========================
@@ -50,6 +51,7 @@ if(!orderingEnabled){
   }
 
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
+  minimumDeliveryMessage = data.flags?.minimumDeliveryMessage || minimumDeliveryMessage;
 // ===============================
 // SERVICE AVAILABILITY CONTROL
 // ===============================
@@ -424,7 +426,7 @@ function updateCartUI(){
       qtyEl.textContent = i.qty;
     }
   });
-
+updateDeliveryNotice();
   document.getElementById("cartItemCount").textContent = totalQty;
   document.getElementById("cartTotal").textContent = totalPrice;
 
@@ -692,6 +694,7 @@ function toggleAddress(){
     tableBox.classList.remove("hidden");
     tableBox.style.display = "block";
   }
+  updateDeliveryNotice();
 }
 if(!orderingEnabled){
   showDialog("Online ordering is currently disabled");
@@ -734,9 +737,12 @@ if(type === "Dine-In" && tableSettings.enabled){
 }
   // ✅ DELIVERY MINIMUM ORDER CHECK (FIXED)
   if(type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
-    showDialog(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
-    return;
-  }
+  const remaining = minimumDeliveryOrder - total;
+  showDialog(
+    `${minimumDeliveryMessage}: ₹${minimumDeliveryOrder}\nAdd ₹${remaining} more to proceed.`
+  );
+  return;
+}
 
   let address = "";
   if(type === "Delivery"){
@@ -936,5 +942,34 @@ function setDefaultService(){
       r.checked = true;
       break;
     }
+  }
+}
+// ===============================
+// DELIVERY MINIMUM LIVE CHECK
+// ===============================
+function updateDeliveryNotice(){
+
+  const selected = document.querySelector('input[name="orderType"]:checked');
+  const notice = document.getElementById("deliveryNotice");
+
+  if(!selected || !notice){
+    return;
+  }
+
+  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+
+  if(selected.value === "Delivery" && minimumDeliveryOrder > 0){
+
+    if(total < minimumDeliveryOrder){
+      const remaining = minimumDeliveryOrder - total;
+      notice.style.display = "block";
+      notice.textContent =
+        `${minimumDeliveryMessage}: ₹${minimumDeliveryOrder} | Add ₹${remaining} more`;
+    } else {
+      notice.style.display = "none";
+    }
+
+  } else {
+    notice.style.display = "none";
   }
 }
