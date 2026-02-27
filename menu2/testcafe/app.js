@@ -376,7 +376,7 @@ function removeFromCart(name){
 const logoEl = document.querySelector("#restaurantLogo");
 
 if (data.master?.showLogo && data.identity.hasLogo) {
-  setImage("#restaurantLogo", "./assets/logo.jpeg");
+  setImage("#restaurantLogo", "./assets/logo.png");
 } else if (logoEl) {
   logoEl.style.display = "none";
 }
