@@ -18,8 +18,10 @@
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
 }
 body{
-  background:linear-gradient(180deg,#f3f6fb,#e9edf3);
-  color:#222;
+  margin:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:#fafafa;
+  color:#111;
 }
 a{text-decoration:none}
 
@@ -120,9 +122,10 @@ a{text-decoration:none}
 ====================================================== */
 .card{
   background:#fff;
-  margin:12px;
-  padding:16px;
-  border-radius:16px;
+  border-radius:18px;
+  padding:18px;
+  margin:14px 12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.06);
 }
 
 /* ======================================================
@@ -171,15 +174,12 @@ a{text-decoration:none}
   margin-bottom:14px;
 }
 .menu-category{
-  margin-bottom:26px;
+  margin-bottom:24px;
 }
 .category-title{
-  font-size:21px;
-  font-weight:800;
-  margin-bottom:8px;
-  padding:8px 10px;
-  border-radius:10px;
-  background:linear-gradient(90deg,#eef3ff,#ffffff);
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:14px;
 }
 .menu-block{
   margin-top:10px;
@@ -638,10 +638,20 @@ flex-direction:column;
   font-weight:700;
 }
 .checkout-btn{
-  background:#25d366;
+  background:#e23744;
   color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:14px;
+  font-weight:700;
+  font-size:14px;
 }
-
+#menuSearch{
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+   .category-nav{
+  backdrop-filter: blur(8px);
+}
    /* SCROLLABLE ITEMS AREA */
 #cartItems{
 flex:1;
@@ -649,8 +659,34 @@ overflow-y:auto;
 margin-top:8px;
 padding-right:6px;
 }
+#cartBar{
+  position:fixed;
+  bottom:16px;
+  left:12px;
+  right:12px;
+  background:#111;
+  color:#fff;
+  padding:14px;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+.open-badge{
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
 
-
+.closed-badge{
+  background:#fdecea;
+  color:#c62828;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
 /* keep footer fixed */
 .cart-total-line,
 .cart-modal-actions{
@@ -980,7 +1016,15 @@ flex-shrink:0;
   font-weight:700;
   color:#111;
 }
-
+.add-btn{
+  background:#111;
+  color:#fff;
+  border:none;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
 /* price text */
 .price-line{
   margin-top:2px;
