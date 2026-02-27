@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadBusiness();
   loadMenu();
 });
+let orderingEnabled = true;
 let minimumDeliveryOrder = 0;
 /* =========================
    LOAD BUSINESS DATA
@@ -33,6 +34,14 @@ function renderBusiness(data) {
       </div>
     `;
     return;
+    // ===============================
+// WHATSAPP ORDER TOGGLE
+// ===============================
+orderingEnabled = data.master?.whatsAppOrderingEnabled !== false;
+
+if(!orderingEnabled){
+  showOrderingDisabledBanner();
+}
   }
 
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
@@ -382,7 +391,7 @@ function updateCartUI(){
   document.getElementById("cartItemCount").textContent = totalQty;
   document.getElementById("cartTotal").textContent = totalPrice;
 
-  if(totalQty > 0 && restaurantOpen){
+ if(totalQty > 0 && restaurantOpen && orderingEnabled){
     document.getElementById("cartBar").classList.remove("hidden");
   } else {
     document.getElementById("cartBar").classList.add("hidden");
@@ -452,6 +461,10 @@ function setRestaurantWhatsapp(number){
 
 
 updateCartUI();
+if(!orderingEnabled){
+  showDialog("Online ordering is currently disabled");
+  return;
+}
 function addSelectedToCart(itemName){
   if(!restaurantOpen){
     alert("Restaurant is currently closed");
@@ -498,7 +511,10 @@ function addSelectedToCart(itemName){
 /* =========================
    CART MODAL
 ========================= */
-
+if(!orderingEnabled){
+  showDialog("Online ordering is currently disabled");
+  return;
+}
 function openCartModal(){
   
   if(cart.length === 0) return;
@@ -627,7 +643,10 @@ function toggleAddress(){
     box.style.display = "block";
   }
 }
-
+if(!orderingEnabled){
+  showDialog("Online ordering is currently disabled");
+  return;
+}
 function finalPlaceOrder(){
 
   if(!restaurantOpen){
@@ -694,7 +713,10 @@ function finalPlaceOrder(){
 
   window.open(url, "_blank");
 }
-
+if(!orderingEnabled){
+  showDialog("Online ordering is currently disabled");
+  return;
+}
 function addSinglePriceToCart(name, label, price){
   if(!restaurantOpen){
     showDialog("Restaurant is currently closed")
@@ -816,4 +838,20 @@ function hideSection(id){
   if(el){
     el.style.display = "none";
   }
+}
+// ===============================
+// ORDER DISABLED BANNER
+// ===============================
+function showOrderingDisabledBanner(){
+  const banner = document.createElement("div");
+  banner.style.background = "#fff3cd";
+  banner.style.color = "#856404";
+  banner.style.padding = "12px";
+  banner.style.margin = "12px";
+  banner.style.borderRadius = "12px";
+  banner.style.fontWeight = "600";
+  banner.style.textAlign = "center";
+  banner.textContent = "⚠ Online ordering is currently disabled.";
+
+  document.body.insertBefore(banner, document.body.firstChild);
 }
