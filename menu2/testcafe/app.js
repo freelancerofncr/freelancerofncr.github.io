@@ -1,8 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-  loadBusiness();
-  loadMenu();
-  checkWhatsAppReturn();
-});
 let tableSettings = {
   enabled: false,
   required: false,
@@ -18,29 +13,39 @@ let minimumDeliveryMessage = "Minimum order required for delivery";
 let orderingEnabled = true;
 let minimumDeliveryOrder = 0;
 let fullMenuData = [];
-/* =========================
-   LOAD BUSINESS DATA
-========================= */
-fetch("./business.json5")
-  .then(res => res.text())
-  .then(text => {
-    const data = JSON5.parse(text);
-    renderBusiness(data);
-  })
-  .catch(err => console.error("Business JSON5 error:", err));
+let restaurantOpen = true;
+let restaurantWhatsapp = "";
 
-window.addEventListener("beforeunload", ()=>{
-  if(localStorage.getItem("pendingOrder")==="true"){
+document.addEventListener("DOMContentLoaded", () => {
+  loadBusiness();
+  checkWhatsAppReturn();
+});
+
+window.addEventListener("beforeunload", () => {
+  if (localStorage.getItem("pendingOrder") === "true") {
     // keep it; user decides on return
   }
 });
+
+/* =========================
+   LOAD BUSINESS DATA
+========================= */
+function loadBusiness() {
+  fetch("./business.json5")
+    .then(res => res.text())
+    .then(text => {
+      const data = JSON5.parse(text);
+      renderBusiness(data);
+    })
+    .catch(err => console.error("Business JSON5 error:", err));
+}
 
 function renderBusiness(data) {
 
   // ===============================
   // MASTER SITE SWITCH
   // ===============================
-  if(data.master && data.master.siteEnabled === false){
+  if (data.master && data.master.siteEnabled === false) {
     document.body.innerHTML = `
       <div style="padding:40px;text-align:center;font-family:system-ui">
         <h2>🚫 Restaurant Temporarily Disabled</h2>
@@ -48,98 +53,119 @@ function renderBusiness(data) {
       </div>
     `;
     return;
-    // ===============================
-// WHATSAPP ORDER TOGGLE
-// ===============================
-orderingEnabled = data.master?.whatsAppOrderingEnabled !== false;
-
-if(!orderingEnabled){
-  showOrderingDisabledBanner();
-}
   }
+
+  // ===============================
+  // WHATSAPP ORDER TOGGLE
+  // ===============================
+  orderingEnabled = data.master?.whatsAppOrderingEnabled !== false;
+
+  if (!orderingEnabled) {
+    showOrderingDisabledBanner();
+  }
+
+  // ===============================
+  // WHATSAPP NUMBER
+  // ===============================
+  restaurantWhatsapp = cleanNumber(data.contact?.whatsappNumber || "");
 
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
   minimumDeliveryMessage = data.flags?.minimumDeliveryMessage || minimumDeliveryMessage;
+
   // ===============================
-// VEG MODE LOAD
-// ===============================
-vegModeOnly = data.master?.vegModeOnly === true;
-// ===============================
-// SERVICE AVAILABILITY CONTROL
-// ===============================
-const services = data.flags?.services || {};
+  // VEG MODE LOAD
+  // ===============================
+  vegModeOnly = data.master?.vegModeOnly === true;
 
-if(services.dineIn === false){
-  hideServiceOption("optDineIn");
-}
+  // ===============================
+  // SERVICE AVAILABILITY CONTROL
+  // ===============================
+  const services = data.flags?.services || {};
 
-if(services.delivery === false){
-  hideServiceOption("optDelivery");
-}
+  if (services.dineIn === false) {
+    hideServiceOption("optDineIn");
+  }
+  if (services.delivery === false) {
+    hideServiceOption("optDelivery");
+  }
+  if (services.takeaway === false) {
+    hideServiceOption("optTakeaway");
+  }
 
-if(services.takeaway === false){
-  hideServiceOption("optTakeaway");
-}
-// ===============================
-// TABLE CONFIG LOAD
-// ===============================
-if(data.flags?.tableConfig){
-  tableSettings = data.flags.tableConfig;
+  // ===============================
+  // TABLE CONFIG LOAD
+  // ===============================
+  if (data.flags?.tableConfig) {
+    tableSettings = data.flags.tableConfig;
 
-  if(tableSettings.enabled){
-    const label = document.getElementById("tableLabel");
-    if(label){
-      label.textContent = tableSettings.required
-        ? tableSettings.label + " *"
-        : tableSettings.label;
+    if (tableSettings.enabled) {
+      const label = document.getElementById("tableLabel");
+      if (label) {
+        label.textContent = tableSettings.required
+          ? tableSettings.label + " *"
+          : tableSettings.label;
+      }
     }
   }
-}
-// Auto-select first available option
-setDefaultService();
+
+  // Auto-select first available option
+  setDefaultService();
+
+  /* ===== LOGO CONTROL ===== */
+  const logoEl = document.querySelector("#restaurantLogo");
+  if (data.master?.showLogo && data.identity?.hasLogo) {
+    setImage("#restaurantLogo", "./assets/logo.png");
+  } else if (logoEl) {
+    logoEl.style.display = "none";
+  }
+
+  /* ===== RESTAURANT NAME ===== */
+  setText("#restaurantName", data.identity?.name);
+  setText("#categoryLine", data.identity?.categoryLine);
+
   /* ===== VEG / NON-VEG BADGE ===== */
   const badge = document.createElement("div");
   badge.className =
-    data.identity.foodType === "veg"
+    data.identity?.foodType === "veg"
       ? "badge veg-badge"
-      : data.identity.foodType === "non-veg"
-      ? "badge nonveg-badge"
       : "badge nonveg-badge";
 
   badge.textContent =
-    data.identity.foodType === "veg"
+    data.identity?.foodType === "veg"
       ? "🟢 Pure Veg Restaurant"
-      : data.identity.foodType === "non-veg"
+      : data.identity?.foodType === "non-veg"
       ? "🔴 Non-Veg Restaurant"
       : "🔴 Veg & Non-Veg Restaurant";
 
-  document.querySelector(".header").appendChild(badge);
+  const headerEl = document.querySelector(".header");
+  if (headerEl) headerEl.appendChild(badge);
 
   /* ===== CONTACT ===== */
-  // CONTACT MASTER CONTROL
-if(data.master?.showContact === false){
-  hideSection("contactSection");
-}
-  setLink("#callPrimary", "tel:" + data.contact.primaryPhone);
-  setText("#primaryPhoneText", data.contact.primaryPhone);
+  if (data.master?.showContact === false) {
+    hideSection("contactSection");
+  }
+  setLink("#callPrimary", "tel:" + (data.contact?.primaryPhone || ""));
+  setText("#primaryPhoneText", data.contact?.primaryPhone);
 
   /* Secondary phone (hide if empty) */
   const secondaryRow = document.querySelector("#secondaryPhoneText")?.parentElement;
-  if (data.contact.secondaryPhone) {
-    document.querySelector("#secondaryPhoneText").textContent = data.contact.secondaryPhone;
+  if (data.contact?.secondaryPhone) {
+    const el = document.querySelector("#secondaryPhoneText");
+    if (el) el.textContent = data.contact.secondaryPhone;
   } else if (secondaryRow) {
     secondaryRow.style.display = "none";
   }
 
   setLink(
     "#whatsappBtn",
-    "https://wa.me/" + cleanNumber(data.contact.whatsappNumber)
+    "https://wa.me/" + cleanNumber(data.contact?.whatsappNumber || "")
   );
 
   /* Email (hide if empty) */
   const emailRow = document.querySelector("#emailText")?.parentElement;
-  if (data.contact.email) {
-    document.querySelector("#emailText").textContent = data.contact.email;
+  if (data.contact?.email) {
+    const el = document.querySelector("#emailText");
+    if (el) el.textContent = data.contact.email;
   } else if (emailRow) {
     emailRow.style.display = "none";
   }
@@ -147,112 +173,143 @@ if(data.master?.showContact === false){
   /* ===== LOCATION (hide if empty) ===== */
   const addressRow = document.querySelector("#fullAddress")?.parentElement;
   if (data.location && data.location.fullAddress) {
-    document.querySelector("#fullAddress").textContent = data.location.fullAddress;
+    const el = document.querySelector("#fullAddress");
+    if (el) el.textContent = data.location.fullAddress;
     setLink("#mapBtn", data.location.googleMapLink);
   } else if (addressRow) {
     addressRow.style.display = "none";
   }
 
   /* ===== OPENING HOURS ===== */
-  renderOpeningHours(data.openingHours);
-if(data.master?.showOpeningHours === false){
-  hideSection("timingSection");
-}
+  if (data.openingHours) {
+    renderOpeningHours(data.openingHours);
+    checkRestaurantOpen(data.openingHours);
+    updateLiveBadge(data.openingHours);
+
+    // Update every minute
+    setInterval(() => {
+      checkRestaurantOpen(data.openingHours);
+      updateLiveBadge(data.openingHours);
+    }, 60000);
+  }
+
+  if (data.master?.showOpeningHours === false) {
+    hideSection("timingSection");
+  }
+
   /* ===== DELIVERY / DINE IN ===== */
   setText(
     "#deliveryInfo",
-    data.flags.deliveryAvailable ? "🚚 Delivery Available" : ""
+    data.flags?.deliveryAvailable ? "🚚 Delivery Available" : ""
   );
   setText(
     "#dineInInfo",
-    data.flags.dineInAvailable ? "🍽️ Dine-In Available" : ""
+    data.flags?.dineInAvailable ? "🍽️ Dine-In Available" : ""
   );
-if(data.master?.showServiceBadges === false){
-  hideSection("serviceSection");
-}
+
+  if (data.master?.showServiceBadges === false) {
+    hideSection("serviceSection");
+  }
+
   /* ===== PAYMENT ===== */
-  if (data.payment.enabled) {
+  if (data.payment?.enabled) {
     setImage("#paymentQR", "./assets/payment.png");
   }
-if(data.master?.showPaymentSection === false){
-  hideSection("paymentSection");
-}
+
+  if (data.master?.showPaymentSection === false) {
+    hideSection("paymentSection");
+  }
+
   // ===============================
-// UPI CONFIG LOAD
-// ===============================
-if(data.payment){
-  upiConfig.upiId = data.payment.upiId || "";
-  upiConfig.payeeName = data.payment.payeeName || "";
-  upiConfig.autoFillAmount = data.payment.autoFillAmount !== false;
-}
-  if(!upiConfig.upiId){
-  const btn = document.getElementById("upiPayBtn");
-  if(btn) btn.style.display = "none";
-}
-  /* ===== ONLINE PLATFORMS (NO CHANGE) ===== */
-  setLink("#zomatoBtn", data.onlinePlatforms.zomato);
-  setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
-  if(data.master?.showPlatforms === false){
-  hideSection("platformSection");
-}
-  setLink("#instaIcon", data.onlinePlatforms.instagram);
-  setLink("#fbIcon", data.onlinePlatforms.facebook);
-  setLink("#googleIcon", data.onlinePlatforms.google);
-  setLink("#websiteIcon", data.onlinePlatforms.website);
-  if(data.master?.showSocialLinks === false){
-  hideSection("socialSectionCard");
-}
+  // UPI CONFIG LOAD
+  // ===============================
+  if (data.payment) {
+    upiConfig.upiId = data.payment.upiId || "";
+    upiConfig.payeeName = data.payment.payeeName || "";
+    upiConfig.autoFillAmount = data.payment.autoFillAmount !== false;
+  }
+
+  if (!upiConfig.upiId) {
+    const btn = document.getElementById("upiPayBtn");
+    if (btn) btn.style.display = "none";
+  }
+
+  /* ===== ONLINE PLATFORMS ===== */
+  setLink("#zomatoBtn", data.onlinePlatforms?.zomato);
+  setLink("#swiggyBtn", data.onlinePlatforms?.swiggy);
+
+  if (data.master?.showPlatforms === false) {
+    hideSection("platformSection");
+  }
+
+  setLink("#instaIcon", data.onlinePlatforms?.instagram);
+  setLink("#fbIcon", data.onlinePlatforms?.facebook);
+  setLink("#googleIcon", data.onlinePlatforms?.google);
+  setLink("#websiteIcon", data.onlinePlatforms?.website);
+
+  if (data.master?.showSocialLinks === false) {
+    hideSection("socialSectionCard");
+  }
 
   /* ===== TRUST ===== */
-  renderBadges(data.trustInfo.badges);
-  setText("#aboutText", data.trustInfo.about);
+  if (data.trustInfo?.badges) {
+    renderBadges(data.trustInfo.badges);
+  }
+  setText("#aboutText", data.trustInfo?.about);
+
+  if (data.master?.showTrustSection === false) {
+    hideSection("trustSection");
+  }
+
+  // Load menu after business is ready
+  loadMenu();
+
+  // Refresh cart UI now that orderingEnabled is set
+  updateCartUI();
 }
-if(data.master?.showTrustSection === false){
-  hideSection("trustSection");
-}
+
 /* =========================
    LOAD MENU DATA
 ========================= */
-fetch("./menu.json5")
-  .then(res => res.text())
-  .then(data => {
-  fullMenuData = data.categories;
-  renderMenu(fullMenuData);
-})
-  .catch(err => console.error("Menu JSON5 error:", err));
+function loadMenu() {
+  fetch("./menu.json5")
+    .then(res => res.text())
+    .then(text => {
+      const parsed = JSON5.parse(text);
+      fullMenuData = parsed.categories;
+      renderMenu(fullMenuData);
+    })
+    .catch(err => console.error("Menu JSON5 error:", err));
+}
 
 function renderMenu(categories) {
-
   const container = document.querySelector("#menuContainer");
   container.innerHTML = "";
 
   categories.forEach(category => {
-
-    // Filter items if vegMode active
     let items = category.items;
 
-    if(vegModeOnly){
+    if (vegModeOnly) {
       items = items.filter(i => i.type === "veg");
     }
 
-    // If no items remain → skip full category
-    if(!items.length){
+    if (!items.length) {
       return;
     }
 
     const section = document.createElement("section");
     section.className = "menu-category";
-section.id = "cat-" + category.name.replace(/\s+/g,"-").toLowerCase();
+    section.id = "cat-" + category.name.replace(/\s+/g, "-").toLowerCase();
     section.innerHTML = `<h2 class="category-title">${category.name}</h2>`;
 
     const vegItems = items.filter(i => i.type === "veg");
     const nonVegItems = items.filter(i => i.type === "non-veg");
 
-    if(vegItems.length){
+    if (vegItems.length) {
       section.appendChild(buildMenuBlock("Veg Items", vegItems, "veg"));
     }
 
-    if(nonVegItems.length && !vegModeOnly){
+    if (nonVegItems.length && !vegModeOnly) {
       section.appendChild(buildMenuBlock("Non-Veg Items", nonVegItems, "nonveg"));
     }
 
@@ -262,35 +319,35 @@ section.id = "cat-" + category.name.replace(/\s+/g,"-").toLowerCase();
 
     container.appendChild(section);
   });
+
   generateCategoryNav();
 }
 
 // ===============================
 // UPI DEEP LINK
 // ===============================
-function handleUpiPayment(){
-
-  if(!upiConfig.upiId){
+function handleUpiPayment() {
+  if (!upiConfig.upiId) {
     showDialog("UPI ID not configured");
     return;
   }
 
   let amount = "";
 
-  if(upiConfig.autoFillAmount){
-    const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-    if(total > 0){
+  if (upiConfig.autoFillAmount) {
+    const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
+    if (total > 0) {
       amount = total.toFixed(2);
     }
   }
 
   let upiUrl = `upi://pay?pa=${encodeURIComponent(upiConfig.upiId)}`;
 
-  if(upiConfig.payeeName){
+  if (upiConfig.payeeName) {
     upiUrl += `&pn=${encodeURIComponent(upiConfig.payeeName)}`;
   }
 
-  if(amount){
+  if (amount) {
     upiUrl += `&am=${amount}&cu=INR`;
   }
 
@@ -309,12 +366,10 @@ function buildMenuBlock(title, items, type) {
     const hasMultiplePrices = item.prices.length > 1;
     const singlePrice = item.prices[0];
 
-    // Price display line (ALWAYS visible)
     const priceLine = hasMultiplePrices
       ? `<div class="price-line muted">Select option below</div>`
       : `<div class="price-line">₹ ${singlePrice.price}</div>`;
 
-    // Variant pills (ONLY if multiple prices)
     const priceOptions = hasMultiplePrices
       ? item.prices.map((p, idx) => `
           <label>
@@ -385,6 +440,7 @@ function cleanNumber(num) {
 }
 function renderBadges(badges) {
   const box = document.querySelector("#badgeContainer");
+  if (!box) return;
   box.innerHTML = "";
   badges.forEach(b => {
     const s = document.createElement("span");
@@ -397,6 +453,7 @@ function renderBadges(badges) {
 /* ===== OPENING HOURS ===== */
 function renderOpeningHours(hours) {
   const box = document.querySelector("#timingBox");
+  if (!box) return;
   box.innerHTML = "";
 
   Object.keys(hours).forEach(day => {
@@ -428,34 +485,30 @@ function capitalize(s) {
 }
 
 /* =========================
-   CART LOGIC (BASIC)
+   CART LOGIC
 ========================= */
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function addToCart(name, label, price){
-  if(!restaurantOpen){
-  alert("Restaurant is currently closed");
-  return;
-}
+function addToCart(name, label, price) {
+  if (!restaurantOpen) {
+    showDialog("Restaurant is currently closed");
+    return;
+  }
   const existing = cart.find(i => i.name === name);
-
-  if(existing){
+  if (existing) {
     existing.qty += 1;
   } else {
     cart.push({ name, label, price, qty: 1 });
   }
-
   saveCart();
 }
 
-function removeFromCart(name){
-  // remove LAST matching item (variant-safe)
-  for(let i = cart.length - 1; i >= 0; i--){
-    if(cart[i].name === name){
+function removeFromCart(name) {
+  for (let i = cart.length - 1; i >= 0; i--) {
+    if (cart[i].name === name) {
       cart[i].qty -= 1;
-      if(cart[i].qty <= 0){
-        cart.splice(i,1);
+      if (cart[i].qty <= 0) {
+        cart.splice(i, 1);
       }
       break;
     }
@@ -463,28 +516,16 @@ function removeFromCart(name){
   saveCart();
 }
 
-// ===============================
-// LOGO CONTROL
-// ===============================
-const logoEl = document.querySelector("#restaurantLogo");
-
-if (data.master?.showLogo && data.identity.hasLogo) {
-  setImage("#restaurantLogo", "./assets/logo.png");
-} else if (logoEl) {
-  logoEl.style.display = "none";
-}
-
-function saveCart(){
+function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartUI();
 }
 
-function updateCartUI(){
+function updateCartUI() {
   let totalQty = 0;
   let totalPrice = 0;
 
-  // reset all qty labels to 0
-  document.querySelectorAll(".qty-count").forEach(el=>{
+  document.querySelectorAll(".qty-count").forEach(el => {
     el.textContent = "0";
   });
 
@@ -492,41 +533,48 @@ function updateCartUI(){
     totalQty += i.qty;
     totalPrice += i.qty * i.price;
 
-    const id = "qty-" + i.name.replace(/\s/g,'');
+    const id = "qty-" + i.name.replace(/\s/g, '');
     const qtyEl = document.getElementById(id);
-    if(qtyEl){
+    if (qtyEl) {
       qtyEl.textContent = i.qty;
     }
   });
-updateDeliveryNotice();
-  document.getElementById("cartItemCount").textContent = totalQty;
-  document.getElementById("cartTotal").textContent = totalPrice;
 
- if(totalQty > 0 && restaurantOpen && orderingEnabled){
-    document.getElementById("cartBar").classList.remove("hidden");
-  } else {
-    document.getElementById("cartBar").classList.add("hidden");
+  updateDeliveryNotice();
+
+  const cartItemCount = document.getElementById("cartItemCount");
+  const cartTotal = document.getElementById("cartTotal");
+  const cartBar = document.getElementById("cartBar");
+
+  if (cartItemCount) cartItemCount.textContent = totalQty;
+  if (cartTotal) cartTotal.textContent = totalPrice;
+
+  if (cartBar) {
+    if (totalQty > 0 && restaurantOpen && orderingEnabled) {
+      cartBar.classList.remove("hidden");
+    } else {
+      cartBar.classList.add("hidden");
+    }
   }
 }
+
 // ===============================
 // CATEGORY NAV GENERATOR
 // ===============================
-function generateCategoryNav(){
-
+function generateCategoryNav() {
   const nav = document.getElementById("categoryNav");
-  if(!nav) return;
+  if (!nav) return;
 
   nav.innerHTML = "";
 
   const sections = document.querySelectorAll(".menu-category");
 
   sections.forEach(section => {
-
     const btn = document.createElement("button");
     btn.textContent = section.querySelector(".category-title").textContent;
 
     btn.onclick = () => {
-      section.scrollIntoView({ behavior:"smooth", block:"start" });
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     nav.appendChild(btn);
@@ -534,22 +582,17 @@ function generateCategoryNav(){
 
   observeActiveCategory();
 }
+
 // ===============================
 // ACTIVE CATEGORY OBSERVER
 // ===============================
-function observeActiveCategory(){
-
+function observeActiveCategory() {
   const buttons = document.querySelectorAll("#categoryNav button");
   const sections = document.querySelectorAll(".menu-category");
 
   const observer = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
-      if(entry.isIntersecting){
-
-        const id = entry.target.id;
-
+      if (entry.isIntersecting) {
         buttons.forEach(btn => {
           btn.classList.remove("active");
         });
@@ -558,12 +601,11 @@ function observeActiveCategory(){
           entry.target.querySelector(".category-title").textContent === btn.textContent
         );
 
-        if(activeBtn){
+        if (activeBtn) {
           activeBtn.classList.add("active");
         }
       }
     });
-
   }, {
     rootMargin: "-40% 0px -55% 0px",
     threshold: 0
@@ -571,89 +613,66 @@ function observeActiveCategory(){
 
   sections.forEach(section => observer.observe(section));
 }
+
 /* =========================
    RESTAURANT OPEN CHECK
 ========================= */
-
-let restaurantOpen = true;
-
-function checkRestaurantOpen(hours){
+function checkRestaurantOpen(hours) {
   const now = new Date();
-  const day = now.toLocaleDateString("en-US",{ weekday:"long" }).toLowerCase();
-  const currentMinutes = now.getHours()*60 + now.getMinutes();
+  const day = now.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
   const today = hours[day];
-  if(!today || today.isClosed){
+  if (!today || today.isClosed) {
     restaurantOpen = false;
     return;
   }
 
-  restaurantOpen = today.slots.some(slot=>{
-    const [oh,om] = slot.open.split(":").map(Number);
-    const [ch,cm] = slot.close.split(":").map(Number);
-    const openM = oh*60+om;
-    const closeM = ch*60+cm;
+  restaurantOpen = today.slots.some(slot => {
+    const [oh, om] = slot.open.split(":").map(Number);
+    const [ch, cm] = slot.close.split(":").map(Number);
+    const openM = oh * 60 + om;
+    const closeM = ch * 60 + cm;
     return currentMinutes >= openM && currentMinutes <= closeM;
   });
 }
-updateLiveBadge(data.openingHours);
 
-// Update every minute
-setInterval(() => {
-  checkRestaurantOpen(data.openingHours);
-  updateLiveBadge(data.openingHours);
-}, 60000);
-function updateOrderAvailability(){
+function updateOrderAvailability() {
   const cartBar = document.getElementById("cartBar");
-  const msgId = "closedMsg";
-
-  let msg = document.getElementById(msgId);
-  if(!restaurantOpen){
-  cartBar.classList.add("hidden");
-} else {
-  if(msg) msg.remove();
-}
+  if (!restaurantOpen) {
+    if (cartBar) cartBar.classList.add("hidden");
+  }
 }
 
 /* =========================
    WHATSAPP ORDER
 ========================= */
-
-let restaurantWhatsapp = "";
-
-function setRestaurantWhatsapp(number){
+function setRestaurantWhatsapp(number) {
   restaurantWhatsapp = number;
 }
 
-
-
-updateCartUI();
-if(!orderingEnabled){
-  showDialog("Online ordering is currently disabled");
-  return;
-}
-function addSelectedToCart(itemName){
-  if(!restaurantOpen){
-    alert("Restaurant is currently closed");
+function addSelectedToCart(itemName) {
+  if (!restaurantOpen) {
+    showDialog("Restaurant is currently closed");
     return;
   }
 
   const radios = document.querySelectorAll(
-    `input[name="price-${itemName.replace(/\s/g,'')}"]`
+    `input[name="price-${itemName.replace(/\s/g, '')}"]`
   );
 
   let selectedPrice = null;
   let selectedLabel = "";
 
-  radios.forEach(r=>{
-    if(r.checked){
+  radios.forEach(r => {
+    if (r.checked) {
       selectedPrice = Number(r.value);
       selectedLabel = r.dataset.label;
     }
   });
 
-  if(selectedPrice === null){
-    alert("Please select a price option");
+  if (selectedPrice === null) {
+    showDialog("Please select a price option");
     return;
   }
 
@@ -661,7 +680,7 @@ function addSelectedToCart(itemName){
     i => i.name === itemName && i.label === selectedLabel
   );
 
-  if(existing){
+  if (existing) {
     existing.qty += 1;
   } else {
     cart.push({
@@ -678,25 +697,20 @@ function addSelectedToCart(itemName){
 /* =========================
    CART MODAL
 ========================= */
-if(!orderingEnabled){
-  showDialog("Online ordering is currently disabled");
-  return;
-}
-function openCartModal(){
-  
-  if(cart.length === 0) return;
+function openCartModal() {
+  if (cart.length === 0) return;
 
   renderCartModal();
   document.body.style.overflow = "hidden";
   document.getElementById("cartModal").classList.remove("hidden");
 }
 
-function closeCartModal(){
+function closeCartModal() {
   document.body.style.overflow = "";
   document.getElementById("cartModal").classList.add("hidden");
 }
 
-function renderCartModal(){
+function renderCartModal() {
   const box = document.getElementById("cartItems");
   box.innerHTML = "";
 
@@ -730,18 +744,17 @@ function renderCartModal(){
 // ===============================
 // LIVE OPEN BADGE
 // ===============================
-function updateLiveBadge(hours){
-
+function updateLiveBadge(hours) {
   const badge = document.getElementById("liveOpenBadge");
-  if(!badge) return;
+  if (!badge) return;
 
   const now = new Date();
-  const day = now.toLocaleDateString("en-US",{ weekday:"long" }).toLowerCase();
-  const currentMinutes = now.getHours()*60 + now.getMinutes();
+  const day = now.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
   const today = hours[day];
 
-  if(!today || today.isClosed){
+  if (!today || today.isClosed) {
     badge.innerHTML = `
       <span style="background:#fdecea;color:#c62828;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
         🔴 Closed Today
@@ -754,20 +767,20 @@ function updateLiveBadge(hours){
   let nextChange = "";
 
   today.slots.forEach(slot => {
-    const [oh,om] = slot.open.split(":").map(Number);
-    const [ch,cm] = slot.close.split(":").map(Number);
-    const openM = oh*60+om;
-    const closeM = ch*60+cm;
+    const [oh, om] = slot.open.split(":").map(Number);
+    const [ch, cm] = slot.close.split(":").map(Number);
+    const openM = oh * 60 + om;
+    const closeM = ch * 60 + cm;
 
-    if(currentMinutes >= openM && currentMinutes <= closeM){
+    if (currentMinutes >= openM && currentMinutes <= closeM) {
       isOpen = true;
       nextChange = `Closes at ${toAMPM(slot.close)}`;
-    } else if(currentMinutes < openM && !isOpen){
+    } else if (currentMinutes < openM && !isOpen) {
       nextChange = `Opens at ${toAMPM(slot.open)}`;
     }
   });
 
-  if(isOpen){
+  if (isOpen) {
     badge.innerHTML = `
       <span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
         🟢 Open Now • ${nextChange}
@@ -782,16 +795,16 @@ function updateLiveBadge(hours){
   }
 }
 
-function increaseFromModal(index){
+function increaseFromModal(index) {
   cart[index].qty += 1;
   saveCart();
   renderCartModal();
 }
 
-function decreaseFromModal(index){
+function decreaseFromModal(index) {
   cart[index].qty -= 1;
-  if(cart[index].qty <= 0){
-    cart.splice(index,1);
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
   }
   saveCart();
   renderCartModal();
@@ -800,22 +813,19 @@ function decreaseFromModal(index){
 // ===============================
 // MENU SEARCH ENGINE
 // ===============================
-function handleMenuSearch(query){
-
+function handleMenuSearch(query) {
   const q = query.trim().toLowerCase();
 
-  if(!q){
+  if (!q) {
     renderMenu(fullMenuData);
     return;
   }
 
   const filtered = fullMenuData.map(category => {
-
     const categoryMatch = category.name.toLowerCase().includes(q);
 
     const items = category.items.filter(item => {
-
-      if(vegModeOnly && item.type !== "veg"){
+      if (vegModeOnly && item.type !== "veg") {
         return false;
       }
 
@@ -831,7 +841,6 @@ function handleMenuSearch(query){
       name: category.name,
       items
     };
-
   }).filter(cat => cat.items.length > 0);
 
   renderMenu(filtered);
@@ -840,26 +849,19 @@ function handleMenuSearch(query){
 /* =========================
    CHECKOUT LOGIC
 ========================= */
-
-function openCheckout(){
-
-  // ❌ BLOCK if cart is empty
-  if(!cart || cart.length === 0){
-    alert("Your cart is empty. Please add items before checkout.");
+function openCheckout() {
+  if (!cart || cart.length === 0) {
+    showDialog("Your cart is empty. Please add items before checkout.");
     return;
   }
 
-  // ❌ BLOCK if total is zero
-  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-    
+  const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
 
-  // ❌ DELIVERY MINIMUM ORDER CHECK
-  if(total <= 0){
-    alert("Please add valid items to proceed.");
+  if (total <= 0) {
+    showDialog("Please add valid items to proceed.");
     return;
   }
 
-  
   closeCartModal();
 
   const checkout = document.getElementById("checkoutModal");
@@ -868,38 +870,33 @@ function openCheckout(){
   checkout.classList.remove("hidden");
   document.body.style.overflow = "hidden";
 
-  // Force reset address every time
   addressBox.classList.add("hidden");
   addressBox.style.display = "none";
 
-  // Force Dine-In default
   const dineIn = document.querySelector('input[name="orderType"][value="Dine-In"]');
-  if(dineIn){
+  if (dineIn) {
     dineIn.checked = true;
   }
 
   toggleAddress();
 }
+
 // ===============================
 // WHATSAPP RETURN DETECTION
 // ===============================
-function checkWhatsAppReturn(){
-
+function checkWhatsAppReturn() {
   const pending = localStorage.getItem("pendingWhatsAppOrder");
 
-  if(pending === "true"){
-
+  if (pending === "true") {
     showWhatsAppReturnPopup();
-
-    // Clear flag
     localStorage.removeItem("pendingWhatsAppOrder");
   }
 }
+
 // ===============================
 // WHATSAPP RETURN POPUP
 // ===============================
-function showWhatsAppReturnPopup(){
-
+function showWhatsAppReturnPopup() {
   const overlay = document.createElement("div");
   overlay.style.position = "fixed";
   overlay.style.top = 0;
@@ -931,107 +928,110 @@ function showWhatsAppReturnPopup(){
 
   document.body.appendChild(overlay);
 
-  document.getElementById("confirmOrderSent").onclick = function(){
+  document.getElementById("confirmOrderSent").onclick = function () {
     clearCart();
     overlay.remove();
     showDialog("Order confirmed. Thank you!");
   };
 
-  document.getElementById("cancelOrderReturn").onclick = function(){
+  document.getElementById("cancelOrderReturn").onclick = function () {
     overlay.remove();
   };
 }
-function closeCheckout(){
+
+function closeCheckout() {
   document.getElementById("checkoutModal").classList.add("hidden");
   document.body.style.overflow = "";
 }
 
-document.addEventListener("change", function(e){
-  if(e.target.name === "orderType"){
+document.addEventListener("change", function (e) {
+  if (e.target.name === "orderType") {
     toggleAddress();
   }
 });
 
-function toggleAddress(){
-
+function toggleAddress() {
   const addressBox = document.getElementById("addressBox");
   const tableBox = document.getElementById("tableBox");
   const selected = document.querySelector('input[name="orderType"]:checked');
 
-  // Always hide first
-  addressBox.classList.add("hidden");
-  addressBox.style.display = "none";
+  if (addressBox) {
+    addressBox.classList.add("hidden");
+    addressBox.style.display = "none";
+  }
 
-  tableBox.classList.add("hidden");
-  tableBox.style.display = "none";
+  if (tableBox) {
+    tableBox.classList.add("hidden");
+    tableBox.style.display = "none";
+  }
 
-  if(!selected) return;
+  if (!selected) return;
 
-  // DELIVERY
-  if(selected.value === "Delivery"){
+  if (selected.value === "Delivery" && addressBox) {
     addressBox.classList.remove("hidden");
     addressBox.style.display = "block";
   }
 
-  // DINE-IN
-  if(selected.value === "Dine-In" && tableSettings.enabled){
+  if (selected.value === "Dine-In" && tableSettings.enabled && tableBox) {
     tableBox.classList.remove("hidden");
     tableBox.style.display = "block";
   }
+
   updateDeliveryNotice();
 }
-if(!orderingEnabled){
-  showDialog("Online ordering is currently disabled");
-  return;
-}
-function finalPlaceOrder(){
 
-  if(!restaurantOpen){
+function finalPlaceOrder() {
+  if (!orderingEnabled) {
+    showDialog("Online ordering is currently disabled");
+    return;
+  }
+
+  if (!restaurantOpen) {
     showDialog("Restaurant is currently closed");
     return;
   }
 
-  if(!cart || cart.length === 0){
+  if (!cart || cart.length === 0) {
     showDialog("Your cart is empty. Please add items.");
     return;
   }
 
-  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-  if(total <= 0){
+  const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
+  if (total <= 0) {
     showDialog("Invalid order. Please add items again.");
     return;
   }
 
   const name = document.getElementById("customerName").value.trim();
-  if(!name){
+  if (!name) {
     showDialog("Please enter customer name");
     return;
   }
 
   const type = document.querySelector('input[name="orderType"]:checked')?.value;
-let tableNumber = "";
+  let tableNumber = "";
 
-if(type === "Dine-In" && tableSettings.enabled){
-  tableNumber = document.getElementById("tableNumber").value.trim();
+  if (type === "Dine-In" && tableSettings.enabled) {
+    tableNumber = document.getElementById("tableNumber")?.value.trim() || "";
 
-  if(tableSettings.required && !tableNumber){
-    showDialog("Please enter table number");
+    if (tableSettings.required && !tableNumber) {
+      showDialog("Please enter table number");
+      return;
+    }
+  }
+
+  if (type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder) {
+    const remaining = minimumDeliveryOrder - total;
+    showDialog(
+      `${minimumDeliveryMessage}: ₹${minimumDeliveryOrder}\nAdd ₹${remaining} more to proceed.`
+    );
     return;
   }
-}
-  // ✅ DELIVERY MINIMUM ORDER CHECK (FIXED)
-  if(type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
-  const remaining = minimumDeliveryOrder - total;
-  showDialog(
-    `${minimumDeliveryMessage}: ₹${minimumDeliveryOrder}\nAdd ₹${remaining} more to proceed.`
-  );
-  return;
-}
 
   let address = "";
-  if(type === "Delivery"){
-    address = document.getElementById("deliveryAddress").value.trim();
-    if(!address){
+  if (type === "Delivery") {
+    address = document.getElementById("deliveryAddress")?.value.trim() || "";
+    if (!address) {
       showDialog("Please enter delivery address");
       return;
     }
@@ -1041,46 +1041,45 @@ if(type === "Dine-In" && tableSettings.enabled){
   let message = "New Order\n\n";
 
   cart.forEach((item, index) => {
-    message += `${index+1}. ${item.name} (${item.label}) x ${item.qty} = Rs ${item.qty * item.price}\n`;
+    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = Rs ${item.qty * item.price}\n`;
   });
 
-  message += `\nTotal: Rs ${total}\n`;
+  const totalMsg = cart.reduce((s, i) => s + i.qty * i.price, 0);
+  message += `\nTotal: Rs ${totalMsg}\n`;
   message += `Customer: ${name}\n`;
   message += `Order Type: ${type}\n`;
-  if(type === "Dine-In" && tableNumber){
-  message += `Table: ${tableNumber}\n`;
-}
-if(type === "Takeaway"){
-  message += "Pickup at Restaurant\n";
-}
-  if(type === "Delivery"){
+
+  if (type === "Dine-In" && tableNumber) {
+    message += `Table: ${tableNumber}\n`;
+  }
+  if (type === "Takeaway") {
+    message += "Pickup at Restaurant\n";
+  }
+  if (type === "Delivery") {
     message += `Address: ${address}\n`;
   }
 
   localStorage.setItem("pendingOrder", "true");
+  localStorage.setItem("pendingWhatsAppOrder", "true");
 
   const url =
     "https://wa.me/" +
     restaurantWhatsapp +
     "?text=" +
     encodeURIComponent(message);
-// Mark order as pending
-localStorage.setItem("pendingWhatsAppOrder", "true");
+
   window.open(url, "_blank");
 }
-if(!orderingEnabled){
-  showDialog("Online ordering is currently disabled");
-  return;
-}
-function addSinglePriceToCart(name, label, price){
-  if(!restaurantOpen){
-    showDialog("Restaurant is currently closed")
+
+function addSinglePriceToCart(name, label, price) {
+  if (!restaurantOpen) {
+    showDialog("Restaurant is currently closed");
     return;
   }
 
   const existing = cart.find(i => i.name === name && i.label === label);
 
-  if(existing){
+  if (existing) {
     existing.qty += 1;
   } else {
     cart.push({ name, label, price, qty: 1 });
@@ -1089,48 +1088,59 @@ function addSinglePriceToCart(name, label, price){
   saveCart();
 }
 
-function showWaConfirm(){
+function showWaConfirm() {
   document.getElementById("waConfirmModal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
 
-function closeWaConfirm(){
+function closeWaConfirm() {
   document.getElementById("waConfirmModal").classList.add("hidden");
   document.body.style.overflow = "";
 }
 
-
-
-function waNotSent(){
+function waNotSent() {
   closeWaConfirm();
-  // keep cart as-is
 }
 
-function showDialog(message, title="Notice"){
+function showDialog(message, title = "Notice") {
   document.getElementById("dialogTitle").textContent = title;
   document.getElementById("dialogMessage").textContent = message;
   document.getElementById("appDialog").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
 
-function closeDialog(){
+function closeDialog() {
   document.getElementById("appDialog").classList.add("hidden");
   document.body.style.overflow = "";
 }
 
-function waSent(){
-
-  // 1️⃣ CLEAR CART DATA
+function waSent() {
   cart = [];
   localStorage.removeItem("cart");
   localStorage.removeItem("pendingOrder");
   saveCart();
+
+  closeWaConfirm();
+
+  const cartModal = document.getElementById("cartModal");
+  if (cartModal) cartModal.classList.add("hidden");
+
+  const checkoutModal = document.getElementById("checkoutModal");
+  if (checkoutModal) checkoutModal.classList.add("hidden");
+
+  document.body.style.overflow = "";
+
+  const cartBar = document.getElementById("cartBar");
+  if (cartBar) cartBar.classList.add("hidden");
+
+  showOrderSuccess();
+}
+
 // ===============================
 // SAFE CLEAR CART
 // ===============================
-function confirmClearCart(){
-
-  if(cart.length === 0){
+function confirmClearCart() {
+  if (cart.length === 0) {
     showDialog("Cart is already empty");
     return;
   }
@@ -1166,37 +1176,24 @@ function confirmClearCart(){
 
   document.body.appendChild(confirmBox);
 
-  document.getElementById("confirmClearYes").onclick = function(){
+  document.getElementById("confirmClearYes").onclick = function () {
     clearCart();
     confirmBox.remove();
   };
 
-  document.getElementById("confirmClearNo").onclick = function(){
+  document.getElementById("confirmClearNo").onclick = function () {
     confirmBox.remove();
   };
 }
-  // 2️⃣ CLOSE ALL MODALS (VERY IMPORTANT)
-  closeWaConfirm();
 
-  const cartModal = document.getElementById("cartModal");
-  if(cartModal) cartModal.classList.add("hidden");
-
-  const checkoutModal = document.getElementById("checkoutModal");
-  if(checkoutModal) checkoutModal.classList.add("hidden");
-
-  document.body.style.overflow = "";
-
-  // 3️⃣ HIDE CART BAR COMPLETELY
-  const cartBar = document.getElementById("cartBar");
-  if(cartBar) cartBar.classList.add("hidden");
-
-  // 4️⃣ SHOW SUCCESS OVERLAY (CENTER, ABOVE EVERYTHING)
-  showOrderSuccess();
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  saveCart();
 }
-function showOrderSuccess(){
 
-  // safety: agar already open ho
-  if(document.getElementById("orderSuccessOverlay")) return;
+function showOrderSuccess() {
+  if (document.getElementById("orderSuccessOverlay")) return;
 
   const overlay = document.createElement("div");
   overlay.id = "orderSuccessOverlay";
@@ -1214,9 +1211,10 @@ function showOrderSuccess(){
 
   document.body.appendChild(overlay);
 }
-function closeOrderSuccess(){
+
+function closeOrderSuccess() {
   const el = document.getElementById("orderSuccessOverlay");
-  if(el) el.remove();
+  if (el) el.remove();
 }
 
 // ===============================
@@ -1234,19 +1232,26 @@ document.addEventListener("visibilitychange", () => {
     setTimeout(showWaConfirm, 400);
   }
 });
+
+// Detect tab focus return
+window.addEventListener("focus", function () {
+  checkWhatsAppReturn();
+});
+
 // ===============================
 // UNIVERSAL SECTION HIDE
 // ===============================
-function hideSection(id){
+function hideSection(id) {
   const el = document.getElementById(id);
-  if(el){
+  if (el) {
     el.style.display = "none";
   }
 }
+
 // ===============================
 // ORDER DISABLED BANNER
 // ===============================
-function showOrderingDisabledBanner(){
+function showOrderingDisabledBanner() {
   const banner = document.createElement("div");
   banner.style.background = "#fff3cd";
   banner.style.color = "#856404";
@@ -1259,42 +1264,42 @@ function showOrderingDisabledBanner(){
 
   document.body.insertBefore(banner, document.body.firstChild);
 }
+
 // ===============================
 // SERVICE OPTION CONTROL
 // ===============================
-function hideServiceOption(id){
+function hideServiceOption(id) {
   const el = document.getElementById(id);
-  if(el){
+  if (el) {
     el.style.display = "none";
   }
 }
 
-function setDefaultService(){
+function setDefaultService() {
   const radios = document.querySelectorAll('input[name="orderType"]');
-  for(let r of radios){
-    if(r.closest("label").style.display !== "none"){
+  for (let r of radios) {
+    if (r.closest("label").style.display !== "none") {
       r.checked = true;
       break;
     }
   }
 }
+
 // ===============================
 // DELIVERY MINIMUM LIVE CHECK
 // ===============================
-function updateDeliveryNotice(){
-
+function updateDeliveryNotice() {
   const selected = document.querySelector('input[name="orderType"]:checked');
   const notice = document.getElementById("deliveryNotice");
 
-  if(!selected || !notice){
+  if (!selected || !notice) {
     return;
   }
 
-  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+  const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
 
-  if(selected.value === "Delivery" && minimumDeliveryOrder > 0){
-
-    if(total < minimumDeliveryOrder){
+  if (selected.value === "Delivery" && minimumDeliveryOrder > 0) {
+    if (total < minimumDeliveryOrder) {
       const remaining = minimumDeliveryOrder - total;
       notice.style.display = "block";
       notice.textContent =
@@ -1302,31 +1307,25 @@ function updateDeliveryNotice(){
     } else {
       notice.style.display = "none";
     }
-
   } else {
     notice.style.display = "none";
   }
 }
+
 // ===============================
 // SEARCH LISTENER
 // ===============================
-document.addEventListener("input", function(e){
-  if(e.target.id === "menuSearch"){
+document.addEventListener("input", function (e) {
+  if (e.target.id === "menuSearch") {
     handleMenuSearch(e.target.value);
   }
 });
-document.addEventListener("click", function(e){
-  if(e.target.id === "upiPayBtn"){
+
+document.addEventListener("click", function (e) {
+  if (e.target.id === "upiPayBtn") {
     handleUpiPayment();
   }
-});
-
-// Detect tab focus return
-window.addEventListener("focus", function(){
-  checkWhatsAppReturn();
-});
-document.addEventListener("click", function(e){
-  if(e.target.id === "clearCartBtn"){
+  if (e.target.id === "clearCartBtn") {
     confirmClearCart();
   }
 });
