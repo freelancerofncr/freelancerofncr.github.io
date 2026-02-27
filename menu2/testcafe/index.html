@@ -384,6 +384,7 @@ a{text-decoration:none}
       style="width:100%;padding:12px;border-radius:12px;border:1.5px solid #ddd;font-size:14px;"
     >
   </div>
+   <div id="categoryNav" class="category-nav"></div>
   <div id="menuContainer"></div>
 </main>
 
@@ -1107,6 +1108,37 @@ flex-shrink:0;
   </div>
 </div>
    <style>
+
+      /* ===============================
+   CATEGORY NAV (Sticky Tabs)
+================================ */
+.category-nav{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px 0;
+  margin-bottom:10px;
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:5;
+}
+
+.category-nav button{
+  border:none;
+  background:#f1f1f1;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.category-nav button.active{
+  background:#111;
+  color:#fff;
+}
 /* ===============================
    ORDER SUCCESS OVERLAY
 =============================== */
