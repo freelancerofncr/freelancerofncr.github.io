@@ -16,6 +16,8 @@ master: {
   showServiceBadges: true,
   showPaymentSection: true,
   showOpeningHours: true
+// Order Controls
+whatsAppOrderingEnabled: true,
 },
 
   "identity": {
