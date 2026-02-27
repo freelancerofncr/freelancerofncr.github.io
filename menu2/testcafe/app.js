@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadBusiness();
   loadMenu();
+  checkWhatsAppReturn();
 });
 let tableSettings = {
   enabled: false,
   required: false,
   label: "Table Number"
+};
+let upiConfig = {
+  upiId: "",
+  payeeName: "",
+  autoFillAmount: true
 };
 let vegModeOnly = false;
 let minimumDeliveryMessage = "Minimum order required for delivery";
@@ -171,6 +177,18 @@ if(data.master?.showServiceBadges === false){
 if(data.master?.showPaymentSection === false){
   hideSection("paymentSection");
 }
+  // ===============================
+// UPI CONFIG LOAD
+// ===============================
+if(data.payment){
+  upiConfig.upiId = data.payment.upiId || "";
+  upiConfig.payeeName = data.payment.payeeName || "";
+  upiConfig.autoFillAmount = data.payment.autoFillAmount !== false;
+}
+  if(!upiConfig.upiId){
+  const btn = document.getElementById("upiPayBtn");
+  if(btn) btn.style.display = "none";
+}
   /* ===== ONLINE PLATFORMS (NO CHANGE) ===== */
   setLink("#zomatoBtn", data.onlinePlatforms.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
@@ -245,6 +263,38 @@ section.id = "cat-" + category.name.replace(/\s+/g,"-").toLowerCase();
     container.appendChild(section);
   });
   generateCategoryNav();
+}
+
+// ===============================
+// UPI DEEP LINK
+// ===============================
+function handleUpiPayment(){
+
+  if(!upiConfig.upiId){
+    showDialog("UPI ID not configured");
+    return;
+  }
+
+  let amount = "";
+
+  if(upiConfig.autoFillAmount){
+    const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+    if(total > 0){
+      amount = total.toFixed(2);
+    }
+  }
+
+  let upiUrl = `upi://pay?pa=${encodeURIComponent(upiConfig.upiId)}`;
+
+  if(upiConfig.payeeName){
+    upiUrl += `&pn=${encodeURIComponent(upiConfig.payeeName)}`;
+  }
+
+  if(amount){
+    upiUrl += `&am=${amount}&cu=INR`;
+  }
+
+  window.location.href = upiUrl;
 }
 
 function buildMenuBlock(title, items, type) {
@@ -830,7 +880,67 @@ function openCheckout(){
 
   toggleAddress();
 }
+// ===============================
+// WHATSAPP RETURN DETECTION
+// ===============================
+function checkWhatsAppReturn(){
 
+  const pending = localStorage.getItem("pendingWhatsAppOrder");
+
+  if(pending === "true"){
+
+    showWhatsAppReturnPopup();
+
+    // Clear flag
+    localStorage.removeItem("pendingWhatsAppOrder");
+  }
+}
+// ===============================
+// WHATSAPP RETURN POPUP
+// ===============================
+function showWhatsAppReturnPopup(){
+
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = 0;
+  overlay.style.left = 0;
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.background = "rgba(0,0,0,0.5)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = 9999;
+
+  overlay.innerHTML = `
+    <div style="background:#fff;padding:24px;border-radius:16px;max-width:320px;text-align:center;">
+      <h3 style="margin-bottom:10px;">Order Sent?</h3>
+      <p style="font-size:14px;margin-bottom:18px;">
+        Did you successfully send your order on WhatsApp?
+      </p>
+      <button id="confirmOrderSent"
+        style="margin-bottom:10px;width:100%;padding:10px;border:none;border-radius:10px;background:#2e7d32;color:#fff;font-weight:600;">
+        Yes, Order Sent
+      </button>
+      <button id="cancelOrderReturn"
+        style="width:100%;padding:10px;border:none;border-radius:10px;background:#eee;font-weight:600;">
+        Not Yet
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById("confirmOrderSent").onclick = function(){
+    clearCart();
+    overlay.remove();
+    showDialog("Order confirmed. Thank you!");
+  };
+
+  document.getElementById("cancelOrderReturn").onclick = function(){
+    overlay.remove();
+  };
+}
 function closeCheckout(){
   document.getElementById("checkoutModal").classList.add("hidden");
   document.body.style.overflow = "";
@@ -954,7 +1064,8 @@ if(type === "Takeaway"){
     restaurantWhatsapp +
     "?text=" +
     encodeURIComponent(message);
-
+// Mark order as pending
+localStorage.setItem("pendingWhatsAppOrder", "true");
   window.open(url, "_blank");
 }
 if(!orderingEnabled){
@@ -1154,4 +1265,14 @@ document.addEventListener("input", function(e){
   if(e.target.id === "menuSearch"){
     handleMenuSearch(e.target.value);
   }
+});
+document.addEventListener("click", function(e){
+  if(e.target.id === "upiPayBtn"){
+    handleUpiPayment();
+  }
+});
+
+// Detect tab focus return
+window.addEventListener("focus", function(){
+  checkWhatsAppReturn();
 });
