@@ -18,7 +18,12 @@ master: {
   showOpeningHours: true,
 whatsAppOrderingEnabled: true
 },
-
+// Table configuration (Dine-In only)
+tableConfig: {
+  enabled: true,
+  required: true,
+  label: "Table Number"
+},
 // Service configuration
 services: {
   dineIn: true,
