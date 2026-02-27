@@ -703,16 +703,22 @@ flex-shrink:0;
 
     <div class="checkout-field">
       <label>Order Type *</label>
-      <div class="order-type">
-        <label>
-          <input type="radio" name="orderType" value="Dine-In" checked>
-          Dine-In
-        </label>
-        <label>
-          <input type="radio" name="orderType" value="Delivery">
-          Delivery
-        </label>
-      </div>
+     <div class="order-type" id="orderTypeContainer">
+  <label id="optDineIn">
+    <input type="radio" name="orderType" value="Dine-In" checked>
+    Dine-In
+  </label>
+
+  <label id="optDelivery">
+    <input type="radio" name="orderType" value="Delivery">
+    Delivery
+  </label>
+
+  <label id="optTakeaway">
+    <input type="radio" name="orderType" value="Takeaway">
+    Takeaway
+  </label>
+</div>
     </div>
 
     <div class="checkout-field hidden" id="addressBox" style="display:none;">
