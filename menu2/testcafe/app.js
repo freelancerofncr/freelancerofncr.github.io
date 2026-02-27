@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   loadBusiness();
   loadMenu();
 });
+let tableSettings = {
+  enabled: false,
+  required: false,
+  label: "Table Number"
+};
 let orderingEnabled = true;
 let minimumDeliveryOrder = 0;
 /* =========================
@@ -61,7 +66,21 @@ if(services.delivery === false){
 if(services.takeaway === false){
   hideServiceOption("optTakeaway");
 }
+// ===============================
+// TABLE CONFIG LOAD
+// ===============================
+if(data.flags?.tableConfig){
+  tableSettings = data.flags.tableConfig;
 
+  if(tableSettings.enabled){
+    const label = document.getElementById("tableLabel");
+    if(label){
+      label.textContent = tableSettings.required
+        ? tableSettings.label + " *"
+        : tableSettings.label;
+    }
+  }
+}
 // Auto-select first available option
 setDefaultService();
   /* ===== VEG / NON-VEG BADGE ===== */
@@ -648,17 +667,30 @@ document.addEventListener("change", function(e){
 });
 
 function toggleAddress(){
-  const box = document.getElementById("addressBox");
+
+  const addressBox = document.getElementById("addressBox");
+  const tableBox = document.getElementById("tableBox");
   const selected = document.querySelector('input[name="orderType"]:checked');
 
-  // 🔒 HARD FORCE HIDE (always first)
-  box.classList.add("hidden");
-  box.style.display = "none";
+  // Always hide first
+  addressBox.classList.add("hidden");
+  addressBox.style.display = "none";
 
-  // sirf Delivery pe hi show
-  if(selected && selected.value === "Delivery"){
-    box.classList.remove("hidden");
-    box.style.display = "block";
+  tableBox.classList.add("hidden");
+  tableBox.style.display = "none";
+
+  if(!selected) return;
+
+  // DELIVERY
+  if(selected.value === "Delivery"){
+    addressBox.classList.remove("hidden");
+    addressBox.style.display = "block";
+  }
+
+  // DINE-IN
+  if(selected.value === "Dine-In" && tableSettings.enabled){
+    tableBox.classList.remove("hidden");
+    tableBox.style.display = "block";
   }
 }
 if(!orderingEnabled){
@@ -690,7 +722,16 @@ function finalPlaceOrder(){
   }
 
   const type = document.querySelector('input[name="orderType"]:checked')?.value;
+let tableNumber = "";
 
+if(type === "Dine-In" && tableSettings.enabled){
+  tableNumber = document.getElementById("tableNumber").value.trim();
+
+  if(tableSettings.required && !tableNumber){
+    showDialog("Please enter table number");
+    return;
+  }
+}
   // ✅ DELIVERY MINIMUM ORDER CHECK (FIXED)
   if(type === "Delivery" && minimumDeliveryOrder > 0 && total < minimumDeliveryOrder){
     showDialog(`Minimum order for delivery is Rs ${minimumDeliveryOrder}. Please add more items.`);
@@ -716,6 +757,9 @@ function finalPlaceOrder(){
   message += `\nTotal: Rs ${total}\n`;
   message += `Customer: ${name}\n`;
   message += `Order Type: ${type}\n`;
+  if(type === "Dine-In" && tableNumber){
+  message += `Table: ${tableNumber}\n`;
+}
 if(type === "Takeaway"){
   message += "Pickup at Restaurant\n";
 }
