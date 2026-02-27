@@ -7,6 +7,7 @@ let tableSettings = {
   required: false,
   label: "Table Number"
 };
+let vegModeOnly = false;
 let minimumDeliveryMessage = "Minimum order required for delivery";
 let orderingEnabled = true;
 let minimumDeliveryOrder = 0;
@@ -52,6 +53,10 @@ if(!orderingEnabled){
 
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
   minimumDeliveryMessage = data.flags?.minimumDeliveryMessage || minimumDeliveryMessage;
+  // ===============================
+// VEG MODE LOAD
+// ===============================
+vegModeOnly = data.master?.vegModeOnly === true;
 // ===============================
 // SERVICE AVAILABILITY CONTROL
 // ===============================
@@ -198,22 +203,37 @@ fetch("./menu.json5")
   .catch(err => console.error("Menu JSON5 error:", err));
 
 function renderMenu(categories) {
+
   const container = document.querySelector("#menuContainer");
   container.innerHTML = "";
 
   categories.forEach(category => {
+
+    // Filter items if vegMode active
+    let items = category.items;
+
+    if(vegModeOnly){
+      items = items.filter(i => i.type === "veg");
+    }
+
+    // If no items remain → skip full category
+    if(!items.length){
+      return;
+    }
+
     const section = document.createElement("section");
     section.className = "menu-category";
 
     section.innerHTML = `<h2 class="category-title">${category.name}</h2>`;
 
-    const vegItems = category.items.filter(i => i.type === "veg");
-    const nonVegItems = category.items.filter(i => i.type === "non-veg");
+    const vegItems = items.filter(i => i.type === "veg");
+    const nonVegItems = items.filter(i => i.type === "non-veg");
 
-    if (vegItems.length) {
+    if(vegItems.length){
       section.appendChild(buildMenuBlock("Veg Items", vegItems, "veg"));
     }
-    if (nonVegItems.length) {
+
+    if(nonVegItems.length && !vegModeOnly){
       section.appendChild(buildMenuBlock("Non-Veg Items", nonVegItems, "nonveg"));
     }
 
