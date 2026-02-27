@@ -122,6 +122,7 @@ services: {
   "showSocialLinks": true,
   "deliveryAvailable": true,
   "dineInAvailable": true,
-  "minimumDeliveryOrder": 499
+  "minimumDeliveryOrder": 499,
+minimumDeliveryMessage: "Minimum order required for delivery"
 }
 }
