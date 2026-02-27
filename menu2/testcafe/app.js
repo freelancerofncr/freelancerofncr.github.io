@@ -45,7 +45,25 @@ if(!orderingEnabled){
   }
 
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
+// ===============================
+// SERVICE AVAILABILITY CONTROL
+// ===============================
+const services = data.flags?.services || {};
 
+if(services.dineIn === false){
+  hideServiceOption("optDineIn");
+}
+
+if(services.delivery === false){
+  hideServiceOption("optDelivery");
+}
+
+if(services.takeaway === false){
+  hideServiceOption("optTakeaway");
+}
+
+// Auto-select first available option
+setDefaultService();
   /* ===== VEG / NON-VEG BADGE ===== */
   const badge = document.createElement("div");
   badge.className =
@@ -698,7 +716,9 @@ function finalPlaceOrder(){
   message += `\nTotal: Rs ${total}\n`;
   message += `Customer: ${name}\n`;
   message += `Order Type: ${type}\n`;
-
+if(type === "Takeaway"){
+  message += "Pickup at Restaurant\n";
+}
   if(type === "Delivery"){
     message += `Address: ${address}\n`;
   }
@@ -854,4 +874,23 @@ function showOrderingDisabledBanner(){
   banner.textContent = "⚠ Online ordering is currently disabled.";
 
   document.body.insertBefore(banner, document.body.firstChild);
+}
+// ===============================
+// SERVICE OPTION CONTROL
+// ===============================
+function hideServiceOption(id){
+  const el = document.getElementById(id);
+  if(el){
+    el.style.display = "none";
+  }
+}
+
+function setDefaultService(){
+  const radios = document.querySelectorAll('input[name="orderType"]');
+  for(let r of radios){
+    if(r.closest("label").style.display !== "none"){
+      r.checked = true;
+      break;
+    }
+  }
 }
