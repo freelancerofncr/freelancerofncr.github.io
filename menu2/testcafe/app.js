@@ -546,29 +546,23 @@ function checkRestaurantOpen(hours){
     return currentMinutes >= openM && currentMinutes <= closeM;
   });
 }
+updateLiveBadge(data.openingHours);
 
+// Update every minute
+setInterval(() => {
+  checkRestaurantOpen(data.openingHours);
+  updateLiveBadge(data.openingHours);
+}, 60000);
 function updateOrderAvailability(){
   const cartBar = document.getElementById("cartBar");
   const msgId = "closedMsg";
 
   let msg = document.getElementById(msgId);
   if(!restaurantOpen){
-    if(!msg){
-      msg = document.createElement("div");
-      msg.id = msgId;
-      msg.style.background = "#fdecea";
-      msg.style.color = "#c62828";
-      msg.style.padding = "12px";
-      msg.style.margin = "12px";
-      msg.style.borderRadius = "12px";
-      msg.style.fontWeight = "700";
-      msg.textContent = "🚫 Restaurant Closed – Please visit during opening hours";
-      document.body.insertBefore(msg, document.body.firstChild);
-    }
-    cartBar.classList.add("hidden");
-  } else {
-    if(msg) msg.remove();
-  }
+  cartBar.classList.add("hidden");
+} else {
+  if(msg) msg.remove();
+}
 }
 
 /* =========================
@@ -681,6 +675,61 @@ function renderCartModal(){
   });
 
   document.getElementById("modalCartTotal").textContent = total;
+}
+
+// ===============================
+// LIVE OPEN BADGE
+// ===============================
+function updateLiveBadge(hours){
+
+  const badge = document.getElementById("liveOpenBadge");
+  if(!badge) return;
+
+  const now = new Date();
+  const day = now.toLocaleDateString("en-US",{ weekday:"long" }).toLowerCase();
+  const currentMinutes = now.getHours()*60 + now.getMinutes();
+
+  const today = hours[day];
+
+  if(!today || today.isClosed){
+    badge.innerHTML = `
+      <span style="background:#fdecea;color:#c62828;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
+        🔴 Closed Today
+      </span>
+    `;
+    return;
+  }
+
+  let isOpen = false;
+  let nextChange = "";
+
+  today.slots.forEach(slot => {
+    const [oh,om] = slot.open.split(":").map(Number);
+    const [ch,cm] = slot.close.split(":").map(Number);
+    const openM = oh*60+om;
+    const closeM = ch*60+cm;
+
+    if(currentMinutes >= openM && currentMinutes <= closeM){
+      isOpen = true;
+      nextChange = `Closes at ${toAMPM(slot.close)}`;
+    } else if(currentMinutes < openM && !isOpen){
+      nextChange = `Opens at ${toAMPM(slot.open)}`;
+    }
+  });
+
+  if(isOpen){
+    badge.innerHTML = `
+      <span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
+        🟢 Open Now • ${nextChange}
+      </span>
+    `;
+  } else {
+    badge.innerHTML = `
+      <span style="background:#fdecea;color:#c62828;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
+        🔴 Closed • ${nextChange}
+      </span>
+    `;
+  }
 }
 
 function increaseFromModal(index){
