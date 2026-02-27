@@ -106,9 +106,14 @@ services: {
     "website": "https://rupmaxdigital.in/menu/the-pantry-car/"
   },
 
-  "payment": {
-    "enabled": true
-  },
+  payment: {
+  enabled: true,
+
+  // UPI configuration
+  upiId: "yourupi@okhdfcbank",
+  payeeName: "The Pantry Car",
+  autoFillAmount: true
+},
 
   "trustInfo": {
     "badges": [
