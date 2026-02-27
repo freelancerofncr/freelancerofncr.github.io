@@ -57,9 +57,8 @@ function renderBusiness(data) {
 
   /* ===== CONTACT ===== */
   // CONTACT MASTER CONTROL
-if(data.master && data.master.showContact === false){
-  const contactCard = document.querySelectorAll(".card")[2];
-  if(contactCard) contactCard.style.display = "none";
+if(data.master?.showContact === false){
+  hideSection("contactSection");
 }
   setLink("#callPrimary", "tel:" + data.contact.primaryPhone);
   setText("#primaryPhoneText", data.contact.primaryPhone);
@@ -96,9 +95,8 @@ if(data.master && data.master.showContact === false){
 
   /* ===== OPENING HOURS ===== */
   renderOpeningHours(data.openingHours);
-if(data.master && data.master.showOpeningHours === false){
-  const timingCard = document.querySelector("#timingBox")?.closest(".card");
-  if(timingCard) timingCard.style.display = "none";
+if(data.master?.showOpeningHours === false){
+  hideSection("timingSection");
 }
   /* ===== DELIVERY / DINE IN ===== */
   setText(
@@ -109,41 +107,36 @@ if(data.master && data.master.showOpeningHours === false){
     "#dineInInfo",
     data.flags.dineInAvailable ? "🍽️ Dine-In Available" : ""
   );
-if(data.master && data.master.showServiceBadges === false){
-  const serviceCard = document.querySelector(".service-badges")?.closest(".card");
-  if(serviceCard) serviceCard.style.display = "none";
+if(data.master?.showServiceBadges === false){
+  hideSection("serviceSection");
 }
   /* ===== PAYMENT ===== */
   if (data.payment.enabled) {
     setImage("#paymentQR", "./assets/payment.png");
   }
-if(data.master && data.master.showPaymentSection === false){
-  const paymentCard = document.querySelector("#paymentQR")?.closest(".card");
-  if(paymentCard) paymentCard.style.display = "none";
+if(data.master?.showPaymentSection === false){
+  hideSection("paymentSection");
 }
   /* ===== ONLINE PLATFORMS (NO CHANGE) ===== */
   setLink("#zomatoBtn", data.onlinePlatforms.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
-  if(data.master && data.master.showPlatforms === false){
-  const platformCard = document.querySelector(".platform-buttons")?.closest(".card");
-  if(platformCard) platformCard.style.display = "none";
+  if(data.master?.showPlatforms === false){
+  hideSection("platformSection");
 }
   setLink("#instaIcon", data.onlinePlatforms.instagram);
   setLink("#fbIcon", data.onlinePlatforms.facebook);
   setLink("#googleIcon", data.onlinePlatforms.google);
   setLink("#websiteIcon", data.onlinePlatforms.website);
-  if(data.master && data.master.showSocialLinks === false){
-  const socialCard = document.getElementById("socialSection")?.closest(".card");
-  if(socialCard) socialCard.style.display = "none";
+  if(data.master?.showSocialLinks === false){
+  hideSection("socialSectionCard");
 }
 
   /* ===== TRUST ===== */
   renderBadges(data.trustInfo.badges);
   setText("#aboutText", data.trustInfo.about);
 }
-if(data.master && data.master.showTrustSection === false){
-  const trustCard = document.querySelector("#badgeContainer")?.closest(".card");
-  if(trustCard) trustCard.style.display = "none";
+if(data.master?.showTrustSection === false){
+  hideSection("trustSection");
 }
 /* =========================
    LOAD MENU DATA
@@ -815,3 +808,12 @@ document.addEventListener("visibilitychange", () => {
     setTimeout(showWaConfirm, 400);
   }
 });
+// ===============================
+// UNIVERSAL SECTION HIDE
+// ===============================
+function hideSection(id){
+  const el = document.getElementById(id);
+  if(el){
+    el.style.display = "none";
+  }
+}
