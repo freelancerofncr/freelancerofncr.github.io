@@ -1,4 +1,23 @@
 {
+
+// ===============================
+// MASTER CONTROLS
+// ===============================
+master: {
+  // Global site switch
+  siteEnabled: true,
+
+  // Section Controls
+  showLogo: true,
+  showContact: true,
+  showSocialLinks: true,
+  showPlatforms: true,
+  showTrustSection: true,
+  showServiceBadges: true,
+  showPaymentSection: true,
+  showOpeningHours: true
+},
+
   "identity": {
     "name": "The Pantry Car",
     "categoryLine": "Indian • Mughlai • Chinese • Italian",
