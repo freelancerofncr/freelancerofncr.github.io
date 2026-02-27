@@ -6,12 +6,13 @@ let minimumDeliveryOrder = 0;
 /* =========================
    LOAD BUSINESS DATA
 ========================= */
-function loadBusiness() {
-  fetch("./data/business.json")
-    .then(res => res.json())
-    .then(data => renderBusiness(data))
-    .catch(err => console.error("Business JSON error:", err));
-}
+fetch("./business.json5")
+  .then(res => res.text())
+  .then(text => {
+    const data = JSON5.parse(text);
+    renderBusiness(data);
+  })
+  .catch(err => console.error("Business JSON5 error:", err));
 
 window.addEventListener("beforeunload", ()=>{
   if(localStorage.getItem("pendingOrder")==="true"){
@@ -118,12 +119,13 @@ function renderBusiness(data) {
 /* =========================
    LOAD MENU DATA
 ========================= */
-function loadMenu() {
-  fetch("./data/menu.json")
-    .then(res => res.json())
-    .then(data => renderMenu(data.categories))
-    .catch(err => console.error("Menu JSON error:", err));
-}
+fetch("./menu.json5")
+  .then(res => res.text())
+  .then(text => {
+    const data = JSON5.parse(text);
+    renderMenu(data.categories);
+  })
+  .catch(err => console.error("Menu JSON5 error:", err));
 
 function renderMenu(categories) {
   const container = document.querySelector("#menuContainer");
