@@ -1125,7 +1125,56 @@ function waSent(){
   localStorage.removeItem("cart");
   localStorage.removeItem("pendingOrder");
   saveCart();
+// ===============================
+// SAFE CLEAR CART
+// ===============================
+function confirmClearCart(){
 
+  if(cart.length === 0){
+    showDialog("Cart is already empty");
+    return;
+  }
+
+  const confirmBox = document.createElement("div");
+  confirmBox.style.position = "fixed";
+  confirmBox.style.top = 0;
+  confirmBox.style.left = 0;
+  confirmBox.style.width = "100%";
+  confirmBox.style.height = "100%";
+  confirmBox.style.background = "rgba(0,0,0,0.5)";
+  confirmBox.style.display = "flex";
+  confirmBox.style.alignItems = "center";
+  confirmBox.style.justifyContent = "center";
+  confirmBox.style.zIndex = 9999;
+
+  confirmBox.innerHTML = `
+    <div style="background:#fff;padding:24px;border-radius:16px;max-width:320px;text-align:center;">
+      <h3 style="margin-bottom:12px;">Clear Cart?</h3>
+      <p style="font-size:14px;margin-bottom:18px;">
+        This will remove all items from your cart.
+      </p>
+      <button id="confirmClearYes"
+        style="margin-bottom:10px;width:100%;padding:10px;border:none;border-radius:10px;background:#c62828;color:#fff;font-weight:600;">
+        Yes, Clear
+      </button>
+      <button id="confirmClearNo"
+        style="width:100%;padding:10px;border:none;border-radius:10px;background:#eee;font-weight:600;">
+        Cancel
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(confirmBox);
+
+  document.getElementById("confirmClearYes").onclick = function(){
+    clearCart();
+    confirmBox.remove();
+  };
+
+  document.getElementById("confirmClearNo").onclick = function(){
+    confirmBox.remove();
+  };
+}
   // 2️⃣ CLOSE ALL MODALS (VERY IMPORTANT)
   closeWaConfirm();
 
@@ -1275,4 +1324,9 @@ document.addEventListener("click", function(e){
 // Detect tab focus return
 window.addEventListener("focus", function(){
   checkWhatsAppReturn();
+});
+document.addEventListener("click", function(e){
+  if(e.target.id === "clearCartBtn"){
+    confirmClearCart();
+  }
 });
