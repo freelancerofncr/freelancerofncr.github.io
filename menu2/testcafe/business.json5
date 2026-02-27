@@ -15,9 +15,15 @@ master: {
   showTrustSection: true,
   showServiceBadges: true,
   showPaymentSection: true,
-  showOpeningHours: true
-// Order Controls
-whatsAppOrderingEnabled: true,
+  showOpeningHours: true,
+whatsAppOrderingEnabled: true
+},
+
+// Service configuration
+services: {
+  dineIn: true,
+  delivery: true,
+  takeaway: true
 },
 
   "identity": {
