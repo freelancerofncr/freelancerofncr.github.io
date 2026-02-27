@@ -224,7 +224,7 @@ function renderMenu(categories) {
 
     const section = document.createElement("section");
     section.className = "menu-category";
-
+section.id = "cat-" + category.name.replace(/\s+/g,"-").toLowerCase();
     section.innerHTML = `<h2 class="category-title">${category.name}</h2>`;
 
     const vegItems = items.filter(i => i.type === "veg");
@@ -244,6 +244,7 @@ function renderMenu(categories) {
 
     container.appendChild(section);
   });
+  generateCategoryNav();
 }
 
 function buildMenuBlock(title, items, type) {
@@ -457,7 +458,69 @@ updateDeliveryNotice();
     document.getElementById("cartBar").classList.add("hidden");
   }
 }
+// ===============================
+// CATEGORY NAV GENERATOR
+// ===============================
+function generateCategoryNav(){
 
+  const nav = document.getElementById("categoryNav");
+  if(!nav) return;
+
+  nav.innerHTML = "";
+
+  const sections = document.querySelectorAll(".menu-category");
+
+  sections.forEach(section => {
+
+    const btn = document.createElement("button");
+    btn.textContent = section.querySelector(".category-title").textContent;
+
+    btn.onclick = () => {
+      section.scrollIntoView({ behavior:"smooth", block:"start" });
+    };
+
+    nav.appendChild(btn);
+  });
+
+  observeActiveCategory();
+}
+// ===============================
+// ACTIVE CATEGORY OBSERVER
+// ===============================
+function observeActiveCategory(){
+
+  const buttons = document.querySelectorAll("#categoryNav button");
+  const sections = document.querySelectorAll(".menu-category");
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+
+        const id = entry.target.id;
+
+        buttons.forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        const activeBtn = Array.from(buttons).find(btn =>
+          entry.target.querySelector(".category-title").textContent === btn.textContent
+        );
+
+        if(activeBtn){
+          activeBtn.classList.add("active");
+        }
+      }
+    });
+
+  }, {
+    rootMargin: "-40% 0px -55% 0px",
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+}
 /* =========================
    RESTAURANT OPEN CHECK
 ========================= */
