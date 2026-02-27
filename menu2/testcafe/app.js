@@ -21,17 +21,21 @@ window.addEventListener("beforeunload", ()=>{
 });
 
 function renderBusiness(data) {
-  minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
-  setRestaurantWhatsapp(cleanNumber(data.contact.whatsappNumber));
-  checkRestaurantOpen(data.openingHours);
-  updateOrderAvailability();
-  /* ===== BASIC INFO ===== */
-  setText("#restaurantName", data.identity.name);
-  setText("#categoryLine", data.identity.categoryLine);
 
-  if (data.identity.hasLogo) {
-    setImage("#restaurantLogo", "./assets/logo.jpeg");
+  // ===============================
+  // MASTER SITE SWITCH
+  // ===============================
+  if(data.master && data.master.siteEnabled === false){
+    document.body.innerHTML = `
+      <div style="padding:40px;text-align:center;font-family:system-ui">
+        <h2>🚫 Restaurant Temporarily Disabled</h2>
+        <p>Please check back later.</p>
+      </div>
+    `;
+    return;
   }
+
+  minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
 
   /* ===== VEG / NON-VEG BADGE ===== */
   const badge = document.createElement("div");
@@ -52,6 +56,11 @@ function renderBusiness(data) {
   document.querySelector(".header").appendChild(badge);
 
   /* ===== CONTACT ===== */
+  // CONTACT MASTER CONTROL
+if(data.master && data.master.showContact === false){
+  const contactCard = document.querySelectorAll(".card")[2];
+  if(contactCard) contactCard.style.display = "none";
+}
   setLink("#callPrimary", "tel:" + data.contact.primaryPhone);
   setText("#primaryPhoneText", data.contact.primaryPhone);
 
@@ -87,7 +96,10 @@ function renderBusiness(data) {
 
   /* ===== OPENING HOURS ===== */
   renderOpeningHours(data.openingHours);
-
+if(data.master && data.master.showOpeningHours === false){
+  const timingCard = document.querySelector("#timingBox")?.closest(".card");
+  if(timingCard) timingCard.style.display = "none";
+}
   /* ===== DELIVERY / DINE IN ===== */
   setText(
     "#deliveryInfo",
@@ -97,25 +109,42 @@ function renderBusiness(data) {
     "#dineInInfo",
     data.flags.dineInAvailable ? "🍽️ Dine-In Available" : ""
   );
-
+if(data.master && data.master.showServiceBadges === false){
+  const serviceCard = document.querySelector(".service-badges")?.closest(".card");
+  if(serviceCard) serviceCard.style.display = "none";
+}
   /* ===== PAYMENT ===== */
   if (data.payment.enabled) {
     setImage("#paymentQR", "./assets/payment.png");
   }
-
+if(data.master && data.master.showPaymentSection === false){
+  const paymentCard = document.querySelector("#paymentQR")?.closest(".card");
+  if(paymentCard) paymentCard.style.display = "none";
+}
   /* ===== ONLINE PLATFORMS (NO CHANGE) ===== */
   setLink("#zomatoBtn", data.onlinePlatforms.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms.swiggy);
+  if(data.master && data.master.showPlatforms === false){
+  const platformCard = document.querySelector(".platform-buttons")?.closest(".card");
+  if(platformCard) platformCard.style.display = "none";
+}
   setLink("#instaIcon", data.onlinePlatforms.instagram);
   setLink("#fbIcon", data.onlinePlatforms.facebook);
   setLink("#googleIcon", data.onlinePlatforms.google);
   setLink("#websiteIcon", data.onlinePlatforms.website);
+  if(data.master && data.master.showSocialLinks === false){
+  const socialCard = document.getElementById("socialSection")?.closest(".card");
+  if(socialCard) socialCard.style.display = "none";
+}
 
   /* ===== TRUST ===== */
   renderBadges(data.trustInfo.badges);
   setText("#aboutText", data.trustInfo.about);
 }
-
+if(data.master && data.master.showTrustSection === false){
+  const trustCard = document.querySelector("#badgeContainer")?.closest(".card");
+  if(trustCard) trustCard.style.display = "none";
+}
 /* =========================
    LOAD MENU DATA
 ========================= */
@@ -319,6 +348,17 @@ function removeFromCart(name){
     }
   }
   saveCart();
+}
+
+// ===============================
+// LOGO CONTROL
+// ===============================
+const logoEl = document.querySelector("#restaurantLogo");
+
+if (data.master?.showLogo && data.identity.hasLogo) {
+  setImage("#restaurantLogo", "./assets/logo.jpeg");
+} else if (logoEl) {
+  logoEl.style.display = "none";
 }
 
 function saveCart(){
