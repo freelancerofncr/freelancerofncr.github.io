@@ -11,6 +11,7 @@ let vegModeOnly = false;
 let minimumDeliveryMessage = "Minimum order required for delivery";
 let orderingEnabled = true;
 let minimumDeliveryOrder = 0;
+let fullMenuData = [];
 /* =========================
    LOAD BUSINESS DATA
 ========================= */
@@ -196,10 +197,10 @@ if(data.master?.showTrustSection === false){
 ========================= */
 fetch("./menu.json5")
   .then(res => res.text())
-  .then(text => {
-    const data = JSON5.parse(text);
-    renderMenu(data.categories);
-  })
+  .then(data => {
+  fullMenuData = data.categories;
+  renderMenu(fullMenuData);
+})
   .catch(err => console.error("Menu JSON5 error:", err));
 
 function renderMenu(categories) {
@@ -633,6 +634,47 @@ function decreaseFromModal(index){
   saveCart();
   renderCartModal();
 }
+
+// ===============================
+// MENU SEARCH ENGINE
+// ===============================
+function handleMenuSearch(query){
+
+  const q = query.trim().toLowerCase();
+
+  if(!q){
+    renderMenu(fullMenuData);
+    return;
+  }
+
+  const filtered = fullMenuData.map(category => {
+
+    const categoryMatch = category.name.toLowerCase().includes(q);
+
+    const items = category.items.filter(item => {
+
+      if(vegModeOnly && item.type !== "veg"){
+        return false;
+      }
+
+      const nameMatch = item.name.toLowerCase().includes(q);
+      const descMatch = item.description
+        ? item.description.toLowerCase().includes(q)
+        : false;
+
+      return nameMatch || descMatch || categoryMatch;
+    });
+
+    return {
+      name: category.name,
+      items
+    };
+
+  }).filter(cat => cat.items.length > 0);
+
+  renderMenu(filtered);
+}
+
 /* =========================
    CHECKOUT LOGIC
 ========================= */
@@ -993,3 +1035,11 @@ function updateDeliveryNotice(){
     notice.style.display = "none";
   }
 }
+// ===============================
+// SEARCH LISTENER
+// ===============================
+document.addEventListener("input", function(e){
+  if(e.target.id === "menuSearch"){
+    handleMenuSearch(e.target.value);
+  }
+});
