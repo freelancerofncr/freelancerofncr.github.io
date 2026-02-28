@@ -73,6 +73,20 @@ function renderBusiness(data) {
   minimumDeliveryMessage = data.flags?.minimumDeliveryMessage || minimumDeliveryMessage;
 
   // ===============================
+// GOOGLE REVIEW
+// ===============================
+const reviewLink = data.onlinePlatforms?.googleReview;
+const reviewLine = document.getElementById("googleReviewLine");
+const reviewBtn = document.getElementById("googleReviewBtn");
+
+if(reviewLink){
+  reviewLine.style.display = "block";
+  reviewBtn.href = reviewLink;
+}else{
+  reviewLine.style.display = "none";
+}
+
+  // ===============================
   // VEG MODE LOAD
   // ===============================
   vegModeOnly = data.master?.vegModeOnly === true;
@@ -91,7 +105,10 @@ function renderBusiness(data) {
   if (services.takeaway === false) {
     hideServiceOption("optTakeaway");
   }
-
+if (services.takeaway === true) {
+  const el = document.getElementById("optTakeaway");
+  if(el) el.style.display="inline-block";
+}
   // ===============================
   // TABLE CONFIG LOAD
   // ===============================
@@ -237,15 +254,49 @@ function renderBusiness(data) {
   /* ===== ONLINE PLATFORMS ===== */
   setLink("#zomatoBtn", data.onlinePlatforms?.zomato);
   setLink("#swiggyBtn", data.onlinePlatforms?.swiggy);
+// Adjust platform width dynamically
+const zomato = data.onlinePlatforms?.zomato;
+const swiggy = data.onlinePlatforms?.swiggy;
+const wrapper = document.getElementById("platformWrapper");
 
+if(wrapper){
+  if(zomato && !swiggy){
+    document.getElementById("zomatoBtn").style.flex = "1 1 100%";
+    document.getElementById("swiggyBtn").style.display = "none";
+  }
+  if(swiggy && !zomato){
+    document.getElementById("swiggyBtn").style.flex = "1 1 100%";
+    document.getElementById("zomatoBtn").style.display = "none";
+  }
+}
   if (data.master?.showPlatforms === false) {
     hideSection("platformSection");
   }
 
-  setLink("#instaIcon", data.onlinePlatforms?.instagram);
-  setLink("#fbIcon", data.onlinePlatforms?.facebook);
-  setLink("#googleIcon", data.onlinePlatforms?.google);
-  setLink("#websiteIcon", data.onlinePlatforms?.website);
+  // ===============================
+// SOCIAL LINKS
+// ===============================
+setLink("#instaIcon", data.onlinePlatforms?.instagram);
+setLink("#facebookIcon", data.onlinePlatforms?.facebook);
+setLink("#youtubeIcon", data.onlinePlatforms?.youtube);
+setLink("#threadsIcon", data.onlinePlatforms?.threads);
+setLink("#snapchatIcon", data.onlinePlatforms?.snapchat);
+setLink("#websiteIcon", data.onlinePlatforms?.website);
+
+// Hide empty icons
+[
+  {id:"#instaIcon",val:data.onlinePlatforms?.instagram},
+  {id:"#facebookIcon",val:data.onlinePlatforms?.facebook},
+  {id:"#youtubeIcon",val:data.onlinePlatforms?.youtube},
+  {id:"#threadsIcon",val:data.onlinePlatforms?.threads},
+  {id:"#snapchatIcon",val:data.onlinePlatforms?.snapchat},
+  {id:"#websiteIcon",val:data.onlinePlatforms?.website}
+].forEach(item=>{
+  if(!item.val){
+    const el = document.querySelector(item.id);
+    if(el) el.style.display="none";
+  }
+});
 
   if (data.master?.showSocialLinks === false) {
     hideSection("socialSectionCard");
@@ -293,9 +344,9 @@ function renderMenu(categories) {
       items = items.filter(i => i.type === "veg");
     }
 
-    if (!items.length) {
-      return;
-    }
+   if (!items.length) {
+  return; // hides empty category
+}
 
     const section = document.createElement("section");
     section.className = "menu-category";
@@ -420,8 +471,9 @@ function setText(sel, val) {
   const el = document.querySelector(sel);
   if (!el) return;
 
-  if (!isVisibleValue(val)) {
-    el.style.display = "none";
+  if (!val || (typeof val === "string" && val.trim() === "NO")) {
+    const parent = el.parentElement;
+    if(parent) parent.style.display="none";
     return;
   }
 
@@ -1343,5 +1395,14 @@ document.addEventListener("click", function (e) {
   }
   if (e.target.id === "clearCartBtn") {
     confirmClearCart();
+  }
+});
+// ===============================
+// VEG TOGGLE SWITCH
+// ===============================
+document.addEventListener("change", function(e){
+  if(e.target.id === "vegToggle"){
+    vegModeOnly = e.target.checked;
+    renderMenu(fullMenuData);
   }
 });
