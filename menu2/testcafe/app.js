@@ -334,13 +334,6 @@ function handleUpiPayment() {
 
   let amount = "";
 
-  if (upiConfig.autoFillAmount) {
-    const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
-    if (total > 0) {
-      amount = total.toFixed(2);
-    }
-  }
-
   let upiUrl = `upi://pay?pa=${encodeURIComponent(upiConfig.upiId)}`;
 
   if (upiConfig.payeeName) {
@@ -425,7 +418,19 @@ function buildMenuBlock(title, items, type) {
 ========================= */
 function setText(sel, val) {
   const el = document.querySelector(sel);
-  if (el && val !== undefined) el.textContent = val;
+  if (!el) return;
+
+  if (!isVisibleValue(val)) {
+    el.style.display = "none";
+    return;
+  }
+
+  el.textContent = val;
+}
+function isVisibleValue(val) {
+  if (!val) return false;
+  if (typeof val === "string" && val.trim() === "NO") return false;
+  return true;
 }
 function setImage(sel, src) {
   const el = document.querySelector(sel);
@@ -844,6 +849,14 @@ function handleMenuSearch(query) {
   }).filter(cat => cat.items.length > 0);
 
   renderMenu(filtered);
+  if (filtered.length === 0) {
+  const container = document.querySelector("#menuContainer");
+  container.innerHTML = `
+    <div style="text-align:center;padding:30px 10px;font-weight:600;color:#888;">
+      No Result Found
+    </div>
+  `;
+}
 }
 
 /* =========================
@@ -1038,26 +1051,27 @@ function finalPlaceOrder() {
   }
 
   // -------- WHATSAPP MESSAGE --------
-  let message = "New Order\n\n";
+  let message = "🛒 NEW ORDER\n\n";
 
-  cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = Rs ${item.qty * item.price}\n`;
-  });
+cart.forEach((item, index) => {
+  message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+});
 
-  const totalMsg = cart.reduce((s, i) => s + i.qty * i.price, 0);
-  message += `\nTotal: Rs ${totalMsg}\n`;
-  message += `Customer: ${name}\n`;
-  message += `Order Type: ${type}\n`;
+const totalMsg = cart.reduce((s, i) => s + i.qty * i.price, 0);
 
-  if (type === "Dine-In" && tableNumber) {
-    message += `Table: ${tableNumber}\n`;
-  }
-  if (type === "Takeaway") {
-    message += "Pickup at Restaurant\n";
-  }
-  if (type === "Delivery") {
-    message += `Address: ${address}\n`;
-  }
+message += `\nTotal Amount: ₹${totalMsg}\n`;
+message += `Customer Name: ${name}\n`;
+message += `Order Type: ${type}\n`;
+
+if (type === "Dine-In" && tableNumber) {
+  message += `Table Number: ${tableNumber}\n`;
+}
+if (type === "Takeaway") {
+  message += "Pickup from Restaurant\n";
+}
+if (type === "Delivery") {
+  message += `Delivery Address: ${address}\n`;
+}
 
   localStorage.setItem("pendingOrder", "true");
   localStorage.setItem("pendingWhatsAppOrder", "true");
@@ -1189,7 +1203,9 @@ function confirmClearCart() {
 function clearCart() {
   cart = [];
   localStorage.removeItem("cart");
-  saveCart();
+  localStorage.removeItem("pendingOrder");
+  updateCartUI();
+  closeCartModal();
 }
 
 function showOrderSuccess() {
@@ -1202,8 +1218,8 @@ function showOrderSuccess() {
     <div class="order-success-box">
       <h2>✅ Order Sent Successfully</h2>
       <p>
-        Aapka order WhatsApp par send ho chuka hai.<br>
-        Restaurant aapse jaldi contact karega.
+        Order sent successfully via WhatsApp.
+        We will contact you shortly.
       </p>
       <button onclick="closeOrderSuccess()">OK</button>
     </div>
