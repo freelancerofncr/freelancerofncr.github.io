@@ -80,10 +80,10 @@ const reviewLine = document.getElementById("googleReviewLine");
 const reviewBtn = document.getElementById("googleReviewBtn");
 
 if(reviewLink){
-  reviewLine.style.display = "block";
+  reviewBtn.style.display = "flex";
   reviewBtn.href = reviewLink;
 }else{
-  reviewLine.style.display = "none";
+  reviewBtn.style.display = "none";
 }
 
   // ===============================
