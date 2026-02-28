@@ -758,12 +758,12 @@ function openCartModal() {
   if (cart.length === 0) return;
 
   renderCartModal();
-  document.body.style.overflow = "hidden";
+  document.body.style.overflowY = "hidden";
   document.getElementById("cartModal").classList.remove("hidden");
 }
 
 function closeCartModal() {
-  document.body.style.overflow = "";
+  document.body.style.overflowY = "auto";
   document.getElementById("cartModal").classList.add("hidden");
 }
 
@@ -933,7 +933,7 @@ function openCheckout() {
   const addressBox = document.getElementById("addressBox");
 
   checkout.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflowY = "hidden";
 
   addressBox.classList.add("hidden");
   addressBox.style.display = "none";
@@ -1006,7 +1006,7 @@ function showWhatsAppReturnPopup() {
 
 function closeCheckout() {
   document.getElementById("checkoutModal").classList.add("hidden");
-  document.body.style.overflow = "";
+  document.body.style.overflowY = "auto";
 }
 
 document.addEventListener("change", function (e) {
@@ -1156,12 +1156,12 @@ function addSinglePriceToCart(name, label, price) {
 
 function showWaConfirm() {
   document.getElementById("waConfirmModal").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflowY = "hidden";
 }
 
 function closeWaConfirm() {
   document.getElementById("waConfirmModal").classList.add("hidden");
-  document.body.style.overflow = "";
+  document.body.style.overflowY = "auto";
 }
 
 function waNotSent() {
@@ -1172,12 +1172,12 @@ function showDialog(message, title = "Notice") {
   document.getElementById("dialogTitle").textContent = title;
   document.getElementById("dialogMessage").textContent = message;
   document.getElementById("appDialog").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflowY = "hidden";
 }
 
 function closeDialog() {
   document.getElementById("appDialog").classList.add("hidden");
-  document.body.style.overflow = "";
+  document.body.style.overflowY = "auto";
 }
 
 function waSent() {
@@ -1194,7 +1194,7 @@ function waSent() {
   const checkoutModal = document.getElementById("checkoutModal");
   if (checkoutModal) checkoutModal.classList.add("hidden");
 
-  document.body.style.overflow = "";
+  document.body.style.overflowY = "auto";
 
   const cartBar = document.getElementById("cartBar");
   if (cartBar) cartBar.classList.add("hidden");
