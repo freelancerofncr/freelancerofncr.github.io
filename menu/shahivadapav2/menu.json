@@ -1,12 +1,58 @@
 {
   "categories": [
-{"name":"Items","items":[
-    {"name":"Shahi Vada Pav","type":"veg","prices":[{"label":"Plate","price":15}]},
-    {"name":"Kolhapuri Misal","type":"veg","prices":[{"label":"Plate","price":79}]},
-    {"name":"Pav Bhaji","type":"veg","prices":[{"label":"Plate","price":70}]},
-    {"name":"Jaggery Ilaychi Tea","type":"veg","prices":[{"label":"Plate","price":15}]},
-    {"name":"Upma","type":"veg","prices":[{"label":"Plate","price":20}]},
-    {"name":"Pineapple Shira","type":"veg","prices":[{"label":"Plate","price":30}]}
-]}
+    {
+      "name": "Menu",
+      "items": [
+        {
+          "name": "Basundi Chaha",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 12 }
+          ]
+        },
+        {
+          "name": "Vadapav",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 15 }
+          ]
+        },
+        {
+          "name": "Special Chaha",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 15 }
+          ]
+        },
+        {
+          "name": "Coffee",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 20 }
+          ]
+        },
+        {
+          "name": "Tak",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 15 }
+          ]
+        },
+        {
+          "name": "Lassi",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 25 }
+          ]
+        },
+        {
+          "name": "Flavor Lassi",
+          "type": "veg",
+          "prices": [
+            { "label": "Plate", "price": 30 }
+          ]
+        }
+      ]
+    }
   ]
 }
