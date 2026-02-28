@@ -1,0 +1,95 @@
+{
+  "identity": {
+    "name": "Shahi Vadapav",
+    "categoryLine": "Vadapav • Misal • Pav Bhaji",
+    "foodType": "veg",
+    "hasLogo": true
+  },
+
+  "contact": {
+    "primaryPhone": "+91 7276392207",
+    "secondaryPhone": " ",
+    "whatsappNumber": "+91 7276392207",
+    "email": ""
+  },
+
+  "location": {
+    "fullAddress": "Shahi Vadapav, Bharatmata Nagar, Sahkar colony 2, Dighi, Pune, Maharashtra",
+    "googleMapLink": "https://maps.app.goo.gl/AAXA7jsHRAdtMSkT8"
+  },
+
+  "openingHours": {
+    "monday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    },
+    "tuesday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    },
+    "wednesday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    },
+    "thursday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    },
+    "friday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    },
+    "saturday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    },
+    "sunday": {
+      "isClosed": false,
+      "slots": [
+        { "open": "08:00", "close": "22:00" }
+      ]
+    }
+  },
+
+  "onlinePlatforms": {
+    "instagram": "https://www.instagram.com/shahiwadapav/",
+    "facebook": "https://www.facebook.com/profile.php?id=61582010404307",
+    "google": "https://maps.app.goo.gl/AAXA7jsHRAdtMSkT8",
+    "zomato": "",
+    "swiggy": "",
+    "website": "https://rupmaxdigital.in/menu/shahivadapav/"
+  },
+
+  "payment": {
+    "enabled": true
+  },
+
+  "trustInfo": {
+    "badges": [
+      "Hygienic Food",
+      "Family Friendly",
+      "Freshly Made"
+    ],
+    "about": "Shahi Vadapav – Taste is special, experience is special Shahi Vadapav is not just a snack, but a brand that gives a “royal touch” to Indian street food."
+  },
+
+  "flags": {
+  "showLogo": true,
+  "showSocialLinks": true,
+  "deliveryAvailable": true,
+  "dineInAvailable": true,
+  "minimumDeliveryOrder": 299
+}
+}

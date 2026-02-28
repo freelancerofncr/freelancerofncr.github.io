@@ -1,0 +1,12 @@
+{
+  "categories": [
+{"name":"Items","items":[
+    {"name":"Shahi Vada Pav","type":"veg","prices":[{"label":"Plate","price":15}]},
+    {"name":"Kolhapuri Misal","type":"veg","prices":[{"label":"Plate","price":79}]},
+    {"name":"Pav Bhaji","type":"veg","prices":[{"label":"Plate","price":70}]},
+    {"name":"Jaggery Ilaychi Tea","type":"veg","prices":[{"label":"Plate","price":15}]},
+    {"name":"Upma","type":"veg","prices":[{"label":"Plate","price":20}]},
+    {"name":"Pineapple Shira","type":"veg","prices":[{"label":"Plate","price":30}]}
+]}
+  ]
+}
