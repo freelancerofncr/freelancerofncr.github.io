@@ -376,6 +376,8 @@ box-sizing:border-box;
   color:#fff;
   font-weight:800;
   transition:.2s;
+   position:relative;
+overflow:hidden;
 }
 .zomato{background:#e23744}
 .swiggy{background:#fc8019}
@@ -732,7 +734,47 @@ box-sizing:border-box;
   50%{transform:scale(1.08)}
   100%{transform:scale(1)}
 }
-   
+   .veg-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.veg-switch input{
+  display:none;
+}
+
+.veg-switch .slider{
+  width:46px;
+  height:24px;
+  background:#ddd;
+  border-radius:999px;
+  position:relative;
+  transition:.3s;
+}
+
+.veg-switch .slider::before{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:#fff;
+  border-radius:50%;
+  top:2px;
+  left:2px;
+  transition:.3s;
+}
+
+.veg-switch input:checked + .slider{
+  background:#25d366;
+}
+
+.veg-switch input:checked + .slider::before{
+  transform:translateX(22px);
+}
 </style>
 </head>
 
@@ -816,10 +858,11 @@ box-sizing:border-box;
 <main class="card menu-wrapper">
   <h2>📋 Menu</h2>
 <div style="margin-bottom:12px;text-align:right;">
-  <label style="font-size:13px;font-weight:600;">
-    <input type="checkbox" id="vegToggle">
-    Veg Only
-  </label>
+  <label class="veg-switch">
+  <input type="checkbox" id="vegToggle">
+  <span class="slider"></span>
+  Veg Only
+</label>
 </div>
   <div style="margin-bottom:12px;">
     <input
