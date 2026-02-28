@@ -4,10 +4,7 @@
 // MASTER CONTROLS
 // ===============================
 master: {
-  // Global site switch
   siteEnabled: true,
-
-  // Section Controls
   showLogo: true,
   showContact: true,
   showSocialLinks: true,
@@ -16,14 +13,13 @@ master: {
   showServiceBadges: true,
   showPaymentSection: true,
   showOpeningHours: true,
-
-  // Veg mode (force hide non-veg)
   vegModeOnly: false,
-
-  // WhatsApp ordering toggle
   whatsAppOrderingEnabled: true
 },
 
+// ===============================
+// RESTAURANT IDENTITY
+// ===============================
 identity: {
   name: "The Pantry Car",
   categoryLine: "Indian • Mughlai • Chinese • Italian",
@@ -31,103 +27,101 @@ identity: {
   hasLogo: true
 },
 
+// ===============================
+// CONTACT INFORMATION
+// ===============================
 contact: {
-  primaryPhone: "+91 9311944725",
-  secondaryPhone: "+91 9958055600",
-  whatsappNumber: "+91 9958055600",
+  primaryPhone: "9311944725",
+  secondaryPhone: "9958055600",
+  whatsappNumber: "9958055600",
   email: "thepantrycar78@gmail.com"
 },
 
+// ===============================
+// LOCATION
+// ===============================
 location: {
   fullAddress: "2nd Floor, Mahagun Mart, Sector 78, Noida 201305",
   googleMapLink: "https://share.google/YEFpmYHJu5j5Efq9V"
 },
 
+// ===============================
+// OPENING HOURS
+// ===============================
 openingHours: {
-  monday: {
-    isClosed: false,
-    slots: [
-      { open: "11:00", close: "23:00" }
-    ]
-  },
-  tuesday: {
-    isClosed: false,
-    slots: [
-      { open: "11:00", close: "23:00" }
-    ]
-  },
-  wednesday: {
-    isClosed: false,
-    slots: [
-      { open: "11:00", close: "23:00" }
-    ]
-  },
-  thursday: {
-    isClosed: false,
-    slots: [
-      { open: "11:00", close: "23:00" }
-    ]
-  },
-  friday: {
-    isClosed: false,
-    slots: [
-      { open: "11:00", close: "23:59" }
-    ]
-  },
-  saturday: {
-    isClosed: false,
-    slots: [
-      { open: "00:01", close: "23:00" }
-    ]
-  },
-  sunday: {
-    isClosed: false,
-    slots: [
-      { open: "11:00", close: "23:00" }
-    ]
-  }
+  monday:    { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
+  tuesday:   { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
+  wednesday: { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
+  thursday:  { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
+  friday:    { isClosed: false, slots: [{ open: "11:00", close: "23:59" }] },
+  saturday:  { isClosed: false, slots: [{ open: "11:00", close: "23:59" }] },
+  sunday:    { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] }
 },
 
+// ===============================
+// ONLINE PLATFORMS & SOCIAL
+// ===============================
 onlinePlatforms: {
-  instagram: "https://www.instagram.com/thepantrycarofficial",
-  facebook: "https://www.threads.com/@thepantrycarofficial",
-  google: "https://share.google/YEFpmYHJu5j5Efq9V",
+
+  // Food Platforms
   zomato: "https://www.zomato.com/",
   swiggy: "https://www.swiggy.com/",
-  website: "https://rupmaxdigital.in/menu/the-pantry-car/"
+
+  // Social
+  instagram: "https://www.instagram.com/thepantrycarofficial",
+  facebook: "NO",
+  youtube: "NO",
+  threads: "https://www.threads.com/@thepantrycarofficial",
+  snapchat: "NO",
+  website: "https://rupmaxdigital.in/menu/the-pantry-car/",
+
+  // Google Review (Important)
+  googleReview: "https://share.google/YEFpmYHJu5j5Efq9V"
 },
 
+// ===============================
+// PAYMENT CONFIG
+// ===============================
 payment: {
   enabled: true,
-  // UPI configuration
   upiId: "yourupi@okhdfcbank",
   payeeName: "The Pantry Car",
-  autoFillAmount: true
+  autoFillAmount: false
 },
 
+// ===============================
+// TRUST SECTION
+// ===============================
 trustInfo: {
   badges: [
     "Hygienic Food",
     "Family Friendly",
     "Freshly Made"
   ],
-  about: "Experience an unforgettable dining journey at The Pantry Car, a unique restaurant inspired by the classic railway pantry cars of India."
+  about: "Experience an unforgettable dining journey at The Pantry Car, inspired by the classic railway pantry cars of India."
 },
 
+// ===============================
+// FLAGS & SERVICE SETTINGS
+// ===============================
 flags: {
+
+  // Availability badges
   deliveryAvailable: true,
   dineInAvailable: true,
+
+  // Delivery condition
   minimumDeliveryOrder: 499,
   minimumDeliveryMessage: "Minimum order required for delivery",
 
-  // Table configuration (Dine-In only)
+  // Table config
   tableConfig: {
     enabled: true,
     required: true,
     label: "Table Number"
   },
 
-  // Service toggle (hide unavailable options)
+  // Service toggle
   services: {
     dineIn: true,
     delivery: true,
