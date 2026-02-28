@@ -1245,7 +1245,8 @@ function confirmClearCart() {
   document.getElementById("confirmClearYes").onclick = function () {
     clearCart();
     confirmBox.remove();
-  };
+    closeCartModal();
+};
 
   document.getElementById("confirmClearNo").onclick = function () {
     confirmBox.remove();
