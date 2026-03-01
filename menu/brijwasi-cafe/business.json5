@@ -127,6 +127,21 @@ flags: {
     delivery: true,
     takeaway: true
   }
+},
+
+charges: {
+  gst: {
+    enabled: true,
+    percentage: 5
+  },
+  delivery: {
+    enabled: true,
+    amount: 40
+  },
+  packing: {
+    enabled: true,
+    amount: 20
+  }
 }
 
 }
