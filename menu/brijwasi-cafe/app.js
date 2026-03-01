@@ -421,7 +421,9 @@ function handleUpiPayment() {
     return;
   }
 
-  let amount = "";
+  const type = document.querySelector('input[name="orderType"]:checked')?.value || "Dine-In";
+const bill = calculateFinalBill(type);
+let amount = upiConfig.autoFillAmount ? bill.finalTotal.toFixed(2) : "";
 
   let upiUrl = `upi://pay?pa=${encodeURIComponent(upiConfig.upiId)}`;
 
@@ -1149,43 +1151,99 @@ function finalPlaceOrder() {
     }
   }
 
-  // -------- WHATSAPP MESSAGE --------
+  showOrderPreview(name, type, tableNumber, address);
+}
+
+function showOrderPreview(name, type, tableNumber, address) {
+
+  const bill = calculateFinalBill(type);
+
+  let html = "";
+
+  cart.forEach((item, index) => {
+    html += `
+      <div style="margin-bottom:6px;">
+        ${index + 1}. ${item.name} (${item.label}) x ${item.qty}
+        <div style="font-size:12px;color:#666;">
+          ₹${item.qty * item.price}
+        </div>
+      </div>
+    `;
+  });
+
+  html += `<hr style="margin:10px 0;">`;
+
+  html += `<div>Subtotal: ₹${bill.subtotal}</div>`;
+
+  if (bill.gstAmount > 0) {
+    html += `<div>GST (${chargesConfig.gst.percentage}%): ₹${bill.gstAmount.toFixed(2)}</div>`;
+  }
+
+  if (bill.deliveryAmount > 0) {
+    html += `<div>Delivery Charge: ₹${bill.deliveryAmount}</div>`;
+  }
+
+  if (bill.packingAmount > 0) {
+    html += `<div>Packing Charge: ₹${bill.packingAmount}</div>`;
+  }
+
+  html += `<hr style="margin:10px 0;">`;
+  html += `<div style="font-weight:800;">Total: ₹${bill.finalTotal.toFixed(2)}</div>`;
+
+  document.getElementById("previewContent").innerHTML = html;
+
+  window.previewData = { name, type, tableNumber, address, bill };
+
+  document.getElementById("orderPreviewModal").classList.remove("hidden");
+}
+
+function closeOrderPreview() {
+  document.getElementById("orderPreviewModal").classList.add("hidden");
+}
+function confirmAndSend() {
+
+  const { name, type, tableNumber, address, bill } = window.previewData;
+
   let message = "🛒 *NEW ORDER*\n\n";
 
-cart.forEach((item, index) => {
-  message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
-});
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+  });
 
-const totalMsg = cart.reduce((s, i) => s + i.qty * i.price, 0);
+  message += `\n*--------------------------------------*\n`;
+  message += `Subtotal: ₹${bill.subtotal}\n`;
 
-message += `*--------------------------------------*\n`;
-message += `*Total Amount:* ₹${totalMsg}\n`;
-message += `*--------------------------------------*\n`;
-message += `*Customer Name:* ${name}\n`;
-message += `*Order Type:* ${type}\n`;
+  if (bill.gstAmount > 0)
+    message += `GST (${chargesConfig.gst.percentage}%): ₹${bill.gstAmount.toFixed(2)}\n`;
 
-if (type === "Dine-In" && tableNumber) {
-  message += `*Table Number:* ${tableNumber}\n`;
-}
-if (type === "Takeaway") {
-  message += "Pickup from Restaurant\n";
-}
-if (type === "Delivery") {
-  message += `*Delivery Address:* ${address}\n`;
-}
+  if (bill.deliveryAmount > 0)
+    message += `Delivery: ₹${bill.deliveryAmount}\n`;
+
+  if (bill.packingAmount > 0)
+    message += `Packing: ₹${bill.packingAmount}\n`;
+
+  message += `*--------------------------------------*\n`;
+  message += `*Total Amount:* ₹${bill.finalTotal.toFixed(2)}\n\n`;
+  message += `*Customer Name:* ${name}\n`;
+  message += `*Order Type:* ${type}\n`;
+
+  if (type === "Dine-In" && tableNumber)
+    message += `*Table Number:* ${tableNumber}\n`;
+
+  if (type === "Delivery")
+    message += `*Delivery Address:* ${address}\n`;
 
   localStorage.setItem("pendingOrder", "true");
-  localStorage.setItem("pendingWhatsAppOrder", "true");
 
-  const url =
-    "https://wa.me/" +
+  const url = "https://wa.me/" +
     restaurantWhatsapp +
     "?text=" +
     encodeURIComponent(message);
 
   window.open(url, "_blank");
-}
 
+  closeOrderPreview();
+}
 function addSinglePriceToCart(name, label, price) {
   if (!restaurantOpen) {
     showDialog("Restaurant is currently closed");
