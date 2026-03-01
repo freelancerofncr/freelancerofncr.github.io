@@ -21,7 +21,7 @@ master: {
 // RESTAURANT IDENTITY
 // ===============================
 identity: {
-  name: "The Pantry Car",
+  name: "Brijwasi Restaurant",
   categoryLine: "Indian • Mughlai • Chinese • Italian",
   foodType: "both",
   hasLogo: true
@@ -31,10 +31,10 @@ identity: {
 // CONTACT INFORMATION
 // ===============================
 contact: {
-  primaryPhone: "9311944725",
-  secondaryPhone: "9958055600",
-  whatsappNumber: "9958055600",
-  email: "thepantrycar78@gmail.com"
+  primaryPhone: "8979639473",
+  secondaryPhone: "8979639473",
+  whatsappNumber: "8979639473",
+  email: "example@gmail.com"
 },
 
 // ===============================
@@ -42,20 +42,20 @@ contact: {
 // ===============================
 location: {
   fullAddress: "2nd Floor, Mahagun Mart, Sector 78, Noida 201305",
-  googleMapLink: "https://share.google/YEFpmYHJu5j5Efq9V"
+  googleMapLink: "https://maps.app.goo.gl/q4PykwdndLdctC8Q9"
 },
 
 // ===============================
 // OPENING HOURS
 // ===============================
 openingHours: {
-  monday:    { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
-  tuesday:   { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
-  wednesday: { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
-  thursday:  { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] },
-  friday:    { isClosed: false, slots: [{ open: "11:00", close: "23:59" }] },
-  saturday:  { isClosed: false, slots: [{ open: "11:00", close: "23:59" }] },
-  sunday:    { isClosed: false, slots: [{ open: "11:00", close: "23:00" }] }
+  monday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
+  tuesday:   { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
+  wednesday: { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
+  thursday:  { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
+  friday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
+  saturday:  { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
+  sunday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] }
 },
 
 // ===============================
@@ -68,15 +68,15 @@ onlinePlatforms: {
   swiggy: "https://www.swiggy.com/",
 
   // Social
-  instagram: "https://www.instagram.com/thepantrycarofficial",
-  facebook: "NO",
-  youtube: "NO",
-  threads: "https://www.threads.com/@thepantrycarofficial",
-  snapchat: "NO",
-  website: "https://rupmaxdigital.in/menu/the-pantry-car/",
+  instagram: "https://www.instagram.com/rupmaxdigital/",
+  facebook: "https://www.facebook.com/rupmaxdigital",
+  youtube: "https://www.instagram.com/rupmaxdigital/",
+  threads: "https://www.instagram.com/rupmaxdigital/",
+  snapchat: "https://www.instagram.com/rupmaxdigital/",
+  website: "https://rupmaxdigital.in",
 
   // Google Review (Important)
-  googleReview: "https://share.google/YEFpmYHJu5j5Efq9V"
+  googleReview: "https://g.page/r/Cem8PnbO1SspEBM/review"
 },
 
 // ===============================
@@ -84,8 +84,8 @@ onlinePlatforms: {
 // ===============================
 payment: {
   enabled: true,
-  upiId: "yourupi@okhdfcbank",
-  payeeName: "The Pantry Car",
+  upiId: "rupmaxdigital893271.rzp@rxairtel",
+  payeeName: "RupMax Digital",
   autoFillAmount: false
 },
 
@@ -98,7 +98,7 @@ trustInfo: {
     "Family Friendly",
     "Freshly Made"
   ],
-  about: "Experience an unforgettable dining journey at The Pantry Car, inspired by the classic railway pantry cars of India."
+  about: "Experience an unforgettable dining journey at our restaurant, inspired by the classic India."
 },
 
 // ===============================
@@ -111,7 +111,7 @@ flags: {
   dineInAvailable: true,
 
   // Delivery condition
-  minimumDeliveryOrder: 499,
+  minimumDeliveryOrder: 999,
   minimumDeliveryMessage: "Minimum order required for delivery",
 
   // Table config
