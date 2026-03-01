@@ -555,7 +555,7 @@ function addToCart(name, label, price) {
     showDialog("Restaurant is currently closed");
     return;
   }
-  const existing = cart.find(i => i.name === name);
+  const existing = cart.find(i => i.name === name && i.label === label);
   if (existing) {
     existing.qty += 1;
   } else {
