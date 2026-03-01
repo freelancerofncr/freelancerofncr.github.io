@@ -1093,7 +1093,7 @@ cart.forEach((item, index) => {
 
 const totalMsg = cart.reduce((s, i) => s + i.qty * i.price, 0);
 
-message += `*--------------------------------------*\n\n`;
+message += `*--------------------------------------*\n`;
 message += `*Total Amount:* ₹${totalMsg}\n`;
 message += `*--------------------------------------*\n`;
 message += `*Customer Name:* ${name}\n`;
