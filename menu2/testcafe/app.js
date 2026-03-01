@@ -229,15 +229,15 @@ cart = JSON.parse(localStorage.getItem(cartKey)) || [];
   /* ===== DELIVERY / DINE IN ===== */
   setText(
   "#deliveryInfo",
-  data.flags?.deliveryAvailable ? "🚚 Delivery<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
+  data.flags?.deliveryAvailable ? "🚚<br>Delivery<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
 );
 setText(
   "#dineInInfo",
-  data.flags?.dineInAvailable ? "🍽️ Dine-In<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
+  data.flags?.dineInAvailable ? "🍽️<br>Dine-In<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
 );
 setText(
   "#takeawayInfo",
-  data.flags?.services?.takeaway ? "🥡 Takeaway<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
+  data.flags?.services?.takeaway ? "🥡<br>Takeaway<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
 );
 
   if (data.master?.showServiceBadges === false) {
