@@ -90,7 +90,16 @@ if(reviewLink){
   // VEG MODE LOAD
   // ===============================
   vegModeOnly = data.master?.vegModeOnly === true;
+const vegToggle = document.getElementById("vegToggle");
+const vegSwitch = vegToggle?.closest(".veg-switch");
 
+if (data.identity?.foodType === "veg") {
+  vegModeOnly = true;
+  if (vegToggle) vegToggle.checked = true;
+  if (vegSwitch) vegSwitch.style.display = "none";
+} else {
+  if (vegSwitch) vegSwitch.style.display = "inline-flex";
+}
   // ===============================
   // SERVICE AVAILABILITY CONTROL
   // ===============================
@@ -487,11 +496,11 @@ function setText(sel, val) {
 
   if (!val || (typeof val === "string" && val.trim() === "NO")) {
     const parent = el.parentElement;
-    if(parent) parent.style.display="none";
+    if (parent) parent.style.display = "none";
     return;
   }
 
-  el.textContent = val;
+  el.innerHTML = val;
 }
 function isVisibleValue(val) {
   if (!val) return false;
@@ -730,8 +739,8 @@ function addSelectedToCart(itemName) {
   }
 
   const radios = document.querySelectorAll(
-    `input[name="price-${itemName.replace(/\s/g, '')}"]`
-  );
+  `input[name="price-${makeSafeId(itemName)}"]`
+);
 
   let selectedPrice = null;
   let selectedLabel = "";
