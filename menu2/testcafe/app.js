@@ -140,6 +140,9 @@ if (services.takeaway === true) {
   setText("#restaurantName", data.identity?.name);
   setText("#categoryLine", data.identity?.categoryLine);
 
+  cartKey = "cart_" + makeSafeId(data.identity?.name || "default");
+cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
   /* ===== VEG / NON-VEG BADGE ===== */
   const badge = document.createElement("div");
   badge.className =
@@ -337,6 +340,13 @@ function loadMenu() {
     .catch(err => console.error("Menu JSON5 error:", err));
 }
 
+function makeSafeId(text){
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "-")
+    .replace(/-+/g, "-");
+}
+
 function renderMenu(categories) {
   const container = document.querySelector("#menuContainer");
   container.innerHTML = "";
@@ -422,7 +432,7 @@ function buildMenuBlock(title, items, type) {
       ? item.prices.map((p, idx) => `
           <label>
             <input type="radio"
-              name="price-${item.name.replace(/\s/g,'')}"
+              name="price-${makeSafeId(item.name)}"
               value="${p.price}"
               data-label="${p.label}"
               ${idx === 0 ? "checked" : ""}>
@@ -452,7 +462,7 @@ function buildMenuBlock(title, items, type) {
           <img src="/assets/icons/black-icons/plus.svg">
         </button>
 
-        <span class="qty-count" id="qty-${item.name.replace(/\s/g,'')}">0</span>
+        <span class="qty-count" id="qty-${makeSafeId(item.name)}">0</span>
 
         <button class="qty-btn" onclick="removeFromCart('${item.name}')">
           <img src="/assets/icons/black-icons/minus.svg">
@@ -548,7 +558,8 @@ function capitalize(s) {
 /* =========================
    CART LOGIC
 ========================= */
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cartKey = "cart_default";
+let cart = [];
 
 function addToCart(name, label, price) {
   if (!restaurantOpen) {
@@ -578,7 +589,7 @@ function removeFromCart(name) {
 }
 
 function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem(cartKey, JSON.stringify(cart));
   updateCartUI();
 }
 
@@ -594,7 +605,7 @@ function updateCartUI() {
     totalQty += i.qty;
     totalPrice += i.qty * i.price;
 
-    const id = "qty-" + i.name.replace(/\s/g, '');
+    const id = "qty-" + makeSafeId(i.name);
     const qtyEl = document.getElementById(id);
     if (qtyEl) {
       qtyEl.textContent = i.qty;
@@ -950,64 +961,6 @@ function openCheckout() {
   toggleAddress();
 }
 
-// ===============================
-// WHATSAPP RETURN DETECTION
-// ===============================
-function checkWhatsAppReturn() {
-  const pending = localStorage.getItem("pendingWhatsAppOrder");
-
-  if (pending === "true") {
-    showWhatsAppReturnPopup();
-    localStorage.removeItem("pendingWhatsAppOrder");
-  }
-}
-
-// ===============================
-// WHATSAPP RETURN POPUP
-// ===============================
-function showWhatsAppReturnPopup() {
-  const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.background = "rgba(0,0,0,0.5)";
-  overlay.style.display = "flex";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.zIndex = 9999;
-
-  overlay.innerHTML = `
-    <div style="background:#fff;padding:24px;border-radius:16px;max-width:320px;text-align:center;">
-      <h3 style="margin-bottom:10px;">Order Sent?</h3>
-      <p style="font-size:14px;margin-bottom:18px;">
-        Did you successfully send your order on WhatsApp?
-      </p>
-      <button id="confirmOrderSent"
-        style="margin-bottom:10px;width:100%;padding:10px;border:none;border-radius:10px;background:#2e7d32;color:#fff;font-weight:600;">
-        Yes, Order Sent
-      </button>
-      <button id="cancelOrderReturn"
-        style="width:100%;padding:10px;border:none;border-radius:10px;background:#eee;font-weight:600;">
-        Not Yet
-      </button>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  document.getElementById("confirmOrderSent").onclick = function () {
-    clearCart();
-    overlay.remove();
-    showDialog("Order confirmed. Thank you!");
-  };
-
-  document.getElementById("cancelOrderReturn").onclick = function () {
-    overlay.remove();
-  };
-}
-
 function closeCheckout() {
   document.getElementById("checkoutModal").classList.add("hidden");
   document.body.style.overflowY = "auto";
@@ -1186,7 +1139,7 @@ function closeDialog() {
 
 function waSent() {
   cart = [];
-  localStorage.removeItem("cart");
+  localStorage.removeItem(cartKey);
   localStorage.removeItem("pendingOrder");
   saveCart();
 
@@ -1212,7 +1165,7 @@ function waSent() {
 
 function clearCart() {
   cart = [];
-  localStorage.removeItem("cart");
+  localStorage.removeItem(cartKey);
   localStorage.removeItem("pendingOrder");
   updateCartUI();
   closeCartModal();
@@ -1259,10 +1212,6 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-// Detect tab focus return
-window.addEventListener("focus", function () {
-  checkWhatsAppReturn();
-});
 
 // ===============================
 // UNIVERSAL SECTION HIDE
