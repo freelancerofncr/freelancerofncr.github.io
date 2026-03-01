@@ -1200,36 +1200,40 @@ function showOrderPreview(name, type, tableNumber, address) {
 function closeOrderPreview() {
   document.getElementById("orderPreviewModal").classList.add("hidden");
 }
-let message = "🛒 *NEW ORDER* \n\n";
+function confirmAndSend() {
 
-cart.forEach((item, index) => {
-  message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
-});
+  const { name, type, tableNumber, address, bill } = window.previewData;
 
-message += `\n*--------------------------------------*\n`;
-message += `Subtotal: ₹${bill.subtotal}\n`;
+  let message = "🛒 *NEW ORDER* \n\n\n";
 
-if (bill.gstAmount > 0)
-  message += `GST (${chargesConfig.gst.percentage}%): ₹${bill.gstAmount.toFixed(2)}\n`;
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+  });
 
-if (bill.deliveryAmount > 0)
-  message += `Delivery: ₹${bill.deliveryAmount}\n`;
+  message += `\n*--------------------------------------*\n`;
+  message += `Subtotal: ₹${bill.subtotal}\n`;
 
-if (bill.packingAmount > 0)
-  message += `Packing: ₹${bill.packingAmount}\n`;
+  if (bill.gstAmount > 0)
+    message += `GST (${chargesConfig.gst.percentage}%): ₹${bill.gstAmount.toFixed(2)}\n`;
 
-message += `*======================*\n`;
-message += `*Total Amount: ₹${bill.finalTotal.toFixed(2)}*\n`;
-message += `*======================*\n\n`;
+  if (bill.deliveryAmount > 0)
+    message += `Delivery: ₹${bill.deliveryAmount}\n`;
 
-message += `*Customer Name:* ${name}\n`;
-message += `*Order Type:* ${type}\n`;
+  if (bill.packingAmount > 0)
+    message += `Packing: ₹${bill.packingAmount}\n`;
 
-if (type === "Dine-In" && tableNumber)
-  message += `*Table Number:* ${tableNumber}\n`;
+  message += `*======================*\n`;
+  message += `*Total Amount: ₹${bill.finalTotal.toFixed(2)}*\n`;
+  message += `*======================*\n\n`;
 
-if (type === "Delivery")
-  message += `*Delivery Address:* ${address}\n`;
+  message += `*Customer Name:* ${name}\n`;
+  message += `*Order Type:* ${type}\n`;
+
+  if (type === "Dine-In" && tableNumber)
+    message += `*Table Number:* ${tableNumber}\n`;
+
+  if (type === "Delivery")
+    message += `*Delivery Address:* ${address}\n`;
 
   localStorage.setItem("pendingOrder", "true");
 
