@@ -1222,9 +1222,9 @@ function confirmAndSend() {
   if (bill.packingAmount > 0)
     message += `Packing: ₹${bill.packingAmount}\n`;
 
-  message += `*=====================================*\n`;
+  message += `*=================================*\n`;
   message += `*Total Amount: ₹${bill.finalTotal.toFixed(2)}*\n`;
-  message += `*=====================================*\n\n`;
+  message += `*=================================*\n\n`;
 
   message += `*Customer Name:* ${name}\n`;
   message += `*Order Type:* ${type}\n`;
