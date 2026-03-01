@@ -220,15 +220,15 @@ cart = JSON.parse(localStorage.getItem(cartKey)) || [];
   /* ===== DELIVERY / DINE IN ===== */
   setText(
   "#deliveryInfo",
-  data.flags?.deliveryAvailable ? "🚚 Delivery Available" : ""
+  data.flags?.deliveryAvailable ? "🚚 Delivery<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
 );
 setText(
   "#dineInInfo",
-  data.flags?.dineInAvailable ? "🍽️ Dine-In Available" : ""
+  data.flags?.dineInAvailable ? "🍽️ Dine-In<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
 );
 setText(
   "#takeawayInfo",
-  data.flags?.services?.takeaway ? "🥡 Takeaway Available" : ""
+  data.flags?.services?.takeaway ? "🥡 Takeaway<br><span style='font-weight:500;font-size:12px;'>Available</span>" : ""
 );
 
   if (data.master?.showServiceBadges === false) {
@@ -1061,7 +1061,7 @@ function finalPlaceOrder() {
   }
 
   // -------- WHATSAPP MESSAGE --------
-  let message = "🛒 NEW ORDER\n\n";
+  let message = "🛒 *NEW ORDER*\n\n";
 
 cart.forEach((item, index) => {
   message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
@@ -1069,18 +1069,18 @@ cart.forEach((item, index) => {
 
 const totalMsg = cart.reduce((s, i) => s + i.qty * i.price, 0);
 
-message += `\nTotal Amount: ₹${totalMsg}\n`;
-message += `Customer Name: ${name}\n`;
-message += `Order Type: ${type}\n`;
+message += `\n*Total Amount:* ₹${totalMsg}\n`;
+message += `*Customer Name:* ${name}\n`;
+message += `*Order Type:* ${type}\n`;
 
 if (type === "Dine-In" && tableNumber) {
-  message += `Table Number: ${tableNumber}\n`;
+  message += `*Table Number:* ${tableNumber}\n`;
 }
 if (type === "Takeaway") {
   message += "Pickup from Restaurant\n";
 }
 if (type === "Delivery") {
-  message += `Delivery Address: ${address}\n`;
+  message += `*Delivery Address:* ${address}\n`;
 }
 
   localStorage.setItem("pendingOrder", "true");
@@ -1158,6 +1158,8 @@ function waSent() {
   if (cartBar) cartBar.classList.add("hidden");
 
   showOrderSuccess();
+  waPopupShown = false;
+localStorage.removeItem("pendingWhatsAppOrder");
 }
 
 // ===============================
@@ -1170,6 +1172,7 @@ function clearCart() {
   localStorage.removeItem("pendingOrder");
   updateCartUI();
   closeCartModal();
+  localStorage.removeItem("pendingWhatsAppOrder");
 }
 
 function showOrderSuccess() {
