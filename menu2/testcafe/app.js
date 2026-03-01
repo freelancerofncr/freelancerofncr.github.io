@@ -516,7 +516,22 @@ function setLink(sel, href) {
   if (el && href) el.href = href;
 }
 function cleanNumber(num) {
-  return num ? num.replace(/\D/g, "") : "";
+  if (!num) return "";
+
+  // Remove all non-digits
+  let cleaned = num.replace(/\D/g, "");
+
+  // If already has country code (more than 10 digits), keep it
+  if (cleaned.length > 10) {
+    return cleaned;
+  }
+
+  // If exactly 10 digits, assume India and add 91
+  if (cleaned.length === 10) {
+    return "91" + cleaned;
+  }
+
+  return cleaned;
 }
 function renderBadges(badges) {
   const box = document.querySelector("#badgeContainer");
