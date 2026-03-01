@@ -135,11 +135,11 @@ charges: {
     percentage: 5
   },
   delivery: {
-    enabled: true,
+    enabled: false,
     amount: 40
   },
   packing: {
-    enabled: true,
+    enabled: false,
     amount: 20
   }
 }
