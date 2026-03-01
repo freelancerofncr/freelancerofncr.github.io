@@ -1209,8 +1209,7 @@ function showOrderSuccess() {
     <div class="order-success-box">
       <h2>✅ Order Sent Successfully</h2>
       <p>
-        Order sent successfully via WhatsApp.
-        We will contact you shortly.
+        Order sent successfully via WhatsApp.<br>We will contact you shortly.
       </p>
       <button onclick="closeOrderSuccess()">OK</button>
     </div>
