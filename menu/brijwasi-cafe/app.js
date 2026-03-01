@@ -1204,10 +1204,10 @@ function confirmAndSend() {
 
   const { name, type, tableNumber, address, bill } = window.previewData;
 
-  let message = "🛒 *NEW ORDER* \n\n\n";
+  let message = "🛒 *NEW ORDER* \n\n";
 
   cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}`;
   });
 
   message += `\n*--------------------------------------*\n`;
@@ -1222,9 +1222,9 @@ function confirmAndSend() {
   if (bill.packingAmount > 0)
     message += `Packing: ₹${bill.packingAmount}\n`;
 
-  message += `*======================*\n`;
+  message += `*=====================================*\n`;
   message += `*Total Amount: ₹${bill.finalTotal.toFixed(2)}*\n`;
-  message += `*======================*\n\n`;
+  message += `*=====================================*\n\n`;
 
   message += `*Customer Name:* ${name}\n`;
   message += `*Order Type:* ${type}\n`;
