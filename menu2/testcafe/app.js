@@ -625,16 +625,37 @@ function updateCartUI() {
     el.textContent = "0";
   });
 
-  cart.forEach(i => {
-    totalQty += i.qty;
-    totalPrice += i.qty * i.price;
+cart.forEach(i => {
+  totalQty += i.qty;
+  totalPrice += i.qty * i.price;
+});
 
-    const id = "qty-" + makeSafeId(i.name);
-    const qtyEl = document.getElementById(id);
-    if (qtyEl) {
-      qtyEl.textContent = i.qty;
-    }
-  });
+document.querySelectorAll(".menu-item").forEach(itemEl => {
+
+  const nameEl = itemEl.querySelector(".item-name");
+  if (!nameEl) return;
+
+  const itemName = nameEl.textContent.trim();
+  const safeId = makeSafeId(itemName);
+  const qtyEl = document.getElementById("qty-" + safeId);
+  if (!qtyEl) return;
+
+  const selectedRadio = itemEl.querySelector("input[type='radio']:checked");
+
+  if (selectedRadio) {
+    const selectedLabel = selectedRadio.dataset.label;
+
+    const cartItem = cart.find(
+      c => c.name === itemName && c.label === selectedLabel
+    );
+
+    qtyEl.textContent = cartItem ? cartItem.qty : 0;
+  } else {
+    const cartItem = cart.find(c => c.name === itemName);
+    qtyEl.textContent = cartItem ? cartItem.qty : 0;
+  }
+
+});
 
   updateDeliveryNotice();
 
@@ -1337,6 +1358,9 @@ document.addEventListener("click", function (e) {
 // VEG TOGGLE SWITCH
 // ===============================
 document.addEventListener("change", function(e){
+  if (e.target.matches(".price-options input[type='radio']")) {
+  updateCartUI();
+}
   if(e.target.id === "vegToggle"){
     vegModeOnly = e.target.checked;
     renderMenu(fullMenuData);
