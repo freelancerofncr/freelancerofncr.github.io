@@ -1044,7 +1044,17 @@ overflow:hidden;
     </div>
   </div>
 </div>
-
+<!-- ORDER PREVIEW MODAL -->
+<div id="orderPreviewModal" class="cart-modal hidden">
+  <div class="cart-modal-box">
+    <h3>Order Summary</h3>
+    <div id="previewContent" style="flex:1;overflow:auto;margin-top:10px;"></div>
+    <div class="cart-modal-actions">
+      <button onclick="closeOrderPreview()">Back</button>
+      <button class="checkout-btn" onclick="confirmAndSend()">Confirm & Send</button>
+    </div>
+  </div>
+</div>
 <!-- WHATSAPP RETURN CONFIRMATION -->
 <div id="waConfirmModal" class="cart-modal hidden">
   <div class="cart-modal-box">
