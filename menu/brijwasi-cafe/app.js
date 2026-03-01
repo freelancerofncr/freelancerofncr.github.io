@@ -15,6 +15,11 @@ let minimumDeliveryOrder = 0;
 let fullMenuData = [];
 let restaurantOpen = true;
 let restaurantWhatsapp = "";
+let chargesConfig = {
+  gst: { enabled: false, percentage: 0 },
+  delivery: { enabled: false, amount: 0 },
+  packing: { enabled: false, amount: 0 }
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   loadBusiness();
@@ -69,6 +74,17 @@ function renderBusiness(data) {
   restaurantWhatsapp = cleanNumber(data.contact?.whatsappNumber || "");
 
   minimumDeliveryOrder = data.flags?.minimumDeliveryOrder || 0;
+  // Load Charges
+if (data.charges) {
+  chargesConfig.gst.enabled = data.charges.gst?.enabled === true;
+  chargesConfig.gst.percentage = data.charges.gst?.percentage || 0;
+
+  chargesConfig.delivery.enabled = data.charges.delivery?.enabled === true;
+  chargesConfig.delivery.amount = data.charges.delivery?.amount || 0;
+
+  chargesConfig.packing.enabled = data.charges.packing?.enabled === true;
+  chargesConfig.packing.amount = data.charges.packing?.amount || 0;
+}
   minimumDeliveryMessage = data.flags?.minimumDeliveryMessage || minimumDeliveryMessage;
 
   // ===============================
@@ -577,7 +593,36 @@ function toAMPM(t) {
 function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
+function calculateFinalBill(orderType) {
 
+  const subtotal = cart.reduce((s, i) => s + i.qty * i.price, 0);
+
+  let gstAmount = 0;
+  let deliveryAmount = 0;
+  let packingAmount = 0;
+
+  if (chargesConfig.gst.enabled) {
+    gstAmount = (subtotal * chargesConfig.gst.percentage) / 100;
+  }
+
+  if (orderType === "Delivery" && chargesConfig.delivery.enabled) {
+    deliveryAmount = chargesConfig.delivery.amount;
+  }
+
+  if (chargesConfig.packing.enabled) {
+    packingAmount = chargesConfig.packing.amount;
+  }
+
+  const finalTotal = subtotal + gstAmount + deliveryAmount + packingAmount;
+
+  return {
+    subtotal,
+    gstAmount,
+    deliveryAmount,
+    packingAmount,
+    finalTotal
+  };
+}
 /* =========================
    CART LOGIC
 ========================= */
