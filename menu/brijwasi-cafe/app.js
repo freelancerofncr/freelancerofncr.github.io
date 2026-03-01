@@ -18,7 +18,6 @@ let restaurantWhatsapp = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   loadBusiness();
-  checkWhatsAppReturn();
 });
 
 window.addEventListener("beforeunload", () => {
