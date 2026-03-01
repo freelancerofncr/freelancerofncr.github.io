@@ -1207,7 +1207,7 @@ function confirmAndSend() {
   let message = "🛒 *NEW ORDER* \n\n";
 
   cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}`;
+    message += `${index + 1}. ${item.name} (${item.label}) x ${item.qty} = ₹${item.qty * item.price}\n`;
   });
 
   message += `\n*--------------------------------------*\n`;
