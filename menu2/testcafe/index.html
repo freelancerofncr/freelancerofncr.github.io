@@ -775,6 +775,21 @@ overflow:hidden;
 .veg-switch input:checked + .slider::before{
   transform:translateX(22px);
 }
+   .live-dot{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#2e7d32;
+  margin-right:6px;
+  animation:liveBlink 1.2s infinite;
+}
+
+@keyframes liveBlink{
+  0%{opacity:1; transform:scale(1)}
+  50%{opacity:.3; transform:scale(1.4)}
+  100%{opacity:1; transform:scale(1)}
+}
 </style>
 </head>
 
@@ -924,7 +939,7 @@ overflow:hidden;
 </footer>
 
 <!-- FLOATING CART BAR -->
-<div id="cartBar" class="cart-bar hidden" onclick="openCartModal()">
+<div id="cartBar" class="cart-bar hidden">
   <div class="cart-left">
     <img src="/assets/icons/black-icons/food-cart.svg" class="cart-icon">
     <div class="cart-info">
