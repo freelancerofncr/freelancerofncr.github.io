@@ -854,10 +854,11 @@ function updateLiveBadge(hours) {
 
   if (isOpen) {
     badge.innerHTML = `
-      <span style="background:#e8f5e9;color:#2e7d32;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
-        🟢 Open Now • ${nextChange}
-      </span>
-    `;
+  <span style="background:#e8f5e9;color:#2e7d32;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;">
+    <span class="live-dot"></span>
+    Open Now • ${nextChange}
+  </span>
+`;
   } else {
     badge.innerHTML = `
       <span style="background:#fdecea;color:#c62828;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;">
