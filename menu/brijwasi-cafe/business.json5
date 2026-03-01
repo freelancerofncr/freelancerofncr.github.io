@@ -55,7 +55,7 @@ openingHours: {
   thursday:  { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
   friday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
   saturday:  { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  sunday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] }
+  sunday:    { isClosed: false, slots: [{ open: "05:00", close: "23:59" }] }
 },
 
 // ===============================
