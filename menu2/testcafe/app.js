@@ -292,10 +292,10 @@ setLink("#websiteIcon", data.onlinePlatforms?.website);
   {id:"#snapchatIcon",val:data.onlinePlatforms?.snapchat},
   {id:"#websiteIcon",val:data.onlinePlatforms?.website}
 ].forEach(item=>{
-  if(!item.val){
-    const el = document.querySelector(item.id);
-    if(el) el.style.display="none";
-  }
+  if(!isVisibleValue(item.val)){
+  const el = document.querySelector(item.id);
+  if(el) el.style.display="none";
+}
 });
 
   if (data.master?.showSocialLinks === false) {
