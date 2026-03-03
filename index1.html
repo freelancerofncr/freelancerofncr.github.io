@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RupMax Digital | QR Menu for Restaurants</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="assets/images/favicon.png">
+
+<style>
+
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family: system-ui, -apple-system, sans-serif;
+  background:#0f1115;
+  color:#fff;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:auto;padding:0 20px}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(15,17,21,.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  z-index:999;
+}
+.header-inner{
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo img{height:38px}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+nav a{
+  font-size:14px;
+  opacity:.8;
+  transition:.3s;
+}
+nav a:hover{opacity:1}
+
+.cta-btn{
+  background:#25d366;
+  color:#000;
+  padding:10px 18px;
+  border-radius:10px;
+  font-weight:600;
+  font-size:14px;
+  transition:.3s;
+}
+.cta-btn:hover{transform:translateY(-2px)}
+
+/* ================= HERO ================= */
+.hero{
+  padding-top:130px;
+  padding-bottom:100px;
+  background:
+  radial-gradient(circle at 20% 30%, rgba(37,211,102,.25), transparent 40%),
+  radial-gradient(circle at 80% 70%, rgba(37,211,102,.15), transparent 40%);
+}
+
+.hero-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+}
+
+.hero h1{
+  font-size:48px;
+  line-height:1.2;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:#25d366;
+}
+
+.hero p{
+  font-size:17px;
+  color:#bbb;
+  margin-bottom:25px;
+  max-width:520px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  background:#25d366;
+  color:#000;
+  padding:14px 26px;
+  border-radius:12px;
+  font-weight:600;
+  transition:.3s;
+}
+.btn-primary:hover{transform:translateY(-3px)}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.2);
+  padding:14px 26px;
+  border-radius:12px;
+  transition:.3s;
+}
+.btn-secondary:hover{
+  background:#fff;
+  color:#000;
+}
+
+.hero-badge{
+  display:inline-block;
+  background:rgba(37,211,102,.15);
+  color:#25d366;
+  padding:6px 14px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.hero-right{
+  background:#151922;
+  padding:30px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
+
+.mockup-title{
+  font-size:15px;
+  color:#aaa;
+  margin-bottom:10px;
+}
+
+.hero-right iframe{
+  width:100%;
+  height:420px;
+  border-radius:14px;
+  border:none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero-inner{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .hero p{margin:auto auto 25px}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-inner">
+
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="RupMax Digital">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+
+    <a href="https://wa.me/918979639473" target="_blank" class="cta-btn">
+      💬 WhatsApp
+    </a>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+
+    <div>
+      <div class="hero-badge">🚀 India Focused QR Menu Solution</div>
+
+      <h1>
+        Digital QR Menu for<br>
+        <span>Restaurants & Cafes</span>
+      </h1>
+
+      <p>
+        ₹999 per year. No hidden charges.  
+        Menu setup, unlimited updates, maintenance – sab hum handle karenge.  
+        Aap sirf business grow kariye.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="https://wa.me/918979639473" target="_blank" class="btn-primary">
+          💬 Start on WhatsApp
+        </a>
+
+        <a href="https://rupmaxdigital.in/menu/brijwasi-cafe/" target="_blank" class="btn-secondary">
+          👀 Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="mockup-title">📱 Sample QR Menu Preview</div>
+      <iframe src="https://rupmaxdigital.in/menu/brijwasi-cafe/"></iframe>
+    </div>
+
+  </div>
+</section>
+<!-- ================= FEATURES ================= -->
+
+<style>
+
+.section{
+  padding:100px 0;
+}
+
+.section-title{
+  text-align:center;
+  font-size:36px;
+  margin-bottom:16px;
+}
+
+.section-sub{
+  text-align:center;
+  color:#aaa;
+  max-width:700px;
+  margin:0 auto 60px;
+}
+
+.features{
+  background:#0f1115;
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.feature-card{
+  background:#151922;
+  padding:30px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.05);
+  transition:.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-6px);
+  border-color:#25d366;
+}
+
+.feature-icon{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.feature-card h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.feature-card p{
+  color:#aaa;
+  font-size:14px;
+}
+
+/* ================= HOW IT WORKS ================= */
+
+.how{
+  background:#11141a;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.step-card{
+  background:#151922;
+  padding:35px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.05);
+  text-align:center;
+  transition:.3s;
+}
+
+.step-card:hover{
+  transform:translateY(-6px);
+  border-color:#25d366;
+}
+
+.step-icon{
+  font-size:36px;
+  margin-bottom:15px;
+}
+
+.step-card h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.step-card p{
+  color:#aaa;
+  font-size:14px;
+}
+
+.highlight{
+  color:#25d366;
+  font-weight:600;
+}
+
+/* ================= TRUST STRIP ================= */
+
+.trust-strip{
+  padding:60px 0;
+  background:#0f1115;
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.trust-grid{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:40px;
+  text-align:center;
+}
+
+.trust-item{
+  font-size:15px;
+  color:#bbb;
+}
+
+.trust-item span{
+  display:block;
+  font-size:24px;
+  color:#25d366;
+  margin-bottom:6px;
+}
+
+@media(max-width:768px){
+  .section-title{font-size:28px}
+}
+
+</style>
+
+
+<section id="features" class="section features">
+  <div class="container">
+
+    <h2 class="section-title">Everything Included in ₹999 / Year</h2>
+    <p class="section-sub">
+      No hidden charges. No monthly tension.  
+      Complete QR Menu solution specially built for Indian restaurants & cafes.
+    </p>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Optimized</h3>
+        <p>
+          Fast loading QR menu that works smoothly on all smartphones.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>WhatsApp Ordering</h3>
+        <p>
+          Customers can directly place orders via WhatsApp with auto order format.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">✏️</div>
+        <h3>Unlimited Menu Updates</h3>
+        <p>
+          Price change? Item add/remove?  
+          Pure saal unlimited updates — handled by our team.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>24 Hours Delivery</h3>
+        <p>
+          Payment ke baad usually 24 hours se bhi kam me aapka QR menu ready.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>No Hidden Charges</h3>
+        <p>
+          ₹999 per year final price. Hosting, setup, maintenance — sab included.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🛠️</div>
+        <h3>Complete Management</h3>
+        <p>
+          Technical ka koi tension nahi.  
+          Hum manage karenge, aap business grow kariye.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section id="how" class="section how">
+  <div class="container">
+
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">
+      Simple 3-step process. No complicated setup.
+    </p>
+
+    <div class="steps">
+
+      <div class="step-card">
+        <div class="step-icon">📋</div>
+        <h3>Send Your Menu</h3>
+        <p>
+          Aap apna existing menu photo / PDF WhatsApp par bhej dijiye.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-icon">💳</div>
+        <h3>Complete Payment</h3>
+        <p>
+          ₹999 yearly payment karein.  
+          <span class="highlight">No hidden charges.</span>
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-icon">🚀</div>
+        <h3>Go Live in 24 Hours</h3>
+        <p>
+          24 hours se bhi kam me aapka QR Menu ready.  
+          Pure saal tension free updates & support.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+
+      <div class="trust-item">
+        <span>⏳ 24h</span>
+        Fast Delivery
+      </div>
+
+      <div class="trust-item">
+        <span>💰 ₹999</span>
+        Full Year Pricing
+      </div>
+
+      <div class="trust-item">
+        <span>♾️ Unlimited</span>
+        Menu Updates
+      </div>
+
+      <div class="trust-item">
+        <span>🇮🇳</span>
+        India Focused Service
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ================= PRICING ================= -->
+
+<style>
+
+.pricing{
+  background:#11141a;
+}
+
+.pricing-card{
+  max-width:500px;
+  margin:60px auto 0;
+  background:#151922;
+  padding:50px 40px;
+  border-radius:22px;
+  border:1px solid #25d366;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.price{
+  font-size:48px;
+  font-weight:700;
+  margin:15px 0;
+  color:#25d366;
+}
+
+.price span{
+  font-size:16px;
+  color:#aaa;
+}
+
+.pricing-features{
+  margin:30px 0;
+  text-align:left;
+}
+
+.pricing-features div{
+  margin-bottom:12px;
+  font-size:14px;
+  color:#bbb;
+}
+
+.pricing-btn{
+  display:inline-block;
+  background:#25d366;
+  color:#000;
+  padding:14px 30px;
+  border-radius:12px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.pricing-btn:hover{
+  transform:translateY(-3px);
+}
+
+.note{
+  margin-top:15px;
+  font-size:13px;
+  color:#888;
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.reviews{
+  background:#0f1115;
+}
+
+.review-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  margin-top:60px;
+}
+
+.review-card{
+  background:#151922;
+  padding:30px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.05);
+  transition:.3s;
+}
+
+.review-card:hover{
+  transform:translateY(-6px);
+  border-color:#25d366;
+}
+
+.review-card p{
+  font-size:14px;
+  color:#bbb;
+  margin-bottom:15px;
+}
+
+.review-author{
+  font-weight:600;
+  font-size:14px;
+  color:#25d366;
+}
+
+/* ================= FINAL CTA ================= */
+
+.final-cta{
+  padding:100px 0;
+  background:
+  radial-gradient(circle at 30% 30%, rgba(37,211,102,.25), transparent 40%),
+  #0f1115;
+  text-align:center;
+}
+
+.final-cta h2{
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+.final-cta p{
+  color:#bbb;
+  margin-bottom:30px;
+}
+
+.final-btn{
+  background:#25d366;
+  color:#000;
+  padding:16px 32px;
+  border-radius:14px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.final-btn:hover{
+  transform:translateY(-4px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#0b0d11;
+  padding:40px 0;
+  text-align:center;
+  font-size:14px;
+  color:#777;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+footer a{
+  color:#25d366;
+}
+
+</style>
+
+
+<section id="pricing" class="section pricing">
+  <div class="container">
+
+    <h2 class="section-title">Simple Pricing</h2>
+    <p class="section-sub">
+      One plan. Everything included. No hidden charges.
+    </p>
+
+    <div class="pricing-card">
+
+      <h3>Digital QR Menu Plan</h3>
+
+      <div class="price">
+        ₹999 <span>/ year</span>
+      </div>
+
+      <div class="pricing-features">
+        <div>✅ Full QR Menu Setup</div>
+        <div>✅ WhatsApp Order Integration</div>
+        <div>✅ Unlimited Menu Updates</div>
+        <div>✅ Hosting & Maintenance Included</div>
+        <div>✅ 24 Hours Delivery</div>
+        <div>✅ 1 Year Full Support</div>
+      </div>
+
+      <a href="https://wa.me/918979639473" target="_blank" class="pricing-btn">
+        💬 Start on WhatsApp
+      </a>
+
+      <div class="note">
+        No monthly fees. No extra technical charges.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section id="reviews" class="section reviews">
+  <div class="container">
+
+    <h2 class="section-title">What Restaurant Owners Say</h2>
+    <p class="section-sub">
+      Real businesses using our QR menu solution.
+    </p>
+
+    <div class="review-grid">
+
+      <div class="review-card">
+        <p>
+          "Very smooth process. Payment ke next day hi menu ready ho gaya.  
+          Updates bhi fast milte hain."
+        </p>
+        <div class="review-author">— Cafe Owner, Noida</div>
+      </div>
+
+      <div class="review-card">
+        <p>
+          "₹999 me itna complete solution milna unexpected tha.  
+          WhatsApp ordering customers ko easy lagta hai."
+        </p>
+        <div class="review-author">— Restaurant Owner</div>
+      </div>
+
+      <div class="review-card">
+        <p>
+          "Technical tension bilkul nahi. Team sab manage karti hai.  
+          Hum sirf business pe focus karte hain."
+        </p>
+        <div class="review-author">— Cloud Kitchen Owner</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="final-cta">
+  <div class="container">
+
+    <h2>Ready to Launch Your QR Menu?</h2>
+    <p>
+      24 hours me live. Pure saal tension free updates.
+    </p>
+
+    <a href="https://wa.me/918979639473" target="_blank" class="final-btn">
+      💬 Get Started on WhatsApp
+    </a>
+
+  </div>
+</section>
+
+
+
+<footer>
+  © 2026 RupMax Digital • QR Menu Solution for Restaurants  
+  <br><br>
+  Designed for Indian Restaurants & Cafes
+</footer>
+
+
+<!-- ================= SMOOTH SCROLL ================= -->
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior:'smooth'
+    });
+  });
+});
+</script>
+
+</body>
+</html>
