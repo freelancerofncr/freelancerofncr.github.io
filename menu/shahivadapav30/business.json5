@@ -83,9 +83,9 @@ onlinePlatforms: {
 // PAYMENT CONFIG
 // ===============================
 payment: {
-  enabled: false,
+  enabled: true,
   upiId: "",
-  payeeName: "RupMax Digital",
+  payeeName: "",
   autoFillAmount: false
 },
 
