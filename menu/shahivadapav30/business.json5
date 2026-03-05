@@ -8,22 +8,22 @@ master: {
   showLogo: true,
   showContact: true,
   showSocialLinks: true,
-  showPlatforms: true,
+  showPlatforms: false,
   showTrustSection: true,
   showServiceBadges: true,
   showPaymentSection: true,
   showOpeningHours: true,
-  vegModeOnly: false,
+  vegModeOnly: true,
   whatsAppOrderingEnabled: true
 },
 
 // ===============================
-// RESTAURANT IDENTITY
+// RESTAURANT IDENTITY both
 // ===============================
 identity: {
-  name: "Brijwasi Restaurant",
-  categoryLine: "Indian • Mughlai • Chinese • Italian",
-  foodType: "both",
+  name: "Shahi Vadapav",
+  categoryLine: "Vadapav • Misal • Pav Bhaji",
+  foodType: "veg",
   hasLogo: true
 },
 
@@ -31,31 +31,31 @@ identity: {
 // CONTACT INFORMATION
 // ===============================
 contact: {
-  primaryPhone: "8979639473",
-  secondaryPhone: "8979639473",
-  whatsappNumber: "8979639473",
-  email: "example@gmail.com"
+  primaryPhone: "9860463335",
+  secondaryPhone: "",
+  whatsappNumber: "9860463335",
+  email: ""
 },
 
 // ===============================
 // LOCATION
 // ===============================
 location: {
-  fullAddress: "2nd Floor, Mahagun Mart, Sector 78, Noida 201305",
-  googleMapLink: "https://maps.app.goo.gl/q4PykwdndLdctC8Q9"
+  fullAddress: "Shop No. 1, Krantijyoti Savitribai Phule Shopping Center, Mahatma Phule Chowk, Phaltan, Maharashtra 415523",
+  googleMapLink: "https://maps.app.goo.gl/triv421EBt26k2U19"
 },
 
 // ===============================
 // OPENING HOURS
 // ===============================
 openingHours: {
-  monday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  tuesday:   { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  wednesday: { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  thursday:  { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  friday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  saturday:  { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] },
-  sunday:    { isClosed: false, slots: [{ open: "05:00", close: "23:30" }] }
+  monday:    { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] },
+  tuesday:   { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] },
+  wednesday: { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] },
+  thursday:  { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] },
+  friday:    { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] },
+  saturday:  { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] },
+  sunday:    { isClosed: false, slots: [{ open: "08:00", close: "22:00" }] }
 },
 
 // ===============================
@@ -64,27 +64,27 @@ openingHours: {
 onlinePlatforms: {
 
   // Food Platforms
-  zomato: "https://www.zomato.com/",
-  swiggy: "https://www.swiggy.com/",
+  zomato: "",
+  swiggy: "",
 
   // Social
-  instagram: "https://www.instagram.com/rupmaxdigital/",
-  facebook: "https://www.facebook.com/rupmaxdigital",
-  youtube: "https://www.instagram.com/rupmaxdigital/",
-  threads: "https://www.instagram.com/rupmaxdigital/",
-  snapchat: "https://www.instagram.com/rupmaxdigital/",
-  website: "https://rupmaxdigital.in",
+  instagram: "https://www.instagram.com/shahiwadapav/",
+  facebook: "https://www.facebook.com/profile.php?id=61582010404307",
+  youtube: "",
+  threads: "",
+  snapchat: "",
+  website: "https://rupmaxdigital.in/menu/shahivadapav30/",
 
   // Google Review (Important)
-  googleReview: "https://g.page/r/Cem8PnbO1SspEBM/review"
+  googleReview: ""
 },
 
 // ===============================
 // PAYMENT CONFIG
 // ===============================
 payment: {
-  enabled: true,
-  upiId: "rupmaxdigital893271.rzp@rxairtel",
+  enabled: false,
+  upiId: "",
   payeeName: "RupMax Digital",
   autoFillAmount: false
 },
@@ -98,7 +98,7 @@ trustInfo: {
     "Family Friendly",
     "Freshly Made"
   ],
-  about: "Experience an unforgettable dining journey at our restaurant, inspired by the classic India."
+  about: "Shahi Vadapav – Taste is special, experience is special Shahi Vadapav is not just a snack, but a brand that gives a “royal touch” to Indian street food."
 },
 
 // ===============================
@@ -116,7 +116,7 @@ flags: {
 
   // Table config
   tableConfig: {
-    enabled: true,
+    enabled: false,
     required: true,
     label: "Table Number"
   },
