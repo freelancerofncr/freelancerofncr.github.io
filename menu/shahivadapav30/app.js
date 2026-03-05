@@ -140,7 +140,7 @@ if (services.takeaway === true) {
   /* ===== LOGO CONTROL ===== */
   const logoEl = document.querySelector("#restaurantLogo");
   if (data.master?.showLogo && data.identity?.hasLogo) {
-    setImage("#restaurantLogo", "./assets/logo.png");
+    setImage("#restaurantLogo", "./assets/logo.jpg");
   } else if (logoEl) {
     logoEl.style.display = "none";
   }
@@ -246,7 +246,7 @@ setText(
 
   /* ===== PAYMENT ===== */
   if (data.payment?.enabled) {
-    setImage("#paymentQR", "./assets/payment.png");
+    setImage("#paymentQR", "./assets/payment.jpeg");
   }
 
   if (data.master?.showPaymentSection === false) {
