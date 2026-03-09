@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kitchen 18 Menu</title>
+<title>Restaurant QR Menu</title>
 
 <link rel="icon" href="/assets/images/favicon.png">
 
@@ -18,8 +18,11 @@
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
 }
 body{
-  background:linear-gradient(180deg,#f3f6fb,#e9edf3);
-  color:#222;
+  margin:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:#fafafa;
+  color:#111;
+  overflow-x:hidden;
 }
 a{text-decoration:none}
 
@@ -120,9 +123,10 @@ a{text-decoration:none}
 ====================================================== */
 .card{
   background:#fff;
-  margin:12px;
-  padding:16px;
-  border-radius:16px;
+  border-radius:18px;
+  padding:18px;
+  margin:14px 12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.06);
 }
 
 /* ======================================================
@@ -156,11 +160,18 @@ a{text-decoration:none}
   justify-content:center;
 }
 .service-badges div{
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:14px;
-  font-weight:600;
-  background:#f1f1f1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:12px 16px;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:700;
+  background:#f8f8f8;
+  border:1px solid #e0e0e0;
+  min-width:110px;
+  text-align:center;
 }
 
 /* ======================================================
@@ -171,15 +182,12 @@ a{text-decoration:none}
   margin-bottom:14px;
 }
 .menu-category{
-  margin-bottom:26px;
+  margin-bottom:24px;
 }
 .category-title{
-  font-size:21px;
-  font-weight:800;
-  margin-bottom:8px;
-  padding:8px 10px;
-  border-radius:10px;
-  background:linear-gradient(90deg,#eef3ff,#ffffff);
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:14px;
 }
 .menu-block{
   margin-top:10px;
@@ -190,20 +198,34 @@ a{text-decoration:none}
 .veg-title{color:#2e7d32;font-size:17px;font-weight:700;margin-bottom:6px}
 .nonveg-title{color:#c62828;font-size:17px;font-weight:700;margin-bottom:6px}
 .menu-item{
-  padding:10px 0;
-  border-bottom:1px dashed #eee;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
 }
 .item-header{
   display:flex;
-  align-items:center;
-  gap:6px;
+  align-items:flex-start;
+  gap:8px;
+}
+.item-title-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.item-name{
+  font-size:16px;
+  font-weight:700;
+  color:#111;
+  line-height:1.3;
 }
 .food-icon{width:14px}
 .price-line{
-  display:flex;
-  justify-content:space-between;
+  margin-top:2px;
   font-size:14px;
-  margin-left:20px;
+  font-weight:600;
+  color:#444;
+}
+.price-line.muted{
+  display:none;
 }
 .item-desc{
   font-size:12px;
@@ -214,6 +236,107 @@ a{text-decoration:none}
   height:2px;
   background:linear-gradient(to right,transparent,#bbb,transparent);
   margin-top:16px;
+}
+
+/* ======================================================
+   CATEGORY NAV (Sticky Tabs)
+====================================================== */
+.category-nav{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px 0;
+  margin-bottom:10px;
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:5;
+  backdrop-filter: blur(8px);
+   width:100%;
+box-sizing:border-box;
+}
+.category-nav button{
+  border:none;
+  background:#f1f1f1;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.category-nav button.active{
+  background:#111;
+  color:#fff;
+}
+
+/* ======================================================
+   PRICE RADIO – PILL STYLE
+====================================================== */
+.price-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:8px 0 6px 20px;
+}
+.price-options label{
+  position:relative;
+  cursor:pointer;
+}
+.price-options input[type="radio"]{
+  display:none;
+}
+.price-options label span{
+  display:inline-block;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1.5px solid #ccc;
+  font-weight:600;
+  background:#f7f7f7;
+  transition:.2s;
+}
+.price-options input[type="radio"]:checked + span{
+  background:#25d366;
+  color:#fff;
+  border-color:#25d366;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+
+/* ======================================================
+   ADD TO CART BUTTONS
+====================================================== */
+.cart-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left:20px;
+  margin-top:6px;
+}
+.qty-btn{
+  border:none;
+  background:#f1f1f1;
+  padding:8px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.qty-btn img{
+  width:14px;
+}
+.qty-count{
+  font-size:15px;
+  font-weight:700;
+  min-width:20px;
+  text-align:center;
+}
+.add-btn{
+  background:#111;
+  color:#fff;
+  border:none;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
 }
 
 /* ======================================================
@@ -232,16 +355,16 @@ a{text-decoration:none}
   gap:12px;
   flex-wrap:wrap;
 }
-.payment-apps span{
+.payment-apps{
   display:flex;
-  align-items:center;
-  gap:6px;
-  font-size:13px;
-  background:#f1f1f1;
-  padding:6px 12px;
-  border-radius:999px;
+  justify-content:center;
+  gap:14px;
+  margin-top:10px;
 }
-.payment-apps img{width:18px}
+.payment-apps img{
+  width:38px;
+  height:38px;
+}
 
 /* ======================================================
    PLATFORMS
@@ -251,17 +374,44 @@ a{text-decoration:none}
   gap:12px;
   justify-content:center;
 }
+
 .platform-buttons a{
   flex:1;
-  max-width:160px;
   text-align:center;
-  padding:12px;
-  border-radius:12px;
+  padding:14px;
+  border-radius:14px;
   color:#fff;
-  font-weight:700;
+  font-weight:800;
+  transition:.2s;
+   position:relative;
+overflow:hidden;
 }
 .zomato{background:#e23744}
 .swiggy{background:#fc8019}
+.platform-buttons a::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+  animation:shine 3.5s infinite;
+}
+@keyframes shine{
+  0%{left:-100%}
+  60%{left:120%}
+  100%{left:120%}
+}
+.platform-buttons a:hover{
+  transform:translateY(-2px);
+  transition:.2s;
+}
 
 /* ======================================================
    SOCIAL
@@ -273,16 +423,20 @@ a{text-decoration:none}
   justify-content:center;
 }
 .social-section a{
+  width:42px;
+  height:42px;
   display:flex;
   align-items:center;
-  gap:6px;
-  font-size:14px;
-  color:#333;
+  justify-content:center;
+  background:#f1f1f1;
+  border-radius:50%;
 }
-.social-section img{width:18px}
+.social-section img{
+  width:20px;
+}
 
 /* ======================================================
-   OPENING HOURS (LAST)
+   OPENING HOURS
 ====================================================== */
 .timing-row{
   display:flex;
@@ -304,6 +458,365 @@ a{text-decoration:none}
   color:#1a73e8;
   font-weight:700;
 }
+
+/* ======================================================
+   CART BAR
+====================================================== */
+.cart-bar{
+  position:fixed;
+  bottom:12px;
+  left:12px;
+  right:12px;
+  background:#111;
+  color:#fff;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 14px;
+  z-index:9999;
+}
+.cart-bar.hidden{
+  display:none;
+}
+.cart-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.cart-icon{
+  width:26px;
+}
+.cart-info{
+  font-size:14px;
+  font-weight:700;
+}
+.place-order-btn{
+  background:#25d366;
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:14px;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* ======================================================
+   CART MODAL
+====================================================== */
+.cart-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:10000;
+}
+.cart-modal.hidden{display:none;}
+.cart-modal-box{
+  background:#fff;
+  width:100%;
+  max-width:520px;
+  height:80vh;
+  border-radius:18px 18px 0 0;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+}
+#cartItems{
+  flex:1;
+  overflow-y:auto;
+  margin-top:8px;
+  padding-right:6px;
+}
+.cart-item-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0;
+}
+.cart-item-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.cart-item-actions img{width:14px;cursor:pointer;}
+.cart-total-line{
+  font-weight:800;
+  margin-top:10px;
+  flex-shrink:0;
+}
+.cart-modal-actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+  flex-shrink:0;
+  flex-wrap:wrap;
+}
+.cart-modal-actions button{
+  flex:1;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+.checkout-btn{
+  background:#e23744;
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:14px;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+}
+#menuSearch{
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+.open-badge{
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+.closed-badge{
+  background:#fdecea;
+  color:#c62828;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* ======================================================
+   CHECKOUT MODAL
+====================================================== */
+.checkout-field{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+}
+.checkout-field label{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#222;
+}
+.checkout-field input,
+.checkout-field textarea{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1.5px solid #d0d0d0;
+  font-size:14px;
+  line-height:1.4;
+  background:#fff;
+}
+.checkout-field textarea{
+  min-height:90px;
+  resize:none;
+}
+#addressBox.hidden{
+  display:none !important;
+}
+#addressBox{
+  margin-top:18px;
+}
+#addressBox label{
+  display:block;
+  margin-bottom:6px;
+}
+#addressBox textarea{
+  display:block;
+  min-height:90px;
+}
+.order-type{
+  display:flex;
+  gap:14px;
+}
+
+/* ======================================================
+   WHATSAPP CONFIRM MODAL
+====================================================== */
+.wa-btn{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+}
+.wa-btn.primary{
+  background:#25d366;
+  color:#fff;
+}
+.wa-btn.secondary{
+  background:#f1f1f1;
+  color:#333;
+}
+.wa-desc{
+  font-size:12px;
+  font-weight:500;
+  margin-top:4px;
+  opacity:.85;
+}
+#orderSuccess{
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:14px;
+  margin:12px;
+  border-radius:14px;
+  font-weight:700;
+  text-align:center;
+}
+#appDialog .cart-modal-box{
+  height:auto;
+  max-height:60vh;
+}
+
+/* ======================================================
+   ORDER SUCCESS OVERLAY
+====================================================== */
+#orderSuccessOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+.order-success-box{
+  background:#ffffff;
+  padding:26px 22px;
+  border-radius:16px;
+  text-align:center;
+  max-width:320px;
+  width:90%;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+.order-success-box h2{
+  font-size:18px;
+  margin-bottom:10px;
+}
+.order-success-box p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:16px;
+  line-height:1.4;
+}
+.order-success-box button{
+  padding:10px 18px;
+  border-radius:10px;
+  border:none;
+  background:#16a34a;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ======================================================
+   MOBILE RESPONSIVE
+====================================================== */
+@media (max-width: 480px){
+  .cart-modal-box{
+    padding:16px;
+  }
+  .checkout-field{
+    gap:10px;
+  }
+}
+.pay-now-btn{
+  animation:payPulse 1.5s infinite;
+}
+@keyframes payPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+   .veg-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.veg-switch input{
+  display:none;
+}
+
+.veg-switch .slider{
+  width:46px;
+  height:24px;
+  background:#ddd;
+  border-radius:999px;
+  position:relative;
+  transition:.3s;
+}
+
+.veg-switch .slider::before{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:#fff;
+  border-radius:50%;
+  top:2px;
+  left:2px;
+  transition:.3s;
+}
+
+.veg-switch input:checked + .slider{
+  background:#25d366;
+}
+
+.veg-switch input:checked + .slider::before{
+  transform:translateX(22px);
+}
+   .live-dot{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#2e7d32;
+  margin-right:6px;
+  animation:liveBlink 1.2s infinite;
+}
+
+@keyframes liveBlink{
+  0%{opacity:1; transform:scale(1)}
+  50%{opacity:.3; transform:scale(1.4)}
+  100%{opacity:1; transform:scale(1)}
+}
+   .menu-title{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.menu-divider{
+  height:3px;
+  width:120px;
+  margin:0 auto 14px auto;
+  border-radius:10px;
+  background:linear-gradient(90deg,#25d366,#e23744,#fc8019);
+  animation:dividerGlow 3s linear infinite;
+}
+
+@keyframes dividerGlow{
+  0%{opacity:.6}
+  50%{opacity:1}
+  100%{opacity:.6}
+}
 </style>
 </head>
 
@@ -312,8 +825,14 @@ a{text-decoration:none}
 <!-- HEADER -->
 <header class="header">
   <img id="restaurantLogo">
+
   <h1 id="restaurantName"></h1>
+
   <p id="categoryLine"></p>
+
+  <div id="foodBadgeContainer"></div>
+
+  <div id="liveOpenBadge" style="margin-top:8px;"></div>
 </header>
 
 <!-- CTA -->
@@ -331,79 +850,236 @@ a{text-decoration:none}
   </a>
 </section>
 
+<!-- PLATFORMS -->
+<section id="platformSection" class="card">
+  <h3 style="text-align:center;margin-bottom:10px">We are available on</h3>
+  <div class="platform-buttons" id="platformWrapper">
+  <a id="zomatoBtn" class="zomato">Zomato</a>
+  <a id="swiggyBtn" class="swiggy">Swiggy</a>
+</div>
+</section>
+
+<!-- SOCIAL -->
+<section id="socialSectionCard" class="card">
+  <h3 style="text-align:center;margin-bottom:10px">Follow us on Social Media</h3>
+  <div id="socialSection" class="social-section">
+  <a id="instaIcon"><img src="/assets/icons/color-icons/instagram.svg"></a>
+  <a id="facebookIcon"><img src="/assets/icons/color-icons/facebook.svg"></a>
+  <a id="youtubeIcon"><img src="/assets/icons/color-icons/youtube.svg"></a>
+  <a id="threadsIcon"><img src="/assets/icons/color-icons/threads.svg"></a>
+  <a id="snapchatIcon"><img src="/assets/icons/color-icons/snapchat.svg"></a>
+  <a id="websiteIcon"><img src="/assets/icons/black-icons/globe.svg"></a>
+</div>
+</section>
+
 <!-- CONTACT -->
-<section class="card">
+<section id="contactSection" class="card">
   <div class="contact-line">📞 <span id="primaryPhoneText"></span>, <span id="secondaryPhoneText"></span></div>
   <div class="contact-line">✉️ <span id="emailText"></span></div>
   <div class="contact-line">📍 <span id="fullAddress"></span></div>
 </section>
 
 <!-- TRUST -->
-<section class="card">
+<section id="trustSection" class="card">
   <div id="badgeContainer"></div>
   <p id="aboutText"></p>
 </section>
 
 <!-- DELIVERY / DINE-IN -->
-<section class="card">
+<section id="serviceSection" class="card">
   <div class="service-badges">
-    <div id="deliveryInfo"></div>
-    <div id="dineInInfo"></div>
-  </div>
+  <div id="deliveryInfo"></div>
+  <div id="dineInInfo"></div>
+  <div id="takeawayInfo"></div>
+</div>
 </section>
 
 <!-- MENU -->
 <main class="card menu-wrapper">
-  <h2>📋 Menu</h2>
+  <div style="text-align:center;margin-bottom:14px;">
+    <h2 class="menu-title">📋 Menu</h2>
+<div class="menu-divider"></div>
+    <label class="veg-switch" style="justify-content:center;">
+      <input type="checkbox" id="vegToggle">
+      <span class="slider"></span>
+      Veg Only
+    </label>
+  </div>
+  <div style="margin-bottom:12px;">
+    <input
+      id="menuSearch"
+      type="text"
+      placeholder="Search dishes..."
+      style="width:100%;padding:12px;border-radius:12px;border:1.5px solid #ddd;font-size:14px;"
+    >
+  </div>
+  <div id="categoryNav" class="category-nav"></div>
   <div id="menuContainer"></div>
 </main>
 
 <!-- PAYMENT -->
-<section class="card payment-section">
+<section id="paymentSection" class="card payment-section">
   <h3>💳 Pay Here</h3>
   <img id="paymentQR">
+  <div style="margin-top:10px;text-align:center;">
+    <button id="upiPayBtn" class="pay-now-btn"
+      style="padding:10px 18px;border:none;border-radius:12px;background:#111;color:#fff;font-weight:600;cursor:pointer;">
+      Pay via UPI App
+    </button>
+  </div>
   <div class="payment-apps">
-    <span><img src="/assets/icons/color-icons/google-pay.svg"> GPay</span>
-    <span><img src="/assets/icons/color-icons/phonepe.svg"> PhonePe</span>
-    <span><img src="/assets/icons/color-icons/paytm.svg"> Paytm</span>
-    <span><img src="/assets/icons/color-icons/bhim-app.svg"> BHIM</span>
-    <span><img src="/assets/icons/color-icons/indian-rupee-coin.svg"> Cash</span>
-  </div>
+  <img src="/assets/icons/color-icons/google-pay.svg">
+  <img src="/assets/icons/color-icons/phonepe.svg">
+  <img src="/assets/icons/color-icons/paytm.svg">
+  <img src="/assets/icons/color-icons/bhim-app.svg">
+</div>
+   <div style="margin-top:16px;">
+  <a id="googleReviewBtn"
+     style="display:none;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+            padding:12px 16px;
+            border-radius:14px;
+            background:#fff;
+            border:1.5px solid #eee;
+            font-weight:700;
+            text-decoration:none;
+            color:#111;
+            box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+    <img src="/assets/icons/color-icons/google-color.svg" style="width:22px;">
+    Leave a Google Review
+  </a>
+</div>
 </section>
 
-<!-- PLATFORMS -->
-<section class="card">
-  <h3 style="text-align:center;margin-bottom:10px">We are available on</h3>
-  <div class="platform-buttons">
-    <a id="zomatoBtn" class="zomato">Zomato</a>
-    <a id="swiggyBtn" class="swiggy">Swiggy</a>
-  </div>
-</section>
-
-<!-- SOCIAL -->
-<section class="card">
-  <h3 style="text-align:center;margin-bottom:10px">Follow us on Social Media</h3>
-  <div id="socialSection" class="social-section">
-    <a id="instaIcon"><img src="/assets/icons/color-icons/instagram.svg">Instagram</a>
-    <a id="fbIcon"><img src="/assets/icons/color-icons/facebook.svg">Facebook</a>
-    <a id="googleIcon"><img src="/assets/icons/color-icons/google-color.svg">Google</a>
-    <a id="websiteIcon"><img src="/assets/icons/black-icons/globe.svg">Website</a>
-  </div>
-</section>
-
-<!-- OPENING HOURS (LAST) -->
-<section class="card">
+<!-- OPENING HOURS -->
+<section id="timingSection" class="card">
   <h3>⏰ Opening Hours</h3>
   <div id="timingBox"></div>
 </section>
 
 <footer class="footer">
   Powered by
-  <a href="https://freelancerofncr.github.io/qr-menu.html" target="_blank">
-    Freelancer of NCR
+  <a href="https://rupmaxdigital.in/qr-menu" target="_blank">
+    RupMax Digital
   </a>
 </footer>
 
-<script src="./js/app.js"></script>
+<!-- FLOATING CART BAR -->
+<div id="cartBar" class="cart-bar hidden">
+  <div class="cart-left">
+    <img src="/assets/icons/black-icons/food-cart.svg" class="cart-icon">
+    <div class="cart-info">
+      <div><span id="cartItemCount">0</span> Items</div>
+      <div>₹ <span id="cartTotal">0</span></div>
+    </div>
+  </div>
+  <button id="placeOrderBtn" class="place-order-btn" onclick="openCartModal()">
+    View Cart
+  </button>
+</div>
+
+<!-- CART MODAL -->
+<div id="cartModal" class="cart-modal hidden">
+  <div class="cart-modal-box">
+    <h3>Your Cart</h3>
+    <div id="cartItems"></div>
+    <div class="cart-total-line">
+      Total: ₹ <span id="modalCartTotal">0</span>
+    </div>
+    <div class="cart-modal-actions">
+      <button onclick="closeCartModal()">Close</button>
+      <button id="clearCartBtn"
+        style="padding:10px;border:none;border-radius:10px;background:#f5f5f5;font-weight:600;cursor:pointer;">
+        Clear Cart
+      </button>
+      <button class="checkout-btn" onclick="openCheckout()">Proceed</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="cart-modal hidden">
+  <div class="cart-modal-box">
+    <h3>Checkout</h3>
+
+    <div class="checkout-field">
+      <label>Customer Name *</label>
+      <input id="customerName" type="text" placeholder="Enter your name">
+    </div>
+
+    <div class="checkout-field">
+      <label>Order Type *</label>
+      <div id="deliveryNotice" style="display:none;margin-top:8px;font-size:13px;color:#c62828;font-weight:600;"></div>
+      <div class="order-type" id="orderTypeContainer">
+        <label id="optDineIn">
+          <input type="radio" name="orderType" value="Dine-In" checked>
+          Dine-In
+        </label>
+        <label id="optDelivery">
+          <input type="radio" name="orderType" value="Delivery">
+          Delivery
+        </label>
+        <label id="optTakeaway">
+          <input type="radio" name="orderType" value="Takeaway">
+          Takeaway
+        </label>
+      </div>
+    </div>
+
+    <div class="checkout-field hidden" id="addressBox" style="display:none;">
+      <label>Delivery Address *</label>
+      <textarea id="deliveryAddress" rows="3" placeholder="Enter delivery address"></textarea>
+    </div>
+
+    <div class="checkout-field hidden" id="tableBox" style="display:none;">
+      <label id="tableLabel">Table Number *</label>
+      <input id="tableNumber" type="text" placeholder="Enter table number">
+    </div>
+
+    <div class="cart-modal-actions">
+      <button onclick="closeCheckout()">Back</button>
+      <button class="checkout-btn" onclick="finalPlaceOrder()">Place Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP RETURN CONFIRMATION -->
+<div id="waConfirmModal" class="cart-modal hidden">
+  <div class="cart-modal-box">
+    <h3>Order Confirmation</h3>
+
+    <p style="font-size:14px;color:#555;margin-top:6px;">
+      Did you send the order message on WhatsApp?
+    </p>
+
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
+      <button class="wa-btn secondary" onclick="waNotSent()">
+        I did NOT send the message
+        <div class="wa-desc">Continue editing your order</div>
+      </button>
+
+      <button class="wa-btn primary" onclick="waSent()">
+        I have SENT the message
+        <div class="wa-desc">Complete order &amp; reset cart</div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- APP DIALOG (REPLACES ALERT) -->
+<div id="appDialog" class="cart-modal hidden">
+  <div class="cart-modal-box" style="height:auto;max-height:60vh;">
+    <h3 id="dialogTitle">Notice</h3>
+    <p id="dialogMessage" style="margin-top:8px;font-size:14px;color:#555"></p>
+    <div class="cart-modal-actions" style="margin-top:18px">
+      <button class="checkout-btn" onclick="closeDialog()">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
