@@ -280,7 +280,7 @@
       "items": [
         {"name":"Hot Gulab Jamun","type":"veg","prices":[{"label":"Regular","price":179}]},
 {"name":"Ice Cream (2 Scoops)","type":"veg","prices":[{"label":"Regular","price":159}]},
-{"name":"Kulfi","type":"veg","prices":[{"label":"Regular","price":49}]},
+{"name":"Kulfi","type":"veg","prices":[{"label":"Regular","price":149}]},
 {"name":"Choco Brownie with Ice Cream","type":"veg","prices":[{"label":"Regular","price":299}]}
       ]
     }
