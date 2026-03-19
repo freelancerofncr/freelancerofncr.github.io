@@ -8,7 +8,7 @@ master: {
   showLogo: true,
   showContact: true,
   showSocialLinks: true,
-  showPlatforms: true,
+  showPlatforms: false,
   showTrustSection: true,
   showServiceBadges: true,
   showPaymentSection: true,
