@@ -64,8 +64,8 @@ openingHours: {
 onlinePlatforms: {
 
   // Food Platforms
-  zomato: "https://www.zomato.com/",
-  swiggy: "https://www.swiggy.com/",
+  zomato: "NO",
+  swiggy: "NO",
 
   // Social
   instagram: "https://www.instagram.com/thepantrycarofficial",
