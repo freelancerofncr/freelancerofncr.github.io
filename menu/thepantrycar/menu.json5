@@ -93,6 +93,7 @@
         {"name":"Dal Lahsuni","type":"veg","prices":[{"label":"Regular","price":499}]},
         {"name":"Dal Tadka","type":"veg","prices":[{"label":"Regular","price":499}]},
         {"name":"Dal Dhaba","type":"veg","prices":[{"label":"Regular","price":499}]},
+        {"name":"Dal Pachrangai","type":"veg","prices":[{"label":"Regular","price":549}]},
         {"name":"Dal Makhani","type":"veg","prices":[{"label":"Regular","price":549}]}
       ]
     },
